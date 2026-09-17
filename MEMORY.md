@@ -39,6 +39,18 @@
 
 ## Operational notes
 
+- Phase 1 committed as 57f40e0 and pushed to origin/feat/native-litellm-quota.
+  HTTPS push had no credentials; the existing authenticated SSH identity is
+  shurrman. Origin push URL now uses git@github.com:shurrman/tokengateway.git.
+- Live read-only comparison on 2026-09-17 found identical access/refresh token
+  fingerprints on .22 and production .35. Expiry: 2026-09-20T14:19:53Z.
+  Do not force-refresh this shared session for a local test.
+- scripts/test-litellm-rotation.ts exercises the installed LiteLLM 1.100.1
+  authenticator against an in-memory OAuth transport with temporary synthetic
+  tokens. Rotation/persistence and dashboard cache invalidation passed with
+  the same dashboard instance and no dashboard writes. Real provider rotation
+  remains untested; it needs an independent login or observation after expiry.
+
 - Open http://192.168.128.22:3737 directly from the LAN. For access details,
   installation, polling/error behavior and stop commands see docs/native-litellm.md.
 - The panel caches successful quotas for five minutes, backs off failures for

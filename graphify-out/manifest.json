@@ -155,8 +155,8 @@
     "semantic_hash": ""
   },
   "CHANGES.md": {
-    "mtime": 1789611229.7801116,
-    "ast_hash": "5f4d1e7a53937b628d5cd4705c8826a8",
+    "mtime": 1789612255.7141614,
+    "ast_hash": "cea0fd2a55f02d0a56d4e6ab3d1309eb",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -165,8 +165,8 @@
     "semantic_hash": ""
   },
   "MEMORY.md": {
-    "mtime": 1789611900.97291,
-    "ast_hash": "3a1eb30d2d7bb6b7f93a5832c75b39c1",
+    "mtime": 1789612255.7151616,
+    "ast_hash": "415632af4a9b001f80cce80763757ea8",
     "semantic_hash": ""
   },
   "README.md": {
@@ -210,8 +210,8 @@
     "semantic_hash": ""
   },
   "docs/native-litellm.md": {
-    "mtime": 1789611229.7811115,
-    "ast_hash": "657dbfa77d44550347f38402d5709cd7",
+    "mtime": 1789612255.7131615,
+    "ast_hash": "fc3de5e19204c709856c06d578f2c19e",
     "semantic_hash": ""
   },
   "docs/oauth-setup-anthropic.md": {
@@ -262,6 +262,16 @@
   "docs/assets/quota-dashboard.png": {
     "mtime": 1789610397.8121183,
     "ast_hash": "60a632e9a826ed5f0cd481d5db6d6ebf",
+    "semantic_hash": ""
+  },
+  "scripts/refresh_fixture.py": {
+    "mtime": 1789612097.6925333,
+    "ast_hash": "74303b4b9489a63afa3e7bf26460982e",
+    "semantic_hash": ""
+  },
+  "scripts/test-litellm-rotation.ts": {
+    "mtime": 1789612097.6935334,
+    "ast_hash": "54a80c1e035a6e8cf4025f0dd925d881",
     "semantic_hash": ""
   }
 }

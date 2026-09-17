@@ -99,6 +99,24 @@ network; no SSH tunnel is needed. The local LiteLLM already listens on
 
 ## Verify and stop
 
+The installed LiteLLM refresh implementation can be exercised without real
+credentials or an external OAuth request:
+
+```bash
+LITELLM_TEST_PYTHON=/opt/litellm/venv/bin/python bun run scripts/test-litellm-rotation.ts
+```
+
+The test starts with a synthetic auth file, expires it, lets the installed
+LiteLLM authenticator rotate it through an in-memory HTTP transport, and checks
+that the same dashboard instance invalidates its quota cache. This verifies the
+integration, not a live provider-issued rotation.
+
+The local and production LiteLLM instances currently share the same OAuth
+session (verified by token fingerprints on 2026-09-17). Their token expires on
+2026-09-20 at 14:19:53 UTC. Do not force-refresh the local copy: first create an
+independent login, or observe the next naturally occurring refresh of the
+intended instance. Copying auth.json to another path does not isolate a session.
+
 ```bash
 sudo systemctl status tokengateway-quota --no-pager
 sudo journalctl -u tokengateway-quota -n 30 --no-pager

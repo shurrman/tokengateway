@@ -1,16 +1,16 @@
 # Graph Report - tokengateway  (2026-09-17)
 
 ## Corpus Check
-- 41 files · ~75,062 words
+- 43 files · ~75,737 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 498 nodes · 821 edges · 24 communities (21 shown, 3 thin omitted)
+- 507 nodes · 832 edges · 24 communities (22 shown, 2 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 17 edges (avg confidence: 0.57)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ef6916f5`
+- Built from commit: `57f40e04`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -31,7 +31,7 @@
 - Building from Source
 - test_usage_parity.py
 - Project memory
-- auth.ts
+- refresh_fixture.py
 - server.test.ts
 - Changes
 - AGENTS.md
@@ -63,11 +63,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (24 total, 3 thin omitted)
+## Communities (24 total, 2 thin omitted)
 
 ### Community 0 - "usage.ts"
-Cohesion: 0.06
-Nodes (80): handleApi(), logins, LoginState, PORT, refreshSweep(), server, isRecord(), readNumber() (+72 more)
+Cohesion: 0.05
+Nodes (85): handleApi(), logins, LoginState, PORT, refreshSweep(), server, dashboardAuth(), isRecord() (+77 more)
 
 ### Community 1 - "sitecustomize.py"
 Cohesion: 0.08
@@ -86,12 +86,12 @@ Cohesion: 0.05
 Nodes (40): anyOf, description, required, type, description, properties, required, type (+32 more)
 
 ### Community 5 - "properties"
-Cohesion: 0.05
-Nodes (40): properties, default, description, type, description, type, $ref, type (+32 more)
+Cohesion: 0.04
+Nodes (47): description, properties, required, type, properties, Capability, default, description (+39 more)
 
 ### Community 6 - "definitions"
-Cohesion: 0.05
-Nodes (37): anyOf, description, required, type, description, properties, required, type (+29 more)
+Cohesion: 0.06
+Nodes (30): anyOf, description, required, type, definitions, CapabilityRemote, Identifier, Number (+22 more)
 
 ### Community 7 - "properties"
 Cohesion: 0.06
@@ -133,24 +133,28 @@ Nodes (4): Local deployment verified 2026-09-17, Operational notes, Project memo
 Cohesion: 0.50
 Nodes (3): headers, names, priorEnv
 
+### Community 18 - "Changes"
+Cohesion: 0.50
+Nodes (3): 2026-09-17 - Native LiteLLM quota panel, 2026-09-17 - Native refresh integration test, Changes
+
 ## Knowledge Gaps
-- **189 isolated node(s):** `name`, `version`, `description`, `@types/bun`, `typescript` (+184 more)
+- **193 isolated node(s):** `name`, `version`, `description`, `@types/bun`, `typescript` (+188 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `properties` connect `properties` to `definitions`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Why does `properties` connect `properties` to `definitions`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **Why does `definitions` connect `definitions` to `properties`?**
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `_wrapped_acompletion()` (e.g. with `sitecustomize.py` and `_call_antigravity_sync()`) actually correct?**
   _`_wrapped_acompletion()` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `name`, `version`, `description` to the rest of the system?**
-  _189 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _193 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `usage.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.05972288580984233 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.052277227722772275 - nodes in this community are weakly interconnected._
 - **Should `sitecustomize.py` be split into smaller, more focused modules?**
   _Cohesion score 0.08182349503214495 - nodes in this community are weakly interconnected._
 - **Should `README.md` be split into smaller, more focused modules?**

@@ -1,7 +1,7 @@
 # Graph Report - tokengateway  (2026-09-17)
 
 ## Corpus Check
-- 41 files · ~75,043 words
+- 41 files · ~75,062 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary

@@ -197,8 +197,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "dashboard_src_auth",
-      "community": 16,
-      "community_name": "auth.ts",
+      "community": 0,
+      "community_name": "usage.ts",
       "norm_label": "auth.ts"
     },
     {
@@ -208,8 +208,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "dashboard_src_auth_dashboardauth",
-      "community": 16,
-      "community_name": "auth.ts",
+      "community": 0,
+      "community_name": "usage.ts",
       "norm_label": "dashboardauth()"
     },
     {
@@ -1110,8 +1110,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "dashboard_tests_auth_test",
-      "community": 16,
-      "community_name": "auth.ts",
+      "community": 0,
+      "community_name": "usage.ts",
       "norm_label": "auth.test.ts"
     },
     {
@@ -1121,8 +1121,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "dashboard_tests_auth_test_prior",
-      "community": 16,
-      "community_name": "auth.ts",
+      "community": 0,
+      "community_name": "usage.ts",
       "norm_label": "prior"
     },
     {
@@ -1495,8 +1495,8 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_definitions_capability",
-      "community": 6,
-      "community_name": "definitions",
+      "community": 5,
+      "community_name": "properties",
       "norm_label": "capability"
     },
     {
@@ -1506,8 +1506,8 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_capability_description",
-      "community": 6,
-      "community_name": "definitions",
+      "community": 5,
+      "community_name": "properties",
       "norm_label": "description"
     },
     {
@@ -1517,8 +1517,8 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_capability_type",
-      "community": 6,
-      "community_name": "definitions",
+      "community": 5,
+      "community_name": "properties",
       "norm_label": "type"
     },
     {
@@ -1528,8 +1528,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_capability_required",
-      "community": 6,
-      "community_name": "definitions",
+      "community": 5,
+      "community_name": "properties",
       "norm_label": "required"
     },
     {
@@ -1539,8 +1539,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_json_ref_identifier",
-      "community": 6,
-      "community_name": "definitions",
+      "community": 5,
+      "community_name": "properties",
       "norm_label": "identifier"
     },
     {
@@ -1550,8 +1550,8 @@
       "source_location": "L42",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_json_ref_permissions",
-      "community": 6,
-      "community_name": "definitions",
+      "community": 5,
+      "community_name": "properties",
       "norm_label": "permissions"
     },
     {
@@ -2012,8 +2012,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_capabilityremote_properties",
-      "community": 6,
-      "community_name": "definitions",
+      "community": 5,
+      "community_name": "properties",
       "norm_label": "properties"
     },
     {
@@ -4591,6 +4591,94 @@
       "norm_label": "test_wire_contract.py"
     },
     {
+      "label": "refresh_fixture.py",
+      "file_type": "code",
+      "source_file": "scripts/refresh_fixture.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "scripts_refresh_fixture",
+      "community": 16,
+      "community_name": "refresh_fixture.py",
+      "norm_label": "refresh_fixture.py"
+    },
+    {
+      "label": "oauth()",
+      "file_type": "code",
+      "source_file": "scripts/refresh_fixture.py",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "scripts_refresh_fixture_oauth",
+      "community": 16,
+      "community_name": "refresh_fixture.py",
+      "norm_label": "oauth()"
+    },
+    {
+      "label": "Exercise the installed LiteLLM authenticator with an in-memory OAuth server.",
+      "file_type": "rationale",
+      "source_file": "scripts/refresh_fixture.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "scripts_refresh_fixture_rationale_1",
+      "community": 16,
+      "community_name": "refresh_fixture.py",
+      "norm_label": "exercise the installed litellm authenticator with an in-memory oauth server."
+    },
+    {
+      "label": "test-litellm-rotation.ts",
+      "file_type": "code",
+      "source_file": "scripts/test-litellm-rotation.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "scripts_test_litellm_rotation",
+      "community": 0,
+      "community_name": "usage.ts",
+      "norm_label": "test-litellm-rotation.ts"
+    },
+    {
+      "label": "authPath",
+      "file_type": "code",
+      "source_file": "scripts/test-litellm-rotation.ts",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "scripts_test_litellm_rotation_authpath",
+      "community": 0,
+      "community_name": "usage.ts",
+      "norm_label": "authpath"
+    },
+    {
+      "label": "jwt()",
+      "file_type": "code",
+      "source_file": "scripts/test-litellm-rotation.ts",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "scripts_test_litellm_rotation_jwt",
+      "community": 0,
+      "community_name": "usage.ts",
+      "norm_label": "jwt()"
+    },
+    {
+      "label": "originalAccess",
+      "file_type": "code",
+      "source_file": "scripts/test-litellm-rotation.ts",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "scripts_test_litellm_rotation_originalaccess",
+      "community": 0,
+      "community_name": "usage.ts",
+      "norm_label": "originalaccess"
+    },
+    {
+      "label": "rotatedAccess",
+      "file_type": "code",
+      "source_file": "scripts/test-litellm-rotation.ts",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "scripts_test_litellm_rotation_rotatedaccess",
+      "community": 0,
+      "community_name": "usage.ts",
+      "norm_label": "rotatedaccess"
+    },
+    {
       "label": "AGENTS.md",
       "file_type": "document",
       "source_file": "AGENTS.md",
@@ -4635,10 +4723,21 @@
       "norm_label": "changes"
     },
     {
-      "label": "2026-09-17 - Native LiteLLM quota panel",
+      "label": "2026-09-17 - Native refresh integration test",
       "file_type": "document",
       "source_file": "CHANGES.md",
       "source_location": "L3",
+      "_origin": "ast",
+      "id": "changes_2026_09_17_native_refresh_integration_test",
+      "community": 18,
+      "community_name": "Changes",
+      "norm_label": "2026-09-17 - native refresh integration test"
+    },
+    {
+      "label": "2026-09-17 - Native LiteLLM quota panel",
+      "file_type": "document",
+      "source_file": "CHANGES.md",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "changes_2026_09_17_native_litellm_quota_panel",
       "community": 18,
@@ -5232,7 +5331,7 @@
       "label": "Other deployment modes",
       "file_type": "document",
       "source_file": "docs/native-litellm.md",
-      "source_location": "L115",
+      "source_location": "L133",
       "_origin": "ast",
       "id": "docs_native_litellm_other_deployment_modes",
       "community": 2,
@@ -6926,6 +7025,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test-litellm-rotation.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_test_litellm_rotation",
+      "target": "dashboard_src_litellm",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "inherits",
       "context": "type",
       "confidence": "EXTRACTED",
@@ -6982,6 +7093,18 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "dashboard_tests_litellm_test",
+      "target": "dashboard_src_litellm_litellmquotaapi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test-litellm-rotation.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_test_litellm_rotation",
       "target": "dashboard_src_litellm_litellmquotaapi",
       "confidence_score": 1.0
     },
@@ -7692,6 +7815,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test-litellm-rotation.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_test_litellm_rotation",
+      "target": "dashboard_src_providers",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -7796,6 +7931,18 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "dashboard_tests_litellm_test",
+      "target": "dashboard_src_providers_codex_usage_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test-litellm-rotation.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_test_litellm_rotation",
       "target": "dashboard_src_providers_codex_usage_url",
       "confidence_score": 1.0
     },
@@ -14071,6 +14218,72 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "scripts/refresh_fixture.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_refresh_fixture",
+      "target": "scripts_refresh_fixture_oauth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/refresh_fixture.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_refresh_fixture_rationale_1",
+      "target": "scripts_refresh_fixture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test-litellm-rotation.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_test_litellm_rotation",
+      "target": "scripts_test_litellm_rotation_authpath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test-litellm-rotation.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_test_litellm_rotation",
+      "target": "scripts_test_litellm_rotation_jwt",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test-litellm-rotation.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_test_litellm_rotation",
+      "target": "scripts_test_litellm_rotation_originalaccess",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/test-litellm-rotation.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_test_litellm_rotation",
+      "target": "scripts_test_litellm_rotation_rotatedaccess",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "AGENTS.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -14094,11 +14307,22 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CHANGES.md",
-      "source_location": "L3",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
       "source": "changes_changes",
       "target": "changes_2026_09_17_native_litellm_quota_panel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGES.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "changes_changes",
+      "target": "changes_2026_09_17_native_refresh_integration_test",
       "confidence_score": 1.0
     },
     {
@@ -14677,7 +14901,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/native-litellm.md",
-      "source_location": "L115",
+      "source_location": "L133",
       "weight": 1.0,
       "_origin": "ast",
       "source": "docs_native_litellm_read_only_chatgpt_quotas_for_an_existing_litellm_service",
@@ -14906,5 +15130,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "ef6916f541ed890b21629d90109bd3a45c114433"
+  "built_at_commit": "57f40e049904d0ec8db74f18b13822d9886dfc24"
 }
