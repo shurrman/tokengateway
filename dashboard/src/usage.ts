@@ -64,14 +64,16 @@ export interface UsageReport {
 	fetchedAt: number;
 }
 // In-memory report cache to respect upstream rate limits
-const reportCache: Map<string, { report: UsageReport; expiresAt: number }> = new Map();
+const reportCache: Map<string, { report: UsageReport; expiresAt: number; access: string }> = new Map();
 const cooldownMap: Map<string, number> = new Map();
 const inFlightMap: Map<string, Promise<UsageLimit[]>> = new Map();
 export function clearCooldown(providerId?: string) {
 	if (providerId) {
 		cooldownMap.delete(providerId);
+		reportCache.delete(providerId);
 	} else {
 		cooldownMap.clear();
+		reportCache.clear();
 	}
 }
 /**
@@ -83,7 +85,7 @@ const STALE_AFTER_MS = 30 * 60_000;
 
 function staleReport(report: UsageReport, error: unknown): UsageReport {
 	const ageMs = Date.now() - report.fetchedAt;
-	if (ageMs <= STALE_AFTER_MS) return { ...report, cached: true };
+	if (report.provider !== "anthropic" && ageMs <= STALE_AFTER_MS) return { ...report, cached: true };
 	const msg = error instanceof Error ? error.message : String(error);
 	const detail = isDefinitiveOAuthFailure(error) ? "login expired — re-authenticate" : msg.slice(0, 120);
 	return {
@@ -131,28 +133,7 @@ async function fetchAnthropic(credential: StoredCredential): Promise<UsageLimit[
 				signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
 			});
 
-			if (response.status === 429 || response.status === 401) {
-				// Anthropic returns 429 when token was revoked/expired upstream.
-				// Attempt token refresh before assuming transient rate limit.
-				if (credential.refresh) {
-					try {
-						const renewed = await refreshCredential("anthropic", credential);
-						const retryResp = await fetch(ANTHROPIC_USAGE_URL, {
-							headers: { ...CLAUDE_HEADERS, Authorization: `Bearer ${renewed.access}` },
-							signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
-						});
-						if (retryResp.ok) {
-							const retryPayload: unknown = await retryResp.json();
-							const limits = parseAnthropicPayload(retryPayload);
-							cooldownMap.delete("anthropic");
-							return limits;
-						}
-					} catch (e) {
-						if (isDefinitiveOAuthFailure(e)) {
-							throw new Error("Anthropic token is invalid or expired — sign in again in Quota Desktop");
-						}
-					}
-				}
+			if (response.status === 429) {
 				const rawRetry = parseInt(response.headers.get("retry-after") ?? "120", 10);
 				const retryAfterSec = Math.min(180, Math.max(30, isNaN(rawRetry) ? 60 : rawRetry));
 				cooldownMap.set("anthropic", Date.now() + retryAfterSec * 1000);
@@ -677,15 +658,17 @@ const FETCHERS = {
 	"google-antigravity": fetchAntigravity,
 } as const;
 
-export async function fetchAllUsage(forceRefresh = false): Promise<UsageReport[]> {
+export async function fetchAllUsage(forceRefresh = false, onlyProviders?: ProviderId[]): Promise<UsageReport[]> {
 	const credentials = await loadCredentials();
-	const entries = Object.entries(credentials) as [ProviderId, StoredCredential][];
+	const entries = (Object.entries(credentials) as [ProviderId, StoredCredential][])
+		.filter(([id]) => !onlyProviders || onlyProviders.includes(id));
 	const now = Date.now();
 
 	const cloudReports = await Promise.all(
 		entries.map(async ([providerId, stored]) => {
 			const config = PROVIDERS[providerId];
-			const cached = reportCache.get(providerId);
+			const snapshot = reportCache.get(providerId);
+			const cached = snapshot?.access === stored.access ? snapshot : undefined;
 
 			// Return valid cache if forceRefresh is not requested
 			if (!forceRefresh && cached && cached.expiresAt > now) {
@@ -709,13 +692,13 @@ export async function fetchAllUsage(forceRefresh = false): Promise<UsageReport[]
 				try {
 					report.limits = await FETCHERS[providerId](fresh);
 					// Store in success cache
-					reportCache.set(providerId, { report: { ...report }, expiresAt: now + CACHE_TTL_MS });
+					reportCache.set(providerId, { report: { ...report }, expiresAt: now + CACHE_TTL_MS, access: fresh.access });
 				} catch (error) {
 					// 401/403 = expired access token. Refresh BEFORE falling back to cache
 					if (!isAuthRejection(error) || !fresh.refresh) throw error;
 					const renewed = await refreshCredential(providerId, fresh);
 					report.limits = await FETCHERS[providerId](renewed);
-					reportCache.set(providerId, { report: { ...report }, expiresAt: now + CACHE_TTL_MS });
+					reportCache.set(providerId, { report: { ...report }, expiresAt: now + CACHE_TTL_MS, access: renewed.access });
 				}
 			} catch (error) {
 				// Fallback: the previous snapshot, which holds numbers the provider
@@ -744,6 +727,7 @@ export async function fetchAllUsage(forceRefresh = false): Promise<UsageReport[]
 		}),
 	);
 
+	if (onlyProviders) return cloudReports;
 	// Run independent metric scrapes in parallel
 	const [localVllm, uptimeKuma, aiAgents] = await Promise.all([fetchLocalVllm(), fetchUptimeKuma(), fetchAiAgents()]);
 	if (localVllm) cloudReports.push(localVllm);

@@ -5,11 +5,11 @@
  * long-lived, so the file is the app's most sensitive artifact.
  */
 
-import { chmod } from "node:fs/promises";
+import { atomicWriteJson } from "./atomic-json";
 import { isRecord, readNumber, readString } from "./guards";
 import { type ProviderId, isProviderId } from "./providers";
 
-const STORE_PATH = process.env.CREDENTIALS_PATH || `${import.meta.dir}/../credentials.json`;
+const storePath = () => process.env.CREDENTIALS_PATH || `${import.meta.dir}/../credentials.json`;
 const SEED_PATH = process.env.CREDENTIALS_SEED_PATH || "/app/credentials-seed/credentials.json";
 
 export interface StoredCredential {
@@ -44,13 +44,6 @@ export function persistenceError(): string | undefined {
 	return persistFailure;
 }
 
-/**
- * Set when the store exists but cannot be parsed. A tolerant reader returning
- * `{}` is fine; letting the next write persist that `{}` is not — it wipes
- * every refresh token and costs a full re-login on all providers.
- */
-let storeUnreadable = false;
-
 function applyOverlay(credentials: CredentialMap): CredentialMap {
 	for (const [provider, value] of overlay) {
 		if (value === null) delete credentials[provider];
@@ -61,7 +54,7 @@ function applyOverlay(credentials: CredentialMap): CredentialMap {
 
 export async function loadCredentials(): Promise<CredentialMap> {
 	const credentials: CredentialMap = {};
-	let file = Bun.file(STORE_PATH);
+	let file = Bun.file(storePath());
 	const seedFile = Bun.file(SEED_PATH);
 
 	// 1. Load from seed file if present
@@ -93,8 +86,8 @@ export async function loadCredentials(): Promise<CredentialMap> {
 	if (await file.exists()) {
 		try {
 			const parsed: unknown = await file.json();
+			if (!isRecord(parsed)) throw new Error("invalid credential store");
 			if (isRecord(parsed)) {
-				storeUnreadable = false;
 				for (const [provider, value] of Object.entries(parsed)) {
 					if (!isProviderId(provider) || !isRecord(value)) continue;
 					const access = readString(value.access);
@@ -111,7 +104,7 @@ export async function loadCredentials(): Promise<CredentialMap> {
 				}
 			}
 		} catch (error) {
-			console.warn(`[store] STORE_PATH unreadable: ${error}`);
+			throw new Error("Credential store is unreadable; refusing to overwrite it");
 		}
 	}
 
@@ -206,20 +199,17 @@ function mutate(apply: (credentials: CredentialMap) => void): Promise<void> {
 	const next = writeQueue.then(async () => {
 		const credentials = await loadCredentials();
 		apply(credentials);
-		if (storeUnreadable) {
-			persistFailure = "credentials file unreadable — write blocked to prevent token loss";
-			console.warn(`[store] ${persistFailure}`);
-			return;
-		}
 		try {
-			await Bun.write(STORE_PATH, JSON.stringify(credentials, null, 2));
-			await chmod(STORE_PATH, 0o600);
+			await atomicWriteJson(storePath(), credentials);
 			persistFailure = undefined;
 		} catch (error) {
 			// Read-only mount (K8s Secret): the overlay already holds the value, so
 			// the refresh still counts. Losing the write must not fail it.
 			persistFailure = error instanceof Error ? error.message : String(error);
 			console.warn(`[store] persistence failed (using in-memory overlay): ${persistFailure}`);
+			if (process.env.CREDENTIALS_REQUIRE_DURABLE === "1") {
+				throw new Error("OAuth token changed but persistence failed; repair the credential store before restarting");
+			}
 		}
 		await syncToKubernetesSecrets(credentials);
 	});

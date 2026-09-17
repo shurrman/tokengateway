@@ -125,6 +125,12 @@ LiteLLM installation. It reads LiteLLM's auth.json, leaves token refresh and
 Responses routing with LiteLLM, and runs as a separate Bun/systemd service.
 See [native installation and verification](docs/native-litellm.md).
 
+The native service can also manage a separate Claude OAuth session with
+`MANAGED_ANTHROPIC=1`. It exposes a separately authenticated Anthropic Messages
+proxy for LiteLLM, without loading the Python subscription plugin or taking
+ownership of ChatGPT refresh. See the managed Claude section of the native
+guide for authentication, persistence and current verification limits.
+
 The dashboard binds to `0.0.0.0` for the intended closed LAN and requires HTTP Basic auth
 (username `quota`, password from `DASHBOARD_PASSWORD_FILE` or
 `DASHBOARD_PASSWORD`, at least 16 characters).

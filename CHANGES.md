@@ -1,5 +1,18 @@
 # Changes
 
+## 2026-09-17 - Managed Claude alongside native ChatGPT
+
+- Add an opt-in Anthropic card and native Messages/models proxy protected by
+  a separate inference key; retain read-only ChatGPT and blocked credential APIs.
+- Centralize managed OAuth refresh, persist credentials atomically as mode0600,
+  refuse corrupt-store overwrites, and require durable storage in systemd.
+- Preserve native SSE responses and tool blocks; retry one authorization failure,
+  never refresh on rate limits. Bind quota cache to the access credential.
+- Deploy the local card with private systemd state and test authentication over
+  the LAN. Claude user login and live LiteLLM inference remain pending.
+- Verification: 21 component/native HTTP tests (106 assertions), plus 4 isolated
+  hybrid HTTP tests (28 assertions); TypeScript passes.
+
 ## 2026-09-17 - Separate local ChatGPT session
 
 - Complete a fresh user-authorized device login into chatgpt-local; switch

@@ -811,7 +811,7 @@ function render() {
     if (p.login && p.login.status === 'pending') {
       html += \`<div class="pending-panel">
         <p>Open the URL below to authorize:</p>
-        <div class="url-box">\${p.login.url}</div>
+        <div class="url-box"><a href="\${esc(p.login.url)}" target="_blank" rel="noopener noreferrer">Open Anthropic/provider sign-in</a></div>
         <div class="paste-row">
           <input id="code-\${p.id}" placeholder="Code or code#state">
           <button class="primary" onclick="submitCode('\${p.id}')">OK</button>
@@ -820,8 +820,10 @@ function render() {
     }
 
     if (p.login && p.login.status === 'error') {
-      html += \`<div class="err-box">\${p.login.message || 'Login error'}</div>\`;
+      html += \`<div class="err-box">\${esc(p.login.message || 'Login error')}</div>\`;
     }
+
+    if (p.error) html += \`<div class="err-box">\${esc(p.error)}</div>\`;
 
     // Quotas progress bars
     if (report && report.limits && report.limits.length) {

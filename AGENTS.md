@@ -8,6 +8,12 @@
 - Never copy live refresh tokens into tests, logs, fixtures, this repository,
   or the dashboard's managed credential store.
 - Do not load sitecustomize.py or change LiteLLM routing for quota-panel work.
+- Optional managed Claude uses its own durable store and inference key; never
+  put ChatGPT refresh credentials there. Only TokenGateway refreshes Claude.
+- Test mixed HTTP mode separately with
+  `TEST_MANAGED_ANTHROPIC=1 bun test tests/server.test.ts` in dashboard/.
+- Live Claude routing is not verified until a user completes Anthropic login
+  and real local LiteLLM inference succeeds. Keep production outside scope.
 - Verify dashboard changes with `cd dashboard && bun test tests` and
   `bun run tsc --noEmit`; use synthetic tokens in automated tests.
 - Preserve useful upstream behavior outside the task. Document compatibility

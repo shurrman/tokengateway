@@ -56,6 +56,10 @@ sudo install -d -m 0700 /etc/tokengateway
 # First installation only; preserve an existing password on upgrades.
 sudo openssl rand -hex -out /etc/tokengateway/dashboard-password 24
 sudo chmod 0600 /etc/tokengateway/dashboard-password
+# The supplied service now enables optional managed Claude too.
+# First installation only; preserve this separate key on upgrades.
+sudo openssl rand -hex -out /etc/tokengateway/anthropic-proxy-key 32
+sudo chmod 0600 /etc/tokengateway/anthropic-proxy-key
 sudo install -m 0644 deploy/systemd/tokengateway-quota.service /etc/systemd/system/
 sudo systemd-analyze verify /etc/systemd/system/tokengateway-quota.service
 sudo systemctl daemon-reload
@@ -74,6 +78,11 @@ sudo systemctl enable tokengateway-quota
 ```
 
 ## Open the dashboard
+
+The supplied systemd template enables managed Claude in addition to native
+read-only ChatGPT. For a quota-only deployment, set `MANAGED_ANTHROPIC=0` and
+omit its `LoadCredential=anthropic-proxy-key` entry. The restrictions described
+above always apply to ChatGPT; only managed Claude permits login/logout.
 
 Open `http://192.168.128.22:3737`, username `quota`. Read the generated password
 on the server with `sudo cat /etc/tokengateway/dashboard-password`.
@@ -96,6 +105,57 @@ network; no SSH tunnel is needed. The local LiteLLM already listens on
 - This shows subscription/account limits, not LiteLLM virtual-key spending,
   per-model allocations, or PostgreSQL usage logs. No generation request is
   issued by the dashboard.
+
+## Managed Claude (optional, experimental)
+
+`MANAGED_ANTHROPIC=1` adds Anthropic login/logout to the same authenticated
+panel, and exposes only `POST /anthropic/v1/messages` and
+`GET /anthropic/v1/models` using a separate inference key. Dashboard Basic
+credentials cannot authenticate inference, and the inference key cannot open
+the panel. Raw credential endpoints remain forbidden in native mode.
+
+TokenGateway alone owns this Claude OAuth session. The service uses
+`StateDirectory=tokengateway-quota`, mode0700, atomic mode0600 credential writes,
+and `CREDENTIALS_REQUIRE_DURABLE=1`. Do not run another writer against its store.
+ChatGPT still uses LiteLLM's separate, read-only auth file. No Python
+`sitecustomize.py` plugin is installed.
+
+In the Anthropic card, click Login, open the sign-in link, and paste the code
+into the panel. This manual step works when the browser is on another LAN
+machine. Do not paste codes or tokens into chat or commit them. Existing
+browser passwords are unchanged. OAuth callback listeners also bind IPv4
+0.0.0.0 as requested; PKCE/state checks remain enabled.
+
+After login, verify available Claude model IDs through the proxy before
+adding a local LiteLLM alias. Installed LiteLLM 1.100.1 appends `/v1/messages`
+to Anthropic `api_base`; use `http://127.0.0.1:3737/anthropic` on this host.
+Put the inference key in a private LiteLLM environment file and reference its
+environment variable in YAML, never the Claude access/refresh tokens.
+Do not modify the existing ChatGPT models or production configuration.
+
+This is an experimental subscription bridge, not a demonstrated supported
+provider integration. It inherits the upstream identity convention: a fixed
+Claude Agent SDK system message, with client system text moved into the first
+user message. This changes instruction priority; it does not preserve system
+semantics. Tool schemas/results and streaming events are preserved by the
+adapter, but provider acceptance and actual tool behavior require live tests.
+
+Current local verification: both cards load, ChatGPT quotas succeed, anonymous
+requests return401, raw credentials return403, and inference before Claude
+login returns503. Component tests cover refresh races, corrupt storage,
+streaming, tools, 401 retry, 429 handling and manual-code state validation.
+Run HTTP isolation tests separately:
+
+```bash
+cd dashboard
+bun test tests
+TEST_MANAGED_ANTHROPIC=1 bun test tests/server.test.ts
+bun run tsc --noEmit
+```
+
+Claude user login, a configured LiteLLM alias, live streaming/tool calls and
+Responses translation are still pending. Do not infer end-to-end readiness
+from the mock tests.
 
 ## Verify and stop
 

@@ -22,5 +22,11 @@
   "20": "build.rs",
   "21": "main.rs",
   "22": "test_claude_bridge.py",
-  "23": "test_wire_contract.py"
+  "23": "test_wire_contract.py",
+  "24": "server.ts",
+  "25": "oauth.ts",
+  "26": "litellm.ts",
+  "27": "isRecord",
+  "28": "store.ts",
+  "29": "managed-anthropic.test.ts"
 }

@@ -14,11 +14,12 @@ import {
 	refreshCredential,
 } from "./src/oauth";
 import { PROVIDERS, PROVIDER_IDS, isProviderId } from "./src/providers";
-import { deleteCredential, loadCredentials, saveCredential } from "./src/store";
+import { deleteCredential, loadCredentials, persistenceError, saveCredential } from "./src/store";
 import { fetchAllUsage, clearCooldown } from "./src/usage";
 import { HTML } from "./src/ui";
 import { dashboardAuth } from "./src/auth";
 import { liteLLMQuotaApi } from "./src/litellm";
+import { anthropicProxy } from "./src/anthropic";
 
 const PORT = Number(process.env.PORT ?? 3737);
 const HOST = process.env.HOST || "0.0.0.0";
@@ -26,6 +27,13 @@ const authorize = await dashboardAuth();
 const nativeApi = process.env.LITELLM_CHATGPT_AUTH_FILE
 	? liteLLMQuotaApi(process.env.LITELLM_CHATGPT_AUTH_FILE)
 	: undefined;
+const managedAnthropic = process.env.MANAGED_ANTHROPIC === "1";
+const proxyKey = managedAnthropic
+	? (process.env.ANTHROPIC_PROXY_KEY_FILE
+		? (await Bun.file(process.env.ANTHROPIC_PROXY_KEY_FILE).text()).trim()
+		: process.env.ANTHROPIC_PROXY_KEY || "")
+	: "";
+const claudeProxy = managedAnthropic ? anthropicProxy(proxyKey) : undefined;
 
 /** In-flight logins, so the UI can poll for completion and surface failures. */
 interface LoginState {
@@ -100,12 +108,13 @@ async function handleApi(req: Request, url: URL): Promise<Response> {
 		if (!isProviderId(provider)) return Response.json({ error: "invalid provider" }, { status: 400 });
 		try {
 			const { url: authUrl, completion } = await beginLogin(provider);
-			logins.set(provider, { url: authUrl, status: "pending" });
+			const login: LoginState = { url: authUrl, status: "pending" };
+			logins.set(provider, login);
 			// Deliberately not awaited: the browser step gates completion.
 			completion.then(
-				() => logins.set(provider, { url: authUrl, status: "done" }),
+				() => { if (logins.get(provider) === login) login.status = "done"; },
 				(error: unknown) =>
-					logins.set(provider, {
+					logins.get(provider) === login && logins.set(provider, {
 						url: authUrl,
 						status: "error",
 						message: error instanceof Error ? error.message : String(error),
@@ -145,19 +154,44 @@ async function handleApi(req: Request, url: URL): Promise<Response> {
 		cancelLogin(provider);
 		logins.delete(provider);
 		await deleteCredential(provider);
+		clearCooldown(provider);
 		return Response.json({ ok: true });
 	}
 
 	return Response.json({ error: "not found" }, { status: 404 });
 }
 
+async function dashboardApi(req: Request, url: URL): Promise<Response> {
+	if (!nativeApi) return handleApi(req, url);
+	if (!managedAnthropic) return nativeApi(req, url);
+	if (req.method === "POST" && /^\/api\/(login\/anthropic(?:\/code)?|logout\/anthropic)$/.test(url.pathname)) {
+		return handleApi(req, url);
+	}
+	const response = await nativeApi(req, url);
+	if (!response.ok) return response;
+	const result = await response.json();
+	if (!isRecord(result)) throw new Error("Invalid native dashboard response");
+	if (url.pathname === "/api/status" && Array.isArray(result.providers)) {
+		const credential = (await loadCredentials()).anthropic;
+		result.providers.push({ id: "anthropic", label: "Anthropic", connected: Boolean(credential),
+			email: credential?.email, plan: credential?.plan, login: logins.get("anthropic"),
+			error: persistenceError() ? "OAuth credential persistence failed; repair storage before restarting" : undefined,
+		});
+	} else if (url.pathname === "/api/usage" && Array.isArray(result.reports)) {
+		result.reports.push(...await fetchAllUsage(false, ["anthropic"]));
+	}
+	return Response.json(result);
+}
+
 export const server = Bun.serve({
 	port: PORT,
 	hostname: HOST,
+	idleTimeout: 255,
 	async fetch(req) {
+		const url = new URL(req.url);
+		if (claudeProxy && url.pathname.startsWith("/anthropic/")) return claudeProxy(req, url);
 		const denied = authorize(req);
 		if (denied) return denied;
-		const url = new URL(req.url);
 		const origin = req.headers.get("origin");
 		if (origin && origin !== url.origin) return new Response("Cross-origin request rejected", { status: 403 });
 		if (url.pathname === "/") {
@@ -168,7 +202,7 @@ export const server = Bun.serve({
 		}
 		if (url.pathname.startsWith("/api/")) {
 			try {
-				const response = await (nativeApi ? nativeApi(req, url) : handleApi(req, url));
+				const response = await dashboardApi(req, url);
 				response.headers.set("cache-control", "no-store");
 				return response;
 			} catch (error) {
@@ -193,7 +227,7 @@ const REFRESH_SKEW_MS = 5 * 60_000;
 let sweeping = false;
 
 async function refreshSweep(): Promise<void> {
-	if (nativeApi) return;
+	if (nativeApi && !managedAnthropic) return;
 	if (sweeping) return;
 	sweeping = true;
 	try {
@@ -201,6 +235,7 @@ async function refreshSweep(): Promise<void> {
 		const deadline = Date.now() + REFRESH_SKEW_MS;
 		await Promise.all(
 			Object.entries(credentials).map(async ([provider, credential]) => {
+				if (nativeApi && provider !== "anthropic") return;
 				if (!isProviderId(provider) || !credential?.refresh) return;
 				// Unknown expiry stays for the lazy path in `ensureFresh`; sweeping it
 				// every minute would hammer the token endpoint for no gain.
@@ -219,6 +254,8 @@ async function refreshSweep(): Promise<void> {
 				}
 			}),
 		);
+	} catch {
+		console.warn("[refresh] credential store unavailable; will retry on next sweep");
 	} finally {
 		sweeping = false;
 	}
@@ -226,9 +263,9 @@ async function refreshSweep(): Promise<void> {
 
 // Immediate startup sweep: pods mount initial credentials from seed secrets which
 // may be expired; the initial read must refresh rather than serving dead tokens.
-if (!nativeApi) {
+if (!nativeApi || managedAnthropic) {
 	void refreshSweep();
-	setInterval(() => void refreshSweep(), REFRESH_INTERVAL_MS);
+	setInterval(() => void refreshSweep(), REFRESH_INTERVAL_MS).unref();
 }
 
 console.log(`Quota Dashboard running at http://${HOST}:${server.port}${nativeApi ? " (read-only LiteLLM quotas)" : ""}`);

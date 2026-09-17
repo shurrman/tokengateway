@@ -1,5 +1,5 @@
 [Unit]
-Description=TokenGateway read-only LiteLLM quota dashboard
+Description=TokenGateway LiteLLM quotas and managed Claude gateway
 Wants=network-online.target
 After=network-online.target
 
@@ -14,6 +14,13 @@ Environment=PORT=3737
 Environment=LITELLM_CHATGPT_AUTH_FILE=/var/lib/litellm/chatgpt-local/auth.json
 LoadCredential=dashboard-password:/etc/tokengateway/dashboard-password
 Environment=DASHBOARD_PASSWORD_FILE=%d/dashboard-password
+StateDirectory=tokengateway-quota
+StateDirectoryMode=0700
+Environment=CREDENTIALS_PATH=/var/lib/tokengateway-quota/credentials.json
+Environment=CREDENTIALS_REQUIRE_DURABLE=1
+Environment=MANAGED_ANTHROPIC=1
+LoadCredential=anthropic-proxy-key:/etc/tokengateway/anthropic-proxy-key
+Environment=ANTHROPIC_PROXY_KEY_FILE=%d/anthropic-proxy-key
 Restart=on-failure
 RestartSec=5
 UMask=0077

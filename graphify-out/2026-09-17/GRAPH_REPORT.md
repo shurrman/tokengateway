@@ -1,16 +1,16 @@
 # Graph Report - tokengateway  (2026-09-17)
 
 ## Corpus Check
-- 41 files · ~75,062 words
+- 46 files · ~77,683 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 498 nodes · 821 edges · 24 communities (21 shown, 3 thin omitted)
+- 520 nodes · 881 edges · 30 communities (28 shown, 2 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 17 edges (avg confidence: 0.57)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ef6916f5`
+- Built from commit: `34d3d792`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -31,43 +31,49 @@
 - Building from Source
 - test_usage_parity.py
 - Project memory
-- auth.ts
+- refresh_fixture.py
 - server.test.ts
 - Changes
 - AGENTS.md
+- server.ts
+- oauth.ts
+- litellm.ts
+- isRecord
+- store.ts
+- managed-anthropic.test.ts
 
 ## God Nodes (most connected - your core abstractions)
-1. `isRecord()` - 19 edges
-2. `readString()` - 16 edges
-3. `OAuthState` - 16 edges
-4. `_wrapped_acompletion()` - 14 edges
-5. `⚡ TokenGateway` - 14 edges
-6. `_wrapped_router_acompletion()` - 13 edges
-7. `handleApi()` - 12 edges
-8. `loadCredentials()` - 12 edges
-9. `handle_token_exchange()` - 12 edges
-10. `readNumber()` - 11 edges
+1. `isRecord()` - 22 edges
+2. `loadCredentials()` - 19 edges
+3. `readString()` - 16 edges
+4. `OAuthState` - 16 edges
+5. `_wrapped_acompletion()` - 14 edges
+6. `⚡ TokenGateway` - 14 edges
+7. `handleApi()` - 13 edges
+8. `_wrapped_router_acompletion()` - 13 edges
+9. `fetchAllUsage()` - 12 edges
+10. `handle_token_exchange()` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `run()` --calls--> `start_listeners()`  [INFERRED]
   desktop/src-tauri/src/lib.rs → desktop/src-tauri/src/oauth.rs
-- `LiteLLMCredential` --inherits--> `StoredCredential`  [EXTRACTED]
-  dashboard/src/litellm.ts → dashboard/src/store.ts
-- `PendingLogin` --references--> `ProviderId`  [EXTRACTED]
-  dashboard/src/oauth.ts → dashboard/src/providers.ts
-- `start_login()` --calls--> `generate_pkce()`  [INFERRED]
-  desktop/src-tauri/src/lib.rs → desktop/src-tauri/src/oauth.rs
-- `paste_redirect()` --calls--> `handle_token_exchange()`  [INFERRED]
-  desktop/src-tauri/src/lib.rs → desktop/src-tauri/src/oauth.rs
+- `handleApi()` --calls--> `isRecord()`  [EXTRACTED]
+  dashboard/server.ts → dashboard/src/guards.ts
+- `handleApi()` --calls--> `readString()`  [EXTRACTED]
+  dashboard/server.ts → dashboard/src/guards.ts
+- `handleApi()` --calls--> `isProviderId()`  [EXTRACTED]
+  dashboard/server.ts → dashboard/src/providers.ts
+- `handleApi()` --calls--> `deleteCredential()`  [EXTRACTED]
+  dashboard/server.ts → dashboard/src/store.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (24 total, 3 thin omitted)
+## Communities (30 total, 2 thin omitted)
 
 ### Community 0 - "usage.ts"
-Cohesion: 0.06
-Nodes (80): handleApi(), logins, LoginState, PORT, refreshSweep(), server, isRecord(), readNumber() (+72 more)
+Cohesion: 0.13
+Nodes (21): isDefinitiveOAuthFailure(), AgentItem, ANTHROPIC_KIND_LABELS, clusterStats(), cooldownMap, DownMonitor, fetchAiAgents(), fetchAllUsage() (+13 more)
 
 ### Community 1 - "sitecustomize.py"
 Cohesion: 0.08
@@ -82,20 +88,20 @@ Cohesion: 0.13
 Nodes (42): Client, get_cluster_usage(), get_status(), open_browser(), open_url(), paste_redirect(), AppHandle, Arc (+34 more)
 
 ### Community 4 - "definitions"
-Cohesion: 0.05
-Nodes (40): anyOf, description, required, type, description, properties, required, type (+32 more)
+Cohesion: 0.06
+Nodes (31): anyOf, description, required, type, definitions, Capability, Identifier, Number (+23 more)
 
 ### Community 5 - "properties"
 Cohesion: 0.05
-Nodes (40): properties, default, description, type, description, type, $ref, type (+32 more)
+Nodes (43): description, properties, required, type, Capability, default, description, type (+35 more)
 
 ### Community 6 - "definitions"
-Cohesion: 0.05
-Nodes (37): anyOf, description, required, type, description, properties, required, type (+29 more)
+Cohesion: 0.06
+Nodes (34): anyOf, description, properties, required, type, definitions, CapabilityRemote, Identifier (+26 more)
 
 ### Community 7 - "properties"
-Cohesion: 0.06
-Nodes (37): properties, default, description, type, description, type, $ref, type (+29 more)
+Cohesion: 0.05
+Nodes (46): properties, description, properties, required, type, CapabilityRemote, default, description (+38 more)
 
 ### Community 8 - "⚡ TokenGateway"
 Cohesion: 0.11
@@ -133,24 +139,52 @@ Nodes (4): Local deployment verified 2026-09-17, Operational notes, Project memo
 Cohesion: 0.50
 Nodes (3): headers, names, priorEnv
 
+### Community 18 - "Changes"
+Cohesion: 0.40
+Nodes (4): 2026-09-17 - Native LiteLLM quota panel, 2026-09-17 - Native refresh integration test, 2026-09-17 - Separate local ChatGPT session, Changes
+
+### Community 24 - "server.ts"
+Cohesion: 0.16
+Nodes (15): dashboardApi(), handleApi(), logins, LoginState, PORT, server, dashboardAuth(), beginLogin() (+7 more)
+
+### Community 25 - "oauth.ts"
+Cohesion: 0.15
+Nodes (16): pending, PendingLogin, refreshing, refreshLatestCredential(), TokenPayload, ANTHROPIC_SCOPES, ANTHROPIC_USAGE_URL, ANTIGRAVITY_ENDPOINT (+8 more)
+
+### Community 26 - "litellm.ts"
+Cohesion: 0.17
+Nodes (11): claims(), LiteLLMCredential, liteLLMQuotaApi(), readLiteLLMCredential(), CODEX_USAGE_URL, PROVIDERS, StoredCredential, windows (+3 more)
+
+### Community 27 - "isRecord"
+Cohesion: 0.32
+Nodes (14): isRecord(), readNumber(), readString(), readTimestampMs(), discoverAntigravityProject(), exchangeCode(), parseTokenResponse(), readIdTokenClaims() (+6 more)
+
+### Community 28 - "store.ts"
+Cohesion: 0.25
+Nodes (12): refreshSweep(), atomicWriteJson(), isProviderId(), applyOverlay(), CredentialMap, deleteCredential(), loadCredentials(), mutate() (+4 more)
+
+### Community 29 - "managed-anthropic.test.ts"
+Cohesion: 0.50
+Nodes (5): anthropicProxy(), claudeOAuthBody(), ensureFresh(), refreshCredential(), initial
+
 ## Knowledge Gaps
-- **189 isolated node(s):** `name`, `version`, `description`, `@types/bun`, `typescript` (+184 more)
+- **196 isolated node(s):** `name`, `version`, `description`, `@types/bun`, `typescript` (+191 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `properties` connect `properties` to `definitions`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Why does `properties` connect `properties` to `definitions`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **Why does `definitions` connect `definitions` to `properties`?**
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `_wrapped_acompletion()` (e.g. with `sitecustomize.py` and `_call_antigravity_sync()`) actually correct?**
   _`_wrapped_acompletion()` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `name`, `version`, `description` to the rest of the system?**
-  _189 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _196 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `usage.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.05972288580984233 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1341991341991342 - nodes in this community are weakly interconnected._
 - **Should `sitecustomize.py` be split into smaller, more focused modules?**
   _Cohesion score 0.08182349503214495 - nodes in this community are weakly interconnected._
 - **Should `README.md` be split into smaller, more focused modules?**

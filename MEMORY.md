@@ -39,6 +39,21 @@
 
 ## Operational notes
 
+- Managed Claude card/proxy deployed locally on 2026-09-17. Anthropic login
+  remains pending; no Claude LiteLLM model has been added yet. Do not report
+  end-to-end Claude success before live tests after login.
+- Claude credentials belong to /var/lib/tokengateway-quota/credentials.json
+  (systemd private StateDirectory). Separate inference key is loaded from
+  /etc/tokengateway/anthropic-proxy-key; never print or commit it.
+- Native ChatGPT remains read-only; dashboard password unchanged. LAN checks:
+  combined status200, anonymous401, credentials403, Claude before login503.
+- Pre-Claude runtime/unit backup: /var/backups/tokengateway-claude.16boxN.
+- Installed LiteLLM main.py appends /v1/messages to Anthropic api_base; intended
+  local base is http://127.0.0.1:3737/anthropic. Model ID must be verified after
+  login rather than assumed from documentation or test fixtures.
+- Claude verification: 21 tests/106 assertions plus 4 hybrid HTTP tests/28
+  assertions; typecheck passed. Live inference and provider compatibility pending.
+
 - Phase 2 (synthetic refresh integration test) committed/pushed as 34d3d79.
 - User explicitly requested separation of local and working LiteLLM and
   completed a new device login on 2026-09-17. New state lives in

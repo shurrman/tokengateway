@@ -14,7 +14,7 @@ import {
 	PROVIDERS,
 } from "./providers";
 import type { ProviderConfig, ProviderId } from "./providers";
-import { saveCredential } from "./store";
+import { loadCredentials, saveCredential } from "./store";
 import type { StoredCredential } from "./store";
 
 const CALLBACK_TIMEOUT_MS = 15 * 60 * 1000;
@@ -52,6 +52,7 @@ interface PendingLogin {
 	 */
 	servers: Server<undefined>[];
 	timer: Timer;
+	completion?: Promise<void>;
 }
 
 const pending: Map<ProviderId, PendingLogin> = new Map();
@@ -92,6 +93,7 @@ export async function beginLogin(providerId: ProviderId): Promise<{ url: string;
 		if (url.pathname !== config.callbackPath) return new Response("Not found", { status: 404 });
 		const error = url.searchParams.get("error");
 		const code = url.searchParams.get("code");
+		if (url.searchParams.get("state") !== state) return new Response("OAuth state mismatch", { status: 400 });
 		// Settle after this response is handed back: resolving inline lets the
 		// completion chain tear the listener down before the page is flushed,
 		// leaving the browser on a dead connection.
@@ -137,12 +139,13 @@ export async function beginLogin(providerId: ProviderId): Promise<{ url: string;
 		try {
 			const result = await callback;
 			if ("error" in result) throw new Error(result.error);
-			if (result.state && result.state !== state) throw new Error("state mismatch (possible CSRF)");
+			if (result.state !== state) throw new Error("state mismatch (possible CSRF)");
 			await exchangeCode(config, result.code, verifier, redirectUri, state);
 		} finally {
 			cancelLogin(providerId);
 		}
 	})();
+	pending.get(providerId)!.completion = completion;
 
 	return { url: `${config.authorizeUrl}?${params.toString()}`, completion };
 }
@@ -150,6 +153,7 @@ export async function beginLogin(providerId: ProviderId): Promise<{ url: string;
 export function cancelLogin(providerId: ProviderId): void {
 	const entry = pending.get(providerId);
 	if (!entry) return;
+	entry.settle({ error: "login cancelled" });
 	clearTimeout(entry.timer);
 	// Graceful: let the browser's success page finish writing.
 	for (const server of entry.servers) server.stop();
@@ -166,17 +170,9 @@ export async function completeLoginWithCode(providerId: ProviderId, pastedCode: 
 	// claude.ai renders the code as `<code>#<state>`.
 	const [code, fragmentState] = pastedCode.trim().split("#");
 	if (!code) throw new Error("Empty code");
-	try {
-		await exchangeCode(
-			PROVIDERS[providerId],
-			code,
-			entry.verifier,
-			entry.redirectUri,
-			fragmentState || entry.state,
-		);
-	} finally {
-		cancelLogin(providerId);
-	}
+	if (fragmentState && fragmentState !== entry.state) throw new Error("OAuth state mismatch");
+	entry.settle({ code, state: entry.state });
+	await entry.completion;
 }
 
 interface TokenPayload {
@@ -290,11 +286,26 @@ async function exchangeCode(
 	await saveCredential(config.id, credential);
 }
 
-/** Refresh an expired access token, persisting whatever the provider rotates. */
-export async function refreshCredential(
+const refreshing = new Map<ProviderId, Promise<StoredCredential>>();
+
+/** One refresh owner per provider; quota polling and inference share this flight. */
+export function refreshCredential(providerId: ProviderId, credential: StoredCredential): Promise<StoredCredential> {
+	const current = refreshing.get(providerId);
+	if (current) return current;
+	const flight = refreshLatestCredential(providerId, credential).finally(() => refreshing.delete(providerId));
+	refreshing.set(providerId, flight);
+	return flight;
+}
+
+async function refreshLatestCredential(
 	providerId: ProviderId,
 	credential: StoredCredential,
 ): Promise<StoredCredential> {
+	const latest = (await loadCredentials())[providerId];
+	if (!latest) throw new Error(`${providerId}: logged out; a new login is required`);
+	if ((latest.access !== credential.access || latest.refresh !== credential.refresh)
+		&& latest.expires && latest.expires > Date.now() + 60_000) return latest;
+	credential = latest;
 	if (!credential.refresh) throw new Error(`${providerId}: no refresh token — a new login is required`);
 	const config = PROVIDERS[providerId];
 	const isAnthropic = providerId === "anthropic";
@@ -339,6 +350,9 @@ export async function refreshCredential(
 		refresh: token.refresh ?? credential.refresh,
 		expires: token.expires,
 	};
+	const stillCurrent = (await loadCredentials())[providerId];
+	if (!stillCurrent) throw new Error(`${providerId}: logged out during refresh`);
+	if (stillCurrent.access !== credential.access || stillCurrent.refresh !== credential.refresh) return stillCurrent;
 	await saveCredential(providerId, refreshed);
 	return refreshed;
 }

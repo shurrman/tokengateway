@@ -15,12 +15,18 @@
   "13": "Building from Source",
   "14": "test_usage_parity.py",
   "15": "Project memory",
-  "16": "auth.ts",
+  "16": "refresh_fixture.py",
   "17": "server.test.ts",
   "18": "Changes",
   "19": "AGENTS.md",
   "20": "build.rs",
   "21": "main.rs",
   "22": "test_claude_bridge.py",
-  "23": "test_wire_contract.py"
+  "23": "test_wire_contract.py",
+  "24": "server.ts",
+  "25": "oauth.ts",
+  "26": "litellm.ts",
+  "27": "isRecord",
+  "28": "store.ts",
+  "29": "managed-anthropic.test.ts"
 }
