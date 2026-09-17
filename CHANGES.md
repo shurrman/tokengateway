@@ -1,5 +1,13 @@
 # Changes
 
+## 2026-09-17 - Separate local ChatGPT session
+
+- Complete a fresh user-authorized device login into chatgpt-local; switch
+  only the local LiteLLM and quota panel to that state directory.
+- Test a real refresh of the new session: access/refresh tokens rotated,
+  the panel followed without restart, and production OAuth remained unchanged.
+- Verify a streaming Responses request through local LiteLLM succeeds.
+
 ## 2026-09-17 - Native refresh integration test
 
 - Exercise the installed LiteLLM authenticator against a mocked OAuth transport

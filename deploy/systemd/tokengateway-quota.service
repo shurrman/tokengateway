@@ -11,7 +11,7 @@ WorkingDirectory=/opt/tokengateway-quota/dashboard
 ExecStart=/usr/bin/bun /opt/tokengateway-quota/dashboard/server.ts
 Environment=HOST=0.0.0.0
 Environment=PORT=3737
-Environment=LITELLM_CHATGPT_AUTH_FILE=/var/lib/litellm/chatgpt/auth.json
+Environment=LITELLM_CHATGPT_AUTH_FILE=/var/lib/litellm/chatgpt-local/auth.json
 LoadCredential=dashboard-password:/etc/tokengateway/dashboard-password
 Environment=DASHBOARD_PASSWORD_FILE=%d/dashboard-password
 Restart=on-failure
@@ -22,7 +22,7 @@ PrivateTmp=true
 PrivateDevices=true
 ProtectSystem=strict
 ProtectHome=true
-ReadOnlyPaths=/var/lib/litellm/chatgpt
+ReadOnlyPaths=/var/lib/litellm/chatgpt-local
 ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectControlGroups=true

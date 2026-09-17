@@ -45,7 +45,7 @@ cd ..
 ```
 
 The service template assumes `/usr/bin/bun`, existing user/group `litellm`,
-and `/var/lib/litellm/chatgpt/auth.json`. Adjust these paths to match your host.
+and `/var/lib/litellm/chatgpt-local/auth.json`. Adjust these paths to match your host.
 Install a reviewed checkout (the commands below do not modify LiteLLM):
 
 ```bash
@@ -111,11 +111,23 @@ LiteLLM authenticator rotate it through an in-memory HTTP transport, and checks
 that the same dashboard instance invalidates its quota cache. This verifies the
 integration, not a live provider-issued rotation.
 
-The local and production LiteLLM instances currently share the same OAuth
-session (verified by token fingerprints on 2026-09-17). Their token expires on
-2026-09-20 at 14:19:53 UTC. Do not force-refresh the local copy: first create an
-independent login, or observe the next naturally occurring refresh of the
-intended instance. Copying auth.json to another path does not isolate a session.
+The local and production instances initially shared an OAuth session. On
+2026-09-17 the user completed a separate ChatGPT login for the local instance.
+The local service now uses `/var/lib/litellm/chatgpt-local`, configured through
+`/etc/systemd/system/litellm.service.d/20-local-oauth.conf`; production keeps its
+original state. The deployed drop-in is versioned at
+`deploy/systemd/litellm-local-oauth.conf` and sets `UMask=0077`.
+
+A controlled live refresh of the new local session changed both access and
+refresh tokens. The running panel invalidated its cache without a restart,
+the production auth-file checksum was unchanged, and a local streaming
+Responses request returned `LOCAL_AUTH_OK`. This is an explicit live refresh
+test, not waiting for natural expiration. Both sessions use the same ChatGPT
+account; session isolation does not create a separate subscription quota.
+
+Never copy an existing auth.json to create an independent session: a fresh
+interactive login is required. Preserve the old local auth file as a historical
+copy, but do not point the local service back at production's token family.
 
 ```bash
 sudo systemctl status tokengateway-quota --no-pager

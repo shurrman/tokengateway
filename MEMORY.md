@@ -22,9 +22,9 @@
 - New tokengateway-quota.service runs as litellm, serving 0.0.0.0:3737.
   Active and enabled at boot after the user's approval on 2026-09-17.
 - Installed runtime: /opt/tokengateway-quota/dashboard; Bun /usr/bin/bun (1.3.14).
-- Auth input: /var/lib/litellm/chatgpt/auth.json, read-only in the service's
-  mount namespace. Its initial hash and mtime remained unchanged after live
-  status/quota requests, including the bind change/restart of the dashboard.
+- Auth input initially /var/lib/litellm/chatgpt/auth.json. After the separate
+  user login on 2026-09-17 it is /var/lib/litellm/chatgpt-local/auth.json,
+  still read-only in the dashboard's mount namespace.
 - Dashboard username: quota. Password is generated in the root-only file
   /etc/tokengateway/dashboard-password and passed through LoadCredential.
   Do not copy its value or OAuth tokens into the repo, logs or agentmemory.
@@ -32,12 +32,27 @@
   unauthenticated status HTTP 401, authenticated raw credentials HTTP 403.
 - First live usage response returned a seven-day window at 24% used, without
   error. This is a point-in-time result, not a persistent quota value.
-- Local LiteLLM remained active with the same MainPID 1137. No LiteLLM config,
-  routing, PostgreSQL data or auth state was modified for this integration.
+- During the initial quota-only phase LiteLLM was not restarted. It was later
+  restarted to switch to the independent local session (see below).
 - Verification: 12 Bun tests, 68 assertions, zero failures; TypeScript passed;
   embedded browser JavaScript parsed; systemd-analyze verify passed.
 
 ## Operational notes
+
+- Phase 2 (synthetic refresh integration test) committed/pushed as 34d3d79.
+- User explicitly requested separation of local and working LiteLLM and
+  completed a new device login on 2026-09-17. New state lives in
+  /var/lib/litellm/chatgpt-local/auth.json, mode0600, directory0700 owned litellm.
+  /etc/systemd/system/litellm.service.d/20-local-oauth.conf selects that path
+  and UMask0077. The dashboard unit now reads the same new path read-only.
+- Controlled LIVE refresh of the new independent session succeeded: both
+  tokens changed; the same dashboard process picked up a new quota snapshot
+  (25% weekly at that time), with no dashboard OAuth writes. Production .35
+  auth-file checksum and the historical local shared auth file were unchanged.
+  A streaming sol Responses call returned LOCAL_AUTH_OK. Session account IDs
+  match, so quota is still shared at the ChatGPT account level.
+- The shared-session warning below is historical and superseded for the new
+  local path. Do not reactivate the historical shared session locally.
 
 - Phase 1 committed as 57f40e0 and pushed to origin/feat/native-litellm-quota.
   HTTPS push had no credentials; the existing authenticated SSH identity is
@@ -48,8 +63,8 @@
 - scripts/test-litellm-rotation.ts exercises the installed LiteLLM 1.100.1
   authenticator against an in-memory OAuth transport with temporary synthetic
   tokens. Rotation/persistence and dashboard cache invalidation passed with
-  the same dashboard instance and no dashboard writes. Real provider rotation
-  remains untested; it needs an independent login or observation after expiry.
+  the same dashboard instance and no dashboard writes. This synthetic phase
+  preceded the successful separate login and live refresh described above.
 
 - Open http://192.168.128.22:3737 directly from the LAN. For access details,
   installation, polling/error behavior and stop commands see docs/native-litellm.md.
