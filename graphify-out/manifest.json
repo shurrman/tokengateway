@@ -1,0 +1,267 @@
+{
+  "dashboard/package.json": {
+    "mtime": 1789610397.8041182,
+    "ast_hash": "af934f9697d4e57bba17e07c1ce0d2d7",
+    "semantic_hash": ""
+  },
+  "dashboard/server.ts": {
+    "mtime": 1789611229.7791114,
+    "ast_hash": "63b97fcdd092aad13d2833ceae081fde",
+    "semantic_hash": ""
+  },
+  "dashboard/src/auth.ts": {
+    "mtime": 1789610639.6450005,
+    "ast_hash": "d96baaa48d8ba2dbb7430ff7112a1f98",
+    "semantic_hash": ""
+  },
+  "dashboard/src/guards.ts": {
+    "mtime": 1789610397.8041182,
+    "ast_hash": "a29aafece2a372320e92320135fd9d6f",
+    "semantic_hash": ""
+  },
+  "dashboard/src/litellm.ts": {
+    "mtime": 1789610854.382384,
+    "ast_hash": "6f6eb7a724dbe7618c2aa6dda34107aa",
+    "semantic_hash": ""
+  },
+  "dashboard/src/oauth.ts": {
+    "mtime": 1789610397.8041182,
+    "ast_hash": "623759af2cdbc0f52c7fca14eaa25063",
+    "semantic_hash": ""
+  },
+  "dashboard/src/providers.ts": {
+    "mtime": 1789610397.8041182,
+    "ast_hash": "f6d3cfa04b8ade6d2df68e90c5c36c9c",
+    "semantic_hash": ""
+  },
+  "dashboard/src/store.ts": {
+    "mtime": 1789610397.8041182,
+    "ast_hash": "8309abc38099ef3db9a77ab3e2128937",
+    "semantic_hash": ""
+  },
+  "dashboard/src/ui.ts": {
+    "mtime": 1789610854.383384,
+    "ast_hash": "c9c117596ea8aa2cc406ff5757f3fed4",
+    "semantic_hash": ""
+  },
+  "dashboard/src/usage.ts": {
+    "mtime": 1789610639.6460004,
+    "ast_hash": "a7c343c732a84342510b313b6de170dc",
+    "semantic_hash": ""
+  },
+  "dashboard/tests/auth.test.ts": {
+    "mtime": 1789610854.384384,
+    "ast_hash": "f906fb9a3806061610dacefa22151934",
+    "semantic_hash": ""
+  },
+  "dashboard/tests/litellm.test.ts": {
+    "mtime": 1789610854.383384,
+    "ast_hash": "ea87ec4471a1c0f2b8b8d4ed9c39927c",
+    "semantic_hash": ""
+  },
+  "dashboard/tests/server.test.ts": {
+    "mtime": 1789610854.384384,
+    "ast_hash": "66190a5a1e03ccd58585c7e824e6f677",
+    "semantic_hash": ""
+  },
+  "dashboard/tsconfig.json": {
+    "mtime": 1789610397.8051183,
+    "ast_hash": "ebc0ce0b7b18ceaa7aa88d5a7d67c083",
+    "semantic_hash": ""
+  },
+  "desktop/src-tauri/build.rs": {
+    "mtime": 1789610397.8061182,
+    "ast_hash": "1be34a5c61c2c35365de3dab14298f0b",
+    "semantic_hash": ""
+  },
+  "desktop/src-tauri/gen/schemas/acl-manifests.json": {
+    "mtime": 1789610397.8061182,
+    "ast_hash": "0edd1d3c33e9f8aca44046f2eddb8717",
+    "semantic_hash": ""
+  },
+  "desktop/src-tauri/gen/schemas/capabilities.json": {
+    "mtime": 1789610397.8061182,
+    "ast_hash": "99914b932bd37a50b983c5e7c90ae93b",
+    "semantic_hash": ""
+  },
+  "desktop/src-tauri/gen/schemas/desktop-schema.json": {
+    "mtime": 1789610397.8071182,
+    "ast_hash": "52a4fdf63f99193aee5c5f5159e56902",
+    "semantic_hash": ""
+  },
+  "desktop/src-tauri/gen/schemas/windows-schema.json": {
+    "mtime": 1789610397.8081183,
+    "ast_hash": "52a4fdf63f99193aee5c5f5159e56902",
+    "semantic_hash": ""
+  },
+  "desktop/src-tauri/src/lib.rs": {
+    "mtime": 1789610397.8081183,
+    "ast_hash": "39d59437a4a25bcabab2a7fa96633c5e",
+    "semantic_hash": ""
+  },
+  "desktop/src-tauri/src/main.rs": {
+    "mtime": 1789610397.8081183,
+    "ast_hash": "39416130fccd4880fda4b550385ded8e",
+    "semantic_hash": ""
+  },
+  "desktop/src-tauri/src/oauth.rs": {
+    "mtime": 1789610397.8081183,
+    "ast_hash": "421b98f9c3bfbc1bb447a9155a26cc44",
+    "semantic_hash": ""
+  },
+  "desktop/src-tauri/tauri.conf.json": {
+    "mtime": 1789610397.8081183,
+    "ast_hash": "3696660286a766411bdf97cbe783b855",
+    "semantic_hash": ""
+  },
+  "desktop/src/main.ts": {
+    "mtime": 1789610397.8081183,
+    "ast_hash": "2390f2012517d181733ee97c73ac16ab",
+    "semantic_hash": ""
+  },
+  "litellm-plugin/sitecustomize.py": {
+    "mtime": 1789610397.8131185,
+    "ast_hash": "f84ec8e64bfb16cdd89570969cf61614",
+    "semantic_hash": ""
+  },
+  "litellm-plugin/test_bridge_spend_logging.py": {
+    "mtime": 1789610397.8131185,
+    "ast_hash": "25345168b2852386ec02c34614ec8221",
+    "semantic_hash": ""
+  },
+  "litellm-plugin/test_claude_bridge.py": {
+    "mtime": 1789610397.8131185,
+    "ast_hash": "c025c0e667b9e9547b836098e9934cd7",
+    "semantic_hash": ""
+  },
+  "litellm-plugin/test_usage_parity.py": {
+    "mtime": 1789610397.8131185,
+    "ast_hash": "50be406c578b0890387795a3300a9408",
+    "semantic_hash": ""
+  },
+  "litellm-plugin/test_wire_contract.py": {
+    "mtime": 1789610397.8131185,
+    "ast_hash": "67e0999f67727a1a19e4feeecdb01d44",
+    "semantic_hash": ""
+  },
+  ".github/workflows/build-desktop.yml": {
+    "mtime": 1789610397.8031182,
+    "ast_hash": "7cef487a6a1421e1daf9665b25c9615a",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1789611229.7811115,
+    "ast_hash": "c64144bddee44ba8cc8f45e6d3cd8c93",
+    "semantic_hash": ""
+  },
+  "CHANGES.md": {
+    "mtime": 1789611229.7801116,
+    "ast_hash": "5f4d1e7a53937b628d5cd4705c8826a8",
+    "semantic_hash": ""
+  },
+  "CONTRIBUTING.md": {
+    "mtime": 1789610397.8031182,
+    "ast_hash": "dacddb58d52bff48918454e4334a985e",
+    "semantic_hash": ""
+  },
+  "MEMORY.md": {
+    "mtime": 1789611900.97291,
+    "ast_hash": "3a1eb30d2d7bb6b7f93a5832c75b39c1",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1789611229.7801116,
+    "ast_hash": "a88deeacf124ae913b63fe9969f00867",
+    "semantic_hash": ""
+  },
+  "deploy/docker/litellm-config.yaml": {
+    "mtime": 1789610397.8051183,
+    "ast_hash": "aee3535ad57a0ed2c69879f642135b92",
+    "semantic_hash": ""
+  },
+  "deploy/kubernetes/quota-dashboard.yaml": {
+    "mtime": 1789610704.8063266,
+    "ast_hash": "b4badb7e9a02c0c88d98950ceb0c3266",
+    "semantic_hash": ""
+  },
+  "deploy/kubernetes/rbac.yaml": {
+    "mtime": 1789610397.8051183,
+    "ast_hash": "3cdcfe2701a2153c39cc27b1c58bfdf1",
+    "semantic_hash": ""
+  },
+  "desktop/README.md": {
+    "mtime": 1789610397.8051183,
+    "ast_hash": "b6f0375953528a78328d162fcaa15a1f",
+    "semantic_hash": ""
+  },
+  "desktop/src/index.html": {
+    "mtime": 1789610397.8081183,
+    "ast_hash": "d756c41b04d10e61d1dd4cbbc56757ac",
+    "semantic_hash": ""
+  },
+  "docker-compose.yml": {
+    "mtime": 1789610704.8023267,
+    "ast_hash": "3692e449472fd53a56a15ec4d6dd1df2",
+    "semantic_hash": ""
+  },
+  "docs/architecture.md": {
+    "mtime": 1789610397.8091183,
+    "ast_hash": "f825917a6a4b87af22df1d3e44757f82",
+    "semantic_hash": ""
+  },
+  "docs/native-litellm.md": {
+    "mtime": 1789611229.7811115,
+    "ast_hash": "657dbfa77d44550347f38402d5709cd7",
+    "semantic_hash": ""
+  },
+  "docs/oauth-setup-anthropic.md": {
+    "mtime": 1789610397.8131185,
+    "ast_hash": "84ed1997f6f38858814bb281a7efc77e",
+    "semantic_hash": ""
+  },
+  "docs/oauth-setup-google.md": {
+    "mtime": 1789610397.8131185,
+    "ast_hash": "80aa4ff115757eb903ce50166ba0bd18",
+    "semantic_hash": ""
+  },
+  "docs/oauth-setup-openai.md": {
+    "mtime": 1789610397.8131185,
+    "ast_hash": "20a0a661892ce41a2e074919b2620e6c",
+    "semantic_hash": ""
+  },
+  "litellm-plugin/README.md": {
+    "mtime": 1789610397.8131185,
+    "ast_hash": "f56af73fe5928d71a0201d4b25909272",
+    "semantic_hash": ""
+  },
+  "desktop/src-tauri/icons/128x128.png": {
+    "mtime": 1789610397.8081183,
+    "ast_hash": "d81bf928e71275b5f16f8586cf6b0646",
+    "semantic_hash": ""
+  },
+  "desktop/src-tauri/icons/128x128@2x.png": {
+    "mtime": 1789610397.8081183,
+    "ast_hash": "d81bf928e71275b5f16f8586cf6b0646",
+    "semantic_hash": ""
+  },
+  "desktop/src-tauri/icons/32x32.png": {
+    "mtime": 1789610397.8081183,
+    "ast_hash": "217fe437142fa925830c0a43baf3b1b6",
+    "semantic_hash": ""
+  },
+  "desktop/src-tauri/icons/icon.png": {
+    "mtime": 1789610397.8081183,
+    "ast_hash": "d81bf928e71275b5f16f8586cf6b0646",
+    "semantic_hash": ""
+  },
+  "docs/assets/litellm-models.png": {
+    "mtime": 1789610397.8111184,
+    "ast_hash": "26e8d008905cbf88dbaf4e5f629d5818",
+    "semantic_hash": ""
+  },
+  "docs/assets/quota-dashboard.png": {
+    "mtime": 1789610397.8121183,
+    "ast_hash": "60a632e9a826ed5f0cd481d5db6d6ebf",
+    "semantic_hash": ""
+  }
+}

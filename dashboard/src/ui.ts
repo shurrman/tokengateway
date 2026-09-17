@@ -735,8 +735,8 @@ async function refresh() {
 
   try {
     const [s, u] = await Promise.all([
-      fetch('/api/status').then(r => r.json()),
-      fetch('/api/usage').then(r => r.json())
+      apiJson('/api/status'),
+      apiJson('/api/usage')
     ]);
     state.providers = s.providers || [];
     state.reports = u.reports || [];
@@ -744,18 +744,27 @@ async function refresh() {
     document.getElementById('lastSync').textContent = 'Synced: ' + new Date().toLocaleTimeString();
     render();
   } catch (e) {
-    document.getElementById('cardsContainer').innerHTML = '<div class="err-box" style="grid-column:1/-1">Error: ' + e.message + '</div>';
+    document.getElementById('cardsContainer').innerHTML = '<div class="err-box" style="grid-column:1/-1">Error: ' + esc(e.message) + '</div>';
+    document.getElementById('kpiHealth').textContent = 'Quota unavailable';
   } finally {
     btn.disabled = false;
   }
 }
 
+async function apiJson(path) {
+  const response = await fetch(path);
+  if (!response.ok) throw new Error('Dashboard request failed: HTTP ' + response.status);
+  return response.json();
+}
+
 function render() {
   let html = '';
   let saturatedCount = 0;
+  let errorCount = 0;
 
   for (const p of state.providers) {
     const report = state.reports.find(r => r.provider === p.id);
+    if (p.error || (report && report.error)) errorCount++;
     const isVllm = p.id === 'local-vllm';
     
     html += \`<div class="provider-card \${p.id}">\`;
@@ -766,13 +775,13 @@ function render() {
           <div class="logo-box \${p.id}">\${LOGOS[p.id] || ''}</div>
           <div class="provider-title">
             <span class="provider-name">\${p.label}</span>
-            <span class="provider-email">\${p.email || 'Not authenticated'}</span>
+            <span class="provider-email">\${esc(p.email || 'Not authenticated')}</span>
           </div>
         </div>
         
         <div class="badge-group">\`;
         
-        if (p.plan) html += \`<span class="pill">\${p.plan}</span>\`;
+        if (p.plan) html += \`<span class="pill">\${esc(p.plan)}</span>\`;
         
         if (report && report.limits && report.limits.length) {
           const worst = Math.max(...report.limits.map(l => l.usedFraction));
@@ -783,7 +792,9 @@ function render() {
           </span>\`;
         }
         
-        if (!isVllm) {
+        if (p.readOnly) {
+          html += '<span class="pill">Managed by LiteLLM</span>';
+        } else if (!isVllm) {
           if (p.connected) {
             html += \`<button class="danger" onclick="logout('\${p.id}')">disconnect</button>\`;
           } else {
@@ -792,6 +803,10 @@ function render() {
         }
         
     html += \`</div></div>\`;
+
+    if (report && report.cached) {
+      html += '<div class="provider-email">Cached quota snapshot: ' + esc(new Date(report.fetchedAt).toLocaleString()) + '</div>';
+    }
 
     if (p.login && p.login.status === 'pending') {
       html += \`<div class="pending-panel">
@@ -815,7 +830,7 @@ function render() {
         if (l.usedFraction >= 0.99) saturatedCount++;
         const pct = Math.min(100, Math.max(0, l.usedFraction * 100));
         html += \`<div class="quota-row">
-          <span class="quota-name">\${l.label}</span>
+          <span class="quota-name">\${esc(l.label)}</span>
           <div class="quota-track">
             <div class="quota-fill" style="width:\${pct}%;background:\${getGradient(l.usedFraction)}"></div>
           </div>
@@ -835,7 +850,7 @@ function render() {
           <span class="countdown-badge urgent" style="font-weight:600">cooldown: <strong data-cooldown-time="\${report.cooldownUntil}">...</strong></span>
         </div>\`;
       } else {
-        html += \`<div class="err-box">\${report.error}</div>\`;
+        html += \`<div class="err-box">\${esc(report.error)}</div>\`;
       }
     }
     
@@ -1006,7 +1021,9 @@ function render() {
 
   document.getElementById('cardsContainer').innerHTML = html;
   
-  if (saturatedCount > 0) {
+  if (errorCount > 0) {
+    document.getElementById('kpiHealth').textContent = 'Quota unavailable';
+  } else if (saturatedCount > 0) {
     document.getElementById('kpiHealth').innerHTML = \`<span style="color:var(--bad)">●</span> \${saturatedCount} Quota\${saturatedCount>1?'s':''} Saturated\`;
   } else {
     document.getElementById('kpiHealth').innerHTML = \`<span style="color:var(--ok)">●</span> 100% OK\`;

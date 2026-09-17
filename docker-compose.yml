@@ -11,6 +11,8 @@ services:
       - "${PORT:-3737}:3737"
     environment:
       - PORT=3737
+      - HOST=0.0.0.0
+      - DASHBOARD_PASSWORD=${DASHBOARD_PASSWORD:?Set a dashboard password of at least 16 characters}
       - CREDENTIALS_PATH=/app/data/credentials.json
       - VLLM_METRICS_URL=${VLLM_METRICS_URL:-}
       - UPTIME_KUMA_URL=${UPTIME_KUMA_URL:-}

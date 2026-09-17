@@ -17,8 +17,15 @@ import { PROVIDERS, PROVIDER_IDS, isProviderId } from "./src/providers";
 import { deleteCredential, loadCredentials, saveCredential } from "./src/store";
 import { fetchAllUsage, clearCooldown } from "./src/usage";
 import { HTML } from "./src/ui";
+import { dashboardAuth } from "./src/auth";
+import { liteLLMQuotaApi } from "./src/litellm";
 
 const PORT = Number(process.env.PORT ?? 3737);
+const HOST = process.env.HOST || "0.0.0.0";
+const authorize = await dashboardAuth();
+const nativeApi = process.env.LITELLM_CHATGPT_AUTH_FILE
+	? liteLLMQuotaApi(process.env.LITELLM_CHATGPT_AUTH_FILE)
+	: undefined;
 
 /** In-flight logins, so the UI can poll for completion and surface failures. */
 interface LoginState {
@@ -144,16 +151,26 @@ async function handleApi(req: Request, url: URL): Promise<Response> {
 	return Response.json({ error: "not found" }, { status: 404 });
 }
 
-Bun.serve({
+export const server = Bun.serve({
 	port: PORT,
+	hostname: HOST,
 	async fetch(req) {
+		const denied = authorize(req);
+		if (denied) return denied;
 		const url = new URL(req.url);
+		const origin = req.headers.get("origin");
+		if (origin && origin !== url.origin) return new Response("Cross-origin request rejected", { status: 403 });
 		if (url.pathname === "/") {
-			return new Response(HTML, { headers: { "content-type": "text/html; charset=utf-8" } });
+			return new Response(HTML, { headers: {
+				"content-type": "text/html; charset=utf-8", "cache-control": "no-store",
+				"x-frame-options": "DENY", "referrer-policy": "no-referrer",
+			} });
 		}
 		if (url.pathname.startsWith("/api/")) {
 			try {
-				return await handleApi(req, url);
+				const response = await (nativeApi ? nativeApi(req, url) : handleApi(req, url));
+				response.headers.set("cache-control", "no-store");
+				return response;
 			} catch (error) {
 				return Response.json(
 					{ error: error instanceof Error ? error.message : String(error) },
@@ -176,6 +193,7 @@ const REFRESH_SKEW_MS = 5 * 60_000;
 let sweeping = false;
 
 async function refreshSweep(): Promise<void> {
+	if (nativeApi) return;
 	if (sweeping) return;
 	sweeping = true;
 	try {
@@ -208,7 +226,9 @@ async function refreshSweep(): Promise<void> {
 
 // Immediate startup sweep: pods mount initial credentials from seed secrets which
 // may be expired; the initial read must refresh rather than serving dead tokens.
-void refreshSweep();
-setInterval(() => void refreshSweep(), REFRESH_INTERVAL_MS);
+if (!nativeApi) {
+	void refreshSweep();
+	setInterval(() => void refreshSweep(), REFRESH_INTERVAL_MS);
+}
 
-console.log(`Quota Dashboard running at http://localhost:${PORT}`);
+console.log(`Quota Dashboard running at http://${HOST}:${server.port}${nativeApi ? " (read-only LiteLLM quotas)" : ""}`);

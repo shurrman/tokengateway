@@ -21,6 +21,13 @@ spec:
             - containerPort: 3737
               name: http
           env:
+            - name: HOST
+              value: "0.0.0.0"
+            - name: DASHBOARD_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: quota-dashboard-auth
+                  key: password
             - name: PORT
               value: "3737"
             - name: CREDENTIALS_PATH

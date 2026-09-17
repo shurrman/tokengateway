@@ -118,6 +118,18 @@ When you complete OAuth sign-in on your workstation's web browser, the provider 
 
 ---
 
+## Existing LiteLLM without Docker
+
+This fork includes a **read-only ChatGPT quota panel** for an existing native
+LiteLLM installation. It reads LiteLLM's auth.json, leaves token refresh and
+Responses routing with LiteLLM, and runs as a separate Bun/systemd service.
+See [native installation and verification](docs/native-litellm.md).
+
+The dashboard binds to `0.0.0.0` for the intended closed LAN and requires HTTP Basic auth
+(username `quota`, password from `DASHBOARD_PASSWORD_FILE` or
+`DASHBOARD_PASSWORD`, at least 16 characters).
+Read-only mode disables all login, logout and credential-export APIs.
+
 ## 🚀 Quick Start (Docker Compose)
 
 Run the dashboard and LiteLLM gateway locally in one command:
@@ -129,6 +141,7 @@ cd tokengateway
 
 # 2. Copy environment template
 cp .env.example .env
+# Set DASHBOARD_PASSWORD in .env to a generated password before starting.
 
 # 3. Start the stack
 docker-compose up -d
@@ -172,7 +185,7 @@ This project is a personal homelab tool, not production hardened. The following 
 
 | ID | Severity | Component | Issue |
 |---|---|---|---|
-| TG-001 | 🔴 Critical | `dashboard/server.ts` | `GET /api/credentials` and `POST /api/credentials` have **no authentication**. Any process on the same host or Docker network can read or overwrite all OAuth tokens. |
+| TG-001 | Fixed in this fork | `dashboard/server.ts` | All dashboard routes require HTTP Basic auth; native read-only mode also disables credential and login APIs. |
 | TG-002 | 🔴 Critical | `desktop/src-tauri/src/oauth.rs` | TLS certificate validation is **disabled** (`danger_accept_invalid_certs(true)`) in the Rust HTTP client used to sync credentials to the cluster. Susceptible to MITM on LAN. |
 | TG-003 | 🔴 Critical | `litellm-plugin/sitecustomize.py` | The plugin reads the pod's Kubernetes Service Account token at runtime and uses it to PATCH `secrets/litellm-secrets` on every token refresh. Any RCE in the LiteLLM process grants K8s secret-write capability. |
 | TG-004 | 🟠 High | `docker-compose.yml` | `LITELLM_MASTER_KEY` falls back to a hardcoded default (`sk-quota-gateway-master-key`) if the env var is unset. |
@@ -188,7 +201,9 @@ This project is a personal homelab tool, not production hardened. The following 
 | TG-014 | 🔵 Low → ✅ Fixed | `dashboard/src/usage.ts`, `dashboard/src/ui.ts`, `desktop/src/index.html` | The agent roster and cluster counters were hardcoded to the author's homelab (node/VM counts, VM id, Proxmox role name, internal tooling). Now driven by `A2A_AGENT_ROSTER`, `CLUSTER_NODE_COUNT` and `CLUSTER_VM_COUNT`; counters are omitted from the card when unset. |
 | TG-015 | 🟠 High → ✅ Fixed | `dashboard/src/usage.ts` | When the Anthropic usage fetch failed **and** no cached snapshot existed, the report returned hardcoded limits (`5h=2%`, `7d=51%`) flagged `cached: true` with no `error`, so an unreachable provider rendered as healthy — a false negative that misdirects exactly the quota diagnosis the dashboard exists for. Removed: the legitimate fallback is the snapshot cache alongside it, which holds values the provider actually returned. With no snapshot the error path now handles it. |
 
-**TG-001 is the most immediately exploitable** — no prerequisites, single HTTP request. If you deploy this outside a trusted single-machine environment, add at minimum a shared-secret header check on all `/api/*` routes and bind the dashboard to `127.0.0.1`.
+This fork addresses TG-001 for authenticated deployments. The other upstream
+issues remain unless explicitly marked fixed; read-only LiteLLM quota mode
+avoids the desktop client, plugin and managed OAuth flows entirely.
 
 ---
 

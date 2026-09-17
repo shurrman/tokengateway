@@ -261,13 +261,14 @@ function codexRateLimitBlock(prefix: string, blockLabel: string, block: unknown)
 	return limits;
 }
 
-async function fetchCodex(credential: StoredCredential): Promise<UsageLimit[]> {
+export async function fetchCodex(credential: StoredCredential & { accountId?: string }): Promise<UsageLimit[]> {
 	const response = await fetch(CODEX_USAGE_URL, {
 		headers: {
 			Authorization: `Bearer ${credential.access}`,
 			accept: "application/json",
 			"content-type": "application/json",
 			originator: "pi",
+			...(credential.accountId ? { "ChatGPT-Account-Id": credential.accountId } : {}),
 		},
 		signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
 	});
