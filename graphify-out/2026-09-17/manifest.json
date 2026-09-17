@@ -155,8 +155,8 @@
     "semantic_hash": ""
   },
   "CHANGES.md": {
-    "mtime": 1789613954.919298,
-    "ast_hash": "d55f9f7fb065b4452317392b76ad9a5b",
+    "mtime": 1789634754.3779306,
+    "ast_hash": "e02c2710d49c37033828a8d233364fb9",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -170,8 +170,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1789613954.919298,
-    "ast_hash": "2d967dff86a6b2d8d5bb13b4fecc7b2e",
+    "mtime": 1789634782.6575396,
+    "ast_hash": "5df3c636e52ff603e85499f26bf3fa62",
     "semantic_hash": ""
   },
   "deploy/docker/litellm-config.yaml": {
@@ -210,8 +210,8 @@
     "semantic_hash": ""
   },
   "docs/native-litellm.md": {
-    "mtime": 1789614001.8312032,
-    "ast_hash": "a2175ee7ef0f0735937d9f78567f9342",
+    "mtime": 1789634754.3769307,
+    "ast_hash": "2cee1b0692aed793aab34fa97092b362",
     "semantic_hash": ""
   },
   "docs/oauth-setup-anthropic.md": {
@@ -285,8 +285,8 @@
     "semantic_hash": ""
   },
   "dashboard/tests/managed-anthropic.test.ts": {
-    "mtime": 1789613081.576506,
-    "ast_hash": "c76ae8abd4da3fb6b0edd45dd9e96dbe",
+    "mtime": 1789634719.6401834,
+    "ast_hash": "8851d4cfbfc6ea331715e7d7bf88d8a2",
     "semantic_hash": ""
   }
 }

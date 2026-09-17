@@ -120,8 +120,8 @@
     "semantic_hash": ""
   },
   "litellm-plugin/sitecustomize.py": {
-    "mtime": 1789610397.8131185,
-    "ast_hash": "f84ec8e64bfb16cdd89570969cf61614",
+    "mtime": 1789670218.9897246,
+    "ast_hash": "afde7ad0a2431663e7a18c6ad3d85b1c",
     "semantic_hash": ""
   },
   "litellm-plugin/test_bridge_spend_logging.py": {
@@ -130,8 +130,8 @@
     "semantic_hash": ""
   },
   "litellm-plugin/test_claude_bridge.py": {
-    "mtime": 1789610397.8131185,
-    "ast_hash": "c025c0e667b9e9547b836098e9934cd7",
+    "mtime": 1789670218.959724,
+    "ast_hash": "59124bfc63b359d7d746b3e0da84fc43",
     "semantic_hash": ""
   },
   "litellm-plugin/test_usage_parity.py": {
@@ -140,8 +140,8 @@
     "semantic_hash": ""
   },
   "litellm-plugin/test_wire_contract.py": {
-    "mtime": 1789610397.8131185,
-    "ast_hash": "67e0999f67727a1a19e4feeecdb01d44",
+    "mtime": 1789670218.9907246,
+    "ast_hash": "29cd220612c0c1683dc9832a308a3f39",
     "semantic_hash": ""
   },
   ".github/workflows/build-desktop.yml": {
@@ -155,8 +155,8 @@
     "semantic_hash": ""
   },
   "CHANGES.md": {
-    "mtime": 1789634754.3779306,
-    "ast_hash": "e02c2710d49c37033828a8d233364fb9",
+    "mtime": 1789672446.054947,
+    "ast_hash": "3080b0c44e2834a8195c72c2146c4f18",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -165,18 +165,18 @@
     "semantic_hash": ""
   },
   "MEMORY.md": {
-    "mtime": 1789613954.9202979,
-    "ast_hash": "cfefdedbc0eb3bb83318b38d4aa81fb9",
+    "mtime": 1789672841.132537,
+    "ast_hash": "a29babafe45adc84f4ebb37f33c0ef1e",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1789634782.6575396,
-    "ast_hash": "5df3c636e52ff603e85499f26bf3fa62",
+    "mtime": 1789670218.9877245,
+    "ast_hash": "90c2f4cb2e63262f8a025fa5b7821b41",
     "semantic_hash": ""
   },
   "deploy/docker/litellm-config.yaml": {
-    "mtime": 1789610397.8051183,
-    "ast_hash": "aee3535ad57a0ed2c69879f642135b92",
+    "mtime": 1789670218.862722,
+    "ast_hash": "2c3b6d75ed68566486843f0c9060e7fa",
     "semantic_hash": ""
   },
   "deploy/kubernetes/quota-dashboard.yaml": {
@@ -205,8 +205,8 @@
     "semantic_hash": ""
   },
   "docs/architecture.md": {
-    "mtime": 1789610397.8091183,
-    "ast_hash": "f825917a6a4b87af22df1d3e44757f82",
+    "mtime": 1789670218.9887247,
+    "ast_hash": "c74dafd5aee3e4536f5d603acfd731ad",
     "semantic_hash": ""
   },
   "docs/native-litellm.md": {
@@ -215,23 +215,23 @@
     "semantic_hash": ""
   },
   "docs/oauth-setup-anthropic.md": {
-    "mtime": 1789610397.8131185,
-    "ast_hash": "84ed1997f6f38858814bb281a7efc77e",
+    "mtime": 1789670218.9547238,
+    "ast_hash": "9fcc8c9436e781492760c9009db5d709",
     "semantic_hash": ""
   },
   "docs/oauth-setup-google.md": {
-    "mtime": 1789610397.8131185,
-    "ast_hash": "80aa4ff115757eb903ce50166ba0bd18",
+    "mtime": 1789670218.9887247,
+    "ast_hash": "41996c94985ebcb00bf1aaaf247c84c0",
     "semantic_hash": ""
   },
   "docs/oauth-setup-openai.md": {
-    "mtime": 1789610397.8131185,
-    "ast_hash": "20a0a661892ce41a2e074919b2620e6c",
+    "mtime": 1789670218.955724,
+    "ast_hash": "760a7c36fc769a28511e52d295cfbbf0",
     "semantic_hash": ""
   },
   "litellm-plugin/README.md": {
-    "mtime": 1789610397.8131185,
-    "ast_hash": "f56af73fe5928d71a0201d4b25909272",
+    "mtime": 1789670218.8947227,
+    "ast_hash": "1d12a817300be8022da50802eb1cd36e",
     "semantic_hash": ""
   },
   "desktop/src-tauri/icons/128x128.png": {
@@ -287,6 +287,31 @@
   "dashboard/tests/managed-anthropic.test.ts": {
     "mtime": 1789634719.6401834,
     "ast_hash": "8851d4cfbfc6ea331715e7d7bf88d8a2",
+    "semantic_hash": ""
+  },
+  "litellm-plugin/test_cache_anchor.py": {
+    "mtime": 1789670218.9237232,
+    "ast_hash": "5a63cbc05c19b725eeb8121ae333c3bc",
+    "semantic_hash": ""
+  },
+  "litellm-plugin/test_multimodal_loop.py": {
+    "mtime": 1789670218.9907246,
+    "ast_hash": "29681434e678593df6feaa37d8c7774b",
+    "semantic_hash": ""
+  },
+  "litellm-plugin/test_parity_batch.py": {
+    "mtime": 1789670218.959724,
+    "ast_hash": "bcb4671aac65219013baab0cdd76a53a",
+    "semantic_hash": ""
+  },
+  "litellm-plugin/test_responses_route.py": {
+    "mtime": 1789670218.8377213,
+    "ast_hash": "c4daab0b566c0bc5c9f42df806dc0821",
+    "semantic_hash": ""
+  },
+  "deploy/kubernetes/litellm.yaml": {
+    "mtime": 1789670218.9207232,
+    "ast_hash": "597c14490964b83dc6b9d9ea5d7a7247",
     "semantic_hash": ""
   }
 }

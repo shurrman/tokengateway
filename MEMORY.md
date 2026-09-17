@@ -3,6 +3,11 @@
 ## Scope and decisions
 
 - Fork: shurrman/tokengateway, upstream baseline ef6916f541ed890b21629d90109bd3a45c114433.
+- On 2026-09-17 cherry-picked 7 upstream commits (eduardopessin/tokengateway:
+  a51def3, c9ddcdb, 5054af1, b4356af, 25c9de6, 4b17b2d, c250369) onto
+  feat/native-litellm-quota; no conflicts, 26 plugin tests pass. Upstream is
+  registered as git remote `upstream`; fetch to see new changes.
+- .gitignore extended with `.venv` and `__pycache__/` (pytest venv).
 - Working branch: feat/native-litellm-quota. On 2026-09-17 the user authorized
   committing/pushing each phase, enabling autostart, testing token rotation,
   and then integrating Claude on the local LiteLLM.

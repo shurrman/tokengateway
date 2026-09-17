@@ -1,5 +1,19 @@
 # Changes
 
+## 2026-09-17 - Sync upstream tokengateway fixes
+
+Cherry-picked 7 upstream commits from eduardopessin/tokengateway onto
+feat/native-litellm-quota (no conflicts, plugin tests green):
+
+- reasoning the subscriptions bill for (thinking/adaptive display fixes, drop
+  redact-thinking beta for Anthropic) + contract tests
+- close the OAuth parity gaps the wire disagreed with (adaptive default, model
+  exclusion list)
+- follow the tool tail with cache breakpoints (avoid re-reading 62-67% prompt)
+- multimodal input + thinking-loop guard for Gemini
+- pin deployment ids / drop models a subscription cannot serve (gpt-5.4)
+- docs: reasoning visibility and /v1/responses route wiring
+
 ## 2026-09-17 - Claude reasoning bridge verification
 
 - Document LiteLLM's existing `reasoning_effort` to Anthropic `thinking` mapping.
