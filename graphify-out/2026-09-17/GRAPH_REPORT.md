@@ -1,28 +1,28 @@
 # Graph Report - tokengateway  (2026-09-17)
 
 ## Corpus Check
-- 46 files · ~78,674 words
+- 50 files · ~94,605 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 523 nodes · 882 edges · 44 communities (42 shown, 2 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 17 edges (avg confidence: 0.57)
+- 689 nodes · 1194 edges · 65 communities (61 shown, 4 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 29 edges (avg confidence: 0.64)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9d591070`
+- Built from commit: `c4b9eebb`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - usage.ts
-- sitecustomize.py
-- 3. LiteLLM Wire Bridge (`sitecustomize.py`)
+- _wrapped_acompletion
+- Core Components
 - oauth.rs
 - definitions
 - permissions
 - definitions
-- properties
+- urls
 - ⚡ TokenGateway
 - compilerOptions
 - package.json
@@ -36,9 +36,9 @@
 - Changes
 - AGENTS.md
 - server.ts
+- sitecustomize.py
+- providers.ts
 - oauth.ts
-- litellm.ts
-- isRecord
 - store.ts
 - webviews
 - properties
@@ -54,56 +54,77 @@
 - description
 - local
 - ShellScopeEntryAllowedArgs
-- 📸 Screenshots
+- _stream_antigravity_once
+- test_multimodal_loop.py
+- _messages_to_antigravity_payload
+- Exception
+- test_parity_batch.py
+- permissions
+- 3. LiteLLM Wire Bridge (`sitecustomize.py`)
+- managed-anthropic.test.ts
+- _apply_conversation_cache
+- properties
+- _ThinkingLoopDetector
+- _BridgeStreamWrapper
+- Capability
+- CapabilityRemote
+- _read_tokens
+- windows-schema.json
+- _antigravity_open
+- description
+- local
+- _needs_completions_bridge
+- AnthropicCacheHandler
+- Target
 
 ## God Nodes (most connected - your core abstractions)
 1. `isRecord()` - 22 edges
 2. `loadCredentials()` - 19 edges
-3. `readString()` - 16 edges
-4. `OAuthState` - 16 edges
-5. `_wrapped_acompletion()` - 14 edges
-6. `⚡ TokenGateway` - 14 edges
-7. `handleApi()` - 13 edges
-8. `_wrapped_router_acompletion()` - 13 edges
-9. `fetchAllUsage()` - 12 edges
-10. `handle_token_exchange()` - 12 edges
+3. `_wrapped_acompletion()` - 19 edges
+4. `_wrapped_router_acompletion()` - 18 edges
+5. `readString()` - 16 edges
+6. `OAuthState` - 16 edges
+7. `_stream_antigravity_once()` - 16 edges
+8. `_stream_codex_generator()` - 14 edges
+9. `_wrapped_completion()` - 14 edges
+10. `⚡ TokenGateway` - 14 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `load_plugin()` --references--> `module`  [EXTRACTED]
+  litellm-plugin/test_cache_anchor.py → dashboard/tsconfig.json
 - `run()` --calls--> `start_listeners()`  [INFERRED]
   desktop/src-tauri/src/lib.rs → desktop/src-tauri/src/oauth.rs
 - `handleApi()` --calls--> `isRecord()`  [EXTRACTED]
   dashboard/server.ts → dashboard/src/guards.ts
 - `handleApi()` --calls--> `readString()`  [EXTRACTED]
   dashboard/server.ts → dashboard/src/guards.ts
-- `handleApi()` --calls--> `isProviderId()`  [EXTRACTED]
-  dashboard/server.ts → dashboard/src/providers.ts
-- `handleApi()` --calls--> `deleteCredential()`  [EXTRACTED]
-  dashboard/server.ts → dashboard/src/store.ts
+- `handleApi()` --calls--> `completeLoginWithCode()`  [EXTRACTED]
+  dashboard/server.ts → dashboard/src/oauth.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (44 total, 2 thin omitted)
+## Communities (65 total, 4 thin omitted)
 
 ### Community 0 - "usage.ts"
-Cohesion: 0.14
-Nodes (20): isDefinitiveOAuthFailure(), AgentItem, ANTHROPIC_KIND_LABELS, clusterStats(), cooldownMap, DownMonitor, fetchAiAgents(), fetchAllUsage() (+12 more)
+Cohesion: 0.12
+Nodes (23): isDefinitiveOAuthFailure(), PendingLogin, ProviderId, AgentItem, ANTHROPIC_KIND_LABELS, clusterStats(), cooldownMap, DownMonitor (+15 more)
 
-### Community 1 - "sitecustomize.py"
-Cohesion: 0.08
-Nodes (49): CustomLogger, _anthropic_cache_control(), _anthropic_markable_message(), AnthropicCacheHandler, _apply_conversation_cache(), _bridge_usage(), _build_codex_headers(), _call_antigravity_sync() (+41 more)
+### Community 1 - "_wrapped_acompletion"
+Cohesion: 0.18
+Nodes (19): _attach_codex_quota(), _bridge_message(), _bridge_stream_result(), _codex_finish_reason(), _emit_bridge_success(), _inject_claude_prompt(), _is_codex_model(), _is_gemini_model() (+11 more)
 
-### Community 2 - "3. LiteLLM Wire Bridge (`sitecustomize.py`)"
-Cohesion: 0.22
-Nodes (8): 1. Quota Dashboard (Web & Backend), 2. Quota Desktop (Tauri v2 App / Local Loopback Bridge), 3. LiteLLM Wire Bridge (`sitecustomize.py`), Core Components, Prompt Caching Breakpoints (Anthropic), Reloading the plugin on Kubernetes, TokenGateway — Architecture & Wire Protocols, Usage Accounting
+### Community 2 - "Core Components"
+Cohesion: 0.40
+Nodes (4): 1. Quota Dashboard (Web & Backend), 2. Quota Desktop (Tauri v2 App / Local Loopback Bridge), Core Components, TokenGateway — Architecture & Wire Protocols
 
 ### Community 3 - "oauth.rs"
 Cohesion: 0.13
 Nodes (42): Client, get_cluster_usage(), get_status(), open_browser(), open_url(), paste_redirect(), AppHandle, Arc (+34 more)
 
 ### Community 4 - "definitions"
-Cohesion: 0.05
-Nodes (36): anyOf, description, required, type, description, required, type, definitions (+28 more)
+Cohesion: 0.12
+Nodes (16): definitions, Number, PermissionEntry, ShellScopeEntryAllowedArg, ShellScopeEntryAllowedArgs, Value, anyOf, description (+8 more)
 
 ### Community 5 - "permissions"
 Cohesion: 0.17
@@ -113,17 +134,17 @@ Nodes (12): $ref, array, null, description, items, type, uniqueItems, descriptio
 Cohesion: 0.12
 Nodes (16): definitions, Number, PermissionEntry, ShellScopeEntryAllowedArg, Target, Value, anyOf, description (+8 more)
 
-### Community 7 - "properties"
-Cohesion: 0.05
-Nodes (41): properties, properties, default, description, type, description, type, $ref (+33 more)
+### Community 7 - "urls"
+Cohesion: 0.15
+Nodes (13): type, urls, webviews, windows, description, items, type, description (+5 more)
 
 ### Community 8 - "⚡ TokenGateway"
-Cohesion: 0.13
-Nodes (15): 🏗️ Architecture, 🤝 Contributing, 📖 Documentation, Existing LiteLLM without Docker, ✨ Features, ⚠️ Known Security Issues, 📄 License, 🚀 Quick Start (Docker Compose) (+7 more)
+Cohesion: 0.11
+Nodes (18): 1. Real-Time Subscription & Cluster Quota Dashboard, 2. LiteLLM Proxy Unified Model Catalog, 🏗️ Architecture, 🤝 Contributing, 📖 Documentation, Existing LiteLLM without Docker, ✨ Features, ⚠️ Known Security Issues (+10 more)
 
 ### Community 9 - "compilerOptions"
-Cohesion: 0.12
-Nodes (16): compilerOptions, lib, module, moduleResolution, noEmit, noFallthroughCasesInSwitch, skipLibCheck, strict (+8 more)
+Cohesion: 0.09
+Nodes (28): compilerOptions, lib, module, moduleResolution, noEmit, noFallthroughCasesInSwitch, skipLibCheck, strict (+20 more)
 
 ### Community 10 - "package.json"
 Cohesion: 0.20
@@ -154,28 +175,28 @@ Cohesion: 0.50
 Nodes (3): headers, names, priorEnv
 
 ### Community 18 - "Changes"
-Cohesion: 0.29
-Nodes (6): 2026-09-17 - Claude reasoning bridge verification, 2026-09-17 - Managed Claude alongside native ChatGPT, 2026-09-17 - Native LiteLLM quota panel, 2026-09-17 - Native refresh integration test, 2026-09-17 - Separate local ChatGPT session, Changes
+Cohesion: 0.25
+Nodes (7): 2026-09-17 - Claude reasoning bridge verification, 2026-09-17 - Managed Claude alongside native ChatGPT, 2026-09-17 - Native LiteLLM quota panel, 2026-09-17 - Native refresh integration test, 2026-09-17 - Separate local ChatGPT session, 2026-09-17 - Sync upstream tokengateway fixes, Changes
 
 ### Community 24 - "server.ts"
-Cohesion: 0.16
-Nodes (15): dashboardApi(), handleApi(), logins, LoginState, PORT, server, dashboardAuth(), beginLogin() (+7 more)
-
-### Community 25 - "oauth.ts"
 Cohesion: 0.17
-Nodes (14): pending, PendingLogin, refreshing, TokenPayload, ANTHROPIC_SCOPES, ANTHROPIC_USAGE_URL, ANTIGRAVITY_ENDPOINT, ANTIGRAVITY_USER_AGENT (+6 more)
+Nodes (14): dashboardApi(), handleApi(), logins, LoginState, PORT, server, dashboardAuth(), beginLogin() (+6 more)
 
-### Community 26 - "litellm.ts"
-Cohesion: 0.17
-Nodes (11): claims(), LiteLLMCredential, liteLLMQuotaApi(), readLiteLLMCredential(), CODEX_USAGE_URL, PROVIDERS, StoredCredential, windows (+3 more)
+### Community 25 - "sitecustomize.py"
+Cohesion: 0.08
+Nodes (36): _antigravity_base_family(), _antigravity_collect(), _codex_file_part(), _codex_image_part(), _codex_prompt_cache_key(), _codex_quota_headers(), _codex_request_body(), _codex_split_call_id() (+28 more)
 
-### Community 27 - "isRecord"
-Cohesion: 0.29
-Nodes (15): isRecord(), readNumber(), readString(), readTimestampMs(), discoverAntigravityProject(), exchangeCode(), parseTokenResponse(), readIdTokenClaims() (+7 more)
+### Community 26 - "providers.ts"
+Cohesion: 0.11
+Nodes (18): claims(), LiteLLMCredential, liteLLMQuotaApi(), readLiteLLMCredential(), ANTHROPIC_SCOPES, ANTHROPIC_USAGE_URL, ANTIGRAVITY_ENDPOINT, ANTIGRAVITY_USER_AGENT (+10 more)
+
+### Community 27 - "oauth.ts"
+Cohesion: 0.22
+Nodes (20): isRecord(), readNumber(), readString(), readTimestampMs(), discoverAntigravityProject(), exchangeCode(), parseTokenResponse(), pending (+12 more)
 
 ### Community 28 - "store.ts"
-Cohesion: 0.18
-Nodes (19): refreshSweep(), anthropicProxy(), claudeOAuthBody(), atomicWriteJson(), ensureFresh(), refreshCredential(), refreshLatestCredential(), isProviderId() (+11 more)
+Cohesion: 0.25
+Nodes (12): refreshSweep(), atomicWriteJson(), isProviderId(), applyOverlay(), CredentialMap, deleteCredential(), loadCredentials(), mutate() (+4 more)
 
 ### Community 29 - "webviews"
 Cohesion: 0.20
@@ -214,8 +235,8 @@ Cohesion: 0.40
 Nodes (4): anyOf, description, $schema, title
 
 ### Community 38 - "Google Antigravity (Cloud Code API) Setup Guide"
-Cohesion: 0.40
-Nodes (4): Authentication via Quota Desktop, Google Antigravity (Cloud Code API) Setup Guide, How it works, Supported Models in LiteLLM
+Cohesion: 0.33
+Nodes (5): Authentication via Quota Desktop, Google Antigravity (Cloud Code API) Setup Guide, How it works, Multimodal Input, Supported Models in LiteLLM
 
 ### Community 39 - "OpenAI ChatGPT Plus / Codex Responses API Setup Guide"
 Cohesion: 0.40
@@ -233,29 +254,105 @@ Nodes (4): default, description, type, local
 Cohesion: 0.67
 Nodes (3): ShellScopeEntryAllowedArgs, anyOf, description
 
-### Community 43 - "📸 Screenshots"
+### Community 43 - "_stream_antigravity_once"
+Cohesion: 0.14
+Nodes (17): _bridge_usage(), _codex_usage(), _google_usage(), omp-google-shared.ts: promptTokenCount *includes* cached tokens, so it is…, OMP `eRe`: unlike Google, input_tokens is not reduced by cached_tokens., Final stream chunk carrying the real usage; without it LiteLLM estimates.…, _stream_antigravity_once(), _stream_codex_generator() (+9 more)
+
+### Community 44 - "test_multimodal_loop.py"
+Cohesion: 0.14
+Nodes (11): detector(), feed_all(), Multimodal on the Gemini bridge, and the reasoning loop guard. The wire shapes…, Feeds paragraph-separated segments, returning the first reason., Stall: the same vocabulary, reordered, with no new concrete anchor. The fixture…, Reasoning that progresses has to pass; a false positive kills a good turn., test_header_runaway_trips_at_the_threshold(), test_near_duplicate_segments_trip() (+3 more)
+
+### Community 45 - "_messages_to_antigravity_payload"
+Cohesion: 0.13
+Nodes (19): _antigravity_available_models(), _antigravity_request_id(), _call_antigravity_sync(), _google_content_parts(), _google_finish_reason(), _google_media_part(), _google_model_supports_function_ids(), _google_tool_choice() (+11 more)
+
+### Community 46 - "Exception"
+Cohesion: 0.21
+Nodes (16): Exception, _build_codex_headers(), _call_codex_sync(), _codex_capture_response_state(), _codex_composite_call_id(), _codex_open(), _codex_open_async(), _codex_redeem_reset_credit() (+8 more)
+
+### Community 47 - "test_parity_batch.py"
+Cohesion: 0.24
+Nodes (12): load(), Behaviours measured on the wire, pinned so they cannot silently regress. Every…, Every caller must unpack exactly what the bridge entry point returns. Adding…, Extract pure helpers by AST; importing the plugin needs a live proxy., test_adaptive_is_the_default_for_unknown_models(), test_antigravity_never_serves_a_name_it_was_not_asked_for(), test_bridge_result_tuples_are_unpacked_consistently(), test_codex_aliases_never_rename_a_version() (+4 more)
+
+### Community 48 - "permissions"
+Cohesion: 0.17
+Nodes (12): $ref, array, null, description, items, type, uniqueItems, description (+4 more)
+
+### Community 49 - "3. LiteLLM Wire Bridge (`sitecustomize.py`)"
+Cohesion: 0.17
+Nodes (12): 3. LiteLLM Wire Bridge (`sitecustomize.py`), Deployment identity, Multimodal input, Prompt Caching Breakpoints (Anthropic), Reasoning visibility, Reloading the plugin on Kubernetes, Stop reasons, The `/v1/responses` route (+4 more)
+
+### Community 50 - "managed-anthropic.test.ts"
+Cohesion: 0.36
+Nodes (7): anthropicProxy(), claudeOAuthBody(), completeLoginWithCode(), ensureFresh(), refreshCredential(), PROVIDERS, initial
+
+### Community 51 - "_apply_conversation_cache"
+Cohesion: 0.22
+Nodes (10): _anthropic_cache_control(), _anthropic_markable_message(), _anthropic_tool_call_anchor(), _apply_conversation_cache(), _count_cache_breakpoints(), _mark_cache_breakpoint(), Whether a breakpoint can be attached to this message. OMP marks the Anthropic…, Index of the last tool call LiteLLM agrees to mark.… (+2 more)
+
+### Community 52 - "properties"
+Cohesion: 0.22
+Nodes (9): properties, Identifier, description, oneOf, type, identifier, remote, anyOf (+1 more)
+
+### Community 53 - "_ThinkingLoopDetector"
+Cohesion: 0.32
+Nodes (4): Detects runaway reasoning from the text as it streams by. Deliberate deviation…, Returns the loop reason, or None. Never raises., _ThinkingLoopDetector, _trigrams()
+
+### Community 55 - "Capability"
+Cohesion: 0.33
+Nodes (6): description, required, type, Capability, identifier, permissions
+
+### Community 56 - "CapabilityRemote"
+Cohesion: 0.33
+Nodes (6): description, properties, required, type, CapabilityRemote, urls
+
+### Community 57 - "_read_tokens"
+Cohesion: 0.33
+Nodes (6): Read the credentials the agent synced into the Kubernetes Secret., Read the credentials.json the agent writes on the shared volume., Kubernetes Secret first, then the agent's credentials.json., _read_tokens(), _read_tokens_from_credentials_file(), _read_tokens_from_secret()
+
+### Community 58 - "windows-schema.json"
+Cohesion: 0.40
+Nodes (4): anyOf, description, $schema, title
+
+### Community 59 - "_antigravity_open"
+Cohesion: 0.50
+Nodes (5): _antigravity_mark_host(), _antigravity_open(), _antigravity_open_async(), _antigravity_urls(), Tries the endpoints in order (last good first), refreshing the token on 401.…
+
+### Community 60 - "description"
+Cohesion: 0.50
+Nodes (4): default, description, type, description
+
+### Community 61 - "local"
+Cohesion: 0.50
+Nodes (4): default, description, type, local
+
+### Community 62 - "_needs_completions_bridge"
 Cohesion: 0.67
-Nodes (3): 1. Real-Time Subscription & Cluster Quota Dashboard, 2. LiteLLM Proxy Unified Model Catalog, 📸 Screenshots
+Nodes (4): _needs_completions_bridge(), _responses_model_of(), _wrapped_aresponses(), _wrapped_responses()
+
+### Community 64 - "Target"
+Cohesion: 0.67
+Nodes (3): Target, description, oneOf
 
 ## Knowledge Gaps
-- **199 isolated node(s):** `name`, `version`, `description`, `@types/bun`, `typescript` (+194 more)
+- **208 isolated node(s):** `name`, `version`, `description`, `@types/bun`, `typescript` (+203 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `properties` connect `properties` to `Capability`, `permissions`, `description`, `local`, `webviews`?**
+- **Why does `bun` connect `compilerOptions` to `oauth.ts`?**
   _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Why does `properties` connect `properties` to `definitions`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Why does `definitions` connect `definitions` to `Capability`, `desktop-schema.json`, `ShellScopeEntryAllowedArgs`, `properties`, `CapabilityRemote`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `_wrapped_acompletion()` (e.g. with `sitecustomize.py` and `_call_antigravity_sync()`) actually correct?**
   _`_wrapped_acompletion()` has 3 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 3 inferred relationships involving `_wrapped_router_acompletion()` (e.g. with `sitecustomize.py` and `_call_antigravity_sync()`) actually correct?**
+  _`_wrapped_router_acompletion()` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `name`, `version`, `description` to the rest of the system?**
-  _199 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _208 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `usage.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.1380952380952381 - nodes in this community are weakly interconnected._
-- **Should `sitecustomize.py` be split into smaller, more focused modules?**
-  _Cohesion score 0.08182349503214495 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11956521739130435 - nodes in this community are weakly interconnected._
+- **Should `oauth.rs` be split into smaller, more focused modules?**
+  _Cohesion score 0.13434343434343435 - nodes in this community are weakly interconnected._
+- **Should `definitions` be split into smaller, more focused modules?**
+  _Cohesion score 0.125 - nodes in this community are weakly interconnected._

@@ -1,5 +1,26 @@
 # Project memory
 
+## Managed Claude prompt caching (2026-09-17)
+
+- Diagnosed `cached_input_tokens=0` from the Opus compaction incident. The
+  Codex journal and LiteLLM spend logs agreed, and stored proxy requests had
+  zero `cache_control` markers. The loss was before usage conversion: managed
+  Claude routes use TokenGateway's native TypeScript proxy, not the Python
+  `sitecustomize.py` bridge.
+- `dashboard/src/anthropic.ts` now places `cache_control: {type: "ephemeral"}`
+  on the last two cacheable user/assistant turns, skips thinking blocks,
+  preserves existing markers, caps the request at four markers, and does not
+  mutate the caller's input.
+- Deployed to `/opt/tokengateway-quota/dashboard/src/anthropic.ts` on
+  `litellm.wsoft`; backup is
+  `/var/backups/tokengateway-cache-fix-20260917/anthropic.ts`. Restarted only
+  `tokengateway-quota`; LiteLLM PID 16470 remained running and liveliness was
+  HTTP 200. Two live probes still returned upstream HTTP 429, so nonzero cache
+  creation/read is not yet claimed.
+- Editing rule from the user: in this environment invoke `env apply_patch`
+  immediately; do not first retry the ordinary apply_patch path that is known
+  to fail with `bwrap: loopback: Failed RTM_NEWADDR`.
+
 ## Scope and decisions
 
 - Fork: shurrman/tokengateway, upstream baseline ef6916f541ed890b21629d90109bd3a45c114433.

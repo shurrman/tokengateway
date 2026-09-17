@@ -84,8 +84,11 @@ test("OAuth system identity preserves client instructions, tool schemas, and too
 	const body = claudeOAuthBody(input);
 	expect(body.system).toEqual([{ type: "text", text: "You are a Claude agent, built on Anthropic's Claude Agent SDK." }]);
 	expect(body.tools).toEqual(input.tools);
-	expect((body.messages as any[])[0].content).toEqual([{ type: "text", text: input.system }, ...input.messages[0].content]);
+	const content = (body.messages as any[])[0].content;
+	expect(content[0]).toEqual({ type: "text", text: input.system });
+	expect(content[1]).toEqual({ ...input.messages[0].content[0], cache_control: { type: "ephemeral" } });
 	expect(input.messages[0].content).toHaveLength(1);
+	expect(input.messages[0].content[0]).not.toHaveProperty("cache_control");
 });
 
 test("native thinking configuration passes through the OAuth identity bridge", () => {
@@ -102,6 +105,43 @@ test("native thinking configuration passes through the OAuth identity bridge", (
 	expect(body.output_config).toEqual(input.output_config);
 	expect(body.system).toEqual([{ type: "text", text: "You are a Claude agent, built on Anthropic's Claude Agent SDK." }]);
 	expect((body.messages as any[])[0].content[0]).toEqual({ type: "text", text: input.system });
+});
+
+test("OAuth bridge anchors the last two cacheable conversation turns", () => {
+	const input = {
+		model: "claude-opus-5",
+		system: "Keep the project conventions",
+		max_tokens: 400,
+		messages: [
+			{ role: "user", content: "Inspect the deployment" },
+			{ role: "assistant", content: [{ type: "text", text: "I will inspect it" }, { type: "thinking", thinking: "hidden" }] },
+			{ role: "user", content: [{ type: "tool_result", tool_use_id: "call-1", content: "replicas: 2" }] },
+		],
+	};
+	const body = claudeOAuthBody(input);
+	const messages = body.messages as any[];
+
+	expect(messages[0].content).toEqual([{ type: "text", text: input.system }, { type: "text", text: input.messages[0].content }]);
+	expect(messages[0].content.some((block: any) => block.cache_control)).toBe(false);
+	expect(messages[1].content[0].cache_control).toEqual({ type: "ephemeral" });
+	expect(messages[1].content[1].cache_control).toBeUndefined();
+	expect(messages[2].content[0].cache_control).toEqual({ type: "ephemeral" });
+	expect(input.messages[1].content[0]).not.toHaveProperty("cache_control");
+});
+
+test("OAuth bridge never exceeds Anthropic's four cache breakpoints", () => {
+	const existing = { type: "text", text: "cached", cache_control: { type: "ephemeral" } };
+	const body = claudeOAuthBody({
+		model: "claude-opus-5",
+		max_tokens: 40,
+		messages: [
+			{ role: "user", content: [existing, existing, existing] },
+			{ role: "assistant", content: "latest answer" },
+			{ role: "user", content: "latest question" },
+		],
+	});
+	const markers = JSON.stringify(body).match(/cache_control/g) || [];
+	expect(markers).toHaveLength(4);
 });
 
 function messageRequest(headers: Record<string, string> = { "x-api-key": key }) {

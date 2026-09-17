@@ -5,12 +5,12 @@
     "semantic_hash": ""
   },
   "dashboard/server.ts": {
-    "mtime": 1789613626.5821865,
+    "mtime": 1789676309.2124457,
     "ast_hash": "a870c7544b5f6ec697a1965ad10ce596",
     "semantic_hash": ""
   },
   "dashboard/src/auth.ts": {
-    "mtime": 1789610639.6450005,
+    "mtime": 1789676309.2134457,
     "ast_hash": "d96baaa48d8ba2dbb7430ff7112a1f98",
     "semantic_hash": ""
   },
@@ -20,12 +20,12 @@
     "semantic_hash": ""
   },
   "dashboard/src/litellm.ts": {
-    "mtime": 1789610854.382384,
+    "mtime": 1789676309.2144458,
     "ast_hash": "6f6eb7a724dbe7618c2aa6dda34107aa",
     "semantic_hash": ""
   },
   "dashboard/src/oauth.ts": {
-    "mtime": 1789612415.7417803,
+    "mtime": 1789676309.2144458,
     "ast_hash": "6407bad436a0cbd9a1598e930079f484",
     "semantic_hash": ""
   },
@@ -35,32 +35,32 @@
     "semantic_hash": ""
   },
   "dashboard/src/store.ts": {
-    "mtime": 1789612415.7407804,
+    "mtime": 1789676309.2154458,
     "ast_hash": "33cd750b461f8c99bf8c8b2dd36ac5b8",
     "semantic_hash": ""
   },
   "dashboard/src/ui.ts": {
-    "mtime": 1789612925.3610816,
+    "mtime": 1789676309.2164457,
     "ast_hash": "ac236b289990b473872055e502841f5c",
     "semantic_hash": ""
   },
   "dashboard/src/usage.ts": {
-    "mtime": 1789613626.5821865,
+    "mtime": 1789676309.2174459,
     "ast_hash": "bded652e3d81cb916af53e2925e609c6",
     "semantic_hash": ""
   },
   "dashboard/tests/auth.test.ts": {
-    "mtime": 1789610854.384384,
+    "mtime": 1789676309.2204459,
     "ast_hash": "f906fb9a3806061610dacefa22151934",
     "semantic_hash": ""
   },
   "dashboard/tests/litellm.test.ts": {
-    "mtime": 1789610854.383384,
+    "mtime": 1789676309.2214458,
     "ast_hash": "ea87ec4471a1c0f2b8b8d4ed9c39927c",
     "semantic_hash": ""
   },
   "dashboard/tests/server.test.ts": {
-    "mtime": 1789613695.7834346,
+    "mtime": 1789676309.2214458,
     "ast_hash": "0c69874b799dc16d50807d9ea8d9f8b8",
     "semantic_hash": ""
   },
@@ -120,7 +120,7 @@
     "semantic_hash": ""
   },
   "litellm-plugin/sitecustomize.py": {
-    "mtime": 1789670218.9897246,
+    "mtime": 1789676309.2514465,
     "ast_hash": "afde7ad0a2431663e7a18c6ad3d85b1c",
     "semantic_hash": ""
   },
@@ -130,7 +130,7 @@
     "semantic_hash": ""
   },
   "litellm-plugin/test_claude_bridge.py": {
-    "mtime": 1789670218.959724,
+    "mtime": 1789676309.2524467,
     "ast_hash": "59124bfc63b359d7d746b3e0da84fc43",
     "semantic_hash": ""
   },
@@ -140,7 +140,7 @@
     "semantic_hash": ""
   },
   "litellm-plugin/test_wire_contract.py": {
-    "mtime": 1789670218.9907246,
+    "mtime": 1789676309.2534466,
     "ast_hash": "29cd220612c0c1683dc9832a308a3f39",
     "semantic_hash": ""
   },
@@ -150,13 +150,13 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1789613954.919298,
+    "mtime": 1789676309.2114456,
     "ast_hash": "22a95634a685aced5d3e884f44dc94af",
     "semantic_hash": ""
   },
   "CHANGES.md": {
-    "mtime": 1789672446.054947,
-    "ast_hash": "3080b0c44e2834a8195c72c2146c4f18",
+    "mtime": 1789679029.861128,
+    "ast_hash": "907feec89800189d5611cf68e1800c91",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -165,22 +165,22 @@
     "semantic_hash": ""
   },
   "MEMORY.md": {
-    "mtime": 1789672841.132537,
-    "ast_hash": "a29babafe45adc84f4ebb37f33c0ef1e",
+    "mtime": 1789679029.8631282,
+    "ast_hash": "0428356b2e5258e316ca8f7c550925aa",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1789670218.9877245,
+    "mtime": 1789676309.2124457,
     "ast_hash": "90c2f4cb2e63262f8a025fa5b7821b41",
     "semantic_hash": ""
   },
   "deploy/docker/litellm-config.yaml": {
-    "mtime": 1789670218.862722,
+    "mtime": 1789676309.222446,
     "ast_hash": "2c3b6d75ed68566486843f0c9060e7fa",
     "semantic_hash": ""
   },
   "deploy/kubernetes/quota-dashboard.yaml": {
-    "mtime": 1789610704.8063266,
+    "mtime": 1789676309.222446,
     "ast_hash": "b4badb7e9a02c0c88d98950ceb0c3266",
     "semantic_hash": ""
   },
@@ -200,38 +200,38 @@
     "semantic_hash": ""
   },
   "docker-compose.yml": {
-    "mtime": 1789610704.8023267,
+    "mtime": 1789676309.223446,
     "ast_hash": "3692e449472fd53a56a15ec4d6dd1df2",
     "semantic_hash": ""
   },
   "docs/architecture.md": {
-    "mtime": 1789670218.9887247,
+    "mtime": 1789676309.224446,
     "ast_hash": "c74dafd5aee3e4536f5d603acfd731ad",
     "semantic_hash": ""
   },
   "docs/native-litellm.md": {
-    "mtime": 1789634754.3769307,
+    "mtime": 1789676309.224446,
     "ast_hash": "2cee1b0692aed793aab34fa97092b362",
     "semantic_hash": ""
   },
   "docs/oauth-setup-anthropic.md": {
-    "mtime": 1789670218.9547238,
+    "mtime": 1789676309.224446,
     "ast_hash": "9fcc8c9436e781492760c9009db5d709",
     "semantic_hash": ""
   },
   "docs/oauth-setup-google.md": {
-    "mtime": 1789670218.9887247,
+    "mtime": 1789676309.224446,
     "ast_hash": "41996c94985ebcb00bf1aaaf247c84c0",
     "semantic_hash": ""
   },
   "docs/oauth-setup-openai.md": {
-    "mtime": 1789670218.955724,
+    "mtime": 1789676309.225446,
     "ast_hash": "760a7c36fc769a28511e52d295cfbbf0",
     "semantic_hash": ""
   },
   "litellm-plugin/README.md": {
-    "mtime": 1789670218.8947227,
-    "ast_hash": "1d12a817300be8022da50802eb1cd36e",
+    "mtime": 1789679078.490571,
+    "ast_hash": "c68e948d21e4f091da82d307618f3c93",
     "semantic_hash": ""
   },
   "desktop/src-tauri/icons/128x128.png": {
@@ -265,52 +265,52 @@
     "semantic_hash": ""
   },
   "scripts/refresh_fixture.py": {
-    "mtime": 1789612097.6925333,
+    "mtime": 1789676309.2544467,
     "ast_hash": "74303b4b9489a63afa3e7bf26460982e",
     "semantic_hash": ""
   },
   "scripts/test-litellm-rotation.ts": {
-    "mtime": 1789612097.6935334,
+    "mtime": 1789676309.2544467,
     "ast_hash": "54a80c1e035a6e8cf4025f0dd925d881",
     "semantic_hash": ""
   },
   "dashboard/src/anthropic.ts": {
-    "mtime": 1789612925.3570814,
-    "ast_hash": "b6ec3061785439164a7689d79334a4da",
+    "mtime": 1789678816.0556016,
+    "ast_hash": "ce76add866b76c6aa159d3dd09e11f00",
     "semantic_hash": ""
   },
   "dashboard/src/atomic-json.ts": {
-    "mtime": 1789612415.7397804,
+    "mtime": 1789676309.2134457,
     "ast_hash": "fee5e479acb552e109dafb42edaf29c4",
     "semantic_hash": ""
   },
   "dashboard/tests/managed-anthropic.test.ts": {
-    "mtime": 1789634719.6401834,
-    "ast_hash": "8851d4cfbfc6ea331715e7d7bf88d8a2",
+    "mtime": 1789678845.0831926,
+    "ast_hash": "2067b597fbde9795b2ee0ad4cebfca7b",
     "semantic_hash": ""
   },
   "litellm-plugin/test_cache_anchor.py": {
-    "mtime": 1789670218.9237232,
+    "mtime": 1789676309.2524467,
     "ast_hash": "5a63cbc05c19b725eeb8121ae333c3bc",
     "semantic_hash": ""
   },
   "litellm-plugin/test_multimodal_loop.py": {
-    "mtime": 1789670218.9907246,
+    "mtime": 1789676309.2524467,
     "ast_hash": "29681434e678593df6feaa37d8c7774b",
     "semantic_hash": ""
   },
   "litellm-plugin/test_parity_batch.py": {
-    "mtime": 1789670218.959724,
+    "mtime": 1789676309.2534466,
     "ast_hash": "bcb4671aac65219013baab0cdd76a53a",
     "semantic_hash": ""
   },
   "litellm-plugin/test_responses_route.py": {
-    "mtime": 1789670218.8377213,
+    "mtime": 1789676309.2534466,
     "ast_hash": "c4daab0b566c0bc5c9f42df806dc0821",
     "semantic_hash": ""
   },
   "deploy/kubernetes/litellm.yaml": {
-    "mtime": 1789670218.9207232,
+    "mtime": 1789676309.222446,
     "ast_hash": "597c14490964b83dc6b9d9ea5d7a7247",
     "semantic_hash": ""
   }

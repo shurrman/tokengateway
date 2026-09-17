@@ -4,6 +4,44 @@ import { ensureFresh, refreshCredential } from "./oauth";
 import { loadCredentials } from "./store";
 
 const IDENTITY = "You are a Claude agent, built on Anthropic's Claude Agent SDK.";
+const CACHE_CONTROL = { type: "ephemeral" } as const;
+const CACHE_BREAKPOINTS = 2;
+const CACHE_BREAKPOINT_LIMIT = 4;
+
+function countCacheBreakpoints(value: unknown): number {
+	if (Array.isArray(value)) return value.reduce((total, item) => total + countCacheBreakpoints(item), 0);
+	if (!isRecord(value)) return 0;
+	return (isRecord(value.cache_control) ? 1 : 0)
+		+ Object.entries(value).reduce((total, [key, item]) => key === "cache_control" ? total : total + countCacheBreakpoints(item), 0);
+}
+
+function markCacheableContent(message: Record<string, unknown>): boolean {
+	const content = message.content;
+	if (typeof content === "string" && content.trim()) {
+		message.content = [{ type: "text", text: content, cache_control: CACHE_CONTROL }];
+		return true;
+	}
+	if (!Array.isArray(content)) return false;
+	for (let index = content.length - 1; index >= 0; index--) {
+		const block = content[index];
+		if (!isRecord(block) || isRecord(block.cache_control)) continue;
+		if (["thinking", "redacted_thinking"].includes(String(block.type))) continue;
+		const markable = block.type === "tool_result" || (block.type === "text" && typeof block.text === "string" && block.text.trim());
+		if (!markable) continue;
+		content[index] = { ...block, cache_control: CACHE_CONTROL };
+		return true;
+	}
+	return false;
+}
+
+function applyConversationCache(messages: Record<string, unknown>[]): void {
+	let budget = Math.min(CACHE_BREAKPOINTS, CACHE_BREAKPOINT_LIMIT - countCacheBreakpoints(messages));
+	for (let index = messages.length - 1; index >= 0 && budget > 0; index--) {
+		const message = messages[index];
+		if (!isRecord(message) || !["user", "assistant"].includes(String(message.role))) continue;
+		if (markCacheableContent(message)) budget--;
+	}
+}
 
 /** Apply the upstream bridge's OAuth identity convention to native Messages. */
 export function claudeOAuthBody(value: unknown): Record<string, unknown> {
@@ -28,6 +66,7 @@ export function claudeOAuthBody(value: unknown): Record<string, unknown> {
 			messages.unshift({ role: "user", content: clientInstructions });
 		}
 	}
+	applyConversationCache(messages);
 	return body;
 }
 

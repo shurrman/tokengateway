@@ -1,5 +1,18 @@
 # Changes
 
+## 2026-09-17 - Native Anthropic prompt-cache breakpoints
+
+- Add two rolling `cache_control: ephemeral` breakpoints to the last cacheable
+  conversation turns in the managed Anthropic proxy.
+- Preserve existing client breakpoints, skip thinking blocks, avoid mutating
+  the caller's request, and enforce Anthropic's four-breakpoint ceiling.
+- Diagnose the prior zero cache usage end to end: production spend logs stored
+  zero cache read/write tokens because the native TypeScript proxy sent zero
+  `cache_control` markers; LiteLLM 1.100.1 already maps Anthropic cache usage
+  into Responses `input_tokens_details` correctly.
+- Deploy the proxy change to `litellm.wsoft`; live cache creation/read remains
+  unverified while Anthropic returns HTTP 429 throttling errors.
+
 ## 2026-09-17 - Sync upstream tokengateway fixes
 
 Cherry-picked 7 upstream commits from eduardopessin/tokengateway onto

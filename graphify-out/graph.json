@@ -209,29 +209,73 @@
       "_origin": "ast",
       "id": "dashboard_src_anthropic",
       "community": 50,
-      "community_name": "managed-anthropic.test.ts",
+      "community_name": "isRecord",
       "norm_label": "anthropic.ts"
+    },
+    {
+      "label": "CACHE_CONTROL",
+      "file_type": "code",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "dashboard_src_anthropic_cache_control",
+      "community": 50,
+      "community_name": "isRecord",
+      "norm_label": "cache_control"
+    },
+    {
+      "label": "countCacheBreakpoints()",
+      "file_type": "code",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "dashboard_src_anthropic_countcachebreakpoints",
+      "community": 50,
+      "community_name": "isRecord",
+      "norm_label": "countcachebreakpoints()"
+    },
+    {
+      "label": "markCacheableContent()",
+      "file_type": "code",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "dashboard_src_anthropic_markcacheablecontent",
+      "community": 50,
+      "community_name": "isRecord",
+      "norm_label": "markcacheablecontent()"
+    },
+    {
+      "label": "applyConversationCache()",
+      "file_type": "code",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "dashboard_src_anthropic_applyconversationcache",
+      "community": 50,
+      "community_name": "isRecord",
+      "norm_label": "applyconversationcache()"
     },
     {
       "label": "claudeOAuthBody()",
       "file_type": "code",
       "source_file": "dashboard/src/anthropic.ts",
-      "source_location": "L9",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "dashboard_src_anthropic_claudeoauthbody",
       "community": 50,
-      "community_name": "managed-anthropic.test.ts",
+      "community_name": "isRecord",
       "norm_label": "claudeoauthbody()"
     },
     {
       "label": "anthropicProxy()",
       "file_type": "code",
       "source_file": "dashboard/src/anthropic.ts",
-      "source_location": "L34",
+      "source_location": "L73",
       "_origin": "ast",
       "id": "dashboard_src_anthropic_anthropicproxy",
       "community": 50,
-      "community_name": "managed-anthropic.test.ts",
+      "community_name": "isRecord",
       "norm_label": "anthropicproxy()"
     },
     {
@@ -285,8 +329,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "dashboard_src_guards",
-      "community": 27,
-      "community_name": "oauth.ts",
+      "community": 0,
+      "community_name": "usage.ts",
       "norm_label": "guards.ts"
     },
     {
@@ -296,8 +340,8 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "dashboard_src_guards_isrecord",
-      "community": 27,
-      "community_name": "oauth.ts",
+      "community": 50,
+      "community_name": "isRecord",
       "norm_label": "isrecord()"
     },
     {
@@ -307,8 +351,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "dashboard_src_guards_readnumber",
-      "community": 27,
-      "community_name": "oauth.ts",
+      "community": 0,
+      "community_name": "usage.ts",
       "norm_label": "readnumber()"
     },
     {
@@ -329,8 +373,8 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "dashboard_src_guards_readtimestampms",
-      "community": 27,
-      "community_name": "oauth.ts",
+      "community": 0,
+      "community_name": "usage.ts",
       "norm_label": "readtimestampms()"
     },
     {
@@ -417,8 +461,8 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "dashboard_src_oauth_pendinglogin",
-      "community": 0,
-      "community_name": "usage.ts",
+      "community": 27,
+      "community_name": "oauth.ts",
       "norm_label": "pendinglogin"
     },
     {
@@ -472,8 +516,8 @@
       "source_location": "L167",
       "_origin": "ast",
       "id": "dashboard_src_oauth_completeloginwithcode",
-      "community": 50,
-      "community_name": "managed-anthropic.test.ts",
+      "community": 24,
+      "community_name": "server.ts",
       "norm_label": "completeloginwithcode()"
     },
     {
@@ -539,7 +583,7 @@
       "_origin": "ast",
       "id": "dashboard_src_oauth_refreshcredential",
       "community": 50,
-      "community_name": "managed-anthropic.test.ts",
+      "community_name": "isRecord",
       "norm_label": "refreshcredential()"
     },
     {
@@ -561,7 +605,7 @@
       "_origin": "ast",
       "id": "dashboard_src_oauth_ensurefresh",
       "community": 50,
-      "community_name": "managed-anthropic.test.ts",
+      "community_name": "isRecord",
       "norm_label": "ensurefresh()"
     },
     {
@@ -593,8 +637,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "dashboard_src_providers_providerid",
-      "community": 0,
-      "community_name": "usage.ts",
+      "community": 27,
+      "community_name": "oauth.ts",
       "norm_label": "providerid"
     },
     {
@@ -638,7 +682,7 @@
       "_origin": "ast",
       "id": "dashboard_src_providers_providers",
       "community": 50,
-      "community_name": "managed-anthropic.test.ts",
+      "community_name": "isRecord",
       "norm_label": "providers"
     },
     {
@@ -934,8 +978,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "dashboard_src_usage_usagereport",
-      "community": 0,
-      "community_name": "usage.ts",
+      "community": 27,
+      "community_name": "oauth.ts",
       "norm_label": "usagereport"
     },
     {
@@ -1000,8 +1044,8 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "dashboard_src_usage_windowlabel",
-      "community": 27,
-      "community_name": "oauth.ts",
+      "community": 0,
+      "community_name": "usage.ts",
       "norm_label": "windowlabel()"
     },
     {
@@ -1022,8 +1066,8 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "dashboard_src_usage_fetchanthropic",
-      "community": 27,
-      "community_name": "oauth.ts",
+      "community": 0,
+      "community_name": "usage.ts",
       "norm_label": "fetchanthropic()"
     },
     {
@@ -1033,8 +1077,8 @@
       "source_location": "L160",
       "_origin": "ast",
       "id": "dashboard_src_usage_parseanthropicpayload",
-      "community": 27,
-      "community_name": "oauth.ts",
+      "community": 0,
+      "community_name": "usage.ts",
       "norm_label": "parseanthropicpayload()"
     },
     {
@@ -1044,8 +1088,8 @@
       "source_location": "L220",
       "_origin": "ast",
       "id": "dashboard_src_usage_codexwindow",
-      "community": 27,
-      "community_name": "oauth.ts",
+      "community": 0,
+      "community_name": "usage.ts",
       "norm_label": "codexwindow()"
     },
     {
@@ -1055,8 +1099,8 @@
       "source_location": "L235",
       "_origin": "ast",
       "id": "dashboard_src_usage_codexratelimitblock",
-      "community": 27,
-      "community_name": "oauth.ts",
+      "community": 0,
+      "community_name": "usage.ts",
       "norm_label": "codexratelimitblock()"
     },
     {
@@ -1066,8 +1110,8 @@
       "source_location": "L245",
       "_origin": "ast",
       "id": "dashboard_src_usage_fetchcodex",
-      "community": 27,
-      "community_name": "oauth.ts",
+      "community": 0,
+      "community_name": "usage.ts",
       "norm_label": "fetchcodex()"
     },
     {
@@ -1088,8 +1132,8 @@
       "source_location": "L286",
       "_origin": "ast",
       "id": "dashboard_src_usage_fetchantigravity",
-      "community": 27,
-      "community_name": "oauth.ts",
+      "community": 0,
+      "community_name": "usage.ts",
       "norm_label": "fetchantigravity()"
     },
     {
@@ -1276,7 +1320,7 @@
       "_origin": "ast",
       "id": "dashboard_tests_managed_anthropic_test",
       "community": 50,
-      "community_name": "managed-anthropic.test.ts",
+      "community_name": "isRecord",
       "norm_label": "managed-anthropic.test.ts"
     },
     {
@@ -1287,18 +1331,18 @@
       "_origin": "ast",
       "id": "dashboard_tests_managed_anthropic_test_initial",
       "community": 50,
-      "community_name": "managed-anthropic.test.ts",
+      "community_name": "isRecord",
       "norm_label": "initial"
     },
     {
       "label": "messageRequest()",
       "file_type": "code",
       "source_file": "dashboard/tests/managed-anthropic.test.ts",
-      "source_location": "L107",
+      "source_location": "L147",
       "_origin": "ast",
       "id": "dashboard_tests_managed_anthropic_test_messagerequest",
       "community": 50,
-      "community_name": "managed-anthropic.test.ts",
+      "community_name": "isRecord",
       "norm_label": "messagerequest()"
     },
     {
@@ -1737,8 +1781,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_properties_description",
-      "community": 40,
-      "community_name": "description",
+      "community": 30,
+      "community_name": "properties",
       "norm_label": "description"
     },
     {
@@ -1748,8 +1792,8 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_description_description",
-      "community": 40,
-      "community_name": "description",
+      "community": 30,
+      "community_name": "properties",
       "norm_label": "description"
     },
     {
@@ -1759,8 +1803,8 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_description_default",
-      "community": 40,
-      "community_name": "description",
+      "community": 30,
+      "community_name": "properties",
       "norm_label": "default"
     },
     {
@@ -1770,8 +1814,8 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_description_type",
-      "community": 40,
-      "community_name": "description",
+      "community": 30,
+      "community_name": "properties",
       "norm_label": "type"
     },
     {
@@ -2199,8 +2243,8 @@
       "source_location": "L122",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_definitions_permissionentry",
-      "community": 6,
-      "community_name": "definitions",
+      "community": 2,
+      "community_name": "PermissionEntry",
       "norm_label": "permissionentry"
     },
     {
@@ -2210,8 +2254,8 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_permissionentry_description",
-      "community": 6,
-      "community_name": "definitions",
+      "community": 2,
+      "community_name": "PermissionEntry",
       "norm_label": "description"
     },
     {
@@ -2221,8 +2265,8 @@
       "source_location": "L124",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_permissionentry_anyof",
-      "community": 6,
-      "community_name": "definitions",
+      "community": 2,
+      "community_name": "PermissionEntry",
       "norm_label": "anyof"
     },
     {
@@ -2386,8 +2430,8 @@
       "source_location": "L2793",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_definitions_shellscopeentryallowedargs",
-      "community": 42,
-      "community_name": "ShellScopeEntryAllowedArgs",
+      "community": 6,
+      "community_name": "definitions",
       "norm_label": "shellscopeentryallowedargs"
     },
     {
@@ -2397,8 +2441,8 @@
       "source_location": "L2794",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_shellscopeentryallowedargs_description",
-      "community": 42,
-      "community_name": "ShellScopeEntryAllowedArgs",
+      "community": 6,
+      "community_name": "definitions",
       "norm_label": "description"
     },
     {
@@ -2408,8 +2452,8 @@
       "source_location": "L2795",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_shellscopeentryallowedargs_anyof",
-      "community": 42,
-      "community_name": "ShellScopeEntryAllowedArgs",
+      "community": 6,
+      "community_name": "definitions",
       "norm_label": "anyof"
     },
     {
@@ -2562,8 +2606,8 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_properties_identifier",
-      "community": 52,
-      "community_name": "properties",
+      "community": 42,
+      "community_name": "identifier",
       "norm_label": "identifier"
     },
     {
@@ -2573,8 +2617,8 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_identifier_description",
-      "community": 52,
-      "community_name": "properties",
+      "community": 42,
+      "community_name": "identifier",
       "norm_label": "description"
     },
     {
@@ -2584,8 +2628,8 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_identifier_type",
-      "community": 52,
-      "community_name": "properties",
+      "community": 42,
+      "community_name": "identifier",
       "norm_label": "type"
     },
     {
@@ -2595,8 +2639,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_properties_description",
-      "community": 60,
-      "community_name": "description",
+      "community": 52,
+      "community_name": "properties",
       "norm_label": "description"
     },
     {
@@ -2606,8 +2650,8 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_description_description",
-      "community": 60,
-      "community_name": "description",
+      "community": 52,
+      "community_name": "properties",
       "norm_label": "description"
     },
     {
@@ -2617,8 +2661,8 @@
       "source_location": "L53",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_description_default",
-      "community": 60,
-      "community_name": "description",
+      "community": 52,
+      "community_name": "properties",
       "norm_label": "default"
     },
     {
@@ -2628,8 +2672,8 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_description_type",
-      "community": 60,
-      "community_name": "description",
+      "community": 52,
+      "community_name": "properties",
       "norm_label": "type"
     },
     {
@@ -2881,8 +2925,8 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_properties_platforms",
-      "community": 48,
-      "community_name": "permissions",
+      "community": 52,
+      "community_name": "properties",
       "norm_label": "platforms"
     },
     {
@@ -2892,8 +2936,8 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_platforms_description",
-      "community": 48,
-      "community_name": "permissions",
+      "community": 52,
+      "community_name": "properties",
       "norm_label": "description"
     },
     {
@@ -2903,8 +2947,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_platforms_type",
-      "community": 48,
-      "community_name": "permissions",
+      "community": 52,
+      "community_name": "properties",
       "norm_label": "type"
     },
     {
@@ -2914,8 +2958,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_json_ref_array",
-      "community": 48,
-      "community_name": "permissions",
+      "community": 52,
+      "community_name": "properties",
       "norm_label": "array"
     },
     {
@@ -2925,8 +2969,8 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_json_ref_null",
-      "community": 48,
-      "community_name": "permissions",
+      "community": 52,
+      "community_name": "properties",
       "norm_label": "null"
     },
     {
@@ -3090,8 +3134,8 @@
       "source_location": "L386",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_definitions_identifier",
-      "community": 52,
-      "community_name": "properties",
+      "community": 4,
+      "community_name": "definitions",
       "norm_label": "identifier"
     },
     {
@@ -3101,8 +3145,8 @@
       "source_location": "L388",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_identifier_oneof",
-      "community": 52,
-      "community_name": "properties",
+      "community": 4,
+      "community_name": "definitions",
       "norm_label": "oneof"
     },
     {
@@ -3244,8 +3288,8 @@
       "source_location": "L2793",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_definitions_shellscopeentryallowedargs",
-      "community": 4,
-      "community_name": "definitions",
+      "community": 40,
+      "community_name": "ShellScopeEntryAllowedArgs",
       "norm_label": "shellscopeentryallowedargs"
     },
     {
@@ -3255,8 +3299,8 @@
       "source_location": "L2794",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_shellscopeentryallowedargs_description",
-      "community": 4,
-      "community_name": "definitions",
+      "community": 40,
+      "community_name": "ShellScopeEntryAllowedArgs",
       "norm_label": "description"
     },
     {
@@ -3266,8 +3310,8 @@
       "source_location": "L2795",
       "_origin": "ast",
       "id": "desktop_src_tauri_gen_schemas_windows_schema_shellscopeentryallowedargs_anyof",
-      "community": 4,
-      "community_name": "definitions",
+      "community": 40,
+      "community_name": "ShellScopeEntryAllowedArgs",
       "norm_label": "anyof"
     },
     {
@@ -4058,8 +4102,8 @@
       "source_location": "L314",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_remember_thought_signature",
-      "community": 25,
-      "community_name": "sitecustomize.py",
+      "community": 53,
+      "community_name": "_stream_antigravity_once",
       "norm_label": "_remember_thought_signature()"
     },
     {
@@ -4334,7 +4378,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_bridge_usage",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "_bridge_usage()"
     },
     {
@@ -4345,7 +4389,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_google_usage",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "_google_usage()"
     },
     {
@@ -4355,8 +4399,8 @@
       "source_location": "L1028",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_google_finish_reason",
-      "community": 45,
-      "community_name": "_messages_to_antigravity_payload",
+      "community": 53,
+      "community_name": "_stream_antigravity_once",
       "norm_label": "_google_finish_reason()"
     },
     {
@@ -4366,8 +4410,8 @@
       "source_location": "L1042",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_codex_usage",
-      "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community": 46,
+      "community_name": "Exception",
       "norm_label": "_codex_usage()"
     },
     {
@@ -4378,7 +4422,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_usage_chunk",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "_usage_chunk()"
     },
     {
@@ -4630,8 +4674,8 @@
       "source_location": "L1481",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_stream_codex_generator",
-      "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community": 46,
+      "community_name": "Exception",
       "norm_label": "_stream_codex_generator()"
     },
     {
@@ -4685,8 +4729,8 @@
       "source_location": "L1673",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_google_raise_in_band",
-      "community": 25,
-      "community_name": "sitecustomize.py",
+      "community": 53,
+      "community_name": "_stream_antigravity_once",
       "norm_label": "_google_raise_in_band()"
     },
     {
@@ -4718,8 +4762,8 @@
       "source_location": "L1748",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_google_is_flash_leak_model",
-      "community": 25,
-      "community_name": "sitecustomize.py",
+      "community": 53,
+      "community_name": "_stream_antigravity_once",
       "norm_label": "_google_is_flash_leak_model()"
     },
     {
@@ -4729,8 +4773,8 @@
       "source_location": "L1751",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_google_is_planning_leak",
-      "community": 25,
-      "community_name": "sitecustomize.py",
+      "community": 53,
+      "community_name": "_stream_antigravity_once",
       "norm_label": "_google_is_planning_leak()"
     },
     {
@@ -4740,8 +4784,8 @@
       "source_location": "L1768",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_thinkinglooperror",
-      "community": 25,
-      "community_name": "sitecustomize.py",
+      "community": 53,
+      "community_name": "_stream_antigravity_once",
       "norm_label": "_thinkinglooperror"
     },
     {
@@ -4763,7 +4807,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_trigrams",
       "community": 53,
-      "community_name": "_ThinkingLoopDetector",
+      "community_name": "_stream_antigravity_once",
       "norm_label": "_trigrams()"
     },
     {
@@ -4774,7 +4818,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_thinkingloopdetector",
       "community": 53,
-      "community_name": "_ThinkingLoopDetector",
+      "community_name": "_stream_antigravity_once",
       "norm_label": "_thinkingloopdetector"
     },
     {
@@ -4785,7 +4829,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_thinkingloopdetector_init",
       "community": 53,
-      "community_name": "_ThinkingLoopDetector",
+      "community_name": "_stream_antigravity_once",
       "norm_label": ".__init__()"
     },
     {
@@ -4796,7 +4840,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_thinkingloopdetector_feed",
       "community": 53,
-      "community_name": "_ThinkingLoopDetector",
+      "community_name": "_stream_antigravity_once",
       "norm_label": ".feed()"
     },
     {
@@ -4807,7 +4851,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_thinkingloopdetector_verbatim_tail",
       "community": 53,
-      "community_name": "_ThinkingLoopDetector",
+      "community_name": "_stream_antigravity_once",
       "norm_label": "._verbatim_tail()"
     },
     {
@@ -4818,7 +4862,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_thinkingloopdetector_close_segment",
       "community": 53,
-      "community_name": "_ThinkingLoopDetector",
+      "community_name": "_stream_antigravity_once",
       "norm_label": "._close_segment()"
     },
     {
@@ -4828,8 +4872,8 @@
       "source_location": "L1888",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_google_loop_guard",
-      "community": 25,
-      "community_name": "sitecustomize.py",
+      "community": 53,
+      "community_name": "_stream_antigravity_once",
       "norm_label": "_google_loop_guard()"
     },
     {
@@ -4883,8 +4927,8 @@
       "source_location": "L2049",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_google_inline_part",
-      "community": 46,
-      "community_name": "Exception",
+      "community": 45,
+      "community_name": "_messages_to_antigravity_payload",
       "norm_label": "_google_inline_part()"
     },
     {
@@ -4894,8 +4938,8 @@
       "source_location": "L2064",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_google_media_from_url",
-      "community": 46,
-      "community_name": "Exception",
+      "community": 45,
+      "community_name": "_messages_to_antigravity_payload",
       "norm_label": "_google_media_from_url()"
     },
     {
@@ -4982,8 +5026,8 @@
       "source_location": "L2378",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_antigravity_collect",
-      "community": 25,
-      "community_name": "sitecustomize.py",
+      "community": 53,
+      "community_name": "_stream_antigravity_once",
       "norm_label": "_antigravity_collect()"
     },
     {
@@ -5015,7 +5059,7 @@
       "source_location": "L2498",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_stream_antigravity_once",
-      "community": 43,
+      "community": 53,
       "community_name": "_stream_antigravity_once",
       "norm_label": "_stream_antigravity_once()"
     },
@@ -5114,8 +5158,8 @@
       "source_location": "L2919",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_responses_model_of",
-      "community": 62,
-      "community_name": "_needs_completions_bridge",
+      "community": 25,
+      "community_name": "sitecustomize.py",
       "norm_label": "_responses_model_of()"
     },
     {
@@ -5125,8 +5169,8 @@
       "source_location": "L2925",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_needs_completions_bridge",
-      "community": 62,
-      "community_name": "_needs_completions_bridge",
+      "community": 1,
+      "community_name": "_wrapped_acompletion",
       "norm_label": "_needs_completions_bridge()"
     },
     {
@@ -5136,8 +5180,8 @@
       "source_location": "L2940",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_wrapped_aresponses",
-      "community": 62,
-      "community_name": "_needs_completions_bridge",
+      "community": 25,
+      "community_name": "sitecustomize.py",
       "norm_label": "_wrapped_aresponses()"
     },
     {
@@ -5147,8 +5191,8 @@
       "source_location": "L2946",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_wrapped_responses",
-      "community": 62,
-      "community_name": "_needs_completions_bridge",
+      "community": 25,
+      "community_name": "sitecustomize.py",
       "norm_label": "_wrapped_responses()"
     },
     {
@@ -5169,8 +5213,8 @@
       "source_location": "L3013",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_anthropiccachehandler",
-      "community": 63,
-      "community_name": "AnthropicCacheHandler",
+      "community": 25,
+      "community_name": "sitecustomize.py",
       "norm_label": "anthropiccachehandler"
     },
     {
@@ -5180,8 +5224,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "customlogger",
-      "community": 63,
-      "community_name": "AnthropicCacheHandler",
+      "community": 25,
+      "community_name": "sitecustomize.py",
       "norm_label": "customlogger"
     },
     {
@@ -5191,8 +5235,8 @@
       "source_location": "L3014",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_anthropiccachehandler_init",
-      "community": 63,
-      "community_name": "AnthropicCacheHandler",
+      "community": 25,
+      "community_name": "sitecustomize.py",
       "norm_label": ".__init__()"
     },
     {
@@ -5346,7 +5390,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_rationale_1007",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "omp-google-shared.ts: prompttokencount *includes* cached tokens, so it is..."
     },
     {
@@ -5356,8 +5400,8 @@
       "source_location": "L1029",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_rationale_1029",
-      "community": 45,
-      "community_name": "_messages_to_antigravity_payload",
+      "community": 53,
+      "community_name": "_stream_antigravity_once",
       "norm_label": "translates candidates[0].finishreason into the openai shape."
     },
     {
@@ -5367,8 +5411,8 @@
       "source_location": "L1043",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_rationale_1043",
-      "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community": 46,
+      "community_name": "Exception",
       "norm_label": "omp `ere`: unlike google, input_tokens is not reduced by cached_tokens."
     },
     {
@@ -5379,7 +5423,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_rationale_1058",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "final stream chunk carrying the real usage; without it litellm estimates...."
     },
     {
@@ -5444,8 +5488,8 @@
       "source_location": "L1674",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_rationale_1674",
-      "community": 25,
-      "community_name": "sitecustomize.py",
+      "community": 53,
+      "community_name": "_stream_antigravity_once",
       "norm_label": "cca returns errors inside the stream with http 200. swallowing them makes the..."
     },
     {
@@ -5477,8 +5521,8 @@
       "source_location": "L1769",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_rationale_1769",
-      "community": 25,
-      "community_name": "sitecustomize.py",
+      "community": 53,
+      "community_name": "_stream_antigravity_once",
       "norm_label": "runaway reasoning. distinct from exception so it crosses the handlers that..."
     },
     {
@@ -5489,7 +5533,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_rationale_1806",
       "community": 53,
-      "community_name": "_ThinkingLoopDetector",
+      "community_name": "_stream_antigravity_once",
       "norm_label": "detects runaway reasoning from the text as it streams by. deliberate deviation..."
     },
     {
@@ -5500,7 +5544,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_rationale_1828",
       "community": 53,
-      "community_name": "_ThinkingLoopDetector",
+      "community_name": "_stream_antigravity_once",
       "norm_label": "returns the loop reason, or none. never raises."
     },
     {
@@ -5510,8 +5554,8 @@
       "source_location": "L1889",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_rationale_1889",
-      "community": 25,
-      "community_name": "sitecustomize.py",
+      "community": 53,
+      "community_name": "_stream_antigravity_once",
       "norm_label": "omp only watches the families that actually run away; here we serve gemini."
     },
     {
@@ -5521,8 +5565,8 @@
       "source_location": "L2065",
       "_origin": "ast",
       "id": "litellm_plugin_sitecustomize_rationale_2065",
-      "community": 46,
-      "community_name": "Exception",
+      "community": 45,
+      "community_name": "_messages_to_antigravity_payload",
       "norm_label": "`inlinedata` from a data uri or from an http(s) url. measured on the backend:..."
     },
     {
@@ -6215,7 +6259,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_test_responses_route",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "test_responses_route.py"
     },
     {
@@ -6226,7 +6270,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_test_responses_route_delta",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "delta"
     },
     {
@@ -6237,7 +6281,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_test_responses_route_delta_init",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": ".__init__()"
     },
     {
@@ -6248,7 +6292,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_test_responses_route_streamingchoices",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "streamingchoices"
     },
     {
@@ -6259,7 +6303,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_test_responses_route_streamingchoices_init",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": ".__init__()"
     },
     {
@@ -6270,7 +6314,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_test_responses_route_modelresponsestream",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "modelresponsestream"
     },
     {
@@ -6281,7 +6325,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_test_responses_route_modelresponsestream_init",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": ".__init__()"
     },
     {
@@ -6292,7 +6336,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_test_responses_route_usage",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "usage"
     },
     {
@@ -6303,7 +6347,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_test_responses_route_usage_init",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": ".__init__()"
     },
     {
@@ -6314,7 +6358,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_test_responses_route_customstreamwrapper",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "customstreamwrapper"
     },
     {
@@ -6325,7 +6369,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_test_responses_route_chunks",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "_chunks()"
     },
     {
@@ -6336,7 +6380,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_test_responses_route_drain",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "drain()"
     },
     {
@@ -6347,7 +6391,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_test_responses_route_rationale_1",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "contract of the /v1/responses route and of the stream chunks the bridges emit...."
     },
     {
@@ -6358,7 +6402,7 @@
       "_origin": "ast",
       "id": "litellm_plugin_test_responses_route_rationale_75",
       "community": 43,
-      "community_name": "_stream_antigravity_once",
+      "community_name": "test_responses_route.py",
       "norm_label": "stands in for litellm.customstreamwrapper: the isinstance check the responses..."
     },
     {
@@ -6571,10 +6615,21 @@
       "norm_label": "changes"
     },
     {
-      "label": "2026-09-17 - Sync upstream tokengateway fixes",
+      "label": "2026-09-17 - Native Anthropic prompt-cache breakpoints",
       "file_type": "document",
       "source_file": "CHANGES.md",
       "source_location": "L3",
+      "_origin": "ast",
+      "id": "changes_2026_09_17_native_anthropic_prompt_cache_breakpoints",
+      "community": 18,
+      "community_name": "Changes",
+      "norm_label": "2026-09-17 - native anthropic prompt-cache breakpoints"
+    },
+    {
+      "label": "2026-09-17 - Sync upstream tokengateway fixes",
+      "file_type": "document",
+      "source_file": "CHANGES.md",
+      "source_location": "L16",
       "_origin": "ast",
       "id": "changes_2026_09_17_sync_upstream_tokengateway_fixes",
       "community": 18,
@@ -6585,7 +6640,7 @@
       "label": "2026-09-17 - Claude reasoning bridge verification",
       "file_type": "document",
       "source_file": "CHANGES.md",
-      "source_location": "L17",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "changes_2026_09_17_claude_reasoning_bridge_verification",
       "community": 18,
@@ -6596,7 +6651,7 @@
       "label": "2026-09-17 - Managed Claude alongside native ChatGPT",
       "file_type": "document",
       "source_file": "CHANGES.md",
-      "source_location": "L23",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "changes_2026_09_17_managed_claude_alongside_native_chatgpt",
       "community": 18,
@@ -6607,7 +6662,7 @@
       "label": "2026-09-17 - Separate local ChatGPT session",
       "file_type": "document",
       "source_file": "CHANGES.md",
-      "source_location": "L36",
+      "source_location": "L49",
       "_origin": "ast",
       "id": "changes_2026_09_17_separate_local_chatgpt_session",
       "community": 18,
@@ -6618,7 +6673,7 @@
       "label": "2026-09-17 - Native refresh integration test",
       "file_type": "document",
       "source_file": "CHANGES.md",
-      "source_location": "L44",
+      "source_location": "L57",
       "_origin": "ast",
       "id": "changes_2026_09_17_native_refresh_integration_test",
       "community": 18,
@@ -6629,7 +6684,7 @@
       "label": "2026-09-17 - Native LiteLLM quota panel",
       "file_type": "document",
       "source_file": "CHANGES.md",
-      "source_location": "L53",
+      "source_location": "L66",
       "_origin": "ast",
       "id": "changes_2026_09_17_native_litellm_quota_panel",
       "community": 18,
@@ -6736,10 +6791,21 @@
       "norm_label": "project memory"
     },
     {
-      "label": "Scope and decisions",
+      "label": "Managed Claude prompt caching (2026-09-17)",
       "file_type": "document",
       "source_file": "MEMORY.md",
       "source_location": "L3",
+      "_origin": "ast",
+      "id": "memory_managed_claude_prompt_caching_2026_09_17",
+      "community": 15,
+      "community_name": "Project memory",
+      "norm_label": "managed claude prompt caching (2026-09-17)"
+    },
+    {
+      "label": "Scope and decisions",
+      "file_type": "document",
+      "source_file": "MEMORY.md",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "memory_scope_and_decisions",
       "community": 15,
@@ -6750,7 +6816,7 @@
       "label": "Local deployment verified 2026-09-17",
       "file_type": "document",
       "source_file": "MEMORY.md",
-      "source_location": "L22",
+      "source_location": "L43",
       "_origin": "ast",
       "id": "memory_local_deployment_verified_2026_09_17",
       "community": 15,
@@ -6761,7 +6827,7 @@
       "label": "Operational notes",
       "file_type": "document",
       "source_file": "MEMORY.md",
-      "source_location": "L45",
+      "source_location": "L66",
       "_origin": "ast",
       "id": "memory_operational_notes",
       "community": 15,
@@ -6775,7 +6841,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "readme",
-      "community": 33,
+      "community": 39,
       "community_name": "README.md",
       "norm_label": "readme.md"
     },
@@ -6819,8 +6885,8 @@
       "source_location": "L62",
       "_origin": "ast",
       "id": "readme_screenshots",
-      "community": 8,
-      "community_name": "\u26a1 TokenGateway",
+      "community": 60,
+      "community_name": "\ud83d\udcf8 Screenshots",
       "norm_label": "\ud83d\udcf8 screenshots"
     },
     {
@@ -6830,8 +6896,8 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "readme_1_real_time_subscription_cluster_quota_dashboard",
-      "community": 8,
-      "community_name": "\u26a1 TokenGateway",
+      "community": 60,
+      "community_name": "\ud83d\udcf8 Screenshots",
       "norm_label": "1. real-time subscription & cluster quota dashboard"
     },
     {
@@ -6841,8 +6907,8 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "readme_2_litellm_proxy_unified_model_catalog",
-      "community": 8,
-      "community_name": "\u26a1 TokenGateway",
+      "community": 60,
+      "community_name": "\ud83d\udcf8 Screenshots",
       "norm_label": "2. litellm proxy unified model catalog"
     },
     {
@@ -6852,8 +6918,8 @@
       "source_location": "L82",
       "_origin": "ast",
       "id": "readme_why_is_quota_desktop_needed_the_localhost_port_binding_constraint",
-      "community": 8,
-      "community_name": "\u26a1 TokenGateway",
+      "community": 62,
+      "community_name": "\ud83d\udda5\ufe0f Why is Quota Desktop Needed? (The Localhost Port Binding Constraint)",
       "norm_label": "\ud83d\udda5\ufe0f why is quota desktop needed? (the localhost port binding constraint)"
     },
     {
@@ -6863,8 +6929,8 @@
       "source_location": "L92",
       "_origin": "ast",
       "id": "readme_the_remote_cluster_dilemma",
-      "community": 8,
-      "community_name": "\u26a1 TokenGateway",
+      "community": 62,
+      "community_name": "\ud83d\udda5\ufe0f Why is Quota Desktop Needed? (The Localhost Port Binding Constraint)",
       "norm_label": "the remote cluster dilemma"
     },
     {
@@ -6874,8 +6940,8 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "readme_the_solution_quota_desktop_as_a_loopback_bridge",
-      "community": 8,
-      "community_name": "\u26a1 TokenGateway",
+      "community": 62,
+      "community_name": "\ud83d\udda5\ufe0f Why is Quota Desktop Needed? (The Localhost Port Binding Constraint)",
       "norm_label": "the solution: quota desktop as a loopback bridge"
     },
     {
@@ -7061,8 +7127,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_architecture",
-      "community": 2,
-      "community_name": "Core Components",
+      "community": 49,
+      "community_name": "3. LiteLLM Wire Bridge (`sitecustomize.py`)",
       "norm_label": "architecture.md"
     },
     {
@@ -7072,8 +7138,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_architecture_tokengateway_architecture_wire_protocols",
-      "community": 2,
-      "community_name": "Core Components",
+      "community": 49,
+      "community_name": "3. LiteLLM Wire Bridge (`sitecustomize.py`)",
       "norm_label": "tokengateway \u2014 architecture & wire protocols"
     },
     {
@@ -7083,8 +7149,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "docs_architecture_core_components",
-      "community": 2,
-      "community_name": "Core Components",
+      "community": 49,
+      "community_name": "3. LiteLLM Wire Bridge (`sitecustomize.py`)",
       "norm_label": "core components"
     },
     {
@@ -7094,8 +7160,8 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "docs_architecture_1_quota_dashboard_web_backend",
-      "community": 2,
-      "community_name": "Core Components",
+      "community": 49,
+      "community_name": "3. LiteLLM Wire Bridge (`sitecustomize.py`)",
       "norm_label": "1. quota dashboard (web & backend)"
     },
     {
@@ -7105,8 +7171,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "docs_architecture_2_quota_desktop_tauri_v2_app_local_loopback_bridge",
-      "community": 2,
-      "community_name": "Core Components",
+      "community": 49,
+      "community_name": "3. LiteLLM Wire Bridge (`sitecustomize.py`)",
       "norm_label": "2. quota desktop (tauri v2 app / local loopback bridge)"
     },
     {
@@ -7248,7 +7314,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_native_litellm",
-      "community": 33,
+      "community": 39,
       "community_name": "README.md",
       "norm_label": "native-litellm.md"
     },
@@ -7337,7 +7403,7 @@
       "_origin": "ast",
       "id": "docs_oauth_setup_anthropic",
       "community": 33,
-      "community_name": "README.md",
+      "community_name": "Anthropic Claude Max OAuth Setup Guide",
       "norm_label": "oauth-setup-anthropic.md"
     },
     {
@@ -7348,7 +7414,7 @@
       "_origin": "ast",
       "id": "docs_oauth_setup_anthropic_anthropic_claude_max_oauth_setup_guide",
       "community": 33,
-      "community_name": "README.md",
+      "community_name": "Anthropic Claude Max OAuth Setup Guide",
       "norm_label": "anthropic claude max oauth setup guide"
     },
     {
@@ -7359,7 +7425,7 @@
       "_origin": "ast",
       "id": "docs_oauth_setup_anthropic_how_it_works",
       "community": 33,
-      "community_name": "README.md",
+      "community_name": "Anthropic Claude Max OAuth Setup Guide",
       "norm_label": "how it works"
     },
     {
@@ -7370,7 +7436,7 @@
       "_origin": "ast",
       "id": "docs_oauth_setup_anthropic_authentication_via_quota_desktop",
       "community": 33,
-      "community_name": "README.md",
+      "community_name": "Anthropic Claude Max OAuth Setup Guide",
       "norm_label": "authentication via quota desktop"
     },
     {
@@ -7381,7 +7447,7 @@
       "_origin": "ast",
       "id": "docs_oauth_setup_anthropic_manual_authentication_via_terminal_oh_my_pi_omp",
       "community": 33,
-      "community_name": "README.md",
+      "community_name": "Anthropic Claude Max OAuth Setup Guide",
       "norm_label": "manual authentication via terminal (oh my pi / omp)"
     },
     {
@@ -7391,8 +7457,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_oauth_setup_google",
-      "community": 38,
-      "community_name": "Google Antigravity (Cloud Code API) Setup Guide",
+      "community": 39,
+      "community_name": "README.md",
       "norm_label": "oauth-setup-google.md"
     },
     {
@@ -7458,7 +7524,7 @@
       "_origin": "ast",
       "id": "docs_oauth_setup_openai",
       "community": 39,
-      "community_name": "OpenAI ChatGPT Plus / Codex Responses API Setup Guide",
+      "community_name": "README.md",
       "norm_label": "oauth-setup-openai.md"
     },
     {
@@ -7469,7 +7535,7 @@
       "_origin": "ast",
       "id": "docs_oauth_setup_openai_openai_chatgpt_plus_codex_responses_api_setup_guide",
       "community": 39,
-      "community_name": "OpenAI ChatGPT Plus / Codex Responses API Setup Guide",
+      "community_name": "README.md",
       "norm_label": "openai chatgpt plus / codex responses api setup guide"
     },
     {
@@ -7480,7 +7546,7 @@
       "_origin": "ast",
       "id": "docs_oauth_setup_openai_how_it_works",
       "community": 39,
-      "community_name": "OpenAI ChatGPT Plus / Codex Responses API Setup Guide",
+      "community_name": "README.md",
       "norm_label": "how it works"
     },
     {
@@ -7491,7 +7557,7 @@
       "_origin": "ast",
       "id": "docs_oauth_setup_openai_authentication_via_quota_desktop",
       "community": 39,
-      "community_name": "OpenAI ChatGPT Plus / Codex Responses API Setup Guide",
+      "community_name": "README.md",
       "norm_label": "authentication via quota desktop"
     },
     {
@@ -7502,7 +7568,7 @@
       "_origin": "ast",
       "id": "docs_oauth_setup_openai_supported_models_in_litellm",
       "community": 39,
-      "community_name": "OpenAI ChatGPT Plus / Codex Responses API Setup Guide",
+      "community_name": "README.md",
       "norm_label": "supported models in litellm"
     },
     {
@@ -8354,7 +8420,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "dashboard/src/anthropic.ts",
-      "source_location": "L34",
+      "source_location": "L73",
       "weight": 1.0,
       "_origin": "ast",
       "source": "dashboard_src_anthropic",
@@ -8365,11 +8431,55 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "dashboard/src/anthropic.ts",
-      "source_location": "L9",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "dashboard_src_anthropic",
+      "target": "dashboard_src_anthropic_applyconversationcache",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "dashboard_src_anthropic",
+      "target": "dashboard_src_anthropic_cache_control",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast",
       "source": "dashboard_src_anthropic",
       "target": "dashboard_src_anthropic_claudeoauthbody",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "dashboard_src_anthropic",
+      "target": "dashboard_src_anthropic_countcachebreakpoints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "dashboard_src_anthropic",
+      "target": "dashboard_src_anthropic_markcacheablecontent",
       "confidence_score": 1.0
     },
     {
@@ -8473,7 +8583,79 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "dashboard/src/anthropic.ts",
-      "source_location": "L47",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "dashboard_src_anthropic_applyconversationcache",
+      "target": "dashboard_src_anthropic_countcachebreakpoints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "dashboard_src_anthropic_countcachebreakpoints",
+      "target": "dashboard_src_guards_isrecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "dashboard_src_anthropic_applyconversationcache",
+      "target": "dashboard_src_anthropic_markcacheablecontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "dashboard_src_anthropic_markcacheablecontent",
+      "target": "dashboard_src_guards_isrecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "dashboard_src_anthropic_applyconversationcache",
+      "target": "dashboard_src_guards_isrecord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "dashboard_src_anthropic_claudeoauthbody",
+      "target": "dashboard_src_anthropic_applyconversationcache",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L86",
       "weight": 1.0,
       "_origin": "ast",
       "source": "dashboard_src_anthropic_anthropicproxy",
@@ -8486,7 +8668,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "dashboard/src/anthropic.ts",
-      "source_location": "L10",
+      "source_location": "L48",
       "weight": 1.0,
       "_origin": "ast",
       "source": "dashboard_src_anthropic_claudeoauthbody",
@@ -8510,7 +8692,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "dashboard/src/anthropic.ts",
-      "source_location": "L53",
+      "source_location": "L92",
       "weight": 1.0,
       "_origin": "ast",
       "source": "dashboard_src_anthropic_anthropicproxy",
@@ -8522,7 +8704,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "dashboard/src/anthropic.ts",
-      "source_location": "L72",
+      "source_location": "L111",
       "weight": 1.0,
       "_origin": "ast",
       "source": "dashboard_src_anthropic_anthropicproxy",
@@ -8534,7 +8716,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "dashboard/src/anthropic.ts",
-      "source_location": "L51",
+      "source_location": "L90",
       "weight": 1.0,
       "_origin": "ast",
       "source": "dashboard_src_anthropic_anthropicproxy",
@@ -11271,7 +11453,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "dashboard/tests/managed-anthropic.test.ts",
-      "source_location": "L107",
+      "source_location": "L147",
       "weight": 1.0,
       "_origin": "ast",
       "source": "dashboard_tests_managed_anthropic_test",
@@ -20326,7 +20508,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CHANGES.md",
-      "source_location": "L17",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast",
       "source": "changes_changes",
@@ -20337,7 +20519,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CHANGES.md",
-      "source_location": "L23",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast",
       "source": "changes_changes",
@@ -20348,7 +20530,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CHANGES.md",
-      "source_location": "L53",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "changes_changes",
+      "target": "changes_2026_09_17_native_anthropic_prompt_cache_breakpoints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CHANGES.md",
+      "source_location": "L66",
       "weight": 1.0,
       "_origin": "ast",
       "source": "changes_changes",
@@ -20359,7 +20552,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CHANGES.md",
-      "source_location": "L44",
+      "source_location": "L57",
       "weight": 1.0,
       "_origin": "ast",
       "source": "changes_changes",
@@ -20370,7 +20563,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CHANGES.md",
-      "source_location": "L36",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast",
       "source": "changes_changes",
@@ -20381,7 +20574,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CHANGES.md",
-      "source_location": "L3",
+      "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
       "source": "changes_changes",
@@ -20480,7 +20673,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "MEMORY.md",
-      "source_location": "L22",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast",
       "source": "memory_project_memory",
@@ -20491,7 +20684,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "MEMORY.md",
-      "source_location": "L45",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "memory_project_memory",
+      "target": "memory_managed_claude_prompt_caching_2026_09_17",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "MEMORY.md",
+      "source_location": "L66",
       "weight": 1.0,
       "_origin": "ast",
       "source": "memory_project_memory",
@@ -20502,7 +20706,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "MEMORY.md",
-      "source_location": "L3",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
       "source": "memory_project_memory",
@@ -21303,5 +21507,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "c4b9eebb8a351f7ca7bb30a48356a94762c4351a"
+  "built_at_commit": "5d44d47f88ae68b0e4f8531ad1e653cacfecb54c"
 }
