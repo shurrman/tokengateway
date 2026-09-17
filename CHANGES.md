@@ -1,5 +1,11 @@
 # Changes
 
+## 2026-09-17 - Claude reasoning bridge verification
+
+- Document LiteLLM's existing `reasoning_effort` to Anthropic `thinking` mapping.
+- Add a regression test confirming native `thinking` and `output_config` survive
+  the TokenGateway OAuth identity rewrite.
+
 ## 2026-09-17 - Managed Claude alongside native ChatGPT
 
 - Add an opt-in Anthropic card and native Messages/models proxy protected by

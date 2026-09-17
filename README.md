@@ -50,7 +50,7 @@ Developers and AI engineers pay expensive monthly subscriptions (**Claude Max** 
 │  ┌───────────────────────────────────────────────────────┐  │
 │  │ sitecustomize.py (Wire Transformer Plugin)            │  │
 │  │                                                       │  │
-│  │ • Anthropic: Isolates Claude Agent SDK identity + caches client instructions │
+│  │ • Anthropic: Isolates Claude identity + preserves thinking/tool wire fields │
 │  │ • OpenAI: 1:1 Responses API Wire (httpx AsyncStream)  │  │
 │  │ • Google: parametersJsonSchema + thoughtSignature     │  │
 │  └───────────────────────────────────────────────────────┘  │

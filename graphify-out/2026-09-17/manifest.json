@@ -5,8 +5,8 @@
     "semantic_hash": ""
   },
   "dashboard/server.ts": {
-    "mtime": 1789613081.576506,
-    "ast_hash": "6c2594d3cadc2d35d2c96b579d84c552",
+    "mtime": 1789613626.5821865,
+    "ast_hash": "a870c7544b5f6ec697a1965ad10ce596",
     "semantic_hash": ""
   },
   "dashboard/src/auth.ts": {
@@ -45,8 +45,8 @@
     "semantic_hash": ""
   },
   "dashboard/src/usage.ts": {
-    "mtime": 1789612415.7427804,
-    "ast_hash": "4f7ce5b1650352c304aa8d4503629a0e",
+    "mtime": 1789613626.5821865,
+    "ast_hash": "bded652e3d81cb916af53e2925e609c6",
     "semantic_hash": ""
   },
   "dashboard/tests/auth.test.ts": {
@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "dashboard/tests/server.test.ts": {
-    "mtime": 1789610854.384384,
-    "ast_hash": "66190a5a1e03ccd58585c7e824e6f677",
+    "mtime": 1789613695.7834346,
+    "ast_hash": "0c69874b799dc16d50807d9ea8d9f8b8",
     "semantic_hash": ""
   },
   "dashboard/tsconfig.json": {
@@ -150,13 +150,13 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1789611229.7811115,
-    "ast_hash": "c64144bddee44ba8cc8f45e6d3cd8c93",
+    "mtime": 1789613954.919298,
+    "ast_hash": "22a95634a685aced5d3e884f44dc94af",
     "semantic_hash": ""
   },
   "CHANGES.md": {
-    "mtime": 1789613154.374098,
-    "ast_hash": "021bc7d4f418faa3355cd4fa8ef10467",
+    "mtime": 1789613954.919298,
+    "ast_hash": "d55f9f7fb065b4452317392b76ad9a5b",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -165,13 +165,13 @@
     "semantic_hash": ""
   },
   "MEMORY.md": {
-    "mtime": 1789613154.374098,
-    "ast_hash": "ee04ca5c2b3e38e5670eb2da76e46a9a",
+    "mtime": 1789613954.9202979,
+    "ast_hash": "cfefdedbc0eb3bb83318b38d4aa81fb9",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1789611229.7801116,
-    "ast_hash": "a88deeacf124ae913b63fe9969f00867",
+    "mtime": 1789613954.919298,
+    "ast_hash": "2d967dff86a6b2d8d5bb13b4fecc7b2e",
     "semantic_hash": ""
   },
   "deploy/docker/litellm-config.yaml": {
@@ -210,8 +210,8 @@
     "semantic_hash": ""
   },
   "docs/native-litellm.md": {
-    "mtime": 1789613154.373098,
-    "ast_hash": "cd98af9346bc059287de776a72dcaa01",
+    "mtime": 1789614001.8312032,
+    "ast_hash": "a2175ee7ef0f0735937d9f78567f9342",
     "semantic_hash": ""
   },
   "docs/oauth-setup-anthropic.md": {

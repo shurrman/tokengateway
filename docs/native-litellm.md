@@ -138,7 +138,11 @@ provider integration. It inherits the upstream identity convention: a fixed
 Claude Agent SDK system message, with client system text moved into the first
 user message. This changes instruction priority; it does not preserve system
 semantics. Tool schemas/results and streaming events are preserved by the
-adapter, but provider acceptance and actual tool behavior require live tests.
+adapter. LiteLLM 1.100.1 also maps OpenAI-compatible `reasoning_effort` values
+to Anthropic `thinking`; adaptive Claude families receive `output_config.effort`.
+Native `thinking` and `output_config` fields are passed through TokenGateway
+unchanged apart from the OAuth system-identity rewrite. Provider acceptance and
+actual reasoning behavior still require live tests.
 
 Current local verification: both cards load, ChatGPT quotas succeed, anonymous
 requests return401, raw credentials return403, and inference before Claude

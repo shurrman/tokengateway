@@ -1,10 +1,10 @@
 {
   "0": "usage.ts",
   "1": "sitecustomize.py",
-  "2": "README.md",
+  "2": "3. LiteLLM Wire Bridge (`sitecustomize.py`)",
   "3": "oauth.rs",
   "4": "definitions",
-  "5": "properties",
+  "5": "permissions",
   "6": "definitions",
   "7": "properties",
   "8": "⚡ TokenGateway",
@@ -28,5 +28,19 @@
   "26": "litellm.ts",
   "27": "isRecord",
   "28": "store.ts",
-  "29": "managed-anthropic.test.ts"
+  "29": "webviews",
+  "30": "properties",
+  "31": "CapabilityRemote",
+  "32": "Development Setup",
+  "33": "README.md",
+  "34": "Read-only ChatGPT quotas for an existing LiteLLM service",
+  "35": "LiteLLM Wire Bridge Plugin (OMP 1:1 Compatible)",
+  "36": "Capability",
+  "37": "desktop-schema.json",
+  "38": "Google Antigravity (Cloud Code API) Setup Guide",
+  "39": "OpenAI ChatGPT Plus / Codex Responses API Setup Guide",
+  "40": "description",
+  "41": "local",
+  "42": "ShellScopeEntryAllowedArgs",
+  "43": "📸 Screenshots"
 }

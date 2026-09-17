@@ -88,6 +88,22 @@ test("OAuth system identity preserves client instructions, tool schemas, and too
 	expect(input.messages[0].content).toHaveLength(1);
 });
 
+test("native thinking configuration passes through the OAuth identity bridge", () => {
+	const input = {
+		model: "claude-sonnet-5",
+		system: "Keep the project conventions",
+		thinking: { type: "adaptive" },
+		output_config: { effort: "high" },
+		max_tokens: 400,
+		messages: [{ role: "user", content: "Solve this carefully" }],
+	};
+	const body = claudeOAuthBody(input);
+	expect(body.thinking).toEqual(input.thinking);
+	expect(body.output_config).toEqual(input.output_config);
+	expect(body.system).toEqual([{ type: "text", text: "You are a Claude agent, built on Anthropic's Claude Agent SDK." }]);
+	expect((body.messages as any[])[0].content[0]).toEqual({ type: "text", text: input.system });
+});
+
 function messageRequest(headers: Record<string, string> = { "x-api-key": key }) {
 	return new Request("http://localhost/anthropic/v1/messages", { method: "POST", headers,
 		body: JSON.stringify({ model: "claude-sonnet-5", messages: [{ role: "user", content: "hello" }], max_tokens: 40, stream: true }),
