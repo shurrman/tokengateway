@@ -99,7 +99,7 @@ export function anthropicProxy(key: string) {
 					Authorization: `Bearer ${access}`,
 					"anthropic-version": request.headers.get("anthropic-version") || "2023-06-01",
 					"anthropic-beta": [...betas].join(","),
-					"user-agent": "claude-cli/2.1.246 (external, claude-desktop)",
+					"user-agent": "claude-cli/2.1.278 (external, claude-desktop)",
 					"content-type": "application/json",
 				},
 				body,
