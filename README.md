@@ -131,6 +131,15 @@ proxy for LiteLLM, without loading the Python subscription plugin or taking
 ownership of ChatGPT refresh. See the managed Claude section of the native
 guide for authentication, persistence and current verification limits.
 
+The dashboard also has an optional DeepSeek card for a static API key. It shows
+the account balance from `GET /user/balance` (currency, total, topped-up, and
+granted) rather than a quota-percentage bar, because DeepSeek does not expose a
+public subscription-usage endpoint. Connect it by pasting the API key into the
+card. With `LITELLM_ADMIN_KEY` configured, the same connect step also registers
+`deepseek-v4-pro` and `deepseek-v4-flash` in LiteLLM through the admin API, and
+disconnect removes them; without that key the card still saves the credential
+for balance display but reports that LiteLLM registration was not performed.
+
 The dashboard binds to `0.0.0.0` for the intended closed LAN and requires HTTP Basic auth
 (username `quota`, password from `DASHBOARD_PASSWORD_FILE` or
 `DASHBOARD_PASSWORD`, at least 16 characters).

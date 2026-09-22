@@ -44,8 +44,8 @@ bun run tsc --noEmit
 cd ..
 ```
 
-The service template assumes `/usr/bin/bun`, existing user/group `litellm`,
-and `/var/lib/litellm/chatgpt-local/auth.json`. Adjust these paths to match your host.
+The service template assumes `/opt/tokengateway-quota/bun`, existing user/group `litellm`,
+and `/var/lib/litellm/chatgpt/auth.json`. Adjust these paths to match your host.
 Install a reviewed checkout (the commands below do not modify LiteLLM):
 
 ```bash
@@ -160,6 +160,30 @@ bun run tsc --noEmit
 Claude user login, a configured LiteLLM alias, live streaming/tool calls and
 Responses translation are still pending. Do not infer end-to-end readiness
 from the mock tests.
+
+## DeepSeek balance card (optional)
+
+The same dashboard accepts a static DeepSeek API key. Click **Connect API key**
+on the DeepSeek card, paste the key, and the card fetches
+`https://api.deepseek.com/user/balance` with `Authorization: Bearer <key>`.
+
+DeepSeek has no public OAuth/subscription-quota endpoint comparable to
+Anthropic, OpenAI, or Google, so the card displays the account balance fields
+the platform returns (`currency`, `total_balance`, `topped_up_balance`,
+`granted_balance`) instead of a percent-used bar. The key is stored in the
+same private credential store as the managed Claude credential and can be
+removed with **disconnect**. The card does not add a LiteLLM model or change
+existing ChatGPT/Claude routing.
+
+When `LITELLM_ADMIN_KEY` is configured, the connect step also registers
+`deepseek-v4-pro` and `deepseek-v4-flash` in LiteLLM through the admin API:
+`/model/new` for new deployments and `/model/update` when a deployment with
+the same public name already exists. Disconnect deletes those two deployments
+with `/model/delete`. The admin credential is passed to the service through
+`LoadCredential=litellm-admin-key:/etc/tokengateway/litellm-admin-key` and
+`LITELLM_ADMIN_KEY_FILE=%d/litellm-admin-key`; it should be a narrowly scoped
+LiteLLM key, not the master key. Without this credential the card still saves
+the DeepSeek key for balance and reports that LiteLLM registration was skipped.
 
 ## Verify and stop
 

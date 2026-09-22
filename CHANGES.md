@@ -1,5 +1,26 @@
 # Changes
 
+## 2026-09-22 - DeepSeek balance card
+
+- Add an optional DeepSeek card to the dashboard for static API keys.
+- Connect from the card by pasting the key; the credential is stored in the
+  same private credential store as managed OAuth providers.
+- Fetch `https://api.deepseek.com/user/balance` and show currency, total,
+  topped-up, and granted balance instead of a quota-percentage bar.
+- Keep DeepSeek out of the OAuth flow: `ProviderConfig` now distinguishes
+  `oauth` from `api-key`, and `/api/login/deepseek` is rejected explicitly.
+- Native read-only and managed-Anthropic paths are unchanged; component and
+  HTTP tests still pass.
+- Connect now also registers `deepseek-v4-pro` and `deepseek-v4-flash` in
+  LiteLLM through `/model/new` or `/model/update`, and disconnect removes them
+  through `/model/delete`. The dashboard uses `LITELLM_BASE_URL` and a
+  `LITELLM_ADMIN_KEY_FILE` credential; without that key the card still saves
+  the DeepSeek key for balance but reports that LiteLLM registration was not
+  performed.
+- Deployed to production on 2026-09-22 with a proxy_admin service key and an
+  end-to-end fake-key connect/disconnect check; the temporary models were
+  removed and `/v1/models` stayed at 16.
+
 ## 2026-09-17 - Native Anthropic prompt-cache breakpoints
 
 - Add two rolling `cache_control: ephemeral` breakpoints to the last cacheable

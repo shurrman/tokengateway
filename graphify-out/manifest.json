@@ -5,8 +5,8 @@
     "semantic_hash": ""
   },
   "dashboard/server.ts": {
-    "mtime": 1789676309.2124457,
-    "ast_hash": "a870c7544b5f6ec697a1965ad10ce596",
+    "mtime": 1790103686.0349364,
+    "ast_hash": "fb52976548c77a8ff98cd71209eb7af8",
     "semantic_hash": ""
   },
   "dashboard/src/auth.ts": {
@@ -25,13 +25,13 @@
     "semantic_hash": ""
   },
   "dashboard/src/oauth.ts": {
-    "mtime": 1789676309.2144458,
-    "ast_hash": "6407bad436a0cbd9a1598e930079f484",
+    "mtime": 1790102168.565458,
+    "ast_hash": "ddbc58993df571f7905a5c6b346f5cfe",
     "semantic_hash": ""
   },
   "dashboard/src/providers.ts": {
-    "mtime": 1789610397.8041182,
-    "ast_hash": "f6d3cfa04b8ade6d2df68e90c5c36c9c",
+    "mtime": 1790102168.562458,
+    "ast_hash": "48779503bd35fc4ad6870440029cedce",
     "semantic_hash": ""
   },
   "dashboard/src/store.ts": {
@@ -40,13 +40,13 @@
     "semantic_hash": ""
   },
   "dashboard/src/ui.ts": {
-    "mtime": 1789676309.2164457,
-    "ast_hash": "ac236b289990b473872055e502841f5c",
+    "mtime": 1790103674.522777,
+    "ast_hash": "37bc8f6f789465220111fab7f5009111",
     "semantic_hash": ""
   },
   "dashboard/src/usage.ts": {
-    "mtime": 1789676309.2174459,
-    "ast_hash": "bded652e3d81cb916af53e2925e609c6",
+    "mtime": 1790102230.1053731,
+    "ast_hash": "839ab1a2ed998bf332490f072d3b0abf",
     "semantic_hash": ""
   },
   "dashboard/tests/auth.test.ts": {
@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "dashboard/tests/server.test.ts": {
-    "mtime": 1789676309.2214458,
-    "ast_hash": "0c69874b799dc16d50807d9ea8d9f8b8",
+    "mtime": 1790103710.7572787,
+    "ast_hash": "d993c664dd65e420efdd9670cb9d939b",
     "semantic_hash": ""
   },
   "dashboard/tsconfig.json": {
@@ -155,8 +155,8 @@
     "semantic_hash": ""
   },
   "CHANGES.md": {
-    "mtime": 1789679029.861128,
-    "ast_hash": "907feec89800189d5611cf68e1800c91",
+    "mtime": 1790104482.235937,
+    "ast_hash": "a854f6bd49101568dc948e0ea2ce1153",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -165,13 +165,13 @@
     "semantic_hash": ""
   },
   "MEMORY.md": {
-    "mtime": 1789679029.8631282,
-    "ast_hash": "0428356b2e5258e316ca8f7c550925aa",
+    "mtime": 1790104474.1928263,
+    "ast_hash": "231c470f5bf9fafdee2c398332f5708f",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1789676309.2124457,
-    "ast_hash": "90c2f4cb2e63262f8a025fa5b7821b41",
+    "mtime": 1790103841.8640928,
+    "ast_hash": "ee4e1ffcf33fafe46bb5446285a32f4a",
     "semantic_hash": ""
   },
   "deploy/docker/litellm-config.yaml": {
@@ -210,8 +210,8 @@
     "semantic_hash": ""
   },
   "docs/native-litellm.md": {
-    "mtime": 1789676309.224446,
-    "ast_hash": "2cee1b0692aed793aab34fa97092b362",
+    "mtime": 1790104563.5210588,
+    "ast_hash": "c5a19a7dfb6ee9fc7b3805724905c60a",
     "semantic_hash": ""
   },
   "docs/oauth-setup-anthropic.md": {
@@ -275,8 +275,8 @@
     "semantic_hash": ""
   },
   "dashboard/src/anthropic.ts": {
-    "mtime": 1789678816.0556016,
-    "ast_hash": "ce76add866b76c6aa159d3dd09e11f00",
+    "mtime": 1790009763.691641,
+    "ast_hash": "76e6aa0af59ffd0b5d7f3810d717ade3",
     "semantic_hash": ""
   },
   "dashboard/src/atomic-json.ts": {
@@ -312,6 +312,11 @@
   "deploy/kubernetes/litellm.yaml": {
     "mtime": 1789676309.222446,
     "ast_hash": "597c14490964b83dc6b9d9ea5d7a7247",
+    "semantic_hash": ""
+  },
+  "dashboard/tests/deepseek-liteLLM-sync.test.ts": {
+    "mtime": 1790103777.3592005,
+    "ast_hash": "d790bb96f0371c0b884eddd8ebadcfdd",
     "semantic_hash": ""
   }
 }

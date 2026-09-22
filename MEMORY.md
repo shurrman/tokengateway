@@ -1,5 +1,27 @@
 # Project memory
 
+## DeepSeek balance card (2026-09-22)
+
+- Added an optional static-API-key DeepSeek card to the dashboard. The card
+  connects via `POST /api/connect/deepseek`, stores the key in the private
+  credential store, and renders `GET https://api.deepseek.com/user/balance`
+  as currency/total/topped-up/granted rather than a percent-used quota bar.
+- `ProviderConfig` now has `authMode: "oauth" | "api-key"`; OAuth-only paths
+  narrow through `oauthConfig()` and `/api/login/deepseek` returns 400.
+- When `LITELLM_ADMIN_KEY`/`LITELLM_ADMIN_KEY_FILE` is configured, connect also
+  registers `deepseek-v4-pro` and `deepseek-v4-flash` in LiteLLM via
+  `/model/new` or `/model/update`; disconnect deletes them via `/model/delete`.
+  The systemd template now passes the admin credential as a LoadCredential file.
+- Deployed to production `192.168.128.35` on 2026-09-22: created user
+  `tokengateway-deepseek` with `proxy_admin` role and key in
+  `/etc/tokengateway/litellm-admin-key`, copied dashboard sources and the unit,
+  fixed `ExecStart` to `/opt/tokengateway-quota/bun`, and restarted only
+  `tokengateway-quota`. End-to-end fake-key connect/disconnect test passed.
+- Verification: `bun run tsc --noEmit` clean; `bun test tests` and
+  `TEST_MANAGED_ANTHROPIC=1 bun test tests/server.test.ts` pass only with
+  `require_escalated` because the sandbox blocks loopback port binding.
+- No commit/push yet; user asked for implementation only.
+
 ## Managed Claude prompt caching (2026-09-17)
 
 - Diagnosed `cached_input_tokens=0` from the Opus compaction incident. The
