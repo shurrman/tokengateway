@@ -57,6 +57,34 @@ interface PendingLogin {
 
 const pending: Map<ProviderId, PendingLogin> = new Map();
 
+type OAuthConfig = {
+	authMode: "oauth";
+	authorizeUrl: string;
+	tokenUrl: string;
+	clientId: string;
+	clientSecret?: string;
+	usePkce: boolean;
+	scopes: string;
+	callbackPort: number;
+	callbackPath: string;
+	extraAuthParams: Record<string, string>;
+} & Pick<ProviderConfig, "id" | "label" | "dashboardUrl">;
+
+function oauthConfig(config: ProviderConfig): OAuthConfig {
+	if (config.authMode !== "oauth"
+		|| !config.authorizeUrl
+		|| !config.tokenUrl
+		|| !config.clientId
+		|| config.usePkce === undefined
+		|| !config.scopes
+		|| config.callbackPort === undefined
+		|| !config.callbackPath
+		|| !config.extraAuthParams) {
+		throw new Error(`${config.label} does not support OAuth login`);
+	}
+	return config as OAuthConfig;
+}
+
 async function generatePkce(): Promise<{ verifier: string; challenge: string }> {
 	const bytes = new Uint8Array(96);
 	crypto.getRandomValues(bytes);
@@ -79,7 +107,7 @@ div{text-align:center}h1{font-size:1.3em;margin-bottom:8px}p{color:#8b949e;font-
 export async function beginLogin(providerId: ProviderId): Promise<{ url: string; completion: Promise<void> }> {
 	cancelLogin(providerId);
 
-	const config = PROVIDERS[providerId];
+	const config = oauthConfig(PROVIDERS[providerId]);
 	const { verifier, challenge } = await generatePkce();
 	const state = crypto.randomUUID();
 	const redirectUri = `http://localhost:${config.callbackPort}${config.callbackPath}`;
@@ -226,7 +254,7 @@ function readIdTokenClaims(idToken: string | undefined): { email?: string; plan?
 }
 
 async function exchangeCode(
-	config: ProviderConfig,
+	config: OAuthConfig,
 	code: string,
 	verifier: string,
 	redirectUri: string,
@@ -307,7 +335,7 @@ async function refreshLatestCredential(
 		&& latest.expires && latest.expires > Date.now() + 60_000) return latest;
 	credential = latest;
 	if (!credential.refresh) throw new Error(`${providerId}: no refresh token — a new login is required`);
-	const config = PROVIDERS[providerId];
+	const config = oauthConfig(PROVIDERS[providerId]);
 	const isAnthropic = providerId === "anthropic";
 
 	const body = isAnthropic

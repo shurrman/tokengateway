@@ -8,10 +8,10 @@ Type=simple
 User=litellm
 Group=litellm
 WorkingDirectory=/opt/tokengateway-quota/dashboard
-ExecStart=/usr/bin/bun /opt/tokengateway-quota/dashboard/server.ts
+ExecStart=/opt/tokengateway-quota/bun /opt/tokengateway-quota/dashboard/server.ts
 Environment=HOST=0.0.0.0
 Environment=PORT=3737
-Environment=LITELLM_CHATGPT_AUTH_FILE=/var/lib/litellm/chatgpt-local/auth.json
+Environment=LITELLM_CHATGPT_AUTH_FILE=/var/lib/litellm/chatgpt/auth.json
 LoadCredential=dashboard-password:/etc/tokengateway/dashboard-password
 Environment=DASHBOARD_PASSWORD_FILE=%d/dashboard-password
 StateDirectory=tokengateway-quota
@@ -21,6 +21,9 @@ Environment=CREDENTIALS_REQUIRE_DURABLE=1
 Environment=MANAGED_ANTHROPIC=1
 LoadCredential=anthropic-proxy-key:/etc/tokengateway/anthropic-proxy-key
 Environment=ANTHROPIC_PROXY_KEY_FILE=%d/anthropic-proxy-key
+Environment=LITELLM_BASE_URL=http://127.0.0.1:4000
+LoadCredential=litellm-admin-key:/etc/tokengateway/litellm-admin-key
+Environment=LITELLM_ADMIN_KEY_FILE=%d/litellm-admin-key
 Restart=on-failure
 RestartSec=5
 UMask=0077
@@ -29,7 +32,7 @@ PrivateTmp=true
 PrivateDevices=true
 ProtectSystem=strict
 ProtectHome=true
-ReadOnlyPaths=/var/lib/litellm/chatgpt-local
+ReadOnlyPaths=/var/lib/litellm/chatgpt
 ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectControlGroups=true

@@ -11,14 +11,16 @@
  * inspecting your own account on your own machine.
  */
 
-export type ProviderId = "anthropic" | "openai-codex" | "google-antigravity";
+export type ProviderId = "anthropic" | "openai-codex" | "google-antigravity" | "deepseek";
 
 export interface ProviderConfig {
 	id: ProviderId;
 	label: string;
-	authorizeUrl: string;
-	tokenUrl: string;
-	clientId: string;
+	/** "oauth" providers use PKCE/authorization codes; "api-key" uses a static key. */
+	authMode: "oauth" | "api-key";
+	authorizeUrl?: string;
+	tokenUrl?: string;
+	clientId?: string;
 	/** Public-client secret required by Google's token endpoint. */
 	clientSecret?: string;
 	/**
@@ -27,13 +29,13 @@ export interface ProviderConfig {
 	 * authenticates with the shipped secret and its authorization codes are not
 	 * challenge-bound, so sending a challenge there breaks the redirect.
 	 */
-	usePkce: boolean;
-	scopes: string;
+	usePkce?: boolean;
+	scopes?: string;
 	/** Loopback port the provider has whitelisted for this client. */
-	callbackPort: number;
-	callbackPath: string;
+	callbackPort?: number;
+	callbackPath?: string;
 	/** Extra authorize-query parameters the provider requires. */
-	extraAuthParams: Record<string, string>;
+	extraAuthParams?: Record<string, string>;
 	/** Where the provider's own usage dashboard lives. */
 	dashboardUrl: string;
 }
@@ -59,6 +61,7 @@ export const PROVIDERS: Record<ProviderId, ProviderConfig> = {
 	anthropic: {
 		id: "anthropic",
 		label: "Anthropic",
+		authMode: "oauth",
 		authorizeUrl: "https://claude.ai/oauth/authorize",
 		tokenUrl: "https://api.anthropic.com/v1/oauth/token",
 		clientId: "9d1c250a-e61b-44d9-88ed-5944d1962f5e",
@@ -73,6 +76,7 @@ export const PROVIDERS: Record<ProviderId, ProviderConfig> = {
 	"openai-codex": {
 		id: "openai-codex",
 		label: "OpenAI Codex",
+		authMode: "oauth",
 		authorizeUrl: "https://auth.openai.com/oauth/authorize",
 		tokenUrl: "https://auth.openai.com/oauth/token",
 		clientId: "app_EMoamEEZ73f0CkXaXp7hrann",
@@ -90,6 +94,7 @@ export const PROVIDERS: Record<ProviderId, ProviderConfig> = {
 	"google-antigravity": {
 		id: "google-antigravity",
 		label: "Google Antigravity",
+		authMode: "oauth",
 		authorizeUrl: "https://accounts.google.com/o/oauth2/v2/auth",
 		tokenUrl: "https://oauth2.googleapis.com/token",
 		clientId: "1071006060591-tmhssin2h21lcre235vtolojh4g403ep.apps.googleusercontent.com",
@@ -101,6 +106,12 @@ export const PROVIDERS: Record<ProviderId, ProviderConfig> = {
 		// Google only returns a refresh token when consent is forced.
 		extraAuthParams: { access_type: "offline", prompt: "consent" },
 		dashboardUrl: "https://antigravity.google",
+	},
+	deepseek: {
+		id: "deepseek",
+		label: "DeepSeek",
+		authMode: "api-key",
+		dashboardUrl: "https://platform.deepseek.com/usage",
 	},
 };
 
@@ -115,6 +126,7 @@ export function isProviderId(value: string): value is ProviderId {
 export const ANTHROPIC_USAGE_URL = "https://api.anthropic.com/api/oauth/usage";
 export const CODEX_USAGE_URL = "https://chatgpt.com/backend-api/wham/usage";
 export const ANTIGRAVITY_ENDPOINT = "https://daily-cloudcode-pa.googleapis.com";
+export const DEEPSEEK_BALANCE_URL = "https://api.deepseek.com/user/balance";
 
 /**
  * Claude's usage endpoint gates on the Claude Code client fingerprint: a

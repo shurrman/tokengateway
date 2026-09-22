@@ -14,6 +14,7 @@ import {
 	refreshCredential,
 } from "./src/oauth";
 import { PROVIDERS, PROVIDER_IDS, isProviderId } from "./src/providers";
+import type { ProviderId } from "./src/providers";
 import { deleteCredential, loadCredentials, persistenceError, saveCredential } from "./src/store";
 import { fetchAllUsage, clearCooldown } from "./src/usage";
 import { HTML } from "./src/ui";
@@ -35,6 +36,15 @@ const proxyKey = managedAnthropic
 	: "";
 const claudeProxy = managedAnthropic ? anthropicProxy(proxyKey) : undefined;
 
+const LITELLM_BASE_URL = (process.env.LITELLM_BASE_URL || "http://127.0.0.1:4000").replace(/\/+$/, "");
+const LITELLM_ADMIN_KEY = process.env.LITELLM_ADMIN_KEY_FILE
+	? (await Bun.file(process.env.LITELLM_ADMIN_KEY_FILE).text()).trim()
+	: process.env.LITELLM_ADMIN_KEY || "";
+const DEEPSEEK_MODELS = [
+	{ modelName: "deepseek-v4-pro", litellmModel: "deepseek/deepseek-v4-pro" },
+	{ modelName: "deepseek-v4-flash", litellmModel: "deepseek/deepseek-v4-flash" },
+] as const;
+
 /** In-flight logins, so the UI can poll for completion and surface failures. */
 interface LoginState {
 	url: string;
@@ -42,6 +52,74 @@ interface LoginState {
 	message?: string;
 }
 const logins: Map<string, LoginState> = new Map();
+
+async function liteLLMAdminFetch(path: string, init?: RequestInit): Promise<Response> {
+	if (!LITELLM_ADMIN_KEY) throw new Error("LITELLM_ADMIN_KEY is not configured");
+	const headers = new Headers(init?.headers);
+	headers.set("authorization", `Bearer ${LITELLM_ADMIN_KEY}`);
+	if (init?.body) headers.set("content-type", "application/json");
+	return fetch(`${LITELLM_BASE_URL}${path}`, { ...init, headers });
+}
+
+async function findLiteLLMModelId(modelName: string): Promise<string | undefined> {
+	const response = await liteLLMAdminFetch("/v1/model/info");
+	if (!response.ok) throw new Error(`LiteLLM /v1/model/info failed (${response.status})`);
+	const payload: unknown = await response.json();
+	if (!isRecord(payload) || !Array.isArray(payload.data)) return undefined;
+	for (const entry of payload.data) {
+		if (!isRecord(entry) || readString(entry.model_name) !== modelName) continue;
+		const info = isRecord(entry.model_info) ? entry.model_info : undefined;
+		const id = info ? readString(info.id) : undefined;
+		if (id) return id;
+	}
+	return undefined;
+}
+
+async function syncDeepSeekModel(
+	apiKey: string,
+	entry: (typeof DEEPSEEK_MODELS)[number],
+): Promise<"created" | "updated"> {
+	const existingId = await findLiteLLMModelId(entry.modelName);
+	const litellmParams = { model: entry.litellmModel, api_key: apiKey };
+	if (existingId) {
+		const response = await liteLLMAdminFetch("/model/update", {
+			method: "POST",
+			body: JSON.stringify({
+				litellm_params: litellmParams,
+				model_info: { id: existingId, mode: "chat" },
+			}),
+		});
+		if (!response.ok) {
+			throw new Error(`LiteLLM /model/update failed (${response.status}): ${(await response.text()).slice(0, 200)}`);
+		}
+		return "updated";
+	}
+	const response = await liteLLMAdminFetch("/model/new", {
+		method: "POST",
+		body: JSON.stringify({
+			model_name: entry.modelName,
+			litellm_params: litellmParams,
+			model_info: { mode: "chat" },
+		}),
+	});
+	if (!response.ok) {
+		throw new Error(`LiteLLM /model/new failed (${response.status}): ${(await response.text()).slice(0, 200)}`);
+	}
+	return "created";
+}
+
+async function deleteDeepSeekModel(entry: (typeof DEEPSEEK_MODELS)[number]): Promise<boolean> {
+	const existingId = await findLiteLLMModelId(entry.modelName);
+	if (!existingId) return false;
+	const response = await liteLLMAdminFetch("/model/delete", {
+		method: "POST",
+		body: JSON.stringify({ id: existingId }),
+	});
+	if (!response.ok && !/not found/i.test(await response.text())) {
+		throw new Error(`LiteLLM /model/delete failed (${response.status})`);
+	}
+	return true;
+}
 
 async function handleApi(req: Request, url: URL): Promise<Response> {
 	if (url.pathname === "/api/status") {
@@ -56,6 +134,31 @@ async function handleApi(req: Request, url: URL): Promise<Response> {
 				login: logins.get(id),
 			})),
 		});
+	}
+
+	if (url.pathname === "/api/connect/deepseek" && req.method === "POST") {
+		const payload: unknown = await req.json();
+		if (!isRecord(payload)) return Response.json({ error: "invalid payload" }, { status: 400 });
+		const apiKey = (readString(payload.apiKey) ?? readString(payload.access) ?? "").trim();
+		if (!apiKey) return Response.json({ error: "DeepSeek API key is required" }, { status: 400 });
+		if (apiKey.length < 20) return Response.json({ error: "DeepSeek API key is too short" }, { status: 400 });
+		await saveCredential("deepseek", { access: apiKey, email: "DeepSeek API key", authorizedAt: Date.now() });
+		clearCooldown("deepseek");
+		const liteLLM: { configured: boolean; synced?: string[]; error?: string } = { configured: Boolean(LITELLM_ADMIN_KEY) };
+		if (LITELLM_ADMIN_KEY) {
+			try {
+				liteLLM.synced = [];
+				for (const entry of DEEPSEEK_MODELS) {
+					const state = await syncDeepSeekModel(apiKey, entry);
+					liteLLM.synced.push(`${entry.modelName}:${state}`);
+				}
+			} catch (error) {
+				liteLLM.error = error instanceof Error ? error.message : String(error);
+			}
+		} else {
+			liteLLM.error = "LITELLM_ADMIN_KEY is not configured; LiteLLM models were not registered";
+		}
+		return Response.json({ ok: true, liteLLM });
 	}
 
 	if (url.pathname === "/api/usage") {
@@ -106,6 +209,7 @@ async function handleApi(req: Request, url: URL): Promise<Response> {
 	if (loginMatch && req.method === "POST") {
 		const provider = loginMatch[1];
 		if (!isProviderId(provider)) return Response.json({ error: "invalid provider" }, { status: 400 });
+		if (provider === "deepseek") return Response.json({ error: "DeepSeek uses an API key; connect it from the card" }, { status: 400 });
 		try {
 			const { url: authUrl, completion } = await beginLogin(provider);
 			const login: LoginState = { url: authUrl, status: "pending" };
@@ -153,9 +257,20 @@ async function handleApi(req: Request, url: URL): Promise<Response> {
 		if (!isProviderId(provider)) return Response.json({ error: "invalid provider" }, { status: 400 });
 		cancelLogin(provider);
 		logins.delete(provider);
+		const liteLLM: { configured: boolean; removed?: string[]; error?: string } = { configured: Boolean(LITELLM_ADMIN_KEY) };
+		if (provider === "deepseek" && LITELLM_ADMIN_KEY) {
+			try {
+				liteLLM.removed = [];
+				for (const entry of DEEPSEEK_MODELS) {
+					if (await deleteDeepSeekModel(entry)) liteLLM.removed.push(entry.modelName);
+				}
+			} catch (error) {
+				liteLLM.error = error instanceof Error ? error.message : String(error);
+			}
+		}
 		await deleteCredential(provider);
 		clearCooldown(provider);
-		return Response.json({ ok: true });
+		return Response.json({ ok: true, liteLLM });
 	}
 
 	return Response.json({ error: "not found" }, { status: 404 });
@@ -164,21 +279,29 @@ async function handleApi(req: Request, url: URL): Promise<Response> {
 async function dashboardApi(req: Request, url: URL): Promise<Response> {
 	if (!nativeApi) return handleApi(req, url);
 	if (!managedAnthropic) return nativeApi(req, url);
-	if (req.method === "POST" && /^\/api\/(login\/anthropic(?:\/code)?|logout\/anthropic)$/.test(url.pathname)) {
+	if (req.method === "POST" && /^\/api\/(login\/(?:anthropic|deepseek)(?:\/code)?|logout\/(?:anthropic|deepseek)|connect\/deepseek)$/.test(url.pathname)) {
 		return handleApi(req, url);
 	}
 	const response = await nativeApi(req, url);
 	if (!response.ok) return response;
 	const result = await response.json();
 	if (!isRecord(result)) throw new Error("Invalid native dashboard response");
-	if (url.pathname === "/api/status" && Array.isArray(result.providers)) {
-		const credential = (await loadCredentials()).anthropic;
-		result.providers.push({ id: "anthropic", label: "Anthropic", connected: Boolean(credential),
-			email: credential?.email, plan: credential?.plan, login: logins.get("anthropic"),
-			error: persistenceError() ? "OAuth credential persistence failed; repair storage before restarting" : undefined,
-		});
+	if (url.pathname === "/api/status") {
+		const providers = result.providers;
+		if (Array.isArray(providers)) {
+			const credentials = await loadCredentials();
+			const pushProvider = (id: ProviderId, label: string) => {
+				const credential = credentials[id];
+				providers.push({ id, label, connected: Boolean(credential),
+					email: credential?.email, plan: credential?.plan, login: logins.get(id),
+					error: persistenceError() ? "OAuth credential persistence failed; repair storage before restarting" : undefined,
+				});
+			};
+			pushProvider("anthropic", "Anthropic");
+			pushProvider("deepseek", "DeepSeek");
+		}
 	} else if (url.pathname === "/api/usage" && Array.isArray(result.reports)) {
-		result.reports.push(...await fetchAllUsage(false, ["anthropic"]));
+		result.reports.push(...await fetchAllUsage(false, ["anthropic", "deepseek"]));
 	}
 	return Response.json(result);
 }

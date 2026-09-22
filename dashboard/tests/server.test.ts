@@ -11,7 +11,7 @@ const password = "fixture-password-for-tests-only";
 const hybrid = process.env.TEST_MANAGED_ANTHROPIC === "1";
 const inferenceKey = "fixture-only-inference-key-at-least-32-characters";
 const headers = { Authorization: `Basic ${Buffer.from(`quota:${password}`).toString("base64")}` };
-const names = ["PORT", "HOST", "DASHBOARD_PASSWORD", "DASHBOARD_PASSWORD_FILE", "LITELLM_CHATGPT_AUTH_FILE", "MANAGED_ANTHROPIC", "ANTHROPIC_PROXY_KEY", "ANTHROPIC_PROXY_KEY_FILE", "CREDENTIALS_PATH"];
+const names = ["PORT", "HOST", "DASHBOARD_PASSWORD", "DASHBOARD_PASSWORD_FILE", "LITELLM_CHATGPT_AUTH_FILE", "MANAGED_ANTHROPIC", "ANTHROPIC_PROXY_KEY", "ANTHROPIC_PROXY_KEY_FILE", "CREDENTIALS_PATH", "LITELLM_BASE_URL", "LITELLM_ADMIN_KEY", "LITELLM_ADMIN_KEY_FILE"];
 const priorEnv = Object.fromEntries(names.map(name => [name, process.env[name]]));
 
 beforeAll(async () => {
@@ -25,6 +25,9 @@ beforeAll(async () => {
 	process.env.ANTHROPIC_PROXY_KEY = inferenceKey;
 	delete process.env.ANTHROPIC_PROXY_KEY_FILE;
 	process.env.CREDENTIALS_PATH = join(directory, "credentials.json");
+	process.env.LITELLM_BASE_URL = "http://127.0.0.1:1";
+	process.env.LITELLM_ADMIN_KEY = "";
+	delete process.env.LITELLM_ADMIN_KEY_FILE;
 	({ server } = await import("../server"));
 	url = `http://127.0.0.1:${server.port}`;
 });
@@ -65,7 +68,7 @@ test("authenticated requests from a different web origin are rejected", async ()
 
 test.skipIf(!hybrid)("hybrid HTTP routes separate inference, dashboard and native credentials", async () => {
 	const status = await (await fetch(url + "/api/status", { headers })).json();
-	expect(status.providers.map((p: { id: string }) => p.id)).toEqual(["openai-codex", "anthropic"]);
+	expect(status.providers.map((p: { id: string }) => p.id)).toEqual(["openai-codex", "anthropic", "deepseek"]);
 	expect(status.providers[1].connected).toBe(false);
 	for (const path of ["/api/credentials/anthropic", "/api/login/openai-codex", "/api/logout/openai-codex"]) {
 		expect((await fetch(url + path, { method: "POST", headers })).status).toBe(403);
@@ -75,5 +78,10 @@ test.skipIf(!hybrid)("hybrid HTTP routes separate inference, dashboard and nativ
 	expect((await fetch(url + "/anthropic/v1/models", { headers: { "x-api-key": inferenceKey } })).status).toBe(503);
 	expect((await fetch(url + "/api/login/anthropic/code", { method: "POST", headers, body: JSON.stringify({ code: "no-active-login" }) })).status).toBe(400);
 	expect((await fetch(url + "/api/logout/anthropic", { method: "POST", headers })).status).toBe(200);
+	expect((await fetch(url + "/api/login/deepseek", { method: "POST", headers })).status).toBe(400);
+	const connect = await fetch(url + "/api/connect/deepseek", { method: "POST", headers, body: JSON.stringify({ apiKey: "sk-fixture-deepseek-api-key-123456" }) });
+	expect(connect.status).toBe(200);
+	expect((await connect.json()).liteLLM.configured).toBe(false);
+	expect((await fetch(url + "/api/logout/deepseek", { method: "POST", headers })).status).toBe(200);
 	expect(await readFile(join(directory, "auth.json"))).toEqual(before);
 });

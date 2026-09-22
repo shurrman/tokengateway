@@ -29,6 +29,10 @@ export const HTML = `<!DOCTYPE html>
     --google: #38bdf8;
     --google-bg: rgba(56, 189, 248, 0.08);
     --google-border: rgba(56, 189, 248, 0.25);
+
+    --deepseek: #6c8cff;
+    --deepseek-bg: rgba(108, 140, 255, 0.08);
+    --deepseek-border: rgba(108, 140, 255, 0.25);
     
     --nvidia: #76b900;
     --nvidia-bg: rgba(118, 185, 0, 0.08);
@@ -230,6 +234,7 @@ export const HTML = `<!DOCTYPE html>
   .provider-card.anthropic { border-left: 3px solid var(--claude); }
   .provider-card.openai-codex { border-left: 3px solid var(--openai); }
   .provider-card.google-antigravity { border-left: 3px solid var(--google); }
+  .provider-card.deepseek { border-left: 3px solid var(--deepseek); }
   .provider-card.local-vllm { border-left: 3px solid var(--nvidia); }
   .provider-card.uptime-kuma { border-left: 3px solid var(--kuma); }
 
@@ -261,6 +266,7 @@ export const HTML = `<!DOCTYPE html>
   .logo-box.anthropic { background: var(--claude-bg); border: 1px solid var(--claude-border); color: var(--claude); }
   .logo-box.openai-codex { background: var(--openai-bg); border: 1px solid var(--openai-border); color: var(--openai); }
   .logo-box.google-antigravity { background: var(--google-bg); border: 1px solid var(--google-border); }
+  .logo-box.deepseek { background: var(--deepseek-bg); border: 1px solid var(--deepseek-border); color: var(--deepseek); }
   .logo-box.local-vllm { background: var(--nvidia-bg); border: 1px solid var(--nvidia-border); color: var(--nvidia); }
   .logo-box.uptime-kuma { background: var(--kuma-bg); border: 1px solid var(--kuma-border); color: var(--kuma); }
 
@@ -651,6 +657,7 @@ const LOGOS = {
   anthropic: \`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.48 3.52c-.44-.3-.98-.44-1.52-.4H8.04c-.54-.04-1.08.1-1.52.4-.44.3-.76.74-.88 1.26L2.08 19.34c-.18.7.06 1.44.6 1.9.54.46 1.28.56 1.94.26l4.9-2.22 4.9 2.22c.66.3 1.4.2 1.94-.26.54-.46.78-1.2.6-1.9L13.4 4.78c-.12-.52-.44-.96-.88-1.26z"/></svg>\`,
   "openai-codex": \`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.28 9.87a5.98 5.98 0 0 0-.52-4.92 6.05 6.05 0 0 0-6.6-2.82A5.98 5.98 0 0 0 10.74.5a6.05 6.05 0 0 0-5.8 4.22 5.98 5.98 0 0 0-4.1 2.9 6.05 6.05 0 0 0 .74 7.2 5.98 5.98 0 0 0 .52 4.92 6.05 6.05 0 0 0 6.6 2.82A5.98 5.98 0 0 0 13.26 23.5a6.05 6.05 0 0 0 5.8-4.22 5.98 5.98 0 0 0 4.1-2.9 6.05 6.05 0 0 0-.88-6.51zM13.26 21.9a4.48 4.48 0 0 1-2.86-.98l.14-.08 4.77-2.76a.79.79 0 0 0 .39-.68v-6.73l2.02 1.17v6.18a4.5 4.5 0 0 1-4.46 3.88zm-8.62-4.13a4.47 4.47 0 0 1-.58-2.98l.14.08 4.77 2.76c.24.14.54.14.78 0l5.83-3.37v2.33l-5.36 3.1a4.5 4.5 0 0 1-5.58-1.92zm-2.02-9.6a4.48 4.48 0 0 1 2.28-2l-.01.16v5.52a.79.79 0 0 0 .39.68l5.83 3.37-2.02 1.17-5.35-3.09a4.5 4.5 0 0 1-1.12-5.81zm15.1 3.86-5.83-3.37 2.02-1.17 5.35 3.09a4.5 4.5 0 0 1 .58 8.79v-5.66a.79.79 0 0 0-.39-.68h-.03l-1.7-1zm2.6-2.14a4.48 4.48 0 0 1-.58 2.98l-.14-.08-4.77-2.76a.79.79 0 0 0-.78 0L8.4 12.35v-2.33l5.36-3.1a4.5 4.5 0 0 1 6.56 5.09zM8.32 10.5l3.68-2.13 3.68 2.13v4.25l-3.68 2.13-3.68-2.13z"/></svg>\`,
   "google-antigravity": \`<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.35 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.04 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>\`,
+  "deepseek": \`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9c3-3 7-2 9 0 4-2 9-1 9 3 0 3-2 5-5 5h-7c-3 0-5-2-4-4 0-2 2-3 4-3h3"/><path d="M5 13h3"/></svg>\`,
   "local-vllm": \`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H4zm2 4h12v3H6V7zm0 5h7v5H6v-5zm9 0h3v5h-3v-5z"/></svg>\`,
   "uptime-kuma": \`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2.5-7 3.5 14 3-9 2 2h5"/></svg>\`,
   "ai-agents": \`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>\`
@@ -766,6 +773,7 @@ function render() {
     const report = state.reports.find(r => r.provider === p.id);
     if (p.error || (report && report.error)) errorCount++;
     const isVllm = p.id === 'local-vllm';
+    const isDeepSeek = p.id === 'deepseek';
     
     html += \`<div class="provider-card \${p.id}">\`;
     
@@ -797,6 +805,8 @@ function render() {
         } else if (!isVllm) {
           if (p.connected) {
             html += \`<button class="danger" onclick="logout('\${p.id}')">disconnect</button>\`;
+          } else if (isDeepSeek) {
+            html += \`<button class="primary" onclick="connectDeepSeek()">Connect API key</button>\`;
           } else {
             html += \`<button class="primary" onclick="login('\${p.id}')">Login</button>\`;
           }
@@ -824,6 +834,15 @@ function render() {
     }
 
     if (p.error) html += \`<div class="err-box">\${esc(p.error)}</div>\`;
+
+    if (isDeepSeek && report && report.extraStats) {
+      html += \`<div class="extra-stats-bar">
+        <div class="mini-stat"><span class="mini-stat-label">Currency</span><span class="mini-stat-val">\${esc(String(report.extraStats.currency ?? '—'))}</span></div>
+        <div class="mini-stat"><span class="mini-stat-label">Total</span><span class="mini-stat-val" style="color:var(--deepseek)">\${esc(String(report.extraStats.totalBalance ?? '—'))}</span></div>
+        <div class="mini-stat"><span class="mini-stat-label">Topped up</span><span class="mini-stat-val" style="color:#38bdf8">\${esc(String(report.extraStats.toppedUpBalance ?? '—'))}</span></div>
+        <div class="mini-stat"><span class="mini-stat-label">Granted</span><span class="mini-stat-val" style="color:var(--ok)">\${esc(String(report.extraStats.grantedBalance ?? '—'))}</span></div>
+      </div>\`;
+    }
 
     // Quotas progress bars
     if (report && report.limits && report.limits.length) {
@@ -1051,6 +1070,22 @@ async function login(id) {
   setTimeout(() => clearInterval(poll), 300000);
 }
 
+async function connectDeepSeek() {
+  const key = prompt('DeepSeek API key:');
+  if (!key) return;
+  const res = await fetch('/api/connect/deepseek', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ apiKey: key })
+  });
+  const data = await res.json();
+  if (data.error) { alert(data.error); return; }
+  if (data.liteLLM && data.liteLLM.error) {
+    alert('DeepSeek key saved, but LiteLLM model registration failed: ' + data.liteLLM.error);
+  }
+  refresh();
+}
+
 async function submitCode(id) {
   const input = document.getElementById('code-' + id);
   const res = await fetch('/api/login/' + id + '/code', {
@@ -1065,7 +1100,11 @@ async function submitCode(id) {
 
 async function logout(id) {
   if (!confirm('Remove credentials for this provider?')) return;
-  await fetch('/api/logout/' + id, { method: 'POST' });
+  const res = await fetch('/api/logout/' + id, { method: 'POST' });
+  const data = await res.json();
+  if (data.liteLLM && data.liteLLM.error) {
+    alert('Credentials removed, but LiteLLM model deletion failed: ' + data.liteLLM.error);
+  }
   refresh();
 }
 

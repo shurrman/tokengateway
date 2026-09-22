@@ -11,6 +11,7 @@ import {
 	ANTIGRAVITY_USER_AGENT,
 	CLAUDE_HEADERS,
 	CODEX_USAGE_URL,
+	DEEPSEEK_BALANCE_URL,
 	PROVIDERS,
 } from "./providers";
 import type { ProviderId } from "./providers";
@@ -324,6 +325,40 @@ async function fetchAntigravity(credential: StoredCredential): Promise<UsageLimi
 		}
 	}
 	return [...byVendor.values()].sort((a, b) => a.label.localeCompare(b.label));
+}
+
+interface ProviderMetrics {
+	limits: UsageLimit[];
+	extraStats?: UsageReport["extraStats"];
+	plan?: string;
+}
+
+async function fetchDeepSeek(credential: StoredCredential): Promise<ProviderMetrics> {
+	const response = await fetch(DEEPSEEK_BALANCE_URL, {
+		headers: {
+			Authorization: `Bearer ${credential.access}`,
+			accept: "application/json",
+		},
+		signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+	});
+	if (!response.ok) throw new Error(`${response.status} ${(await response.text()).slice(0, 200)}`);
+
+	const payload: unknown = await response.json();
+	if (!isRecord(payload)) throw new Error("unexpected response");
+	const balances = Array.isArray(payload.balance_infos) ? payload.balance_infos : [];
+	if (balances.length === 0) throw new Error("response has no balance_infos");
+	const first = balances[0];
+	if (!isRecord(first)) throw new Error("invalid balance_infos entry");
+
+	return {
+		limits: [],
+		extraStats: {
+			currency: readString(first.currency) ?? "USD",
+			totalBalance: readString(first.total_balance) ?? "0.00",
+			grantedBalance: readString(first.granted_balance) ?? "0.00",
+			toppedUpBalance: readString(first.topped_up_balance) ?? "0.00",
+		},
+	};
 }
 
 // ── Local vLLM Cluster ─────────────────────────────────────────────────
@@ -652,11 +687,11 @@ async function fetchAiAgents(): Promise<UsageReport | null> {
 function isAuthRejection(error: unknown): boolean {
 	return error instanceof Error && /^(401|403)\b/.test(error.message);
 }
-const FETCHERS = {
+const FETCHERS: Record<Exclude<ProviderId, "deepseek">, (credential: StoredCredential) => Promise<UsageLimit[]>> = {
 	anthropic: fetchAnthropic,
 	"openai-codex": fetchCodex,
 	"google-antigravity": fetchAntigravity,
-} as const;
+};
 
 export async function fetchAllUsage(forceRefresh = false, onlyProviders?: ProviderId[]): Promise<UsageReport[]> {
 	const credentials = await loadCredentials();
@@ -690,14 +725,24 @@ export async function fetchAllUsage(forceRefresh = false, onlyProviders?: Provid
 				report.email = fresh.email ?? report.email;
 				report.plan = fresh.plan ?? report.plan;
 				try {
-					report.limits = await FETCHERS[providerId](fresh);
+					const metrics: ProviderMetrics = providerId === "deepseek"
+						? await fetchDeepSeek(fresh)
+						: { limits: await FETCHERS[providerId](fresh) };
+					report.limits = metrics.limits;
+					report.extraStats = metrics.extraStats;
+					report.plan = metrics.plan ?? report.plan;
 					// Store in success cache
 					reportCache.set(providerId, { report: { ...report }, expiresAt: now + CACHE_TTL_MS, access: fresh.access });
 				} catch (error) {
 					// 401/403 = expired access token. Refresh BEFORE falling back to cache
 					if (!isAuthRejection(error) || !fresh.refresh) throw error;
 					const renewed = await refreshCredential(providerId, fresh);
-					report.limits = await FETCHERS[providerId](renewed);
+					const metrics: ProviderMetrics = providerId === "deepseek"
+						? await fetchDeepSeek(renewed)
+						: { limits: await FETCHERS[providerId](renewed) };
+					report.limits = metrics.limits;
+					report.extraStats = metrics.extraStats;
+					report.plan = metrics.plan ?? report.plan;
 					reportCache.set(providerId, { report: { ...report }, expiresAt: now + CACHE_TTL_MS, access: renewed.access });
 				}
 			} catch (error) {
@@ -707,7 +752,7 @@ export async function fetchAllUsage(forceRefresh = false, onlyProviders?: Provid
 				// value here would be worse than failing: an unreachable provider
 				// would render as healthy and the real quota would only surface
 				// once requests started coming back 429.
-				if (cached && cached.report.limits.length > 0) {
+				if (cached && (cached.report.limits.length > 0 || cached.report.extraStats)) {
 					return staleReport(cached.report, error);
 				}
 				const msg = error instanceof Error ? error.message : String(error);
