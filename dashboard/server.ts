@@ -22,6 +22,7 @@ import { dashboardAuth } from "./src/auth";
 import { liteLLMQuotaApi } from "./src/litellm";
 import { anthropicProxy } from "./src/anthropic";
 import { omniRouteQuota } from "./src/omniroute";
+import { fallbackMonitor } from "./src/fallbacks";
 
 const omniQuota = process.env.OMNIROUTE_BASE_URL && process.env.OMNIROUTE_DASHBOARD_PASSWORD_FILE
   ? omniRouteQuota({ baseUrl: process.env.OMNIROUTE_BASE_URL,
@@ -46,6 +47,9 @@ const LITELLM_BASE_URL = (process.env.LITELLM_BASE_URL || "http://127.0.0.1:4000
 const LITELLM_ADMIN_KEY = process.env.LITELLM_ADMIN_KEY_FILE
 	? (await Bun.file(process.env.LITELLM_ADMIN_KEY_FILE).text()).trim()
 	: process.env.LITELLM_ADMIN_KEY || "";
+const fallbacks = LITELLM_ADMIN_KEY
+	? fallbackMonitor({ baseUrl: LITELLM_BASE_URL, adminKey: LITELLM_ADMIN_KEY })
+	: undefined;
 const DEEPSEEK_MODELS = [
 	{ modelName: "deepseek-v4-pro", litellmModel: "deepseek/deepseek-v4-pro" },
 	{ modelName: "deepseek-v4-flash", litellmModel: "deepseek/deepseek-v4-flash" },
@@ -170,6 +174,10 @@ async function handleApi(req: Request, url: URL): Promise<Response> {
 	if (url.pathname === "/api/usage") {
 		return Response.json({ generatedAt: Date.now(), reports: await fetchAllUsage() });
 	}
+	if (url.pathname === "/api/fallbacks") {
+		if (!fallbacks) return Response.json({ error: "LITELLM_ADMIN_KEY is not configured" }, { status: 503 });
+		return Response.json(await fallbacks());
+	}
 	if (url.pathname === "/api/credentials" && req.method === "GET") {
 		const credentials = await loadCredentials();
 		return Response.json(credentials);
@@ -283,6 +291,9 @@ async function handleApi(req: Request, url: URL): Promise<Response> {
 }
 
 async function dashboardApi(req: Request, url: URL): Promise<Response> {
+	// Read-only fallback telemetry is safe in every mode and is not part of
+	// the native quota API, so route it before the read-only gate.
+	if (url.pathname === "/api/fallbacks" && req.method === "GET") return handleApi(req, url);
 	if (!nativeApi) return handleApi(req, url);
 	if (!managedAnthropic) return nativeApi(req, url);
 	if (req.method === "POST" && /^\/api\/(login\/(?:anthropic|deepseek)(?:\/code)?|logout\/(?:anthropic|deepseek)|connect\/deepseek)$/.test(url.pathname)) {

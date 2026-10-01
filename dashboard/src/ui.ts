@@ -622,8 +622,8 @@ export const HTML = `<!DOCTYPE html>
 <!-- Compact KPI Bar -->
 <div class="kpi-bar">
   <div class="kpi-item">
-    <span class="kpi-label">Providers</span>
-    <span class="kpi-val" id="kpiProviders">3 <span style="font-size:0.75em;color:var(--text-dim)">Cloud</span> + 1 <span style="font-size:0.75em;color:var(--text-dim)">Local</span></span>
+    <span class="kpi-label">LiteLLM 24h</span>
+    <span class="kpi-val" id="kpiTraffic">--</span>
   </div>
   <div class="kpi-item">
     <span class="kpi-label">Quota Status</span>
@@ -634,8 +634,8 @@ export const HTML = `<!DOCTYPE html>
     <span class="kpi-val" id="kpiNextReset">--:--:--</span>
   </div>
   <div class="kpi-item">
-    <span class="kpi-label">Local Cluster</span>
-    <span class="kpi-val" id="kpiLocalVllm" style="color:var(--nvidia)">48 GB <span style="font-size:0.75em;color:var(--text-dim)">3× 5060 Ti</span></span>
+    <span class="kpi-label">Fallbacks 24h</span>
+    <span class="kpi-val" id="kpiFallbacks">--</span>
   </div>
 </div>
 
@@ -650,7 +650,7 @@ export const HTML = `<!DOCTYPE html>
 </footer>
 
 <script>
-let state = { providers: [], reports: [] };
+let state = { providers: [], reports: [], fallbacks: null };
 let liveTimerInterval = null;
 
 const LOGOS = {
@@ -741,12 +741,14 @@ async function refresh() {
   btn.disabled = true;
 
   try {
-    const [s, u] = await Promise.all([
+    const [s, u, fb] = await Promise.all([
       apiJson('/api/status'),
-      apiJson('/api/usage')
+      apiJson('/api/usage'),
+      apiJson('/api/fallbacks').catch(() => null)
     ]);
     state.providers = s.providers || [];
     state.reports = u.reports || [];
+    state.fallbacks = fb && !fb.error ? fb : fb;
     
     document.getElementById('lastSync').textContent = 'Synced: ' + new Date().toLocaleTimeString();
     render();
@@ -821,6 +823,8 @@ function render() {
     if (isOmni && report && !report.cached) {
       html += '<div class="provider-email">Updated: ' + esc(new Date(report.fetchedAt).toLocaleString()) + '</div>';
     }
+    if (p.id === 'anthropic') html += fallbackCardLine('claude-');
+    if (isOmni) html += fallbackCardLine('omni-claude-');
 
     if (p.login && p.login.status === 'pending') {
       html += \`<div class="pending-panel">
@@ -1046,6 +1050,8 @@ function render() {
 
   document.getElementById('cardsContainer').innerHTML = html;
   
+  renderFallbackKpis();
+
   if (errorCount > 0) {
     document.getElementById('kpiHealth').textContent = 'Quota unavailable';
   } else if (saturatedCount > 0) {
@@ -1055,6 +1061,60 @@ function render() {
   }
 
   updateCountdowns();
+}
+
+
+function fmtCompact(n) {
+  if (n === undefined || n === null) return '--';
+  if (n >= 1e9) return (n / 1e9).toFixed(1) + 'B';
+  if (n >= 1e6) return (n / 1e6).toFixed(1) + 'M';
+  if (n >= 1e3) return (n / 1e3).toFixed(1) + 'k';
+  return String(n);
+}
+
+function renderFallbackKpis() {
+  const fb = state.fallbacks;
+  const trafficEl = document.getElementById('kpiTraffic');
+  const fbEl = document.getElementById('kpiFallbacks');
+  if (!fb || fb.error && !fb.fetchedAt) {
+    trafficEl.textContent = 'n/a';
+    fbEl.textContent = 'n/a';
+    return;
+  }
+  trafficEl.innerHTML = fmtCompact(fb.requests24h) +
+    ' <span style="font-size:0.75em;color:var(--text-dim)">req</span> · ' +
+    fmtCompact(fb.tokens24h) + ' <span style="font-size:0.75em;color:var(--text-dim)">tok</span>';
+  const n = fb.activations24h || 0;
+  const uncovered = (fb.uncovered || []).length;
+  const color = n > 0 ? 'var(--warn, #f59e0b)' : 'var(--ok)';
+  let html = '<span style="color:' + color + '">●</span> ' + n +
+    (fb.backfillPending ? ' <span style="font-size:0.7em;color:var(--text-dim)">(loading)</span>' : '');
+  if (uncovered > 0) {
+    html += ' <span style="font-size:0.72em;color:var(--bad)" title="' +
+      esc(fb.uncovered.join(', ')) + '">· ' + uncovered + ' uncovered</span>';
+  }
+  fbEl.innerHTML = html;
+}
+
+/** Short fallback summary for a provider card, e.g. "Fallback → ChatGPT (sol/luna)". */
+function fallbackCardLine(groupPrefix) {
+  const fb = state.fallbacks;
+  if (!fb || !fb.chains) return '';
+  const groups = Object.keys(fb.chains).filter(g => g.startsWith(groupPrefix));
+  if (!groups.length) return '';
+  const families = new Set();
+  for (const g of groups) for (const target of fb.chains[g]) {
+    families.add(target.includes('luna') ? 'luna' : target.includes('sol') ? 'sol' : target.split('-')[0]);
+  }
+  const byGroup = fb.activationsByGroup || {};
+  let fired = 0;
+  for (const g of groups) fired += byGroup[g] || 0;
+  const firedHtml = fired > 0
+    ? ' · <span style="color:var(--warn, #f59e0b)">' + fired + ' fired (24h)</span>'
+    : '';
+  return '<div class="provider-email" title="' +
+    esc(groups.map(g => g + ' → ' + fb.chains[g].join(' → ')).join('\n')) + '">' +
+    'Fallback → ChatGPT (' + esc([...families].sort().join('/')) + ')' + firedHtml + '</div>';
 }
 
 async function login(id) {
