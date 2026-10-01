@@ -1132,9 +1132,26 @@ function fallbackCardLine(groupPrefix) {
   if (!fb || !fb.chains) return '';
   const groups = Object.keys(fb.chains).filter(g => g.startsWith(groupPrefix));
   if (!groups.length) return '';
+  const NL = String.fromCharCode(10);
+  // Group models by their shared fallback tail so the tooltip reads as a
+  // couple of chains with model lists instead of one line per model.
+  const byTail = new Map();
   const families = new Set();
-  for (const g of groups) for (const target of fb.chains[g]) {
-    families.add(target.includes('luna') ? 'luna' : target.includes('sol') ? 'sol' : target.split('-')[0]);
+  let sameModelHop = false;
+  for (const g of groups) {
+    let chain = fb.chains[g];
+    // omni-* chains hop to the same model on TokenGateway first; summarize
+    // that hop once instead of repeating it in every chain.
+    if (chain.length && 'omni-' + chain[0] === g) {
+      sameModelHop = true;
+      chain = chain.slice(1);
+    }
+    for (const target of chain) {
+      families.add(target.includes('luna') ? 'luna' : target.includes('sol') ? 'sol' : target.split('-')[0]);
+    }
+    const tail = chain.join(' → ');
+    if (!byTail.has(tail)) byTail.set(tail, []);
+    byTail.get(tail).push(g.replace(groupPrefix, ''));
   }
   const byGroup = fb.activationsByGroup || {};
   let fired = 0;
@@ -1142,9 +1159,13 @@ function fallbackCardLine(groupPrefix) {
   const firedHtml = fired > 0
     ? ' · <span style="color:var(--warn, #f59e0b)">' + fired + ' fired (24h)</span>'
     : '';
-  return '<div class="provider-email" title="' +
-    esc(groups.map(g => g + ' → ' + fb.chains[g].join(' → ')).join('; ')) + '">' +
-    'Fallback → ChatGPT (' + esc([...families].sort().join('/')) + ')' + firedHtml + '</div>';
+  const tooltip = (sameModelHop ? 'First hop: same model via TokenGateway, then:' + NL : '') +
+    [...byTail.entries()].map(([tail, models]) => '→ ' + tail + NL + '   ' + models.join(', ')).join(NL);
+  const label = sameModelHop
+    ? 'Fallback → same model → ChatGPT (' + esc([...families].sort().join('/')) + ')'
+    : 'Fallback → ChatGPT (' + esc([...families].sort().join('/')) + ')';
+  return '<div class="provider-email" style="cursor:help" title="' + esc(tooltip) + '">' +
+    label + firedHtml + '</div>';
 }
 
 async function login(id) {
