@@ -1113,7 +1113,7 @@ function fallbackCardLine(groupPrefix) {
     ? ' · <span style="color:var(--warn, #f59e0b)">' + fired + ' fired (24h)</span>'
     : '';
   return '<div class="provider-email" title="' +
-    esc(groups.map(g => g + ' → ' + fb.chains[g].join(' → ')).join('\n')) + '">' +
+    esc(groups.map(g => g + ' → ' + fb.chains[g].join(' → ')).join('; ')) + '">' +
     'Fallback → ChatGPT (' + esc([...families].sort().join('/')) + ')' + firedHtml + '</div>';
 }
 
