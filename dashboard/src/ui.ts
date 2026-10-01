@@ -1100,10 +1100,25 @@ function renderFallbackKpis() {
   const n = fb.activations24h || 0;
   const uncovered = (fb.uncovered || []).length;
   const color = n > 0 ? 'var(--warn, #f59e0b)' : 'var(--ok)';
-  let html = '<span style="color:' + color + '">●</span> ' + n +
+  // Per-group breakdown: which requested models actually fell back.
+  const byGroup = Object.entries(fb.activationsByGroup || {}).sort((a, b) => b[1] - a[1]);
+  const breakdown = byGroup.map(([g, c]) => g + ': ' + c).join('; ');
+  const title = n > 0
+    ? 'Requests whose selected model failed and were served by a fallback (24h). ' + breakdown
+    : 'No fallback activations in the last 24h: every request was served by its selected model.';
+  let html = '<span title="' + esc(title) + '"><span style="color:' + color + '">●</span> ' + n;
+  // Inline the affected groups while they fit; the tooltip always has all.
+  if (n > 0 && byGroup.length) {
+    const inline = byGroup.slice(0, 2)
+      .map(([g, c]) => esc(g.replace(/^omni-claude-/, 'omni-').replace(/^claude-/, '')) + '×' + c)
+      .join(', ');
+    html += ' <span style="font-size:0.72em;color:var(--text-dim)">· ' + inline +
+      (byGroup.length > 2 ? ' +' + (byGroup.length - 2) : '') + '</span>';
+  }
+  html += '</span>' +
     (fb.backfillPending ? ' <span style="font-size:0.7em;color:var(--text-dim)">(loading)</span>' : '');
   if (uncovered > 0) {
-    html += ' <span style="font-size:0.72em;color:var(--bad)" title="' +
+    html += ' <span style="font-size:0.72em;color:var(--bad)" title="Claude model groups with no fallback chain configured: ' +
       esc(fb.uncovered.join(', ')) + '">· ' + uncovered + ' uncovered</span>';
   }
   fbEl.innerHTML = html;
