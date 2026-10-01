@@ -25,9 +25,12 @@ export interface FallbackSnapshot {
 	activationsByGroup: Record<string, number>;
 	/** True until the initial 24 h backfill finished; counts may be partial. */
 	backfillPending: boolean;
-	/** Proxy-wide totals for the KPI bar (last 24 h, from /global/activity). */
-	requests24h?: number;
-	tokens24h?: number;
+	/** Rolling 24 h traffic from spend logs (deduplicated by request id). */
+	requests24h: number;
+	/** Prompt tokens actually processed fresh (prompt - cached) + completion. */
+	freshTokens24h: number;
+	/** Share of prompt tokens served from provider prompt caches, 0..1. */
+	cachedShare24h: number | null;
 	fetchedAt: number;
 	error?: string;
 }
@@ -49,7 +52,7 @@ const WINDOW_MS = 24 * 3_600_000;
 const OVERLAP_MS = 60_000;
 const PAGE_SIZE = 500;
 /** Hard cap per poll; protects the proxy from pathological paging. */
-const MAX_PAGES = 40;
+const MAX_PAGES = 80;
 const REQUEST_TIMEOUT_MS = 20_000;
 
 function spendLogsDate(ms: number): string {
@@ -61,6 +64,8 @@ export function fallbackMonitor(options: Options): () => Promise<FallbackSnapsho
 	const base = options.baseUrl.replace(/\/+$/, "");
 	const headers = { authorization: `Bearer ${options.adminKey}` };
 	const events = new Map<string, FallbackEvent>();
+	/** request_id -> compact per-request token stats for the rolling window. */
+	const traffic = new Map<string, { atMs: number; prompt: number; cached: number; completion: number }>();
 	let sinceMs = Date.now() - WINDOW_MS; // initial backfill window
 	let backfillPending = true;
 	let lastPollAt = 0;
@@ -107,15 +112,6 @@ export function fallbackMonitor(options: Options): () => Promise<FallbackSnapsho
 		return groups;
 	}
 
-	async function fetchActivity(): Promise<{ requests?: number; tokens?: number }> {
-		const end = new Date();
-		const start = new Date(end.getTime() - WINDOW_MS);
-		const fmt = (d: Date) => d.toISOString().slice(0, 10);
-		const data = await getJson(`/global/activity?start_date=${fmt(start)}&end_date=${fmt(end)}`);
-		if (!isRecord(data)) return {};
-		return { requests: readNumber(data.sum_api_requests), tokens: readNumber(data.sum_total_tokens) };
-	}
-
 	/** Pull spend-log rows since `sinceMs` and record fallback activations. */
 	async function pollSpendLogs(): Promise<void> {
 		const start = spendLogsDate(sinceMs - OVERLAP_MS);
@@ -130,21 +126,33 @@ export function fallbackMonitor(options: Options): () => Promise<FallbackSnapsho
 			for (const row of data.data) {
 				if (!isRecord(row)) continue;
 				const metadata = isRecord(row.metadata) ? row.metadata : {};
+				const requestId = readString(row.request_id) ?? `${row.startTime}-${row.model_id}`;
+				const atMs = Date.parse(readString(row.startTime) ?? "") || nowMs;
+				const usage = isRecord(metadata.usage_object) ? metadata.usage_object : {};
+				const promptDetails = isRecord(usage.prompt_tokens_details) ? usage.prompt_tokens_details : {};
+				traffic.set(requestId, {
+					atMs,
+					prompt: readNumber(row.prompt_tokens) ?? 0,
+					// OpenAI and Anthropic both surface cache reads here; Anthropic's
+					// cache_read_input_tokens mirrors cached_tokens.
+					cached: readNumber(promptDetails.cached_tokens) ?? 0,
+					completion: readNumber(row.completion_tokens) ?? 0,
+				});
 				const attempted = readNumber(metadata.attempted_fallbacks) ?? 0;
 				if (attempted <= 0) continue;
-				const requestId = readString(row.request_id) ?? `${row.startTime}-${row.model_id}`;
 				const group = readString(metadata.original_model_group) ?? readString(row.model_group) ?? "unknown";
-				const atMs = Date.parse(readString(row.startTime) ?? "") || nowMs;
 				events.set(requestId, { requestId, group, atMs });
 			}
-			const totalPages = readNumber(data.total_pages) ?? 1;
-			if (page >= totalPages) break;
+			// total/total_pages are capped (total_is_capped) at 10k rows, so a
+			// partial page is the only trustworthy end-of-data signal.
+			if (data.data.length < PAGE_SIZE) break;
 		}
 		sinceMs = nowMs;
 		backfillPending = false;
 		// Prune beyond the rolling window.
 		const cutoff = nowMs - WINDOW_MS;
 		for (const [key, event] of events) if (event.atMs < cutoff) events.delete(key);
+		for (const [key, row] of traffic) if (row.atMs < cutoff) traffic.delete(key);
 	}
 
 	async function refresh(): Promise<FallbackSnapshot> {
@@ -155,8 +163,9 @@ export function fallbackMonitor(options: Options): () => Promise<FallbackSnapsho
 			activations24h: 0,
 			activationsByGroup: {},
 			backfillPending,
-			requests24h: snapshot?.requests24h,
-			tokens24h: snapshot?.tokens24h,
+			requests24h: 0,
+			freshTokens24h: 0,
+			cachedShare24h: null,
 			fetchedAt: now,
 		};
 		const failures: string[] = [];
@@ -167,13 +176,6 @@ export function fallbackMonitor(options: Options): () => Promise<FallbackSnapsho
 				.filter(g => g.startsWith("claude-") || g.startsWith("omni-claude-"))
 				.filter(g => !(g in chains))
 				.sort();
-		} catch (error) {
-			failures.push(error instanceof Error ? error.message : String(error));
-		}
-		try {
-			const activity = await fetchActivity();
-			next.requests24h = activity.requests;
-			next.tokens24h = activity.tokens;
 		} catch (error) {
 			failures.push(error instanceof Error ? error.message : String(error));
 		}
@@ -188,6 +190,15 @@ export function fallbackMonitor(options: Options): () => Promise<FallbackSnapsho
 				.finally(() => { polling = false; });
 		}
 		next.backfillPending = backfillPending;
+		let promptSum = 0;
+		let cachedSum = 0;
+		for (const row of traffic.values()) {
+			next.requests24h++;
+			promptSum += row.prompt;
+			cachedSum += Math.min(row.cached, row.prompt);
+			next.freshTokens24h += Math.max(0, row.prompt - row.cached) + row.completion;
+		}
+		next.cachedShare24h = promptSum > 0 ? cachedSum / promptSum : null;
 		for (const event of events.values()) {
 			next.activations24h++;
 			next.activationsByGroup[event.group] = (next.activationsByGroup[event.group] ?? 0) + 1;

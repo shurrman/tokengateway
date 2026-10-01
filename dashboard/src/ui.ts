@@ -1081,9 +1081,22 @@ function renderFallbackKpis() {
     fbEl.textContent = 'n/a';
     return;
   }
+  const loading = fb.backfillPending
+    ? ' <span style="font-size:0.7em;color:var(--text-dim)">(loading)</span>' : '';
+  // Cached share: high is healthy for agent workloads (sessions reuse
+  // context); a drop below ~70% historically meant prompt-cache breakage.
+  const share = fb.cachedShare24h;
+  const sharePct = share === null ? null : Math.round(share * 100);
+  const shareColor = sharePct === null ? 'var(--text-dim)'
+    : sharePct >= 85 ? 'var(--ok)'
+    : sharePct >= 70 ? 'var(--warn, #f59e0b)'
+    : 'var(--bad)';
   trafficEl.innerHTML = fmtCompact(fb.requests24h) +
     ' <span style="font-size:0.75em;color:var(--text-dim)">req</span> · ' +
-    fmtCompact(fb.tokens24h) + ' <span style="font-size:0.75em;color:var(--text-dim)">tok</span>';
+    fmtCompact(fb.freshTokens24h) +
+    ' <span style="font-size:0.75em;color:var(--text-dim)">fresh tok</span> · ' +
+    '<span style="color:' + shareColor + '" title="Share of prompt tokens served from provider prompt caches (24h). Low values mean cache misses and higher cost/latency.">' +
+    (sharePct === null ? '--' : sharePct + '% cached') + '</span>' + loading;
   const n = fb.activations24h || 0;
   const uncovered = (fb.uncovered || []).length;
   const color = n > 0 ? 'var(--warn, #f59e0b)' : 'var(--ok)';
