@@ -1081,8 +1081,11 @@ function renderFallbackKpis() {
     fbEl.textContent = 'n/a';
     return;
   }
-  const loading = fb.backfillPending
-    ? ' <span style="font-size:0.7em;color:var(--text-dim)">(loading)</span>' : '';
+  // Shown only while the initial 24h spend-log scan runs after a service
+  // restart (~4 min); both KPIs are partial until it completes.
+  const scanBadge = fb.backfillPending
+    ? ' <span style="font-size:0.75em;color:var(--text-dim);cursor:help" title="Initial 24h spend-log scan is still running after a service restart (takes a few minutes). Counts are partial until it completes; after that both KPIs stay live via incremental 5-minute polls.">⏳ partial</span>'
+    : '';
   // Cached share: high is healthy for agent workloads (sessions reuse
   // context); a drop below ~70% historically meant prompt-cache breakage.
   const share = fb.cachedShare24h;
@@ -1096,7 +1099,7 @@ function renderFallbackKpis() {
     fmtCompact(fb.freshTokens24h) +
     ' <span style="font-size:0.75em;color:var(--text-dim)">fresh tok</span> · ' +
     '<span style="color:' + shareColor + '" title="Share of prompt tokens served from provider prompt caches (24h). Low values mean cache misses and higher cost/latency.">' +
-    (sharePct === null ? '--' : sharePct + '% cached') + '</span>' + loading;
+    (sharePct === null ? '--' : sharePct + '% cached') + '</span>' + scanBadge;
   const n = fb.activations24h || 0;
   const uncovered = (fb.uncovered || []).length;
   const color = n > 0 ? 'var(--warn, #f59e0b)' : 'var(--ok)';
@@ -1115,8 +1118,7 @@ function renderFallbackKpis() {
     html += ' <span style="font-size:0.72em;color:var(--text-dim)">· ' + inline +
       (byGroup.length > 2 ? ' +' + (byGroup.length - 2) : '') + '</span>';
   }
-  html += '</span>' +
-    (fb.backfillPending ? ' <span style="font-size:0.7em;color:var(--text-dim)">(loading)</span>' : '');
+  html += '</span>' + scanBadge;
   if (uncovered > 0) {
     html += ' <span style="font-size:0.72em;color:var(--bad)" title="Claude model groups with no fallback chain configured: ' +
       esc(fb.uncovered.join(', ')) + '">· ' + uncovered + ' uncovered</span>';
