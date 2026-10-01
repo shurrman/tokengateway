@@ -244,3 +244,21 @@ Without `LITELLM_CHATGPT_AUTH_FILE`, the original managed-OAuth mode remains.
 Its independent dashboard/plugin refresh owners and Kubernetes persistence
 are not fixed by the read-only integration. Do not load the plugin into an
 existing LiteLLM just to view quotas.
+## Optional OmniRoute read-only account quotas
+
+Add a systemd drop-in (adjust URLs to the deployment):
+
+```ini
+[Service]
+Environment=OMNIROUTE_BASE_URL=http://127.0.0.1:20128
+Environment=OMNIROUTE_DASHBOARD_URL=http://omni.wsoft/dashboard/quota
+LoadCredential=omniroute-dashboard-password:/etc/omniroute/dashboard-password
+Environment=OMNIROUTE_DASHBOARD_PASSWORD_FILE=%d/omniroute-dashboard-password
+```
+
+TokenGateway shows one card per Claude Code connection, with the actual account
+quota windows and reset times. The management password and session remain on
+the server. Provider OAuth login/logout, refresh and account selection remain
+owned by OmniRoute. An unavailable account or OmniRoute displays an error without
+breaking the other quota sources. Back up the deployed source before restarting
+only `tokengateway-quota`; do not restart LiteLLM for dashboard-only changes.

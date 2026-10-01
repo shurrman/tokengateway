@@ -99,3 +99,11 @@ feat/native-litellm-quota (no conflicts, plugin tests green):
 - Add a systemd service, native deployment guide and regression tests.
 - Full subscription-plugin integration and desktop Basic auth support remain
   outside this phase.
+## 2026-10-01 - Read-only OmniRoute Claude Code quota cards
+
+- Add separate account cards with real quota windows, reset times, plan,
+  snapshot timestamp and a link to OmniRoute; no login/logout controls.
+- Server-only management session, five-minute cache, deduplicated polling,
+  sanitized failures and independent account errors; no OAuth credential import.
+- Deployed on .35 with systemd LoadCredential for the existing OmniRoute
+  dashboard password. Restarted only TokenGateway; LiteLLM PID unchanged.

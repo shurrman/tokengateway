@@ -234,3 +234,14 @@ Contributions are welcome! Please check out [CONTRIBUTING.md](CONTRIBUTING.md) f
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
+# Read-only OmniRoute quota cards
+
+The dashboard can show each Claude Code account managed by OmniRoute as a
+separate read-only card. Set `OMNIROUTE_BASE_URL` (server-side URL),
+`OMNIROUTE_DASHBOARD_PASSWORD_FILE` (private management password file), and
+optionally `OMNIROUTE_DASHBOARD_URL` (browser link, defaults to
+`http://omni.wsoft/dashboard/quota`). Account management remains in OmniRoute.
+The adapter keeps the dashboard session server-side, reads real per-account
+quota windows, caches for five minutes and retries errors after one minute.
+It never copies or refreshes provider OAuth credentials. Failed accounts have
+separate error states and do not hide healthy sibling accounts.

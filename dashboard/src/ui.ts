@@ -775,12 +775,13 @@ function render() {
     const isVllm = p.id === 'local-vllm';
     const isDeepSeek = p.id === 'deepseek';
     
-    html += \`<div class="provider-card \${p.id}">\`;
+    const isOmni = p.id.startsWith('omni-claude');
+    html += \`<div class="provider-card \${isOmni ? 'anthropic' : p.id}">\`;
     
     html += \`<div>
       <div class="card-header">
         <div class="provider-meta">
-          <div class="logo-box \${p.id}">\${LOGOS[p.id] || ''}</div>
+          <div class="logo-box \${isOmni ? 'anthropic' : p.id}">\${LOGOS[p.id] || (isOmni ? LOGOS.anthropic : '')}</div>
           <div class="provider-title">
             <span class="provider-name">\${p.label}</span>
             <span class="provider-email">\${esc(p.email || 'Not authenticated')}</span>
@@ -801,7 +802,7 @@ function render() {
         }
         
         if (p.readOnly) {
-          html += '<span class="pill">Managed by LiteLLM</span>';
+          html += '<span class="pill">Managed by ' + esc(p.managedBy || 'LiteLLM') + '</span>';
         } else if (!isVllm) {
           if (p.connected) {
             html += \`<button class="danger" onclick="logout('\${p.id}')">disconnect</button>\`;
@@ -816,6 +817,9 @@ function render() {
 
     if (report && report.cached) {
       html += '<div class="provider-email">Cached quota snapshot: ' + esc(new Date(report.fetchedAt).toLocaleString()) + '</div>';
+    }
+    if (isOmni && report && !report.cached) {
+      html += '<div class="provider-email">Updated: ' + esc(new Date(report.fetchedAt).toLocaleString()) + '</div>';
     }
 
     if (p.login && p.login.status === 'pending') {
@@ -877,10 +881,10 @@ function render() {
     
     html += \`</div>\`; // end top group
 
-    if (p.connected && report && report.dashboardUrl) {
+    if ((p.connected || isOmni) && report && report.dashboardUrl) {
       html += \`<div class="card-footer">
         <a class="dash-link" href="\${report.dashboardUrl}" target="_blank" rel="noreferrer">
-          Official Dashboard ↗
+          \${isOmni ? 'OmniRoute quotas ↗' : 'Official Dashboard ↗'}
         </a>
       </div>\`;
     }

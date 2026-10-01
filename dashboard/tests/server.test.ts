@@ -7,11 +7,13 @@ let directory: string;
 let server: Awaited<typeof import("../server")>["server"];
 let url: string;
 let before: Buffer;
+let omniServer: ReturnType<typeof Bun.serve>;
+let omniCalls = 0;
 const password = "fixture-password-for-tests-only";
 const hybrid = process.env.TEST_MANAGED_ANTHROPIC === "1";
 const inferenceKey = "fixture-only-inference-key-at-least-32-characters";
 const headers = { Authorization: `Basic ${Buffer.from(`quota:${password}`).toString("base64")}` };
-const names = ["PORT", "HOST", "DASHBOARD_PASSWORD", "DASHBOARD_PASSWORD_FILE", "LITELLM_CHATGPT_AUTH_FILE", "MANAGED_ANTHROPIC", "ANTHROPIC_PROXY_KEY", "ANTHROPIC_PROXY_KEY_FILE", "CREDENTIALS_PATH", "LITELLM_BASE_URL", "LITELLM_ADMIN_KEY", "LITELLM_ADMIN_KEY_FILE"];
+const names = ["PORT", "HOST", "DASHBOARD_PASSWORD", "DASHBOARD_PASSWORD_FILE", "LITELLM_CHATGPT_AUTH_FILE", "MANAGED_ANTHROPIC", "ANTHROPIC_PROXY_KEY", "ANTHROPIC_PROXY_KEY_FILE", "CREDENTIALS_PATH", "LITELLM_BASE_URL", "LITELLM_ADMIN_KEY", "LITELLM_ADMIN_KEY_FILE", "OMNIROUTE_BASE_URL", "OMNIROUTE_DASHBOARD_PASSWORD_FILE"];
 const priorEnv = Object.fromEntries(names.map(name => [name, process.env[name]]));
 
 beforeAll(async () => {
@@ -28,12 +30,24 @@ beforeAll(async () => {
 	process.env.LITELLM_BASE_URL = "http://127.0.0.1:1";
 	process.env.LITELLM_ADMIN_KEY = "";
 	delete process.env.LITELLM_ADMIN_KEY_FILE;
+	const omniPassword = join(directory, "omni-password");
+	await writeFile(omniPassword, "fixture-omni-password", { mode: 0o600 });
+	omniServer = Bun.serve({ port: 0, hostname: "127.0.0.1", fetch(req) {
+		omniCalls++;
+		const route = new URL(req.url).pathname;
+		if (route === "/api/auth/login") return Response.json({}, { headers: { "set-cookie": "auth_token=private-fixture-session; Path=/" } });
+		if (route === "/api/usage/quota") return Response.json({ providers: [{ provider: "claude", connectionId: "fixture", name: "Omni account" }] });
+		return Response.json({ plan: "max", quotas: { "session (5h)": { used: 12, total: 100 } } });
+	} });
+	process.env.OMNIROUTE_BASE_URL = omniServer.url.origin;
+	process.env.OMNIROUTE_DASHBOARD_PASSWORD_FILE = omniPassword;
 	({ server } = await import("../server"));
 	url = `http://127.0.0.1:${server.port}`;
 });
 
 afterAll(async () => {
 	server.stop(true);
+	omniServer.stop(true);
 	for (const name of names) {
 		if (priorEnv[name] === undefined) delete process.env[name];
 		else process.env[name] = priorEnv[name];
@@ -48,6 +62,16 @@ test("HTTP routes require authentication and reject wrong passwords", async () =
 		expect(response.headers.get("WWW-Authenticate")).toContain("Basic");
 	}
 	expect((await fetch(url, { headers: { Authorization: "Basic aW52YWxpZA==" } })).status).toBe(401);
+	expect(omniCalls).toBe(0);
+});
+
+test("authenticated HTTP responses include read-only OmniRoute account cards without session secrets", async () => {
+	const statusText = await (await fetch(url + "/api/status", { headers })).text();
+	const status = JSON.parse(statusText);
+	expect(status.providers.find((p: { id: string }) => p.id === "omni-claude-fixture")).toMatchObject({ readOnly: true, managedBy: "OmniRoute" });
+	const usageText = await (await fetch(url + "/api/usage", { headers })).text();
+	expect(JSON.parse(usageText).reports.find((r: { provider: string }) => r.provider === "omni-claude-fixture").limits[0].usedFraction).toBe(0.12);
+	expect(statusText + usageText).not.toMatch(/private-fixture-session|fixture-omni-password/);
 });
 
 test("authenticated UI and API work, with credential routes disabled and no OAuth writes", async () => {
@@ -68,7 +92,7 @@ test("authenticated requests from a different web origin are rejected", async ()
 
 test.skipIf(!hybrid)("hybrid HTTP routes separate inference, dashboard and native credentials", async () => {
 	const status = await (await fetch(url + "/api/status", { headers })).json();
-	expect(status.providers.map((p: { id: string }) => p.id)).toEqual(["openai-codex", "anthropic", "deepseek"]);
+	expect(status.providers.map((p: { id: string }) => p.id)).toEqual(["openai-codex", "anthropic", "deepseek", "omni-claude-fixture"]);
 	expect(status.providers[1].connected).toBe(false);
 	for (const path of ["/api/credentials/anthropic", "/api/login/openai-codex", "/api/logout/openai-codex"]) {
 		expect((await fetch(url + path, { method: "POST", headers })).status).toBe(403);

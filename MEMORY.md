@@ -142,3 +142,20 @@
 - Filesystem tools may fail on this host with bwrap RTM_NEWADDR. Approved
   require_escalated exec works. For patches, an approved `env apply_patch`
   invocation works where exec's automatic apply_patch dispatch still fails.
+## OmniRoute quota cards (2026-10-01)
+
+- `dashboard/src/omniroute.ts` integrates Claude Code accounts read-only into
+  status/usage for both native and managed modes. Session cookie stays server-side.
+- `/api/usage/quota` lists accounts but its summary can say 100% remaining even
+  when `/api/usage/<connectionId>` has actual usage; always use account windows.
+- Configure OMNIROUTE_BASE_URL, OMNIROUTE_DASHBOARD_PASSWORD_FILE and optional
+  OMNIROUTE_DASHBOARD_URL. Production drop-in:
+  `/etc/systemd/system/tokengateway-quota.service.d/30-omniroute-quota.conf`.
+  LoadCredential reads `/etc/omniroute/dashboard-password`; inference key cannot
+  read management quota API (403). No OAuth token copy or refresh in TokenGateway.
+- Backup `/var/backups/tokengateway-omni-20261001/`; only quota service restarted.
+  Live status/usage 200, anonymous 401, UI script parses, LiteLLM PID unchanged.
+- Bun full-suite shared-process issue: DeepSeek/server tests import the same
+  server.ts instance and yield port 0 errors. Run each test file separately,
+  plus TEST_MANAGED_ANTHROPIC=1 server tests. TypeScript passes.
+- User authorized publishing this phase to origin/main on 2026-10-01.

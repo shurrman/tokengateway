@@ -21,6 +21,12 @@ import { HTML } from "./src/ui";
 import { dashboardAuth } from "./src/auth";
 import { liteLLMQuotaApi } from "./src/litellm";
 import { anthropicProxy } from "./src/anthropic";
+import { omniRouteQuota } from "./src/omniroute";
+
+const omniQuota = process.env.OMNIROUTE_BASE_URL && process.env.OMNIROUTE_DASHBOARD_PASSWORD_FILE
+  ? omniRouteQuota({ baseUrl: process.env.OMNIROUTE_BASE_URL,
+    password: (await Bun.file(process.env.OMNIROUTE_DASHBOARD_PASSWORD_FILE).text()).trim(),
+    dashboardUrl: process.env.OMNIROUTE_DASHBOARD_URL }) : undefined;
 
 const PORT = Number(process.env.PORT ?? 3737);
 const HOST = process.env.HOST || "0.0.0.0";
@@ -325,7 +331,15 @@ export const server = Bun.serve({
 		}
 		if (url.pathname.startsWith("/api/")) {
 			try {
-				const response = await dashboardApi(req, url);
+				let response = await dashboardApi(req, url);
+				if (omniQuota && req.method === "GET" && response.ok && ["/api/status", "/api/usage"].includes(url.pathname)) {
+					const payload = await response.json();
+					if (!isRecord(payload)) throw new Error("Invalid dashboard response");
+					const omni = await omniQuota();
+					if (url.pathname === "/api/status" && Array.isArray(payload.providers)) payload.providers.push(...omni.providers);
+					if (url.pathname === "/api/usage" && Array.isArray(payload.reports)) payload.reports.push(...omni.reports);
+					response = Response.json(payload);
+				}
 				response.headers.set("cache-control", "no-store");
 				return response;
 			} catch (error) {

@@ -1,322 +1,404 @@
 {
   "dashboard/package.json": {
-    "mtime": 1789610397.8041182,
+    "mtime": 1790137181.4708626,
+    "seen": 1790885723.469554,
     "ast_hash": "af934f9697d4e57bba17e07c1ce0d2d7",
     "semantic_hash": ""
   },
   "dashboard/server.ts": {
-    "mtime": 1790103686.0349364,
-    "ast_hash": "fb52976548c77a8ff98cd71209eb7af8",
+    "mtime": 1790885560.520031,
+    "seen": 1790885723.469557,
+    "ast_hash": "300396954b3348bd179b6ce69e6fdd04",
     "semantic_hash": ""
   },
   "dashboard/src/auth.ts": {
-    "mtime": 1789676309.2134457,
+    "mtime": 1790137181.471321,
+    "seen": 1790885723.4695601,
     "ast_hash": "d96baaa48d8ba2dbb7430ff7112a1f98",
     "semantic_hash": ""
   },
   "dashboard/src/guards.ts": {
-    "mtime": 1789610397.8041182,
+    "mtime": 1790137181.4713924,
+    "seen": 1790885723.469561,
     "ast_hash": "a29aafece2a372320e92320135fd9d6f",
     "semantic_hash": ""
   },
   "dashboard/src/litellm.ts": {
-    "mtime": 1789676309.2144458,
+    "mtime": 1790137181.4715176,
+    "seen": 1790885723.469561,
     "ast_hash": "6f6eb7a724dbe7618c2aa6dda34107aa",
     "semantic_hash": ""
   },
   "dashboard/src/oauth.ts": {
-    "mtime": 1790102168.565458,
+    "mtime": 1790137181.4716575,
+    "seen": 1790885723.469562,
     "ast_hash": "ddbc58993df571f7905a5c6b346f5cfe",
     "semantic_hash": ""
   },
   "dashboard/src/providers.ts": {
-    "mtime": 1790102168.562458,
+    "mtime": 1790137181.4717944,
+    "seen": 1790885723.4695628,
     "ast_hash": "48779503bd35fc4ad6870440029cedce",
     "semantic_hash": ""
   },
   "dashboard/src/store.ts": {
-    "mtime": 1789676309.2154458,
+    "mtime": 1790137181.4722426,
+    "seen": 1790885723.469564,
     "ast_hash": "33cd750b461f8c99bf8c8b2dd36ac5b8",
     "semantic_hash": ""
   },
   "dashboard/src/ui.ts": {
-    "mtime": 1790103674.522777,
-    "ast_hash": "37bc8f6f789465220111fab7f5009111",
+    "mtime": 1790885560.5206664,
+    "seen": 1790885723.469565,
+    "ast_hash": "f502911c06924a9ac6d20a327537fdd9",
     "semantic_hash": ""
   },
   "dashboard/src/usage.ts": {
-    "mtime": 1790102230.1053731,
+    "mtime": 1790137181.4729195,
+    "seen": 1790885723.469565,
     "ast_hash": "839ab1a2ed998bf332490f072d3b0abf",
     "semantic_hash": ""
   },
   "dashboard/tests/auth.test.ts": {
-    "mtime": 1789676309.2204459,
+    "mtime": 1790137181.4731143,
+    "seen": 1790885723.4695659,
     "ast_hash": "f906fb9a3806061610dacefa22151934",
     "semantic_hash": ""
   },
   "dashboard/tests/litellm.test.ts": {
-    "mtime": 1789676309.2214458,
+    "mtime": 1790137181.4733503,
+    "seen": 1790885723.469567,
     "ast_hash": "ea87ec4471a1c0f2b8b8d4ed9c39927c",
     "semantic_hash": ""
   },
   "dashboard/tests/server.test.ts": {
-    "mtime": 1790103710.7572787,
-    "ast_hash": "d993c664dd65e420efdd9670cb9d939b",
+    "mtime": 1790885605.7209916,
+    "seen": 1790885723.469569,
+    "ast_hash": "1a3bea7dc3e32c2915d8377e78c25a2d",
     "semantic_hash": ""
   },
   "dashboard/tsconfig.json": {
-    "mtime": 1789610397.8051183,
+    "mtime": 1790137181.4736674,
+    "seen": 1790885723.4695702,
     "ast_hash": "ebc0ce0b7b18ceaa7aa88d5a7d67c083",
     "semantic_hash": ""
   },
   "desktop/src-tauri/build.rs": {
-    "mtime": 1789610397.8061182,
+    "mtime": 1790137181.475469,
+    "seen": 1790885723.469571,
     "ast_hash": "1be34a5c61c2c35365de3dab14298f0b",
     "semantic_hash": ""
   },
   "desktop/src-tauri/gen/schemas/acl-manifests.json": {
-    "mtime": 1789610397.8061182,
+    "mtime": 1790137181.475764,
+    "seen": 1790885723.469571,
     "ast_hash": "0edd1d3c33e9f8aca44046f2eddb8717",
     "semantic_hash": ""
   },
   "desktop/src-tauri/gen/schemas/capabilities.json": {
-    "mtime": 1789610397.8061182,
+    "mtime": 1790137181.476164,
+    "seen": 1790885723.469572,
     "ast_hash": "99914b932bd37a50b983c5e7c90ae93b",
     "semantic_hash": ""
   },
   "desktop/src-tauri/gen/schemas/desktop-schema.json": {
-    "mtime": 1789610397.8071182,
+    "mtime": 1790137181.4763763,
+    "seen": 1790885723.469573,
     "ast_hash": "52a4fdf63f99193aee5c5f5159e56902",
     "semantic_hash": ""
   },
   "desktop/src-tauri/gen/schemas/windows-schema.json": {
-    "mtime": 1789610397.8081183,
+    "mtime": 1790137181.476742,
+    "seen": 1790885723.469573,
     "ast_hash": "52a4fdf63f99193aee5c5f5159e56902",
     "semantic_hash": ""
   },
   "desktop/src-tauri/src/lib.rs": {
-    "mtime": 1789610397.8081183,
+    "mtime": 1790137181.4773593,
+    "seen": 1790885723.469574,
     "ast_hash": "39d59437a4a25bcabab2a7fa96633c5e",
     "semantic_hash": ""
   },
   "desktop/src-tauri/src/main.rs": {
-    "mtime": 1789610397.8081183,
+    "mtime": 1790137181.4774802,
+    "seen": 1790885723.469575,
     "ast_hash": "39416130fccd4880fda4b550385ded8e",
     "semantic_hash": ""
   },
   "desktop/src-tauri/src/oauth.rs": {
-    "mtime": 1789610397.8081183,
+    "mtime": 1790137181.4776103,
+    "seen": 1790885723.469575,
     "ast_hash": "421b98f9c3bfbc1bb447a9155a26cc44",
     "semantic_hash": ""
   },
   "desktop/src-tauri/tauri.conf.json": {
-    "mtime": 1789610397.8081183,
+    "mtime": 1790137181.4777155,
+    "seen": 1790885723.469576,
     "ast_hash": "3696660286a766411bdf97cbe783b855",
     "semantic_hash": ""
   },
   "desktop/src/main.ts": {
-    "mtime": 1789610397.8081183,
+    "mtime": 1790137181.4780989,
+    "seen": 1790885723.469577,
     "ast_hash": "2390f2012517d181733ee97c73ac16ab",
     "semantic_hash": ""
   },
   "litellm-plugin/sitecustomize.py": {
-    "mtime": 1789676309.2514465,
+    "mtime": 1790137181.4939237,
+    "seen": 1790885723.469577,
     "ast_hash": "afde7ad0a2431663e7a18c6ad3d85b1c",
     "semantic_hash": ""
   },
   "litellm-plugin/test_bridge_spend_logging.py": {
-    "mtime": 1789610397.8131185,
+    "mtime": 1790137181.4951787,
+    "seen": 1790885723.469578,
     "ast_hash": "25345168b2852386ec02c34614ec8221",
     "semantic_hash": ""
   },
   "litellm-plugin/test_claude_bridge.py": {
-    "mtime": 1789676309.2524467,
+    "mtime": 1790137181.4956217,
+    "seen": 1790885723.469579,
     "ast_hash": "59124bfc63b359d7d746b3e0da84fc43",
     "semantic_hash": ""
   },
   "litellm-plugin/test_usage_parity.py": {
-    "mtime": 1789610397.8131185,
+    "mtime": 1790137181.4963224,
+    "seen": 1790885723.4695811,
     "ast_hash": "50be406c578b0890387795a3300a9408",
     "semantic_hash": ""
   },
   "litellm-plugin/test_wire_contract.py": {
-    "mtime": 1789676309.2534466,
+    "mtime": 1790137181.4964533,
+    "seen": 1790885723.469582,
     "ast_hash": "29cd220612c0c1683dc9832a308a3f39",
     "semantic_hash": ""
   },
   ".github/workflows/build-desktop.yml": {
-    "mtime": 1789610397.8031182,
+    "mtime": 1790137181.469825,
+    "seen": 1790885723.469584,
     "ast_hash": "7cef487a6a1421e1daf9665b25c9615a",
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1789676309.2114456,
+    "mtime": 1790137181.4700098,
+    "seen": 1790885723.469584,
     "ast_hash": "22a95634a685aced5d3e884f44dc94af",
     "semantic_hash": ""
   },
   "CHANGES.md": {
-    "mtime": 1790104482.235937,
-    "ast_hash": "a854f6bd49101568dc948e0ea2ce1153",
+    "mtime": 1790885722.1876428,
+    "seen": 1790885723.469585,
+    "ast_hash": "a7ff52163187d4eaa895d47c944a5078",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
-    "mtime": 1789610397.8031182,
+    "mtime": 1790137181.4702327,
+    "seen": 1790885723.469586,
     "ast_hash": "dacddb58d52bff48918454e4334a985e",
     "semantic_hash": ""
   },
   "MEMORY.md": {
-    "mtime": 1790104474.1928263,
-    "ast_hash": "231c470f5bf9fafdee2c398332f5708f",
+    "mtime": 1790886110.642624,
+    "seen": 1790886111.643036,
+    "ast_hash": "6961f8fef2cc899c9b617d6008c6b6aa",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1790103841.8640928,
-    "ast_hash": "ee4e1ffcf33fafe46bb5446285a32f4a",
+    "mtime": 1790885722.1870518,
+    "seen": 1790885723.4695868,
+    "ast_hash": "3b7d290a9694a735f760a7b030550210",
     "semantic_hash": ""
   },
   "deploy/docker/litellm-config.yaml": {
-    "mtime": 1789676309.222446,
+    "mtime": 1790137181.4738681,
+    "seen": 1790885723.4695868,
     "ast_hash": "2c3b6d75ed68566486843f0c9060e7fa",
     "semantic_hash": ""
   },
   "deploy/kubernetes/quota-dashboard.yaml": {
-    "mtime": 1789676309.222446,
+    "mtime": 1790137181.4741151,
+    "seen": 1790885723.469588,
     "ast_hash": "b4badb7e9a02c0c88d98950ceb0c3266",
     "semantic_hash": ""
   },
   "deploy/kubernetes/rbac.yaml": {
-    "mtime": 1789610397.8051183,
+    "mtime": 1790137181.4741893,
+    "seen": 1790885723.469589,
     "ast_hash": "3cdcfe2701a2153c39cc27b1c58bfdf1",
     "semantic_hash": ""
   },
   "desktop/README.md": {
-    "mtime": 1789610397.8051183,
+    "mtime": 1790137181.4745088,
+    "seen": 1790885723.469589,
     "ast_hash": "b6f0375953528a78328d162fcaa15a1f",
     "semantic_hash": ""
   },
   "desktop/src/index.html": {
-    "mtime": 1789610397.8081183,
+    "mtime": 1790137181.4779499,
+    "seen": 1790885723.46959,
     "ast_hash": "d756c41b04d10e61d1dd4cbbc56757ac",
     "semantic_hash": ""
   },
   "docker-compose.yml": {
-    "mtime": 1789676309.223446,
+    "mtime": 1790137181.4783154,
+    "seen": 1790885723.4695911,
     "ast_hash": "3692e449472fd53a56a15ec4d6dd1df2",
     "semantic_hash": ""
   },
   "docs/architecture.md": {
-    "mtime": 1789676309.224446,
+    "mtime": 1790137181.4784713,
+    "seen": 1790885723.4695911,
     "ast_hash": "c74dafd5aee3e4536f5d603acfd731ad",
     "semantic_hash": ""
   },
   "docs/native-litellm.md": {
-    "mtime": 1790104563.5210588,
-    "ast_hash": "c5a19a7dfb6ee9fc7b3805724905c60a",
+    "mtime": 1790885722.1889963,
+    "seen": 1790885723.469592,
+    "ast_hash": "7d52b7b619892b1ebd3c91129ab7f84d",
     "semantic_hash": ""
   },
   "docs/oauth-setup-anthropic.md": {
-    "mtime": 1789676309.224446,
+    "mtime": 1790137181.481213,
+    "seen": 1790885723.469592,
     "ast_hash": "9fcc8c9436e781492760c9009db5d709",
     "semantic_hash": ""
   },
   "docs/oauth-setup-google.md": {
-    "mtime": 1789676309.224446,
+    "mtime": 1790137181.4813015,
+    "seen": 1790885723.469593,
     "ast_hash": "41996c94985ebcb00bf1aaaf247c84c0",
     "semantic_hash": ""
   },
   "docs/oauth-setup-openai.md": {
-    "mtime": 1789676309.225446,
+    "mtime": 1790137181.4813876,
+    "seen": 1790885723.469593,
     "ast_hash": "760a7c36fc769a28511e52d295cfbbf0",
     "semantic_hash": ""
   },
   "litellm-plugin/README.md": {
-    "mtime": 1789679078.490571,
+    "mtime": 1790137181.4934838,
+    "seen": 1790885723.469594,
     "ast_hash": "c68e948d21e4f091da82d307618f3c93",
     "semantic_hash": ""
   },
   "desktop/src-tauri/icons/128x128.png": {
-    "mtime": 1789610397.8081183,
+    "mtime": 1790137181.4768867,
+    "seen": 1790885723.469595,
     "ast_hash": "d81bf928e71275b5f16f8586cf6b0646",
     "semantic_hash": ""
   },
   "desktop/src-tauri/icons/128x128@2x.png": {
-    "mtime": 1789610397.8081183,
+    "mtime": 1790137181.4769647,
+    "seen": 1790885723.469595,
     "ast_hash": "d81bf928e71275b5f16f8586cf6b0646",
     "semantic_hash": ""
   },
   "desktop/src-tauri/icons/32x32.png": {
-    "mtime": 1789610397.8081183,
+    "mtime": 1790137181.4770565,
+    "seen": 1790885723.469596,
     "ast_hash": "217fe437142fa925830c0a43baf3b1b6",
     "semantic_hash": ""
   },
   "desktop/src-tauri/icons/icon.png": {
-    "mtime": 1789610397.8081183,
+    "mtime": 1790137181.4772003,
+    "seen": 1790885723.469596,
     "ast_hash": "d81bf928e71275b5f16f8586cf6b0646",
     "semantic_hash": ""
   },
   "docs/assets/litellm-models.png": {
-    "mtime": 1789610397.8111184,
+    "mtime": 1790137181.4793544,
+    "seen": 1790885723.4695969,
     "ast_hash": "26e8d008905cbf88dbaf4e5f629d5818",
     "semantic_hash": ""
   },
   "docs/assets/quota-dashboard.png": {
-    "mtime": 1789610397.8121183,
+    "mtime": 1790137181.4803796,
+    "seen": 1790885723.4695969,
     "ast_hash": "60a632e9a826ed5f0cd481d5db6d6ebf",
     "semantic_hash": ""
   },
   "scripts/refresh_fixture.py": {
-    "mtime": 1789676309.2544467,
+    "mtime": 1790137181.4965951,
+    "seen": 1790885723.469583,
     "ast_hash": "74303b4b9489a63afa3e7bf26460982e",
     "semantic_hash": ""
   },
   "scripts/test-litellm-rotation.ts": {
-    "mtime": 1789676309.2544467,
+    "mtime": 1790137181.4966903,
+    "seen": 1790885723.469583,
     "ast_hash": "54a80c1e035a6e8cf4025f0dd925d881",
     "semantic_hash": ""
   },
   "dashboard/src/anthropic.ts": {
-    "mtime": 1790009763.691641,
+    "mtime": 1790137181.4711695,
+    "seen": 1790885723.469558,
     "ast_hash": "76e6aa0af59ffd0b5d7f3810d717ade3",
     "semantic_hash": ""
   },
   "dashboard/src/atomic-json.ts": {
-    "mtime": 1789676309.2134457,
+    "mtime": 1790137181.471243,
+    "seen": 1790885723.469559,
     "ast_hash": "fee5e479acb552e109dafb42edaf29c4",
     "semantic_hash": ""
   },
   "dashboard/tests/managed-anthropic.test.ts": {
-    "mtime": 1789678845.0831926,
+    "mtime": 1790137181.473469,
+    "seen": 1790885723.469568,
     "ast_hash": "2067b597fbde9795b2ee0ad4cebfca7b",
     "semantic_hash": ""
   },
   "litellm-plugin/test_cache_anchor.py": {
-    "mtime": 1789676309.2524467,
+    "mtime": 1790137181.4953902,
+    "seen": 1790885723.469578,
     "ast_hash": "5a63cbc05c19b725eeb8121ae333c3bc",
     "semantic_hash": ""
   },
   "litellm-plugin/test_multimodal_loop.py": {
-    "mtime": 1789676309.2524467,
+    "mtime": 1790137181.495821,
+    "seen": 1790885723.46958,
     "ast_hash": "29681434e678593df6feaa37d8c7774b",
     "semantic_hash": ""
   },
   "litellm-plugin/test_parity_batch.py": {
-    "mtime": 1789676309.2534466,
+    "mtime": 1790137181.4960127,
+    "seen": 1790885723.46958,
     "ast_hash": "bcb4671aac65219013baab0cdd76a53a",
     "semantic_hash": ""
   },
   "litellm-plugin/test_responses_route.py": {
-    "mtime": 1789676309.2534466,
+    "mtime": 1790137181.4962149,
+    "seen": 1790885723.4695811,
     "ast_hash": "c4daab0b566c0bc5c9f42df806dc0821",
     "semantic_hash": ""
   },
   "deploy/kubernetes/litellm.yaml": {
-    "mtime": 1789676309.222446,
+    "mtime": 1790137181.4740305,
+    "seen": 1790885723.469588,
     "ast_hash": "597c14490964b83dc6b9d9ea5d7a7247",
     "semantic_hash": ""
   },
   "dashboard/tests/deepseek-liteLLM-sync.test.ts": {
-    "mtime": 1790103777.3592005,
+    "mtime": 1790137181.4732115,
+    "seen": 1790885723.4695659,
     "ast_hash": "d790bb96f0371c0b884eddd8ebadcfdd",
+    "semantic_hash": ""
+  },
+  "dashboard/src/omniroute.ts": {
+    "mtime": 1790885478.1779072,
+    "seen": 1790885723.4695628,
+    "ast_hash": "63588502a9411587dac7606cf0be6fcd",
+    "semantic_hash": ""
+  },
+  "dashboard/tests/omniroute.test.ts": {
+    "mtime": 1790885396.445951,
+    "seen": 1790885723.469568,
+    "ast_hash": "9b79649607e3a6091f769259090c630b",
+    "semantic_hash": ""
+  },
+  "desktop/src-tauri/Cargo.toml": {
+    "mtime": 1790137181.4753642,
+    "seen": 1790885723.4695702,
+    "ast_hash": "fa9f33e3040afe3831ef581613dff60e",
     "semantic_hash": ""
   }
 }
