@@ -8,10 +8,14 @@
  *  - fallback activations in the last 24 h (`/spend/logs/ui`,
  *    `metadata.attempted_fallbacks > 0`), collected incrementally because a
  *    full-window recount is ~18 KB per request row.
- * Plus the proxy-wide request/token totals (`/global/activity`) for the KPI
- * bar. Failures degrade to an `error` string; the dashboard never breaks.
+ * The rolling window is persisted in a small SQLite file (bun:sqlite, one
+ * compact row per request) under FALLBACKS_DB_PATH, so a service restart
+ * resumes from the last scanned timestamp instead of re-reading 24 h of
+ * spend logs. Failures degrade to an `error` string; the dashboard never
+ * breaks, and a broken/unwritable DB falls back to in-memory operation.
  */
 
+import { Database } from "bun:sqlite";
 import { isRecord, readNumber, readString } from "./guards";
 
 export interface FallbackSnapshot {
@@ -68,6 +72,38 @@ export function fallbackMonitor(options: Options): () => Promise<FallbackSnapsho
 	const traffic = new Map<string, { atMs: number; prompt: number; cached: number; completion: number }>();
 	let sinceMs = Date.now() - WINDOW_MS; // initial backfill window
 	let backfillPending = true;
+	let db: Database | undefined;
+	try {
+		const dbPath = process.env.FALLBACKS_DB_PATH
+			?? `${process.env.STATE_DIRECTORY ?? "/var/lib/tokengateway-quota"}/fallbacks.sqlite`;
+		db = new Database(dbPath, { create: true });
+		db.run("pragma journal_mode = wal");
+		db.run(`create table if not exists requests (
+			request_id text primary key,
+			at_ms integer not null,
+			prompt integer not null,
+			cached integer not null,
+			completion integer not null,
+			fallback_group text
+		)`);
+		db.run("create index if not exists requests_at on requests (at_ms)");
+		db.run("create table if not exists scan_state (id integer primary key check (id = 1), since_ms integer not null)");
+		const cutoff = Date.now() - WINDOW_MS;
+		db.run("delete from requests where at_ms < ?", [cutoff]);
+		for (const row of db.query<{ request_id: string; at_ms: number; prompt: number; cached: number; completion: number; fallback_group: string | null }, []>(
+			"select request_id, at_ms, prompt, cached, completion, fallback_group from requests",
+		).all()) {
+			traffic.set(row.request_id, { atMs: row.at_ms, prompt: row.prompt, cached: row.cached, completion: row.completion });
+			if (row.fallback_group) events.set(row.request_id, { requestId: row.request_id, group: row.fallback_group, atMs: row.at_ms });
+		}
+		const state = db.query<{ since_ms: number }, []>("select since_ms from scan_state where id = 1").get();
+		if (state && state.since_ms > sinceMs) {
+			sinceMs = state.since_ms;
+			backfillPending = false; // resume incrementally from the stored cursor
+		}
+	} catch {
+		db = undefined; // in-memory fallback; the first scan re-reads 24 h
+	}
 	let lastPollAt = 0;
 	let polling = false;
 	let snapshot: FallbackSnapshot | undefined;
@@ -153,6 +189,21 @@ export function fallbackMonitor(options: Options): () => Promise<FallbackSnapsho
 		const cutoff = nowMs - WINDOW_MS;
 		for (const [key, event] of events) if (event.atMs < cutoff) events.delete(key);
 		for (const [key, row] of traffic) if (row.atMs < cutoff) traffic.delete(key);
+		if (db) {
+			try {
+				const upsert = db.prepare(
+					`insert into requests (request_id, at_ms, prompt, cached, completion, fallback_group)
+					 values (?, ?, ?, ?, ?, ?)
+					 on conflict (request_id) do update set at_ms = excluded.at_ms, prompt = excluded.prompt,
+					   cached = excluded.cached, completion = excluded.completion, fallback_group = excluded.fallback_group`,
+				);
+				db.transaction(() => {
+					for (const [id, row] of traffic) upsert.run(id, row.atMs, row.prompt, row.cached, row.completion, events.get(id)?.group ?? null);
+					db!.run("delete from requests where at_ms < ?", [cutoff]);
+					db!.run("insert into scan_state (id, since_ms) values (1, ?) on conflict (id) do update set since_ms = excluded.since_ms", [sinceMs]);
+				})();
+			} catch { /* persistence is best-effort; memory stays authoritative */ }
+		}
 	}
 
 	async function refresh(): Promise<FallbackSnapshot> {
