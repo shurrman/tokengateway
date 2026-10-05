@@ -58,7 +58,10 @@ export const HTML = `<!DOCTYPE html>
     background: var(--bg);
     color: var(--text);
     padding: 16px 18px;
-    max-width: 1140px;
+    /* Proportional auto-scale: JS sets html.zoom = innerWidth / DESIGN_WIDTH so
+       the whole layout (widths, heights, fonts) scales up to fill the viewport
+       width while keeping current proportions. Keep the design width fixed here. */
+    width: 1140px;
     margin: 0 auto;
     font-size: 13.5px;
   }
@@ -1226,6 +1229,18 @@ async function logout(id) {
 refresh();
 if (!liveTimerInterval) liveTimerInterval = setInterval(updateCountdowns, 1000);
 setInterval(refresh, 30000);
+
+// Proportional auto-scale to viewport width (variant A): scale the whole page
+// uniformly so it fills the available browser width in the same proportions.
+var DESIGN_WIDTH = 1140;
+function applyZoom() {
+  var z = window.innerWidth / DESIGN_WIDTH;
+  // Only scale up; never shrink below the design size on narrow windows
+  // (narrow screens keep the existing responsive @media behaviour instead).
+  document.documentElement.style.zoom = z > 1 ? z : 1;
+}
+applyZoom();
+window.addEventListener('resize', applyZoom);
 </script>
 </body>
 </html>`;
