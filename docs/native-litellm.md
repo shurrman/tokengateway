@@ -1,5 +1,16 @@
 # Read-only ChatGPT quotas for an existing LiteLLM service
 
+## Native Claude Code compatibility (2026-10-06)
+
+Managed Anthropic requests carrying Claude Code attribution, safeguards or native
+client headers bypass system rewriting and automatic cache insertion. Protocol
+headers and response fields are retained; inference authentication stays separate
+from upstream OAuth. Codex requests without these signals retain the legacy bridge.
+Installed LiteLLM 1.104.0+wsoft.1 preserves safeguards and safeguard_results in
+synthetic JSON and SSE tests. Real server-side auto mode is not yet verified:
+the production Anthropic account returned account_on_hold before this deployment.
+Restore authorized account access before checking a new CLI session's /status.
+
 This mode runs the Bun dashboard without Docker, Kubernetes, the desktop app,
 or the `sitecustomize.py` plugin. LiteLLM continues to serve its existing
 `chatgpt/*` models through Responses API. TokenGateway only reads the native

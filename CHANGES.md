@@ -1,5 +1,20 @@
 # Changes
 
+## 2026-10-06 - Native Claude Code protocol preservation
+
+- Preserve native Claude Code bodies (system attribution, tool IDs, safeguards,
+  unknown fields and client cache layout) instead of applying the Codex OAuth bridge.
+- Detect native requests by attribution, safeguards or Claude Code client headers.
+- Forward anthropic-* and x-claude-code-* headers and x-app without forwarding
+  gateway credentials. Preserve streamed safeguard results and upstream errors.
+- Existing non-native OAuth/cache behavior is unchanged. Three new regression
+  tests pass; TypeScript and mixed-mode HTTP tests pass. Full suite retains four
+  pre-existing server.test.ts port-0 failures.
+- Deployed on 192.168.128.35 with backup and independent TokenGateway restart;
+  LiteLLM PID unchanged, health 200. Installed LiteLLM passes synthetic JSON/SSE
+  safeguard tests. Live verification is blocked by pre-existing Anthropic
+  account_on_hold OAuth failure and an observed upstream DNS timeout.
+
 ## 2026-09-22 - DeepSeek balance card
 
 - Add an optional DeepSeek card to the dashboard for static API keys.

@@ -44,11 +44,17 @@ function applyConversationCache(messages: Record<string, unknown>[]): void {
 }
 
 /** Apply the upstream bridge's OAuth identity convention to native Messages. */
-export function claudeOAuthBody(value: unknown): Record<string, unknown> {
+export function claudeOAuthBody(value: unknown, nativeClient = false): Record<string, unknown> {
 	if (!isRecord(value) || typeof value.model !== "string" || !value.model.startsWith("claude-") || !Array.isArray(value.messages)) {
 		throw new Error("Expected a native Anthropic Messages request with a Claude model");
 	}
 	const body = structuredClone(value);
+	const systemBlocks = Array.isArray(body.system) ? body.system : [];
+	const attributed = systemBlocks.some(block => isRecord(block) && typeof block.text === "string"
+		&& block.text.startsWith("x-anthropic-billing-header:"))
+		|| (typeof body.system === "string" && body.system.startsWith("x-anthropic-billing-header:"));
+	// Native clients own attribution and cache layout; safeguards refer to their original tool IDs.
+	if (nativeClient || attributed || Object.hasOwn(body, "safeguards")) return body;
 	const instructions = typeof body.system === "string"
 		? [{ type: "text", text: body.system }]
 		: Array.isArray(body.system) ? body.system : [];
@@ -83,7 +89,9 @@ export function anthropicProxy(key: string) {
 		if (!messages && !models) return failure(404, "Unsupported Anthropic proxy route");
 		let body: string | undefined;
 		if (messages) {
-			try { body = JSON.stringify(claudeOAuthBody(await request.json())); }
+			try { body = JSON.stringify(claudeOAuthBody(await request.json(),
+				request.headers.has("x-claude-code-session-id") || request.headers.has("x-app")
+				|| /^claude-cli\//.test(request.headers.get("user-agent") || ""))); }
 			catch { return failure(400, "Invalid native Anthropic Messages request"); }
 		}
 		try {
@@ -93,15 +101,19 @@ export function anthropicProxy(key: string) {
 			const betas = new Set((request.headers.get("anthropic-beta") || "").split(",").map(value => value.trim()).filter(Boolean));
 			betas.add("oauth-2025-04-20");
 			betas.add("claude-code-20250219");
+			const upstreamHeaders = new Headers();
+			for (const [name, value] of request.headers) {
+				if (name.startsWith("anthropic-") || name.startsWith("x-claude-code-") || name === "x-app") {
+					upstreamHeaders.set(name, value);
+				}
+			}
+			upstreamHeaders.set("anthropic-version", request.headers.get("anthropic-version") || "2023-06-01");
+			upstreamHeaders.set("anthropic-beta", [...betas].join(","));
+			upstreamHeaders.set("user-agent", "claude-cli/2.1.280 (external, claude-desktop)");
+			upstreamHeaders.set("content-type", "application/json");
 			const send = (access: string) => fetch(`https://api.anthropic.com/v1/${messages ? "messages" : "models"}${url.search}`, {
 				method: request.method,
-				headers: {
-					Authorization: `Bearer ${access}`,
-					"anthropic-version": request.headers.get("anthropic-version") || "2023-06-01",
-					"anthropic-beta": [...betas].join(","),
-					"user-agent": "claude-cli/2.1.280 (external, claude-desktop)",
-					"content-type": "application/json",
-				},
+				headers: { ...Object.fromEntries(upstreamHeaders), Authorization: `Bearer ${access}` },
 				body,
 				signal: AbortSignal.any([request.signal, AbortSignal.timeout(300_000)]),
 			});

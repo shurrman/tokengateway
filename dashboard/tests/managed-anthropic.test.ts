@@ -150,6 +150,60 @@ function messageRequest(headers: Record<string, string> = { "x-api-key": key }) 
 	});
 }
 
+test("native Claude Code preserves attribution, safeguards, tool IDs and cache markers", async () => {
+	const input = {
+		model: "claude-sonnet-5", max_tokens: 100, stream: true,
+		system: [{ type: "text", text: "x-anthropic-billing-header: fixture" },
+			{ type: "text", text: "You are Claude Code", cache_control: { type: "ephemeral", ttl: "1h" } }],
+		messages: [{ role: "assistant", content: [{ type: "tool_use", id: "toolu_original", name: "Read", input: {} }] },
+			{ role: "user", content: [{ type: "tool_result", tool_use_id: "toolu_original", content: "fixture" }] }],
+		tools: [{ name: "Read", input_schema: { type: "object" }, strict: true }],
+		safeguards: [{ type: "fixture-review" }], future_field: { retained: true },
+	};
+	const wire = 'event: message_delta\ndata: {"type":"message_delta","delta":{"safeguard_results":[{"tool_use_id":"toolu_original","fixture":true}]}}\n\nevent: message_stop\ndata: {"type":"message_stop"}\n\n';
+	globalThis.fetch = mock(async (_url: unknown, options?: RequestInit) => {
+		expect(JSON.parse(String(options?.body))).toEqual(input);
+		const headers = new Headers(options?.headers);
+		expect(headers.get("anthropic-future-capability")).toBe("fixture-capability");
+		expect(headers.get("x-claude-code-session-id")).toBe("fixture-session");
+		expect(headers.get("anthropic-beta")).toContain("fixture-future-beta");
+		expect(headers.has("x-api-key")).toBe(false);
+		return new Response(wire, { headers: { "content-type": "text/event-stream", "x-should-retry": "false" } });
+	}) as unknown as typeof fetch;
+	const req = new Request("http://localhost/anthropic/v1/messages?beta=true", { method: "POST",
+		headers: { "x-api-key": key, "anthropic-beta": "fixture-future-beta", "anthropic-future-capability": "fixture-capability", "x-claude-code-session-id": "fixture-session" },
+		body: JSON.stringify(input) });
+	const response = await anthropicProxy(key)(req, new URL(req.url));
+	expect(response.status).toBe(200);
+	expect(await response.text()).toBe(wire);
+	expect(response.headers.get("x-should-retry")).toBe("false");
+});
+
+test("Claude Code attribution preserves the body even without safeguards or session headers", async () => {
+	const input = { model: "claude-sonnet-5", max_tokens: 40,
+		system: [{ type: "text", text: "x-anthropic-billing-header: fixture" }, { type: "text", text: "Instructions" }],
+		messages: [{ role: "user", content: "hello" }] };
+	globalThis.fetch = mock(async (_url: unknown, options?: RequestInit) => {
+		expect(JSON.parse(String(options?.body))).toEqual(input);
+		return Response.json({ type: "message", safeguard_results: [{ fixture: true }] });
+	}) as unknown as typeof fetch;
+	const req = new Request("http://localhost/anthropic/v1/messages", { method: "POST", headers: { "x-api-key": key }, body: JSON.stringify(input) });
+	expect(await (await anthropicProxy(key)(req, new URL(req.url))).json()).toEqual({ type: "message", safeguard_results: [{ fixture: true }] });
+});
+
+test("native safeguards preserve their body and upstream capability errors", async () => {
+	const input = { model: "claude-sonnet-5", max_tokens: 40, safeguards: [], system: "Instructions", messages: [{ role: "user", content: "hello" }] };
+	const error = '{"type":"error","error":{"type":"invalid_request_error","message":"fixture capability rejected"}}';
+	globalThis.fetch = mock(async (_url: unknown, options?: RequestInit) => {
+		expect(JSON.parse(String(options?.body))).toEqual(input);
+		return new Response(error, { status: 400, headers: { "x-should-retry": "false" } });
+	}) as unknown as typeof fetch;
+	const req = new Request("http://localhost/anthropic/v1/messages", { method: "POST", headers: { "x-api-key": key }, body: JSON.stringify(input) });
+	const response = await anthropicProxy(key)(req, new URL(req.url));
+	expect(response.status).toBe(400);
+	expect(await response.text()).toBe(error);
+});
+
 test("inference uses a separate key and never forwards it or dashboard auth upstream", async () => {
 	const proxy = anthropicProxy(key);
 	const request = messageRequest({ Authorization: "Basic dashboard-credentials" });

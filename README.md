@@ -16,6 +16,11 @@
 
 ## 💡 The Problem
 
+The managed Anthropic proxy preserves native Claude Code attribution, safeguards,
+tool IDs and cache layout. Other clients retain the existing OAuth/cache bridge.
+Server-side auto-mode eligibility still requires a live end-to-end check; passing
+synthetic protocol tests does not prove Anthropic credential eligibility.
+
 Developers and AI engineers pay expensive monthly subscriptions (**Claude Max** \$100–\$200/mo, **ChatGPT Plus/Pro**, **Google AI**), but face massive friction when using them in coding agents (*Oh My Pi*, *Claude Code*, *OpenHands*, *Cline*) or local clusters:
 1. **Opaque Usage Limits:** Subscription quotas (Anthropic 5h/7d rolling windows, OpenAI 3h message caps, Google daily quotas) are hidden inside web interfaces.
 2. **Missing Wire Protocols:** Upstream gateways (like LiteLLM) often drop tool schemas, mangle message types, or drop chunks when connecting to subscription endpoints.

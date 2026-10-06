@@ -1,5 +1,19 @@
 # Project memory
 
+## Native Claude Code protocol preservation (2026-10-06)
+
+- Native attribution/safeguards/client headers bypass claudeOAuthBody identity and
+  cache rewriting; non-native Codex requests keep the existing bridge.
+- Three regression tests red->green; TypeScript, emitted JS and mixed HTTP 5/5
+  pass. Full suite: 28 pass, 1 skip, four known server.test.ts port-0 failures.
+- Deployed only src/anthropic.ts on .35; backup
+  /root/tokengateway-dashboard.bak-native-20261006; independent restart.
+  LiteLLM PID 144660 stayed unchanged, health 200.
+- Installed LiteLLM synthetic JSON and SSE safeguard roundtrips pass.
+- Live native probe returned 503; journal shows account_on_hold OAuth errors
+  BEFORE deployment (16:24-16:27); curl also observed upstream DNS timeout.
+  Do not claim end-to-end auto-mode enabled or change credentials automatically.
+
 ## DeepSeek balance card (2026-09-22)
 
 - Added an optional static-API-key DeepSeek card to the dashboard. The card
