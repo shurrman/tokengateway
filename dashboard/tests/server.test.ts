@@ -92,7 +92,7 @@ test("authenticated requests from a different web origin are rejected", async ()
 
 test.skipIf(!hybrid)("hybrid HTTP routes separate inference, dashboard and native credentials", async () => {
 	const status = await (await fetch(url + "/api/status", { headers })).json();
-	expect(status.providers.map((p: { id: string }) => p.id)).toEqual(["openai-codex", "anthropic", "deepseek", "omni-claude-fixture"]);
+	expect(status.providers.map((p: { id: string }) => p.id)).toEqual(["openai-codex", "anthropic", "deepseek", "omni-claude-fixture", "omni-cursor"]);
 	expect(status.providers[1].connected).toBe(false);
 	for (const path of ["/api/credentials/anthropic", "/api/login/openai-codex", "/api/logout/openai-codex"]) {
 		expect((await fetch(url + path, { method: "POST", headers })).status).toBe(403);

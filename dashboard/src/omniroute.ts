@@ -42,12 +42,13 @@ export function omniRouteQuota(options: Options): () => Promise<Snapshot> {
     try {
       const overview = await get("/api/usage/quota");
       if (!Array.isArray(overview.providers)) throw new Error("Invalid OmniRoute account list");
-      const accounts = overview.providers.filter(isRecord).filter(p => p.provider === "claude");
+      const accounts = overview.providers.filter(isRecord).filter(p => p.provider === "claude" || p.provider === "cursor");
       const pairs = await Promise.all(accounts.map(async p => {
         const connectionId = readString(p.connectionId);
         if (!connectionId) throw new Error("Invalid OmniRoute connection ID");
-        const id = "omni-claude-" + connectionId;
-        const label = "Claude Code · OmniRoute";
+        const kind = p.provider === "cursor" ? "cursor" : "claude";
+        const id = "omni-" + kind + "-" + connectionId;
+        const label = kind === "cursor" ? "Cursor · OmniRoute" : "Claude Code · OmniRoute";
         const provider: Provider = { id, label, email: readString(p.name), connected: p.tokenStatus !== "expired", readOnly: true, managedBy: "OmniRoute" };
         const report: Report = { provider: id, label, dashboardUrl, limits: [], fetchedAt: now };
         try {
@@ -55,8 +56,16 @@ export function omniRouteQuota(options: Options): () => Promise<Snapshot> {
           if (usage.error) throw new Error("OmniRoute account quota unavailable");
           provider.plan = readString(usage.plan);
           if (!isRecord(usage.quotas)) throw new Error("Invalid OmniRoute quota windows");
-          for (const [name, q] of Object.entries(usage.quotas)) {
+          const quotaEntries = Object.entries(usage.quotas);
+          const hideCursorTotal = kind === "cursor" && quotaEntries.some(([name, q]) => {
+            if (name === "Total" || !isRecord(q) || q.unlimited === true) return false;
+            const used = readNumber(q.used), total = readNumber(q.total), remaining = readNumber(q.remainingPercentage);
+            const fraction = total !== undefined && total > 0 && used !== undefined ? used / total : remaining !== undefined ? (100 - remaining) / 100 : undefined;
+            return fraction !== undefined && Number.isFinite(fraction);
+          });
+          for (const [name, q] of quotaEntries) {
             if (!isRecord(q) || q.unlimited === true) continue;
+            if (hideCursorTotal && name === "Total") continue;
             const used = readNumber(q.used), total = readNumber(q.total), remaining = readNumber(q.remainingPercentage);
             const fraction = total !== undefined && total > 0 && used !== undefined ? used / total : remaining !== undefined ? (100 - remaining) / 100 : undefined;
             if (fraction === undefined || !Number.isFinite(fraction)) continue;
@@ -68,14 +77,18 @@ export function omniRouteQuota(options: Options): () => Promise<Snapshot> {
         } catch(e) { report.error = safeError(e); }
         return { provider, report };
       }));
-      if (!pairs.length) pairs.push({ provider: { id: "omni-claude", label: "Claude Code · OmniRoute", connected: false, readOnly: true, managedBy: "OmniRoute" }, report: { provider: "omni-claude", label: "Claude Code · OmniRoute", dashboardUrl, limits: [], fetchedAt: now, error: "No Claude Code accounts connected in OmniRoute" } });
+      for (const [kind, name] of [["claude", "Claude Code"], ["cursor", "Cursor"]]) {
+        if (accounts.some(p => p.provider === kind)) continue;
+        const id = "omni-" + kind, label = name + " · OmniRoute";
+        pairs.push({ provider: { id, label, connected: false, readOnly: true, managedBy: "OmniRoute" }, report: { provider: id, label, dashboardUrl, limits: [], fetchedAt: now, error: "No " + name + " accounts connected in OmniRoute" } });
+      }
       snapshot = { providers: pairs.map(p => p.provider), reports: pairs.map(p => p.report) };
       expires = now + (snapshot.reports.some(r => r.error) ? 60000 : 300000);
     } catch(e) {
       const error = safeError(e);
       snapshot = snapshot ? { providers: snapshot.providers, reports: snapshot.reports.map(r => ({ ...r, cached: true, error })) } : {
-        providers: [{ id: "omni-claude", label: "Claude Code · OmniRoute", connected: false, readOnly: true, managedBy: "OmniRoute" }],
-        reports: [{ provider: "omni-claude", label: "Claude Code · OmniRoute", dashboardUrl, limits: [], fetchedAt: now, error }],
+        providers: ["claude", "cursor"].map(kind => ({ id: "omni-" + kind, label: (kind === "cursor" ? "Cursor" : "Claude Code") + " · OmniRoute", connected: false, readOnly: true, managedBy: "OmniRoute" })),
+        reports: ["claude", "cursor"].map(kind => ({ provider: "omni-" + kind, label: (kind === "cursor" ? "Cursor" : "Claude Code") + " · OmniRoute", dashboardUrl, limits: [], fetchedAt: now, error })),
       };
       expires = now + 60000;
     }

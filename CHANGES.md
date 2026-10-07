@@ -1,5 +1,21 @@
 # Changes
 
+## 2026-10-07 - Hide misleading Cursor Total quota window
+
+- Cursor cards now show Auto + Composer and API only, matching cursor.com.
+- OmniRoute Total is dropped whenever real buckets exist; it remains only as a
+  legacy single-window fallback. Peak badge no longer follows the synthetic Total.
+
+## 2026-10-06 - Read-only Cursor account cards through OmniRoute
+
+- Render Cursor accounts alongside Claude Code accounts using the existing private
+  OmniRoute management adapter; OAuth tokens stay in OmniRoute.
+- Display normalized quota percentages and reset times, never inferred dollar
+  budgets. Disconnected and unavailable accounts have explicit error cards.
+- Production deployed with backups; only TokenGateway restarted, LiteLLM unchanged.
+- OAuth login and live dashboard status/usage verified. Inference verification
+  remains a separate gate before publishing any Cursor routes in LiteLLM.
+
 ## 2026-10-06 - Native Claude Code protocol preservation
 
 - Preserve native Claude Code bodies (system attribution, tool IDs, safeguards,

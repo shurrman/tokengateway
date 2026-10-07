@@ -237,6 +237,7 @@ export const HTML = `<!DOCTYPE html>
   .provider-card.anthropic { border-left: 3px solid var(--claude); }
   .provider-card.openai-codex { border-left: 3px solid var(--openai); }
   .provider-card.google-antigravity { border-left: 3px solid var(--google); }
+  .provider-card.cursor { border-left: 3px solid #cbd5e1; }
   .provider-card.deepseek { border-left: 3px solid var(--deepseek); }
   .provider-card.local-vllm { border-left: 3px solid var(--nvidia); }
   .provider-card.uptime-kuma { border-left: 3px solid var(--kuma); }
@@ -269,6 +270,7 @@ export const HTML = `<!DOCTYPE html>
   .logo-box.anthropic { background: var(--claude-bg); border: 1px solid var(--claude-border); color: var(--claude); }
   .logo-box.openai-codex { background: var(--openai-bg); border: 1px solid var(--openai-border); color: var(--openai); }
   .logo-box.google-antigravity { background: var(--google-bg); border: 1px solid var(--google-border); }
+  .logo-box.cursor { background: rgba(203, 213, 225, 0.08); border: 1px solid #475569; color: #cbd5e1; }
   .logo-box.deepseek { background: var(--deepseek-bg); border: 1px solid var(--deepseek-border); color: var(--deepseek); }
   .logo-box.local-vllm { background: var(--nvidia-bg); border: 1px solid var(--nvidia-border); color: var(--nvidia); }
   .logo-box.uptime-kuma { background: var(--kuma-bg); border: 1px solid var(--kuma-border); color: var(--kuma); }
@@ -657,6 +659,7 @@ let state = { providers: [], reports: [], fallbacks: null };
 let liveTimerInterval = null;
 
 const LOGOS = {
+  cursor: \`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 3l16 9-7 2-3 7z"/></svg>\`,
   anthropic: \`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.48 3.52c-.44-.3-.98-.44-1.52-.4H8.04c-.54-.04-1.08.1-1.52.4-.44.3-.76.74-.88 1.26L2.08 19.34c-.18.7.06 1.44.6 1.9.54.46 1.28.56 1.94.26l4.9-2.22 4.9 2.22c.66.3 1.4.2 1.94-.26.54-.46.78-1.2.6-1.9L13.4 4.78c-.12-.52-.44-.96-.88-1.26z"/></svg>\`,
   "openai-codex": \`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.28 9.87a5.98 5.98 0 0 0-.52-4.92 6.05 6.05 0 0 0-6.6-2.82A5.98 5.98 0 0 0 10.74.5a6.05 6.05 0 0 0-5.8 4.22 5.98 5.98 0 0 0-4.1 2.9 6.05 6.05 0 0 0 .74 7.2 5.98 5.98 0 0 0 .52 4.92 6.05 6.05 0 0 0 6.6 2.82A5.98 5.98 0 0 0 13.26 23.5a6.05 6.05 0 0 0 5.8-4.22 5.98 5.98 0 0 0 4.1-2.9 6.05 6.05 0 0 0-.88-6.51zM13.26 21.9a4.48 4.48 0 0 1-2.86-.98l.14-.08 4.77-2.76a.79.79 0 0 0 .39-.68v-6.73l2.02 1.17v6.18a4.5 4.5 0 0 1-4.46 3.88zm-8.62-4.13a4.47 4.47 0 0 1-.58-2.98l.14.08 4.77 2.76c.24.14.54.14.78 0l5.83-3.37v2.33l-5.36 3.1a4.5 4.5 0 0 1-5.58-1.92zm-2.02-9.6a4.48 4.48 0 0 1 2.28-2l-.01.16v5.52a.79.79 0 0 0 .39.68l5.83 3.37-2.02 1.17-5.35-3.09a4.5 4.5 0 0 1-1.12-5.81zm15.1 3.86-5.83-3.37 2.02-1.17 5.35 3.09a4.5 4.5 0 0 1 .58 8.79v-5.66a.79.79 0 0 0-.39-.68h-.03l-1.7-1zm2.6-2.14a4.48 4.48 0 0 1-.58 2.98l-.14-.08-4.77-2.76a.79.79 0 0 0-.78 0L8.4 12.35v-2.33l5.36-3.1a4.5 4.5 0 0 1 6.56 5.09zM8.32 10.5l3.68-2.13 3.68 2.13v4.25l-3.68 2.13-3.68-2.13z"/></svg>\`,
   "google-antigravity": \`<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.35 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 10.04 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>\`,
@@ -780,13 +783,16 @@ function render() {
     const isVllm = p.id === 'local-vllm';
     const isDeepSeek = p.id === 'deepseek';
     
-    const isOmni = p.id.startsWith('omni-claude');
-    html += \`<div class="provider-card \${isOmni ? 'anthropic' : p.id}">\`;
+    const isOmniClaude = p.id.startsWith('omni-claude');
+    const isCursor = p.id.startsWith('omni-cursor');
+    const isOmni = isOmniClaude || isCursor;
+    const cardKind = isCursor ? 'cursor' : isOmniClaude ? 'anthropic' : p.id;
+    html += \`<div class="provider-card \${cardKind}">\`;
     
     html += \`<div>
       <div class="card-header">
         <div class="provider-meta">
-          <div class="logo-box \${isOmni ? 'anthropic' : p.id}">\${LOGOS[p.id] || (isOmni ? LOGOS.anthropic : '')}</div>
+          <div class="logo-box \${cardKind}">\${LOGOS[cardKind] || ''}</div>
           <div class="provider-title">
             <span class="provider-name">\${p.label}</span>
             <span class="provider-email">\${esc(p.email || 'Not authenticated')}</span>
@@ -827,7 +833,7 @@ function render() {
       html += '<div class="provider-email">Updated: ' + esc(new Date(report.fetchedAt).toLocaleString()) + '</div>';
     }
     if (p.id === 'anthropic') html += fallbackCardLine('claude-');
-    if (isOmni) html += fallbackCardLine('omni-claude-');
+    if (isOmniClaude) html += fallbackCardLine('omni-claude-');
 
     if (p.login && p.login.status === 'pending') {
       html += \`<div class="pending-panel">

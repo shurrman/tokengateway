@@ -250,3 +250,12 @@ The adapter keeps the dashboard session server-side, reads real per-account
 quota windows, caches for five minutes and retries errors after one minute.
 It never copies or refreshes provider OAuth credentials. Failed accounts have
 separate error states and do not hide healthy sibling accounts.
+
+### Cursor via OmniRoute (read-only dashboard)
+
+The quota adapter also displays Cursor accounts connected in OmniRoute. Login and
+refresh remain in OmniRoute; TokenGateway reads only account status, plan and quota
+windows. The card shows Auto + Composer and API percentages (and reset times), not
+the synthetic OmniRoute Total peak and not an inferred dollar budget. A connected
+account does not prove inference availability: verify a real request before adding
+Cursor routes to LiteLLM.

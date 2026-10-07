@@ -1,5 +1,31 @@
 # Project memory
 
+## Cursor card hides Total (2026-10-07)
+
+- Live .35: deployed omniroute.ts (md5 72b1803c...), backup bak-hide-total-20261007123953; restarted only tokengateway-quota (PID 175280). Dashboard :3737 -> 401.
+- User confirmed Total on the Cursor card is useless/misleading vs cursor.com
+  (site shows Auto + Composer + API only; Total is not their sum).
+- Adapter drops OmniRoute "Total" whenever any other measurable Cursor window
+  exists; peak badge then follows Auto/API. Sole-Total legacy fallback kept.
+- Verified with dashboard bun tests after the change.
+
+## Cursor OAuth and dashboard card (2026-10-06)
+
+- User completed native PKCE login through OmniRoute; token valid. Secrets remain
+  in OmniRoute, never copied to TokenGateway credentials or repository.
+- Added read-only omni-cursor account cards using the existing quota adapter.
+  Live status and usage APIs show Cursor Pro with Auto + Composer / API
+  normalized percentage windows (Total hidden when real buckets exist). Do not interpret normalized total=1 as $1.
+- Deployed src/omniroute.ts and src/ui.ts with backup
+  /root/tokengateway-before-cursor-20261006; restarted only tokengateway-quota.
+  LiteLLM PID 154450 unchanged. Cursor catalog has 498 entries incl synthetic
+  aliases, not 498 independently verified models. First cu/auto inference failed
+  EAI_AGAIN resolving agentn.global.api5.cursor.sh; subsequent DNS check succeeded.
+  Do not publish LiteLLM routes until real inference passes.
+- Verification: adapter 4/4 and managed HTTP 5/5 pass, TypeScript and emitted
+  inline JS node --check clean. Full suite 29 pass / 1 skip / four pre-existing
+  server.test port-0 failures.
+
 ## Native Claude Code protocol preservation (2026-10-06)
 
 - Native attribution/safeguards/client headers bypass claudeOAuthBody identity and
