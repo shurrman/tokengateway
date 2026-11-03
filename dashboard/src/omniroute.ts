@@ -6,6 +6,23 @@ interface Provider { id: string; label: string; email?: string; plan?: string; c
 interface Report { provider: string; label: string; dashboardUrl: string; limits: UsageLimit[]; fetchedAt: number; cached?: boolean; error?: string; }
 interface Snapshot { providers: Provider[]; reports: Report[]; }
 
+/** OmniRoute OAuth/provider cards shown on the TokenGateway dashboard. */
+const OMNI_CARD_KINDS: Array<{ provider: string; kind: string; name: string }> = [
+  { provider: "claude", kind: "claude", name: "Claude Code" },
+  { provider: "cursor", kind: "cursor", name: "Cursor" },
+  { provider: "codex", kind: "codex", name: "Codex" },
+  { provider: "kimi-coding", kind: "kimi", name: "Kimi Coding" },
+];
+
+function cardForProvider(provider: string) {
+  return OMNI_CARD_KINDS.find(k => k.provider === provider);
+}
+
+function kindLabel(kind: string) {
+  const hit = OMNI_CARD_KINDS.find(k => k.kind === kind);
+  return (hit?.name || kind) + " · OmniRoute";
+}
+
 /** Management session is private to this adapter; OAuth credentials never leave OmniRoute. */
 export function omniRouteQuota(options: Options): () => Promise<Snapshot> {
   const base = options.baseUrl.replace(/\/+$/, "");
@@ -42,13 +59,14 @@ export function omniRouteQuota(options: Options): () => Promise<Snapshot> {
     try {
       const overview = await get("/api/usage/quota");
       if (!Array.isArray(overview.providers)) throw new Error("Invalid OmniRoute account list");
-      const accounts = overview.providers.filter(isRecord).filter(p => p.provider === "claude" || p.provider === "cursor");
+      const accounts = overview.providers.filter(isRecord).filter(p => !!cardForProvider(String(p.provider || "")));
       const pairs = await Promise.all(accounts.map(async p => {
         const connectionId = readString(p.connectionId);
         if (!connectionId) throw new Error("Invalid OmniRoute connection ID");
-        const kind = p.provider === "cursor" ? "cursor" : "claude";
+        const card = cardForProvider(String(p.provider || ""))!;
+        const kind = card.kind;
         const id = "omni-" + kind + "-" + connectionId;
-        const label = kind === "cursor" ? "Cursor · OmniRoute" : "Claude Code · OmniRoute";
+        const label = kindLabel(kind);
         const provider: Provider = { id, label, email: readString(p.name), connected: p.tokenStatus !== "expired", readOnly: true, managedBy: "OmniRoute" };
         const report: Report = { provider: id, label, dashboardUrl, limits: [], fetchedAt: now };
         try {
@@ -71,24 +89,25 @@ export function omniRouteQuota(options: Options): () => Promise<Snapshot> {
             if (fraction === undefined || !Number.isFinite(fraction)) continue;
             const reset = readString(q.resetAt);
             const resetsAt = reset ? Date.parse(reset) : NaN;
-            report.limits.push({ id: name, label: name, usedFraction: Math.max(0, Math.min(1, fraction)), ...(Number.isFinite(resetsAt) ? { resetsAt } : {}) });
+            const windowLabel = readString(q.displayName) || name;
+            report.limits.push({ id: name, label: windowLabel, usedFraction: Math.max(0, Math.min(1, fraction)), ...(Number.isFinite(resetsAt) ? { resetsAt } : {}) });
           }
           if (!report.limits.length) report.error = "OmniRoute returned no measurable quota windows";
         } catch(e) { report.error = safeError(e); }
         return { provider, report };
       }));
-      for (const [kind, name] of [["claude", "Claude Code"], ["cursor", "Cursor"]]) {
-        if (accounts.some(p => p.provider === kind)) continue;
-        const id = "omni-" + kind, label = name + " · OmniRoute";
-        pairs.push({ provider: { id, label, connected: false, readOnly: true, managedBy: "OmniRoute" }, report: { provider: id, label, dashboardUrl, limits: [], fetchedAt: now, error: "No " + name + " accounts connected in OmniRoute" } });
+      for (const card of OMNI_CARD_KINDS) {
+        if (accounts.some(p => p.provider === card.provider)) continue;
+        const id = "omni-" + card.kind, label = kindLabel(card.kind);
+        pairs.push({ provider: { id, label, connected: false, readOnly: true, managedBy: "OmniRoute" }, report: { provider: id, label, dashboardUrl, limits: [], fetchedAt: now, error: "No " + card.name + " accounts connected in OmniRoute" } });
       }
       snapshot = { providers: pairs.map(p => p.provider), reports: pairs.map(p => p.report) };
       expires = now + (snapshot.reports.some(r => r.error) ? 60000 : 300000);
     } catch(e) {
       const error = safeError(e);
       snapshot = snapshot ? { providers: snapshot.providers, reports: snapshot.reports.map(r => ({ ...r, cached: true, error })) } : {
-        providers: ["claude", "cursor"].map(kind => ({ id: "omni-" + kind, label: (kind === "cursor" ? "Cursor" : "Claude Code") + " · OmniRoute", connected: false, readOnly: true, managedBy: "OmniRoute" })),
-        reports: ["claude", "cursor"].map(kind => ({ provider: "omni-" + kind, label: (kind === "cursor" ? "Cursor" : "Claude Code") + " · OmniRoute", dashboardUrl, limits: [], fetchedAt: now, error })),
+        providers: OMNI_CARD_KINDS.map(card => ({ id: "omni-" + card.kind, label: kindLabel(card.kind), connected: false, readOnly: true, managedBy: "OmniRoute" })),
+        reports: OMNI_CARD_KINDS.map(card => ({ provider: "omni-" + card.kind, label: kindLabel(card.kind), dashboardUrl, limits: [], fetchedAt: now, error })),
       };
       expires = now + 60000;
     }

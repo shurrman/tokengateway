@@ -26,9 +26,13 @@ function fixture(failAccount = false) {
       { provider: "claude", connectionId: "b", name: "Bob" },
       { provider: "nvidia", connectionId: "c", name: "NVIDIA" },
       { provider: "cursor", connectionId: "d", name: "Cursor account" },
+      { provider: "codex", connectionId: "e", name: "codex@example.com" },
+      { provider: "kimi-coding", connectionId: "f", name: "kimi-coding" },
     ] });
     if (url.pathname === "/api/usage/b" && failAccount) return Response.json({ error: "secret-upstream-error" }, { status: 502 });
     if (url.pathname === "/api/usage/d") return Response.json(cursorWindows);
+    if (url.pathname === "/api/usage/e") return Response.json({ plan: "pro", quotas: { "session (5h)": { used: 25, total: 100, resetAt: "2026-10-01T12:00:00.000Z" }, "weekly (7d)": { used: 10, total: 100 } } });
+    if (url.pathname === "/api/usage/f") return Response.json({ plan: "Kimi Coding", quotas: { code_5h: { used: 0.22, total: 100, remainingPercentage: 99.78, resetAt: "2026-11-04T00:40:14.000Z", displayName: "Code · 5h" } } });
     return Response.json(windows);
   } });
   servers.push(s);
@@ -39,7 +43,7 @@ test("separate read-only account cards normalize real windows, cache and never e
   const f = fixture();
   const get = omniRouteQuota({ baseUrl: f.baseUrl, password: "fixture-management-password", dashboardUrl: "http://omni.wsoft/dashboard/quota" });
   const result = await get();
-  expect(result.providers.map(p => p.id)).toEqual(["omni-claude-a", "omni-claude-b", "omni-cursor-d"]);
+  expect(result.providers.map(p => p.id)).toEqual(["omni-claude-a", "omni-claude-b", "omni-cursor-d", "omni-codex-e", "omni-kimi-f"]);
   expect(result.providers.every(p => p.readOnly && p.managedBy === "OmniRoute")).toBe(true);
   expect(result.reports[0]?.limits).toEqual([
     { id: "session (5h)", label: "session (5h)", usedFraction: 0.25, resetsAt: 1790902800000 },
@@ -50,6 +54,15 @@ test("separate read-only account cards normalize real windows, cache and never e
     { id: "API", label: "API", usedFraction: 0.14 },
   ]);
   expect(result.reports.find(r => r.provider === "omni-cursor-d")?.limits.some(l => l.id === "Total")).toBe(false);
+  expect(result.providers.find(p => p.id === "omni-codex-e")).toMatchObject({ label: "Codex · OmniRoute", email: "codex@example.com", readOnly: true });
+  expect(result.providers.find(p => p.id === "omni-kimi-f")).toMatchObject({ label: "Kimi Coding · OmniRoute", email: "kimi-coding", plan: "Kimi Coding", readOnly: true });
+  expect(result.reports.find(r => r.provider === "omni-kimi-f")?.limits).toEqual([
+    { id: "code_5h", label: "Code · 5h", usedFraction: 0.0022, resetsAt: Date.parse("2026-11-04T00:40:14.000Z") },
+  ]);
+  expect(result.reports.find(r => r.provider === "omni-codex-e")?.limits).toEqual([
+    { id: "session (5h)", label: "session (5h)", usedFraction: 0.25, resetsAt: Date.parse("2026-10-01T12:00:00.000Z") },
+    { id: "weekly (7d)", label: "weekly (7d)", usedFraction: 0.1 },
+  ]);
   expect(JSON.stringify(result)).not.toMatch(/DO_NOT_EXPOSE|fixture-secret|fixture-management/);
   expect((await get()).reports.every(r => r.cached)).toBe(true);
   expect(f.logins()).toBe(1);
@@ -79,6 +92,10 @@ test("Cursor card is present when no account is connected, without pretending qu
   const result = await omniRouteQuota({ baseUrl: s.url.origin, password: "fixture" })();
   expect(result.providers.find(p => p.id === "omni-cursor")).toMatchObject({ connected: false, readOnly: true, label: "Cursor · OmniRoute" });
   expect(result.reports.find(r => r.provider === "omni-cursor")).toMatchObject({ limits: [], error: "No Cursor accounts connected in OmniRoute" });
+  expect(result.providers.find(p => p.id === "omni-codex")).toMatchObject({ connected: false, readOnly: true, label: "Codex · OmniRoute" });
+  expect(result.reports.find(r => r.provider === "omni-codex")).toMatchObject({ limits: [], error: "No Codex accounts connected in OmniRoute" });
+  expect(result.providers.find(p => p.id === "omni-kimi")).toMatchObject({ connected: false, readOnly: true, label: "Kimi Coding · OmniRoute" });
+  expect(result.reports.find(r => r.provider === "omni-kimi")).toMatchObject({ limits: [], error: "No Kimi Coding accounts connected in OmniRoute" });
 });
 
 test("Cursor Total is dropped when Auto/API buckets exist, but kept as sole fallback", async () => {
@@ -98,4 +115,51 @@ test("Cursor Total is dropped when Auto/API buckets exist, but kept as sole fall
     { id: "Total", label: "Total", usedFraction: 0.7 },
   ]);
   expect(result.reports.find(r => r.provider === "omni-cursor-with-buckets")?.limits.map(l => l.id)).toEqual(["Auto + Composer", "API"]);
+});
+
+test("Codex · OmniRoute card normalizes session quota from ChatGPT OAuth", async () => {
+  const s = Bun.serve({ port: 0, hostname: "127.0.0.1", async fetch(req) {
+    const url = new URL(req.url);
+    if (url.pathname === "/api/auth/login") return Response.json({}, { headers: { "set-cookie": "auth_token=fixture; Path=/" } });
+    if (url.pathname === "/api/usage/quota") return Response.json({ providers: [
+      { provider: "codex", connectionId: "cx1", name: "sianstasa64@gmail.com", tokenStatus: "valid" },
+    ] });
+    if (url.pathname === "/api/usage/cx1") return Response.json({
+      plan: "pro",
+      quotas: { session: { used: 2, total: 100, resetAt: "2026-10-20T04:58:43.000Z" } },
+    });
+    return Response.json({ error: "missing" }, { status: 404 });
+  } }); servers.push(s);
+  const result = await omniRouteQuota({ baseUrl: s.url.origin, password: "fixture", dashboardUrl: "http://omni.wsoft/dashboard/quota" })();
+  expect(result.providers.find(p => p.id === "omni-codex-cx1")).toMatchObject({
+    label: "Codex · OmniRoute", email: "sianstasa64@gmail.com", plan: "pro", connected: true, readOnly: true, managedBy: "OmniRoute",
+  });
+  expect(result.reports.find(r => r.provider === "omni-codex-cx1")?.limits).toEqual([
+    { id: "session", label: "session", usedFraction: 0.02, resetsAt: Date.parse("2026-10-20T04:58:43.000Z") },
+  ]);
+  expect(result.providers.find(p => p.id === "omni-claude")).toMatchObject({ connected: false });
+  expect(result.providers.find(p => p.id === "omni-cursor")).toMatchObject({ connected: false });
+});
+
+
+test("Kimi Coding · OmniRoute card normalizes code_5h quota window", async () => {
+  const s = Bun.serve({ port: 0, hostname: "127.0.0.1", async fetch(req) {
+    const url = new URL(req.url);
+    if (url.pathname === "/api/auth/login") return Response.json({}, { headers: { "set-cookie": "auth_token=fixture; Path=/" } });
+    if (url.pathname === "/api/usage/quota") return Response.json({ providers: [
+      { provider: "kimi-coding", connectionId: "km1", name: "kimi-coding", tokenStatus: "valid" },
+    ] });
+    if (url.pathname === "/api/usage/km1") return Response.json({
+      plan: "Kimi Coding",
+      quotas: { code_5h: { used: 12, total: 100, remainingPercentage: 88, resetAt: "2026-11-04T00:40:14.000Z", displayName: "Code · 5h" } },
+    });
+    return Response.json({ error: "missing" }, { status: 404 });
+  } }); servers.push(s);
+  const result = await omniRouteQuota({ baseUrl: s.url.origin, password: "fixture", dashboardUrl: "http://omni.wsoft/dashboard/quota" })();
+  expect(result.providers.find(p => p.id === "omni-kimi-km1")).toMatchObject({
+    label: "Kimi Coding · OmniRoute", email: "kimi-coding", plan: "Kimi Coding", connected: true, readOnly: true, managedBy: "OmniRoute",
+  });
+  expect(result.reports.find(r => r.provider === "omni-kimi-km1")?.limits).toEqual([
+    { id: "code_5h", label: "Code · 5h", usedFraction: 0.12, resetsAt: Date.parse("2026-11-04T00:40:14.000Z") },
+  ]);
 });
