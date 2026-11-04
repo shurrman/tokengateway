@@ -6,9 +6,9 @@
     "semantic_hash": ""
   },
   "dashboard/server.ts": {
-    "mtime": 1790885560.520031,
-    "seen": 1790885723.469557,
-    "ast_hash": "300396954b3348bd179b6ce69e6fdd04",
+    "mtime": 1790888829.401608,
+    "seen": 1791304160.711676,
+    "ast_hash": "23f08121d6ec72f47e6ff2fd10004509",
     "semantic_hash": ""
   },
   "dashboard/src/auth.ts": {
@@ -48,9 +48,9 @@
     "semantic_hash": ""
   },
   "dashboard/src/ui.ts": {
-    "mtime": 1790885560.5206664,
-    "seen": 1790885723.469565,
-    "ast_hash": "f502911c06924a9ac6d20a327537fdd9",
+    "mtime": 1793741852.8323205,
+    "seen": 1793808719.6264372,
+    "ast_hash": "ca2f08c64af19dbb5c3fc45711153e82",
     "semantic_hash": ""
   },
   "dashboard/src/usage.ts": {
@@ -72,9 +72,9 @@
     "semantic_hash": ""
   },
   "dashboard/tests/server.test.ts": {
-    "mtime": 1790885605.7209916,
-    "seen": 1790885723.469569,
-    "ast_hash": "1a3bea7dc3e32c2915d8377e78c25a2d",
+    "mtime": 1791309215.3765666,
+    "seen": 1791309333.183855,
+    "ast_hash": "714ab5a9fd4416591a5b40d8846a7b44",
     "semantic_hash": ""
   },
   "dashboard/tsconfig.json": {
@@ -186,9 +186,9 @@
     "semantic_hash": ""
   },
   "CHANGES.md": {
-    "mtime": 1790885722.1876428,
-    "seen": 1790885723.469585,
-    "ast_hash": "a7ff52163187d4eaa895d47c944a5078",
+    "mtime": 1791365508.9303026,
+    "seen": 1791365746.1992068,
+    "ast_hash": "06927cf14693b73684487979fb55ac59",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -198,15 +198,15 @@
     "semantic_hash": ""
   },
   "MEMORY.md": {
-    "mtime": 1790886110.642624,
-    "seen": 1790886111.643036,
-    "ast_hash": "6961f8fef2cc899c9b617d6008c6b6aa",
+    "mtime": 1791366074.4431567,
+    "seen": 1793808719.626466,
+    "ast_hash": "d5fab19b946131e3106972601bcf798e",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1790885722.1870518,
-    "seen": 1790885723.4695868,
-    "ast_hash": "3b7d290a9694a735f760a7b030550210",
+    "mtime": 1791365508.930908,
+    "seen": 1791365746.199213,
+    "ast_hash": "d7ac06ccdbd46a0317ade13e0d4d5ed6",
     "semantic_hash": ""
   },
   "deploy/docker/litellm-config.yaml": {
@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   "docs/native-litellm.md": {
-    "mtime": 1790885722.1889963,
-    "seen": 1790885723.469592,
-    "ast_hash": "7d52b7b619892b1ebd3c91129ab7f84d",
+    "mtime": 1791304159.4503574,
+    "seen": 1791304160.71172,
+    "ast_hash": "11f12c44fa7aaffb067d39095253b36b",
     "semantic_hash": ""
   },
   "docs/oauth-setup-anthropic.md": {
@@ -330,9 +330,9 @@
     "semantic_hash": ""
   },
   "dashboard/src/anthropic.ts": {
-    "mtime": 1790137181.4711695,
-    "seen": 1790885723.469558,
-    "ast_hash": "76e6aa0af59ffd0b5d7f3810d717ade3",
+    "mtime": 1791303866.3813128,
+    "seen": 1791304160.711678,
+    "ast_hash": "8816042e772e642fd986ea69d3426dcb",
     "semantic_hash": ""
   },
   "dashboard/src/atomic-json.ts": {
@@ -342,9 +342,9 @@
     "semantic_hash": ""
   },
   "dashboard/tests/managed-anthropic.test.ts": {
-    "mtime": 1790137181.473469,
-    "seen": 1790885723.469568,
-    "ast_hash": "2067b597fbde9795b2ee0ad4cebfca7b",
+    "mtime": 1791303832.9614418,
+    "seen": 1791304160.711691,
+    "ast_hash": "53587ad6b3f17f1e484a46ef0e00c179",
     "semantic_hash": ""
   },
   "litellm-plugin/test_cache_anchor.py": {
@@ -384,21 +384,27 @@
     "semantic_hash": ""
   },
   "dashboard/src/omniroute.ts": {
-    "mtime": 1790885478.1779072,
-    "seen": 1790885723.4695628,
-    "ast_hash": "63588502a9411587dac7606cf0be6fcd",
+    "mtime": 1793741783.1564407,
+    "seen": 1793808719.626435,
+    "ast_hash": "6d22d3a6011274adf7df9ba350e3a1a3",
     "semantic_hash": ""
   },
   "dashboard/tests/omniroute.test.ts": {
-    "mtime": 1790885396.445951,
-    "seen": 1790885723.469568,
-    "ast_hash": "9b79649607e3a6091f769259090c630b",
+    "mtime": 1793742405.1726167,
+    "seen": 1793808719.626442,
+    "ast_hash": "35cc0ab6362e5ee26a4d6f6e921a54b0",
     "semantic_hash": ""
   },
   "desktop/src-tauri/Cargo.toml": {
     "mtime": 1790137181.4753642,
     "seen": 1790885723.4695702,
     "ast_hash": "fa9f33e3040afe3831ef581613dff60e",
+    "semantic_hash": ""
+  },
+  "dashboard/src/fallbacks.ts": {
+    "mtime": 1790891386.4674354,
+    "seen": 1791304160.711682,
+    "ast_hash": "2ab661b73444fd8ee90ae1a59b3a8850",
     "semantic_hash": ""
   }
 }
