@@ -4,6 +4,19 @@
   "graph": {},
   "nodes": [
     {
+      "id": "dashboard_src_providers_providerconfig",
+      "label": "ProviderConfig",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "usage.ts",
+      "file_type": "code",
+      "norm_label": "providerconfig",
+      "source_file": "dashboard/src/providers.ts",
+      "source_location": "L16"
+    },
+    {
       "id": "dashboard_src_usage_agentitem",
       "label": "AgentItem",
       "_callable": true,
@@ -186,58 +199,6 @@
       "source_location": "L28"
     },
     {
-      "id": "dashboard_src_providers_providerconfig",
-      "label": "ProviderConfig",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "providers.ts",
-      "file_type": "code",
-      "norm_label": "providerconfig",
-      "source_file": "dashboard/src/providers.ts",
-      "source_location": "L16"
-    },
-    {
-      "id": "dashboard_src_fallbacks_fallbackevent",
-      "label": "FallbackEvent",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "litellm.ts",
-      "file_type": "code",
-      "norm_label": "fallbackevent",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L47"
-    },
-    {
-      "id": "dashboard_src_fallbacks_fallbacksnapshot",
-      "label": "FallbackSnapshot",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "litellm.ts",
-      "file_type": "code",
-      "norm_label": "fallbacksnapshot",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L21"
-    },
-    {
-      "id": "dashboard_src_fallbacks_options",
-      "label": "Options",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "litellm.ts",
-      "file_type": "code",
-      "norm_label": "options",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L42"
-    },
-    {
       "id": "dashboard_src_litellm_litellmcredential",
       "label": "LiteLLMCredential",
       "_callable": true,
@@ -264,6 +225,19 @@
       "source_location": "L15"
     },
     {
+      "id": "dashboard_src_usage_usagereport",
+      "label": "UsageReport",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "litellm.ts",
+      "file_type": "code",
+      "norm_label": "usagereport",
+      "source_file": "dashboard/src/usage.ts",
+      "source_location": "L49"
+    },
+    {
       "id": "dashboard_src_store_credentialmap",
       "label": "CredentialMap",
       "_callable": true,
@@ -287,7 +261,7 @@
       "file_type": "code",
       "norm_label": "_thinkingloopdetector",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1805"
+      "source_location": "L1767"
     },
     {
       "id": "dashboard_server_loginstate",
@@ -353,19 +327,6 @@
       "norm_label": "providerid",
       "source_file": "dashboard/src/providers.ts",
       "source_location": "L14"
-    },
-    {
-      "id": "dashboard_src_usage_usagereport",
-      "label": "UsageReport",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "oauth.ts",
-      "file_type": "code",
-      "norm_label": "usagereport",
-      "source_file": "dashboard/src/usage.ts",
-      "source_location": "L49"
     },
     {
       "id": "dashboard_src_omniroute_options",
@@ -456,7 +417,7 @@
       "file_type": "code",
       "norm_label": "_thinkinglooperror",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1768"
+      "source_location": "L1730"
     },
     {
       "id": "litellm_plugin_test_responses_route_customstreamwrapper",
@@ -511,6 +472,32 @@
       "source_location": "L53"
     },
     {
+      "id": "dashboard_src_traffic_options",
+      "label": "Options",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "isRecord",
+      "file_type": "code",
+      "norm_label": "options",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "dashboard_src_traffic_trafficsnapshot",
+      "label": "TrafficSnapshot",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "isRecord",
+      "file_type": "code",
+      "norm_label": "trafficsnapshot",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L17"
+    },
+    {
       "id": "litellm_plugin_sitecustomize_bridgestreamwrapper",
       "label": "_BridgeStreamWrapper",
       "_callable": true,
@@ -547,7 +534,7 @@
       "file_type": "code",
       "norm_label": "anthropiccachehandler",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L3013"
+      "source_location": "L2975"
     },
     {
       "id": "litellm_plugin_test_responses_route_usage",
@@ -561,18 +548,6 @@
       "norm_label": "usage",
       "source_file": "litellm-plugin/test_responses_route.py",
       "source_location": "L68"
-    },
-    {
-      "id": "dashboard_src_guards_readtimestampms",
-      "label": "readTimestampMs()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "usage.ts",
-      "file_type": "code",
-      "norm_label": "readtimestampms()",
-      "source_file": "dashboard/src/guards.ts",
-      "source_location": "L29"
     },
     {
       "id": "dashboard_src_oauth_isdefinitiveoauthfailure",
@@ -599,30 +574,6 @@
       "source_location": "L598"
     },
     {
-      "id": "dashboard_src_usage_codexratelimitblock",
-      "label": "codexRateLimitBlock()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "usage.ts",
-      "file_type": "code",
-      "norm_label": "codexratelimitblock()",
-      "source_file": "dashboard/src/usage.ts",
-      "source_location": "L236"
-    },
-    {
-      "id": "dashboard_src_usage_codexwindow",
-      "label": "codexWindow()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "usage.ts",
-      "file_type": "code",
-      "norm_label": "codexwindow()",
-      "source_file": "dashboard/src/usage.ts",
-      "source_location": "L221"
-    },
-    {
       "id": "dashboard_src_usage_fetchaiagents",
       "label": "fetchAiAgents()",
       "_callable": true,
@@ -645,42 +596,6 @@
       "norm_label": "fetchallusage()",
       "source_file": "dashboard/src/usage.ts",
       "source_location": "L696"
-    },
-    {
-      "id": "dashboard_src_usage_fetchanthropic",
-      "label": "fetchAnthropic()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "usage.ts",
-      "file_type": "code",
-      "norm_label": "fetchanthropic()",
-      "source_file": "dashboard/src/usage.ts",
-      "source_location": "L118"
-    },
-    {
-      "id": "dashboard_src_usage_fetchantigravity",
-      "label": "fetchAntigravity()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "usage.ts",
-      "file_type": "code",
-      "norm_label": "fetchantigravity()",
-      "source_file": "dashboard/src/usage.ts",
-      "source_location": "L287"
-    },
-    {
-      "id": "dashboard_src_usage_fetchcodex",
-      "label": "fetchCodex()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "usage.ts",
-      "file_type": "code",
-      "norm_label": "fetchcodex()",
-      "source_file": "dashboard/src/usage.ts",
-      "source_location": "L246"
     },
     {
       "id": "dashboard_src_usage_fetchdeepseek",
@@ -743,18 +658,6 @@
       "source_location": "L580"
     },
     {
-      "id": "dashboard_src_usage_parseanthropicpayload",
-      "label": "parseAnthropicPayload()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "usage.ts",
-      "file_type": "code",
-      "norm_label": "parseanthropicpayload()",
-      "source_file": "dashboard/src/usage.ts",
-      "source_location": "L161"
-    },
-    {
       "id": "dashboard_src_usage_parsepromlabels",
       "label": "parsePromLabels()",
       "_callable": true,
@@ -779,18 +682,6 @@
       "source_location": "L87"
     },
     {
-      "id": "dashboard_src_usage_windowlabel",
-      "label": "windowLabel()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "usage.ts",
-      "file_type": "code",
-      "norm_label": "windowlabel()",
-      "source_file": "dashboard/src/usage.ts",
-      "source_location": "L99"
-    },
-    {
       "id": "litellm_plugin_sitecustomize_anthropiccachehandler_async_pre_call_hook",
       "label": ".async_pre_call_hook()",
       "_callable": true,
@@ -800,7 +691,7 @@
       "file_type": "code",
       "norm_label": ".async_pre_call_hook()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L3016"
+      "source_location": "L2978"
     },
     {
       "id": "litellm_plugin_sitecustomize_attach_codex_quota",
@@ -812,7 +703,7 @@
       "file_type": "code",
       "norm_label": "_attach_codex_quota()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1714"
+      "source_location": "L1676"
     },
     {
       "id": "litellm_plugin_sitecustomize_bridge_message",
@@ -824,7 +715,7 @@
       "file_type": "code",
       "norm_label": "_bridge_message()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1697"
+      "source_location": "L1659"
     },
     {
       "id": "litellm_plugin_sitecustomize_bridge_stream_result",
@@ -848,7 +739,7 @@
       "file_type": "code",
       "norm_label": "_codex_finish_reason()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1391"
+      "source_location": "L1353"
     },
     {
       "id": "litellm_plugin_sitecustomize_codex_quota_headers",
@@ -860,7 +751,7 @@
       "file_type": "code",
       "norm_label": "_codex_quota_headers()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1265"
+      "source_location": "L1260"
     },
     {
       "id": "litellm_plugin_sitecustomize_emit_bridge_success",
@@ -908,7 +799,7 @@
       "file_type": "code",
       "norm_label": "_is_gemini_model()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1627"
+      "source_location": "L1589"
     },
     {
       "id": "litellm_plugin_sitecustomize_logged_bridge_stream",
@@ -932,7 +823,7 @@
       "file_type": "code",
       "norm_label": "_needs_completions_bridge()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2925"
+      "source_location": "L2887"
     },
     {
       "id": "litellm_plugin_sitecustomize_strip_codex_output_limits",
@@ -956,7 +847,7 @@
       "file_type": "code",
       "norm_label": "_wrapped_acompletion()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2693"
+      "source_location": "L2655"
     },
     {
       "id": "litellm_plugin_sitecustomize_wrapped_completion",
@@ -968,7 +859,7 @@
       "file_type": "code",
       "norm_label": "_wrapped_completion()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2768"
+      "source_location": "L2730"
     },
     {
       "id": "litellm_plugin_sitecustomize_wrapped_route_request",
@@ -980,7 +871,7 @@
       "file_type": "code",
       "norm_label": "_wrapped_route_request()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2877"
+      "source_location": "L2839"
     },
     {
       "id": "litellm_plugin_sitecustomize_wrapped_router_acompletion",
@@ -992,7 +883,7 @@
       "file_type": "code",
       "norm_label": "_wrapped_router_acompletion()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2824"
+      "source_location": "L2786"
     },
     {
       "id": "litellm_plugin_sitecustomize_wrapped_router_completion",
@@ -1004,7 +895,7 @@
       "file_type": "code",
       "norm_label": "_wrapped_router_completion()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2864"
+      "source_location": "L2826"
     },
     {
       "id": "desktop_src_main_refreshstatus",
@@ -1127,18 +1018,6 @@
       "source_location": "L25"
     },
     {
-      "id": "dashboard_tests_server_test_fetch",
-      "label": "fetch()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "server.test.ts",
-      "file_type": "code",
-      "norm_label": "fetch()",
-      "source_file": "dashboard/tests/server.test.ts",
-      "source_location": "L35"
-    },
-    {
       "id": "litellm_plugin_test_cache_anchor_breakpoints",
       "label": "breakpoints()",
       "_callable": true,
@@ -1235,6 +1114,54 @@
       "source_location": "L105"
     },
     {
+      "id": "dashboard_src_anthropic_anthropicproxy",
+      "label": "anthropicProxy()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "managed-anthropic.test.ts",
+      "file_type": "code",
+      "norm_label": "anthropicproxy()",
+      "source_file": "dashboard/src/anthropic.ts",
+      "source_location": "L79"
+    },
+    {
+      "id": "dashboard_src_oauth_ensurefresh",
+      "label": "ensureFresh()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "managed-anthropic.test.ts",
+      "file_type": "code",
+      "norm_label": "ensurefresh()",
+      "source_file": "dashboard/src/oauth.ts",
+      "source_location": "L389"
+    },
+    {
+      "id": "dashboard_src_oauth_refreshcredential",
+      "label": "refreshCredential()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "managed-anthropic.test.ts",
+      "file_type": "code",
+      "norm_label": "refreshcredential()",
+      "source_file": "dashboard/src/oauth.ts",
+      "source_location": "L320"
+    },
+    {
+      "id": "dashboard_tests_managed_anthropic_test_messagerequest",
+      "label": "messageRequest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "managed-anthropic.test.ts",
+      "file_type": "code",
+      "norm_label": "messagerequest()",
+      "source_file": "dashboard/tests/managed-anthropic.test.ts",
+      "source_location": "L147"
+    },
+    {
       "id": "litellm_plugin_sitecustomize_antigravity_available_models",
       "label": "_antigravity_available_models()",
       "_callable": true,
@@ -1244,7 +1171,7 @@
       "file_type": "code",
       "norm_label": "_antigravity_available_models()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1928"
+      "source_location": "L1890"
     },
     {
       "id": "litellm_plugin_sitecustomize_antigravity_request_id",
@@ -1256,7 +1183,7 @@
       "file_type": "code",
       "norm_label": "_antigravity_request_id()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1664"
+      "source_location": "L1626"
     },
     {
       "id": "litellm_plugin_sitecustomize_call_antigravity_sync",
@@ -1268,19 +1195,31 @@
       "file_type": "code",
       "norm_label": "_call_antigravity_sync()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2435"
+      "source_location": "L2397"
     },
     {
-      "id": "litellm_plugin_sitecustomize_google_finish_reason",
-      "label": "_google_finish_reason()",
+      "id": "litellm_plugin_sitecustomize_google_content_parts",
+      "label": "_google_content_parts()",
       "_callable": true,
       "_origin": "ast",
       "community": 25,
       "community_name": "_messages_to_antigravity_payload",
       "file_type": "code",
-      "norm_label": "_google_finish_reason()",
+      "norm_label": "_google_content_parts()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1028"
+      "source_location": "L2106"
+    },
+    {
+      "id": "litellm_plugin_sitecustomize_google_media_part",
+      "label": "_google_media_part()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "_messages_to_antigravity_payload",
+      "file_type": "code",
+      "norm_label": "_google_media_part()",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2071"
     },
     {
       "id": "litellm_plugin_sitecustomize_google_model_supports_function_ids",
@@ -1292,7 +1231,7 @@
       "file_type": "code",
       "norm_label": "_google_model_supports_function_ids()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2033"
+      "source_location": "L1995"
     },
     {
       "id": "litellm_plugin_sitecustomize_google_tool_choice",
@@ -1304,7 +1243,7 @@
       "file_type": "code",
       "norm_label": "_google_tool_choice()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2161"
+      "source_location": "L2123"
     },
     {
       "id": "litellm_plugin_sitecustomize_messages_to_antigravity_payload",
@@ -1316,7 +1255,7 @@
       "file_type": "code",
       "norm_label": "_messages_to_antigravity_payload()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2221"
+      "source_location": "L2183"
     },
     {
       "id": "litellm_plugin_sitecustomize_stream_antigravity_generator",
@@ -1328,7 +1267,7 @@
       "file_type": "code",
       "norm_label": "_stream_antigravity_generator()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2649"
+      "source_location": "L2611"
     },
     {
       "id": "litellm_plugin_sitecustomize_stream_chunk_finish_reason",
@@ -1340,7 +1279,7 @@
       "file_type": "code",
       "norm_label": "_stream_chunk_finish_reason()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2643"
+      "source_location": "L2605"
     },
     {
       "id": "litellm_plugin_sitecustomize_stream_chunk_is_meaningful",
@@ -1352,7 +1291,19 @@
       "file_type": "code",
       "norm_label": "_stream_chunk_is_meaningful()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2632"
+      "source_location": "L2594"
+    },
+    {
+      "id": "litellm_plugin_sitecustomize_tool_result_value",
+      "label": "_tool_result_value()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "_messages_to_antigravity_payload",
+      "file_type": "code",
+      "norm_label": "_tool_result_value()",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2157"
     },
     {
       "id": "litellm_plugin_sitecustomize_tools_to_antigravity_tools",
@@ -1364,19 +1315,7 @@
       "file_type": "code",
       "norm_label": "_tools_to_antigravity_tools()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2177"
-    },
-    {
-      "id": "dashboard_src_guards_readnumber",
-      "label": "readNumber()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "litellm.ts",
-      "file_type": "code",
-      "norm_label": "readnumber()",
-      "source_file": "dashboard/src/guards.ts",
-      "source_location": "L14"
+      "source_location": "L2139"
     },
     {
       "id": "dashboard_src_litellm_claims",
@@ -1463,90 +1402,6 @@
       "source_location": "L11"
     },
     {
-      "id": "dashboard_src_fallbacks_fallbackmonitor",
-      "label": "fallbackMonitor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "fallbackMonitor",
-      "file_type": "code",
-      "norm_label": "fallbackmonitor()",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L67"
-    },
-    {
-      "id": "dashboard_src_fallbacks_fallbackmonitor_fetchchains",
-      "label": "fetchChains()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "fallbackMonitor",
-      "file_type": "code",
-      "norm_label": "fetchchains()",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L121"
-    },
-    {
-      "id": "dashboard_src_fallbacks_fallbackmonitor_fetchmodelgroups",
-      "label": "fetchModelGroups()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "fallbackMonitor",
-      "file_type": "code",
-      "norm_label": "fetchmodelgroups()",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L139"
-    },
-    {
-      "id": "dashboard_src_fallbacks_fallbackmonitor_getjson",
-      "label": "getJson()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "fallbackMonitor",
-      "file_type": "code",
-      "norm_label": "getjson()",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L112"
-    },
-    {
-      "id": "dashboard_src_fallbacks_fallbackmonitor_pollspendlogs",
-      "label": "pollSpendLogs()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "fallbackMonitor",
-      "file_type": "code",
-      "norm_label": "pollspendlogs()",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L152"
-    },
-    {
-      "id": "dashboard_src_fallbacks_fallbackmonitor_refresh",
-      "label": "refresh()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "fallbackMonitor",
-      "file_type": "code",
-      "norm_label": "refresh()",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L209"
-    },
-    {
-      "id": "dashboard_src_fallbacks_spendlogsdate",
-      "label": "spendLogsDate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 27,
-      "community_name": "fallbackMonitor",
-      "file_type": "code",
-      "norm_label": "spendlogsdate()",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L62"
-    },
-    {
       "id": "dashboard_server_refreshsweep",
       "label": "refreshSweep()",
       "_callable": true,
@@ -1593,18 +1448,6 @@
       "norm_label": "applyoverlay()",
       "source_file": "dashboard/src/store.ts",
       "source_location": "L47"
-    },
-    {
-      "id": "dashboard_src_store_deletecredential",
-      "label": "deleteCredential()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 28,
-      "community_name": "store.ts",
-      "file_type": "code",
-      "norm_label": "deletecredential()",
-      "source_file": "dashboard/src/store.ts",
-      "source_location": "L228"
     },
     {
       "id": "dashboard_src_store_loadcredentials",
@@ -1664,7 +1507,7 @@
       "file_type": "code",
       "norm_label": "._close_segment()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1854"
+      "source_location": "L1816"
     },
     {
       "id": "litellm_plugin_sitecustomize_thinkingloopdetector_feed",
@@ -1676,7 +1519,7 @@
       "file_type": "code",
       "norm_label": ".feed()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1827"
+      "source_location": "L1789"
     },
     {
       "id": "litellm_plugin_sitecustomize_thinkingloopdetector_init",
@@ -1688,7 +1531,7 @@
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1817"
+      "source_location": "L1779"
     },
     {
       "id": "litellm_plugin_sitecustomize_thinkingloopdetector_verbatim_tail",
@@ -1700,7 +1543,7 @@
       "file_type": "code",
       "norm_label": "._verbatim_tail()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1846"
+      "source_location": "L1808"
     },
     {
       "id": "litellm_plugin_sitecustomize_trigrams",
@@ -1712,7 +1555,7 @@
       "file_type": "code",
       "norm_label": "_trigrams()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1801"
+      "source_location": "L1763"
     },
     {
       "id": "dashboard_server_dashboardapi",
@@ -1799,40 +1642,28 @@
       "source_location": "L3"
     },
     {
-      "id": "dashboard_src_oauth_beginlogin",
-      "label": "beginLogin()",
+      "id": "dashboard_src_oauth_completeloginwithcode",
+      "label": "completeLoginWithCode()",
       "_callable": true,
       "_origin": "ast",
       "community": 33,
       "community_name": "server.ts",
       "file_type": "code",
-      "norm_label": "beginlogin()",
+      "norm_label": "completeloginwithcode()",
       "source_file": "dashboard/src/oauth.ts",
-      "source_location": "L107"
+      "source_location": "L195"
     },
     {
-      "id": "dashboard_src_oauth_cancellogin",
-      "label": "cancelLogin()",
+      "id": "dashboard_src_store_deletecredential",
+      "label": "deleteCredential()",
       "_callable": true,
       "_origin": "ast",
       "community": 33,
       "community_name": "server.ts",
       "file_type": "code",
-      "norm_label": "cancellogin()",
-      "source_file": "dashboard/src/oauth.ts",
-      "source_location": "L181"
-    },
-    {
-      "id": "dashboard_src_oauth_generatepkce",
-      "label": "generatePkce()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 33,
-      "community_name": "server.ts",
-      "file_type": "code",
-      "norm_label": "generatepkce()",
-      "source_file": "dashboard/src/oauth.ts",
-      "source_location": "L88"
+      "norm_label": "deletecredential()",
+      "source_file": "dashboard/src/store.ts",
+      "source_location": "L228"
     },
     {
       "id": "dashboard_src_store_persistenceerror",
@@ -1859,6 +1690,18 @@
       "source_location": "L71"
     },
     {
+      "id": "dashboard_tests_server_test_fetch",
+      "label": "fetch()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "fetch()",
+      "source_file": "dashboard/tests/server.test.ts",
+      "source_location": "L35"
+    },
+    {
       "id": "dashboard_src_guards_readstring",
       "label": "readString()",
       "_callable": true,
@@ -1869,6 +1712,30 @@
       "norm_label": "readstring()",
       "source_file": "dashboard/src/guards.ts",
       "source_location": "L24"
+    },
+    {
+      "id": "dashboard_src_oauth_beginlogin",
+      "label": "beginLogin()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "oauth.ts",
+      "file_type": "code",
+      "norm_label": "beginlogin()",
+      "source_file": "dashboard/src/oauth.ts",
+      "source_location": "L107"
+    },
+    {
+      "id": "dashboard_src_oauth_cancellogin",
+      "label": "cancelLogin()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "oauth.ts",
+      "file_type": "code",
+      "norm_label": "cancellogin()",
+      "source_file": "dashboard/src/oauth.ts",
+      "source_location": "L181"
     },
     {
       "id": "dashboard_src_oauth_discoverantigravityproject",
@@ -1893,6 +1760,18 @@
       "norm_label": "exchangecode()",
       "source_file": "dashboard/src/oauth.ts",
       "source_location": "L256"
+    },
+    {
+      "id": "dashboard_src_oauth_generatepkce",
+      "label": "generatePkce()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "oauth.ts",
+      "file_type": "code",
+      "norm_label": "generatepkce()",
+      "source_file": "dashboard/src/oauth.ts",
+      "source_location": "L88"
     },
     {
       "id": "dashboard_src_oauth_parsetokenresponse",
@@ -2060,7 +1939,7 @@
       "file_type": "code",
       "norm_label": "_antigravity_base_family()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1964"
+      "source_location": "L1926"
     },
     {
       "id": "litellm_plugin_sitecustomize_codex_file_part",
@@ -2216,7 +2095,7 @@
       "file_type": "code",
       "norm_label": "_map_antigravity_model()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1971"
+      "source_location": "L1933"
     },
     {
       "id": "litellm_plugin_sitecustomize_mcpserverpatchfinder_find_spec",
@@ -2288,7 +2167,7 @@
       "file_type": "code",
       "norm_label": "_responses_model_of()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2919"
+      "source_location": "L2881"
     },
     {
       "id": "litellm_plugin_sitecustomize_tools_to_codex_tools",
@@ -2324,7 +2203,7 @@
       "file_type": "code",
       "norm_label": "_wrapped_aresponses()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2940"
+      "source_location": "L2902"
     },
     {
       "id": "litellm_plugin_sitecustomize_wrapped_responses",
@@ -2336,7 +2215,7 @@
       "file_type": "code",
       "norm_label": "_wrapped_responses()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2946"
+      "source_location": "L2908"
     },
     {
       "id": "litellm_plugin_sitecustomize_wrapped_wildcard_health",
@@ -2348,7 +2227,7 @@
       "file_type": "code",
       "norm_label": "_wrapped_wildcard_health()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2983"
+      "source_location": "L2945"
     },
     {
       "id": "litellm_plugin_sitecustomize_antigravity_collect",
@@ -2360,7 +2239,19 @@
       "file_type": "code",
       "norm_label": "_antigravity_collect()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2378"
+      "source_location": "L2340"
+    },
+    {
+      "id": "litellm_plugin_sitecustomize_google_finish_reason",
+      "label": "_google_finish_reason()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "_stream_antigravity_once",
+      "file_type": "code",
+      "norm_label": "_google_finish_reason()",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L1028"
     },
     {
       "id": "litellm_plugin_sitecustomize_google_is_flash_leak_model",
@@ -2372,7 +2263,7 @@
       "file_type": "code",
       "norm_label": "_google_is_flash_leak_model()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1748"
+      "source_location": "L1710"
     },
     {
       "id": "litellm_plugin_sitecustomize_google_is_planning_leak",
@@ -2384,7 +2275,7 @@
       "file_type": "code",
       "norm_label": "_google_is_planning_leak()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1751"
+      "source_location": "L1713"
     },
     {
       "id": "litellm_plugin_sitecustomize_google_loop_guard",
@@ -2396,7 +2287,7 @@
       "file_type": "code",
       "norm_label": "_google_loop_guard()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1888"
+      "source_location": "L1850"
     },
     {
       "id": "litellm_plugin_sitecustomize_google_raise_in_band",
@@ -2408,7 +2299,7 @@
       "file_type": "code",
       "norm_label": "_google_raise_in_band()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1673"
+      "source_location": "L1635"
     },
     {
       "id": "litellm_plugin_sitecustomize_remember_thought_signature",
@@ -2432,7 +2323,7 @@
       "file_type": "code",
       "norm_label": "_stream_antigravity_once()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2498"
+      "source_location": "L2460"
     },
     {
       "id": "litellm_plugin_sitecustomize_usage_chunk",
@@ -2708,7 +2599,7 @@
       "file_type": "code",
       "norm_label": "_antigravity_mark_host()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1658"
+      "source_location": "L1620"
     },
     {
       "id": "litellm_plugin_sitecustomize_antigravity_open",
@@ -2720,7 +2611,7 @@
       "file_type": "code",
       "norm_label": "_antigravity_open()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2346"
+      "source_location": "L2308"
     },
     {
       "id": "litellm_plugin_sitecustomize_antigravity_open_async",
@@ -2732,7 +2623,7 @@
       "file_type": "code",
       "norm_label": "_antigravity_open_async()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2475"
+      "source_location": "L2437"
     },
     {
       "id": "litellm_plugin_sitecustomize_antigravity_urls",
@@ -2744,7 +2635,7 @@
       "file_type": "code",
       "norm_label": "_antigravity_urls()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1650"
+      "source_location": "L1612"
     },
     {
       "id": "litellm_plugin_sitecustomize_build_codex_headers",
@@ -2768,7 +2659,7 @@
       "file_type": "code",
       "norm_label": "_call_codex_sync()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1399"
+      "source_location": "L1361"
     },
     {
       "id": "litellm_plugin_sitecustomize_codex_capture_response_state",
@@ -2780,7 +2671,7 @@
       "file_type": "code",
       "norm_label": "_codex_capture_response_state()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1250"
+      "source_location": "L1245"
     },
     {
       "id": "litellm_plugin_sitecustomize_codex_composite_call_id",
@@ -2804,7 +2695,7 @@
       "file_type": "code",
       "norm_label": "_codex_open()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1343"
+      "source_location": "L1309"
     },
     {
       "id": "litellm_plugin_sitecustomize_codex_open_async",
@@ -2816,7 +2707,7 @@
       "file_type": "code",
       "norm_label": "_codex_open_async()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1366"
+      "source_location": "L1330"
     },
     {
       "id": "litellm_plugin_sitecustomize_codex_redeem_reset_credit",
@@ -2828,19 +2719,7 @@
       "file_type": "code",
       "norm_label": "_codex_redeem_reset_credit()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1315"
-    },
-    {
-      "id": "litellm_plugin_sitecustomize_codex_remember_unsupported",
-      "label": "_codex_remember_unsupported()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "Exception",
-      "file_type": "code",
-      "norm_label": "_codex_remember_unsupported()",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1272"
+      "source_location": "L1281"
     },
     {
       "id": "litellm_plugin_sitecustomize_codex_reset_credits",
@@ -2852,19 +2731,7 @@
       "file_type": "code",
       "norm_label": "_codex_reset_credits()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1298"
-    },
-    {
-      "id": "litellm_plugin_sitecustomize_codex_unsupported_model",
-      "label": "_codex_unsupported_model()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "Exception",
-      "file_type": "code",
-      "norm_label": "_codex_unsupported_model()",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1269"
+      "source_location": "L1264"
     },
     {
       "id": "litellm_plugin_sitecustomize_codex_usage",
@@ -2879,6 +2746,30 @@
       "source_location": "L1042"
     },
     {
+      "id": "litellm_plugin_sitecustomize_google_inline_part",
+      "label": "_google_inline_part()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "Exception",
+      "file_type": "code",
+      "norm_label": "_google_inline_part()",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2011"
+    },
+    {
+      "id": "litellm_plugin_sitecustomize_google_media_from_url",
+      "label": "_google_media_from_url()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "Exception",
+      "file_type": "code",
+      "norm_label": "_google_media_from_url()",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2026"
+    },
+    {
       "id": "litellm_plugin_sitecustomize_stream_codex_generator",
       "label": "_stream_codex_generator()",
       "_callable": true,
@@ -2888,7 +2779,7 @@
       "file_type": "code",
       "norm_label": "_stream_codex_generator()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1481"
+      "source_location": "L1443"
     },
     {
       "id": "litellm_plugin_test_parity_batch_load",
@@ -2999,18 +2890,6 @@
       "source_location": "L58"
     },
     {
-      "id": "dashboard_src_anthropic_anthropicproxy",
-      "label": "anthropicProxy()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 50,
-      "community_name": "isRecord",
-      "file_type": "code",
-      "norm_label": "anthropicproxy()",
-      "source_file": "dashboard/src/anthropic.ts",
-      "source_location": "L79"
-    },
-    {
       "id": "dashboard_src_anthropic_applyconversationcache",
       "label": "applyConversationCache()",
       "_callable": true,
@@ -3071,52 +2950,172 @@
       "source_location": "L9"
     },
     {
-      "id": "dashboard_src_oauth_completeloginwithcode",
-      "label": "completeLoginWithCode()",
+      "id": "dashboard_src_guards_readnumber",
+      "label": "readNumber()",
       "_callable": true,
       "_origin": "ast",
       "community": 50,
       "community_name": "isRecord",
       "file_type": "code",
-      "norm_label": "completeloginwithcode()",
-      "source_file": "dashboard/src/oauth.ts",
-      "source_location": "L195"
+      "norm_label": "readnumber()",
+      "source_file": "dashboard/src/guards.ts",
+      "source_location": "L14"
     },
     {
-      "id": "dashboard_src_oauth_ensurefresh",
-      "label": "ensureFresh()",
+      "id": "dashboard_src_guards_readtimestampms",
+      "label": "readTimestampMs()",
       "_callable": true,
       "_origin": "ast",
       "community": 50,
       "community_name": "isRecord",
       "file_type": "code",
-      "norm_label": "ensurefresh()",
-      "source_file": "dashboard/src/oauth.ts",
-      "source_location": "L389"
+      "norm_label": "readtimestampms()",
+      "source_file": "dashboard/src/guards.ts",
+      "source_location": "L29"
     },
     {
-      "id": "dashboard_src_oauth_refreshcredential",
-      "label": "refreshCredential()",
+      "id": "dashboard_src_traffic_spendlogsdate",
+      "label": "spendLogsDate()",
       "_callable": true,
       "_origin": "ast",
       "community": 50,
       "community_name": "isRecord",
       "file_type": "code",
-      "norm_label": "refreshcredential()",
-      "source_file": "dashboard/src/oauth.ts",
-      "source_location": "L320"
+      "norm_label": "spendlogsdate()",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L44"
     },
     {
-      "id": "dashboard_tests_managed_anthropic_test_messagerequest",
-      "label": "messageRequest()",
+      "id": "dashboard_src_traffic_trafficmonitor",
+      "label": "trafficMonitor()",
       "_callable": true,
       "_origin": "ast",
       "community": 50,
       "community_name": "isRecord",
       "file_type": "code",
-      "norm_label": "messagerequest()",
-      "source_file": "dashboard/tests/managed-anthropic.test.ts",
-      "source_location": "L147"
+      "norm_label": "trafficmonitor()",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L49"
+    },
+    {
+      "id": "dashboard_src_traffic_trafficmonitor_getjson",
+      "label": "getJson()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "isRecord",
+      "file_type": "code",
+      "norm_label": "getjson()",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L96"
+    },
+    {
+      "id": "dashboard_src_traffic_trafficmonitor_pollspendlogs",
+      "label": "pollSpendLogs()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "isRecord",
+      "file_type": "code",
+      "norm_label": "pollspendlogs()",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L106"
+    },
+    {
+      "id": "dashboard_src_traffic_trafficmonitor_refresh",
+      "label": "refresh()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "isRecord",
+      "file_type": "code",
+      "norm_label": "refresh()",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L157"
+    },
+    {
+      "id": "dashboard_src_usage_codexratelimitblock",
+      "label": "codexRateLimitBlock()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "isRecord",
+      "file_type": "code",
+      "norm_label": "codexratelimitblock()",
+      "source_file": "dashboard/src/usage.ts",
+      "source_location": "L236"
+    },
+    {
+      "id": "dashboard_src_usage_codexwindow",
+      "label": "codexWindow()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "isRecord",
+      "file_type": "code",
+      "norm_label": "codexwindow()",
+      "source_file": "dashboard/src/usage.ts",
+      "source_location": "L221"
+    },
+    {
+      "id": "dashboard_src_usage_fetchanthropic",
+      "label": "fetchAnthropic()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "isRecord",
+      "file_type": "code",
+      "norm_label": "fetchanthropic()",
+      "source_file": "dashboard/src/usage.ts",
+      "source_location": "L118"
+    },
+    {
+      "id": "dashboard_src_usage_fetchantigravity",
+      "label": "fetchAntigravity()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "isRecord",
+      "file_type": "code",
+      "norm_label": "fetchantigravity()",
+      "source_file": "dashboard/src/usage.ts",
+      "source_location": "L287"
+    },
+    {
+      "id": "dashboard_src_usage_fetchcodex",
+      "label": "fetchCodex()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "isRecord",
+      "file_type": "code",
+      "norm_label": "fetchcodex()",
+      "source_file": "dashboard/src/usage.ts",
+      "source_location": "L246"
+    },
+    {
+      "id": "dashboard_src_usage_parseanthropicpayload",
+      "label": "parseAnthropicPayload()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "isRecord",
+      "file_type": "code",
+      "norm_label": "parseanthropicpayload()",
+      "source_file": "dashboard/src/usage.ts",
+      "source_location": "L161"
+    },
+    {
+      "id": "dashboard_src_usage_windowlabel",
+      "label": "windowLabel()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "isRecord",
+      "file_type": "code",
+      "norm_label": "windowlabel()",
+      "source_file": "dashboard/src/usage.ts",
+      "source_location": "L99"
     },
     {
       "id": "litellm_plugin_sitecustomize_anthropic_cache_control",
@@ -3189,66 +3188,6 @@
       "norm_label": "_mark_cache_breakpoint()",
       "source_file": "litellm-plugin/sitecustomize.py",
       "source_location": "L487"
-    },
-    {
-      "id": "litellm_plugin_sitecustomize_google_content_parts",
-      "label": "_google_content_parts()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "_google_media_from_url",
-      "file_type": "code",
-      "norm_label": "_google_content_parts()",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2144"
-    },
-    {
-      "id": "litellm_plugin_sitecustomize_google_inline_part",
-      "label": "_google_inline_part()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "_google_media_from_url",
-      "file_type": "code",
-      "norm_label": "_google_inline_part()",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2049"
-    },
-    {
-      "id": "litellm_plugin_sitecustomize_google_media_from_url",
-      "label": "_google_media_from_url()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "_google_media_from_url",
-      "file_type": "code",
-      "norm_label": "_google_media_from_url()",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2064"
-    },
-    {
-      "id": "litellm_plugin_sitecustomize_google_media_part",
-      "label": "_google_media_part()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "_google_media_from_url",
-      "file_type": "code",
-      "norm_label": "_google_media_part()",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2109"
-    },
-    {
-      "id": "litellm_plugin_sitecustomize_tool_result_value",
-      "label": "_tool_result_value()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "_google_media_from_url",
-      "file_type": "code",
-      "norm_label": "_tool_result_value()",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2195"
     },
     {
       "id": "litellm_plugin_sitecustomize_bridgestreamwrapper_aiter",
@@ -3428,7 +3367,7 @@
       "file_type": "code",
       "norm_label": ".__init__()",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L3014"
+      "source_location": "L2976"
     },
     {
       "id": "litellm_plugin_sitecustomize_bridge_usage",
@@ -3465,6 +3404,105 @@
       "norm_label": ".__init__()",
       "source_file": "litellm-plugin/test_responses_route.py",
       "source_location": "L69"
+    },
+    {
+      "id": "dashboard_src_providers",
+      "label": "providers.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "usage.ts",
+      "file_type": "code",
+      "norm_label": "providers.ts",
+      "source_file": "dashboard/src/providers.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "dashboard_src_providers_anthropic_scopes",
+      "label": "ANTHROPIC_SCOPES",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "usage.ts",
+      "file_type": "code",
+      "norm_label": "anthropic_scopes",
+      "source_file": "dashboard/src/providers.ts",
+      "source_location": "L43"
+    },
+    {
+      "id": "dashboard_src_providers_anthropic_usage_url",
+      "label": "ANTHROPIC_USAGE_URL",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "usage.ts",
+      "file_type": "code",
+      "norm_label": "anthropic_usage_url",
+      "source_file": "dashboard/src/providers.ts",
+      "source_location": "L126"
+    },
+    {
+      "id": "dashboard_src_providers_antigravity_endpoint",
+      "label": "ANTIGRAVITY_ENDPOINT",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "usage.ts",
+      "file_type": "code",
+      "norm_label": "antigravity_endpoint",
+      "source_file": "dashboard/src/providers.ts",
+      "source_location": "L128"
+    },
+    {
+      "id": "dashboard_src_providers_antigravity_user_agent",
+      "label": "ANTIGRAVITY_USER_AGENT",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "usage.ts",
+      "file_type": "code",
+      "norm_label": "antigravity_user_agent",
+      "source_file": "dashboard/src/providers.ts",
+      "source_location": "L144"
+    },
+    {
+      "id": "dashboard_src_providers_claude_headers",
+      "label": "CLAUDE_HEADERS",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "usage.ts",
+      "file_type": "code",
+      "norm_label": "claude_headers",
+      "source_file": "dashboard/src/providers.ts",
+      "source_location": "L135"
+    },
+    {
+      "id": "dashboard_src_providers_deepseek_balance_url",
+      "label": "DEEPSEEK_BALANCE_URL",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "usage.ts",
+      "file_type": "code",
+      "norm_label": "deepseek_balance_url",
+      "source_file": "dashboard/src/providers.ts",
+      "source_location": "L129"
+    },
+    {
+      "id": "dashboard_src_providers_google_scopes",
+      "label": "GOOGLE_SCOPES",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "usage.ts",
+      "file_type": "code",
+      "norm_label": "google_scopes",
+      "source_file": "dashboard/src/providers.ts",
+      "source_location": "L52"
+    },
+    {
+      "id": "dashboard_src_providers_provider_ids",
+      "label": "PROVIDER_IDS",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "usage.ts",
+      "file_type": "code",
+      "norm_label": "provider_ids",
+      "source_file": "dashboard/src/providers.ts",
+      "source_location": "L118"
     },
     {
       "id": "dashboard_src_usage",
@@ -3555,7 +3593,7 @@
       "source_location": "L1090"
     },
     {
-      "id": "litellm_plugin_sitecustomize_rationale_1266",
+      "id": "litellm_plugin_sitecustomize_rationale_1261",
       "label": "Reexpostos ao cliente como llm_provider-* pelo proxy.",
       "_origin": "ast",
       "community": 1,
@@ -3563,10 +3601,10 @@
       "file_type": "rationale",
       "norm_label": "reexpostos ao cliente como llm_provider-* pelo proxy.",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1266"
+      "source_location": "L1261"
     },
     {
-      "id": "litellm_plugin_sitecustomize_rationale_1698",
+      "id": "litellm_plugin_sitecustomize_rationale_1660",
       "label": "Assistant message in the OpenAI shape, with reasoning in the field LiteLLM\u2026",
       "_origin": "ast",
       "community": 1,
@@ -3574,10 +3612,10 @@
       "file_type": "rationale",
       "norm_label": "assistant message in the openai shape, with reasoning in the field litellm...",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1698"
+      "source_location": "L1660"
     },
     {
-      "id": "litellm_plugin_sitecustomize_rationale_1715",
+      "id": "litellm_plugin_sitecustomize_rationale_1677",
       "label": "The proxy re-exposes additional_headers as llm_provider-*: that is how the\u2026",
       "_origin": "ast",
       "community": 1,
@@ -3585,7 +3623,7 @@
       "file_type": "rationale",
       "norm_label": "the proxy re-exposes additional_headers as llm_provider-*: that is how the...",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1715"
+      "source_location": "L1677"
     },
     {
       "id": "dashboard_package",
@@ -3858,7 +3896,7 @@
       "node_kind": "heading",
       "norm_label": "cursor card hides total (2026-10-07)",
       "source_file": "MEMORY.md",
-      "source_location": "L3"
+      "source_location": "L21"
     },
     {
       "id": "memory_cursor_oauth_and_dashboard_card_2026_10_06",
@@ -3870,7 +3908,7 @@
       "node_kind": "heading",
       "norm_label": "cursor oauth and dashboard card (2026-10-06)",
       "source_file": "MEMORY.md",
-      "source_location": "L12"
+      "source_location": "L30"
     },
     {
       "id": "memory_deepseek_balance_card_2026_09_22",
@@ -3882,7 +3920,19 @@
       "node_kind": "heading",
       "norm_label": "deepseek balance card (2026-09-22)",
       "source_file": "MEMORY.md",
-      "source_location": "L43"
+      "source_location": "L61"
+    },
+    {
+      "id": "memory_fallback_removal_2026_11_10",
+      "label": "Fallback removal (2026-11-10)",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "Project memory",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "fallback removal (2026-11-10)",
+      "source_file": "MEMORY.md",
+      "source_location": "L3"
     },
     {
       "id": "memory_local_deployment_verified_2026_09_17",
@@ -3894,7 +3944,7 @@
       "node_kind": "heading",
       "norm_label": "local deployment verified 2026-09-17",
       "source_file": "MEMORY.md",
-      "source_location": "L105"
+      "source_location": "L123"
     },
     {
       "id": "memory_managed_claude_prompt_caching_2026_09_17",
@@ -3906,7 +3956,7 @@
       "node_kind": "heading",
       "norm_label": "managed claude prompt caching (2026-09-17)",
       "source_file": "MEMORY.md",
-      "source_location": "L65"
+      "source_location": "L83"
     },
     {
       "id": "memory_native_claude_code_protocol_preservation_2026_10_06",
@@ -3918,7 +3968,7 @@
       "node_kind": "heading",
       "norm_label": "native claude code protocol preservation (2026-10-06)",
       "source_file": "MEMORY.md",
-      "source_location": "L29"
+      "source_location": "L47"
     },
     {
       "id": "memory_omniroute_quota_cards_2026_10_01",
@@ -3930,7 +3980,7 @@
       "node_kind": "heading",
       "norm_label": "omniroute quota cards (2026-10-01)",
       "source_file": "MEMORY.md",
-      "source_location": "L185"
+      "source_location": "L203"
     },
     {
       "id": "memory_operational_notes",
@@ -3942,7 +3992,7 @@
       "node_kind": "heading",
       "norm_label": "operational notes",
       "source_file": "MEMORY.md",
-      "source_location": "L128"
+      "source_location": "L146"
     },
     {
       "id": "memory_project_memory",
@@ -3966,7 +4016,7 @@
       "node_kind": "heading",
       "norm_label": "scope and decisions",
       "source_file": "MEMORY.md",
-      "source_location": "L86"
+      "source_location": "L104"
     },
     {
       "id": "scripts_refresh_fixture",
@@ -3995,7 +4045,7 @@
       "label": "deepseek-liteLLM-sync.test.ts",
       "_origin": "ast",
       "community": 17,
-      "community_name": "server.test.ts",
+      "community_name": "deepseek-liteLLM-sync.test.ts",
       "file_type": "code",
       "norm_label": "deepseek-litellm-sync.test.ts",
       "source_file": "dashboard/tests/deepseek-liteLLM-sync.test.ts",
@@ -4006,7 +4056,7 @@
       "label": "headers",
       "_origin": "ast",
       "community": 17,
-      "community_name": "server.test.ts",
+      "community_name": "deepseek-liteLLM-sync.test.ts",
       "file_type": "code",
       "norm_label": "headers",
       "source_file": "dashboard/tests/deepseek-liteLLM-sync.test.ts",
@@ -4017,7 +4067,7 @@
       "label": "names",
       "_origin": "ast",
       "community": 17,
-      "community_name": "server.test.ts",
+      "community_name": "deepseek-liteLLM-sync.test.ts",
       "file_type": "code",
       "norm_label": "names",
       "source_file": "dashboard/tests/deepseek-liteLLM-sync.test.ts",
@@ -4028,55 +4078,11 @@
       "label": "priorEnv",
       "_origin": "ast",
       "community": 17,
-      "community_name": "server.test.ts",
+      "community_name": "deepseek-liteLLM-sync.test.ts",
       "file_type": "code",
       "norm_label": "priorenv",
       "source_file": "dashboard/tests/deepseek-liteLLM-sync.test.ts",
       "source_location": "L12"
-    },
-    {
-      "id": "dashboard_tests_server_test",
-      "label": "server.test.ts",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "server.test.ts",
-      "file_type": "code",
-      "norm_label": "server.test.ts",
-      "source_file": "dashboard/tests/server.test.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "dashboard_tests_server_test_headers",
-      "label": "headers",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "server.test.ts",
-      "file_type": "code",
-      "norm_label": "headers",
-      "source_file": "dashboard/tests/server.test.ts",
-      "source_location": "L15"
-    },
-    {
-      "id": "dashboard_tests_server_test_names",
-      "label": "names",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "server.test.ts",
-      "file_type": "code",
-      "norm_label": "names",
-      "source_file": "dashboard/tests/server.test.ts",
-      "source_location": "L16"
-    },
-    {
-      "id": "dashboard_tests_server_test_priorenv",
-      "label": "priorEnv",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "server.test.ts",
-      "file_type": "code",
-      "norm_label": "priorenv",
-      "source_file": "dashboard/tests/server.test.ts",
-      "source_location": "L17"
     },
     {
       "id": "changes",
@@ -4100,7 +4106,7 @@
       "node_kind": "heading",
       "norm_label": "2026-09-17 - claude reasoning bridge verification",
       "source_file": "CHANGES.md",
-      "source_location": "L82"
+      "source_location": "L101"
     },
     {
       "id": "changes_2026_09_17_managed_claude_alongside_native_chatgpt",
@@ -4112,7 +4118,7 @@
       "node_kind": "heading",
       "norm_label": "2026-09-17 - managed claude alongside native chatgpt",
       "source_file": "CHANGES.md",
-      "source_location": "L88"
+      "source_location": "L107"
     },
     {
       "id": "changes_2026_09_17_native_anthropic_prompt_cache_breakpoints",
@@ -4124,7 +4130,7 @@
       "node_kind": "heading",
       "norm_label": "2026-09-17 - native anthropic prompt-cache breakpoints",
       "source_file": "CHANGES.md",
-      "source_location": "L55"
+      "source_location": "L74"
     },
     {
       "id": "changes_2026_09_17_native_litellm_quota_panel",
@@ -4136,7 +4142,7 @@
       "node_kind": "heading",
       "norm_label": "2026-09-17 - native litellm quota panel",
       "source_file": "CHANGES.md",
-      "source_location": "L118"
+      "source_location": "L137"
     },
     {
       "id": "changes_2026_09_17_native_refresh_integration_test",
@@ -4148,7 +4154,7 @@
       "node_kind": "heading",
       "norm_label": "2026-09-17 - native refresh integration test",
       "source_file": "CHANGES.md",
-      "source_location": "L109"
+      "source_location": "L128"
     },
     {
       "id": "changes_2026_09_17_separate_local_chatgpt_session",
@@ -4160,7 +4166,7 @@
       "node_kind": "heading",
       "norm_label": "2026-09-17 - separate local chatgpt session",
       "source_file": "CHANGES.md",
-      "source_location": "L101"
+      "source_location": "L120"
     },
     {
       "id": "changes_2026_09_17_sync_upstream_tokengateway_fixes",
@@ -4172,7 +4178,7 @@
       "node_kind": "heading",
       "norm_label": "2026-09-17 - sync upstream tokengateway fixes",
       "source_file": "CHANGES.md",
-      "source_location": "L68"
+      "source_location": "L87"
     },
     {
       "id": "changes_2026_09_22_deepseek_balance_card",
@@ -4184,7 +4190,7 @@
       "node_kind": "heading",
       "norm_label": "2026-09-22 - deepseek balance card",
       "source_file": "CHANGES.md",
-      "source_location": "L34"
+      "source_location": "L53"
     },
     {
       "id": "changes_2026_10_01_read_only_omniroute_claude_code_quota_cards",
@@ -4196,7 +4202,7 @@
       "node_kind": "heading",
       "norm_label": "2026-10-01 - read-only omniroute claude code quota cards",
       "source_file": "CHANGES.md",
-      "source_location": "L133"
+      "source_location": "L152"
     },
     {
       "id": "changes_2026_10_06_native_claude_code_protocol_preservation",
@@ -4208,7 +4214,7 @@
       "node_kind": "heading",
       "norm_label": "2026-10-06 - native claude code protocol preservation",
       "source_file": "CHANGES.md",
-      "source_location": "L19"
+      "source_location": "L38"
     },
     {
       "id": "changes_2026_10_06_read_only_cursor_account_cards_through_omniroute",
@@ -4220,7 +4226,7 @@
       "node_kind": "heading",
       "norm_label": "2026-10-06 - read-only cursor account cards through omniroute",
       "source_file": "CHANGES.md",
-      "source_location": "L9"
+      "source_location": "L28"
     },
     {
       "id": "changes_2026_10_07_hide_misleading_cursor_total_quota_window",
@@ -4231,6 +4237,18 @@
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "2026-10-07 - hide misleading cursor total quota window",
+      "source_file": "CHANGES.md",
+      "source_location": "L22"
+    },
+    {
+      "id": "changes_2026_11_10_remove_unexpected_fallbacks_keep_traffic_kpi",
+      "label": "2026-11-10 - Remove unexpected fallbacks, keep traffic KPI",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "Changes",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2026-11-10 - remove unexpected fallbacks, keep traffic kpi",
       "source_file": "CHANGES.md",
       "source_location": "L3"
     },
@@ -4392,117 +4410,73 @@
       "source_location": "L1"
     },
     {
-      "id": "dashboard_src_providers",
-      "label": "providers.ts",
+      "id": "dashboard_src_providers_providers",
+      "label": "PROVIDERS",
       "_origin": "ast",
       "community": 24,
-      "community_name": "providers.ts",
+      "community_name": "managed-anthropic.test.ts",
       "file_type": "code",
-      "norm_label": "providers.ts",
+      "norm_label": "providers",
       "source_file": "dashboard/src/providers.ts",
+      "source_location": "L60"
+    },
+    {
+      "id": "dashboard_tests_managed_anthropic_test",
+      "label": "managed-anthropic.test.ts",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "managed-anthropic.test.ts",
+      "file_type": "code",
+      "norm_label": "managed-anthropic.test.ts",
+      "source_file": "dashboard/tests/managed-anthropic.test.ts",
       "source_location": "L1"
     },
     {
-      "id": "dashboard_src_providers_anthropic_scopes",
-      "label": "ANTHROPIC_SCOPES",
+      "id": "dashboard_tests_managed_anthropic_test_initial",
+      "label": "initial",
       "_origin": "ast",
       "community": 24,
-      "community_name": "providers.ts",
+      "community_name": "managed-anthropic.test.ts",
       "file_type": "code",
-      "norm_label": "anthropic_scopes",
-      "source_file": "dashboard/src/providers.ts",
-      "source_location": "L43"
+      "norm_label": "initial",
+      "source_file": "dashboard/tests/managed-anthropic.test.ts",
+      "source_location": "L14"
     },
     {
-      "id": "dashboard_src_providers_anthropic_usage_url",
-      "label": "ANTHROPIC_USAGE_URL",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "providers.ts",
-      "file_type": "code",
-      "norm_label": "anthropic_usage_url",
-      "source_file": "dashboard/src/providers.ts",
-      "source_location": "L126"
-    },
-    {
-      "id": "dashboard_src_providers_antigravity_endpoint",
-      "label": "ANTIGRAVITY_ENDPOINT",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "providers.ts",
-      "file_type": "code",
-      "norm_label": "antigravity_endpoint",
-      "source_file": "dashboard/src/providers.ts",
-      "source_location": "L128"
-    },
-    {
-      "id": "dashboard_src_providers_antigravity_user_agent",
-      "label": "ANTIGRAVITY_USER_AGENT",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "providers.ts",
-      "file_type": "code",
-      "norm_label": "antigravity_user_agent",
-      "source_file": "dashboard/src/providers.ts",
-      "source_location": "L144"
-    },
-    {
-      "id": "dashboard_src_providers_claude_headers",
-      "label": "CLAUDE_HEADERS",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "providers.ts",
-      "file_type": "code",
-      "norm_label": "claude_headers",
-      "source_file": "dashboard/src/providers.ts",
-      "source_location": "L135"
-    },
-    {
-      "id": "dashboard_src_providers_deepseek_balance_url",
-      "label": "DEEPSEEK_BALANCE_URL",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "providers.ts",
-      "file_type": "code",
-      "norm_label": "deepseek_balance_url",
-      "source_file": "dashboard/src/providers.ts",
-      "source_location": "L129"
-    },
-    {
-      "id": "dashboard_src_providers_google_scopes",
-      "label": "GOOGLE_SCOPES",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "providers.ts",
-      "file_type": "code",
-      "norm_label": "google_scopes",
-      "source_file": "dashboard/src/providers.ts",
-      "source_location": "L52"
-    },
-    {
-      "id": "dashboard_src_providers_provider_ids",
-      "label": "PROVIDER_IDS",
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "providers.ts",
-      "file_type": "code",
-      "norm_label": "provider_ids",
-      "source_file": "dashboard/src/providers.ts",
-      "source_location": "L118"
-    },
-    {
-      "id": "litellm_plugin_sitecustomize_rationale_1029",
-      "label": "Translates candidates[0].finishReason into the OpenAI shape.",
+      "id": "litellm_plugin_sitecustomize_rationale_2072",
+      "label": "Converts one multimodal part from the OpenAI shape. Before this, the Gemini\u2026",
       "_origin": "ast",
       "community": 25,
       "community_name": "_messages_to_antigravity_payload",
       "file_type": "rationale",
-      "norm_label": "translates candidates[0].finishreason into the openai shape.",
+      "norm_label": "converts one multimodal part from the openai shape. before this, the gemini...",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1029"
+      "source_location": "L2072"
     },
     {
-      "id": "litellm_plugin_sitecustomize_rationale_2650",
+      "id": "litellm_plugin_sitecustomize_rationale_2107",
+      "label": "Parts of one turn, with text and media preserved in arrival order.",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "_messages_to_antigravity_payload",
+      "file_type": "rationale",
+      "norm_label": "parts of one turn, with text and media preserved in arrival order.",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2107"
+    },
+    {
+      "id": "litellm_plugin_sitecustomize_rationale_2158",
+      "label": "The result text and the media that travels apart, in `functionResponse.parts`.\u2026",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "_messages_to_antigravity_payload",
+      "file_type": "rationale",
+      "norm_label": "the result text and the media that travels apart, in `functionresponse.parts`....",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2158"
+    },
+    {
+      "id": "litellm_plugin_sitecustomize_rationale_2612",
       "label": "Retries while the stream closes with no content. Leading non-meaningful chunks\u2026",
       "_origin": "ast",
       "community": 25,
@@ -4510,29 +4484,7 @@
       "file_type": "rationale",
       "norm_label": "retries while the stream closes with no content. leading non-meaningful chunks...",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2650"
-    },
-    {
-      "id": "dashboard_src_fallbacks",
-      "label": "fallbacks.ts",
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "litellm.ts",
-      "file_type": "code",
-      "norm_label": "fallbacks.ts",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "dashboard_src_guards",
-      "label": "guards.ts",
-      "_origin": "ast",
-      "community": 26,
-      "community_name": "litellm.ts",
-      "file_type": "code",
-      "norm_label": "guards.ts",
-      "source_file": "dashboard/src/guards.ts",
-      "source_location": "L1"
+      "source_location": "L2612"
     },
     {
       "id": "dashboard_src_litellm",
@@ -4621,6 +4573,66 @@
       "norm_label": "rotatedaccess",
       "source_file": "scripts/test-litellm-rotation.ts",
       "source_location": "L17"
+    },
+    {
+      "id": "docs_architecture",
+      "label": "architecture.md",
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "Core Components",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "architecture.md",
+      "source_file": "docs/architecture.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_architecture_1_quota_dashboard_web_backend",
+      "label": "1. Quota Dashboard (Web & Backend)",
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "Core Components",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. quota dashboard (web & backend)",
+      "source_file": "docs/architecture.md",
+      "source_location": "L37"
+    },
+    {
+      "id": "docs_architecture_2_quota_desktop_tauri_v2_app_local_loopback_bridge",
+      "label": "2. Quota Desktop (Tauri v2 App / Local Loopback Bridge)",
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "Core Components",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. quota desktop (tauri v2 app / local loopback bridge)",
+      "source_file": "docs/architecture.md",
+      "source_location": "L45"
+    },
+    {
+      "id": "docs_architecture_core_components",
+      "label": "Core Components",
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "Core Components",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "core components",
+      "source_file": "docs/architecture.md",
+      "source_location": "L35"
+    },
+    {
+      "id": "docs_architecture_tokengateway_architecture_wire_protocols",
+      "label": "TokenGateway \u2014 Architecture & Wire Protocols",
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "Core Components",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "tokengateway \u2014 architecture & wire protocols",
+      "source_file": "docs/architecture.md",
+      "source_location": "L1"
     },
     {
       "id": "dashboard_src_atomic_json",
@@ -5536,7 +5548,7 @@
       "source_location": "L109"
     },
     {
-      "id": "litellm_plugin_sitecustomize_rationale_1806",
+      "id": "litellm_plugin_sitecustomize_rationale_1768",
       "label": "Detects runaway reasoning from the text as it streams by. Deliberate deviation\u2026",
       "_origin": "ast",
       "community": 32,
@@ -5544,10 +5556,10 @@
       "file_type": "rationale",
       "norm_label": "detects runaway reasoning from the text as it streams by. deliberate deviation...",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1806"
+      "source_location": "L1768"
     },
     {
-      "id": "litellm_plugin_sitecustomize_rationale_1828",
+      "id": "litellm_plugin_sitecustomize_rationale_1790",
       "label": "Returns the loop reason, or None. Never raises.",
       "_origin": "ast",
       "community": 32,
@@ -5555,7 +5567,7 @@
       "file_type": "rationale",
       "norm_label": "returns the loop reason, or none. never raises.",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1828"
+      "source_location": "L1790"
     },
     {
       "id": "dashboard_server",
@@ -5677,6 +5689,50 @@
       "norm_label": "prior",
       "source_file": "dashboard/tests/auth.test.ts",
       "source_location": "L4"
+    },
+    {
+      "id": "dashboard_tests_server_test",
+      "label": "server.test.ts",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "server.test.ts",
+      "source_file": "dashboard/tests/server.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "dashboard_tests_server_test_headers",
+      "label": "headers",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "headers",
+      "source_file": "dashboard/tests/server.test.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "dashboard_tests_server_test_names",
+      "label": "names",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "names",
+      "source_file": "dashboard/tests/server.test.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "dashboard_tests_server_test_priorenv",
+      "label": "priorEnv",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "server.ts",
+      "file_type": "code",
+      "norm_label": "priorenv",
+      "source_file": "dashboard/tests/server.test.ts",
+      "source_location": "L17"
     },
     {
       "id": "dashboard_src_oauth",
@@ -6508,6 +6564,17 @@
       "source_location": "L1"
     },
     {
+      "id": "litellm_plugin_sitecustomize_rationale_1029",
+      "label": "Translates candidates[0].finishReason into the OpenAI shape.",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "_stream_antigravity_once",
+      "file_type": "rationale",
+      "norm_label": "translates candidates[0].finishreason into the openai shape.",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L1029"
+    },
+    {
       "id": "litellm_plugin_sitecustomize_rationale_1058",
       "label": "Final stream chunk carrying the real usage; without it LiteLLM estimates.\u2026",
       "_origin": "ast",
@@ -6519,7 +6586,7 @@
       "source_location": "L1058"
     },
     {
-      "id": "litellm_plugin_sitecustomize_rationale_1674",
+      "id": "litellm_plugin_sitecustomize_rationale_1636",
       "label": "CCA returns errors inside the stream with HTTP 200. Swallowing them makes the\u2026",
       "_origin": "ast",
       "community": 43,
@@ -6527,10 +6594,10 @@
       "file_type": "rationale",
       "norm_label": "cca returns errors inside the stream with http 200. swallowing them makes the...",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1674"
+      "source_location": "L1636"
     },
     {
-      "id": "litellm_plugin_sitecustomize_rationale_1769",
+      "id": "litellm_plugin_sitecustomize_rationale_1731",
       "label": "Runaway reasoning. Distinct from Exception so it crosses the handlers that\u2026",
       "_origin": "ast",
       "community": 43,
@@ -6538,10 +6605,10 @@
       "file_type": "rationale",
       "norm_label": "runaway reasoning. distinct from exception so it crosses the handlers that...",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1769"
+      "source_location": "L1731"
     },
     {
-      "id": "litellm_plugin_sitecustomize_rationale_1889",
+      "id": "litellm_plugin_sitecustomize_rationale_1851",
       "label": "OMP only watches the families that actually run away; here we serve Gemini.",
       "_origin": "ast",
       "community": 43,
@@ -6549,7 +6616,7 @@
       "file_type": "rationale",
       "norm_label": "omp only watches the families that actually run away; here we serve gemini.",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1889"
+      "source_location": "L1851"
     },
     {
       "id": "litellm_plugin_test_responses_route_rationale_1",
@@ -6629,7 +6696,7 @@
       "source_location": "L187"
     },
     {
-      "id": "litellm_plugin_sitecustomize_rationale_2347",
+      "id": "litellm_plugin_sitecustomize_rationale_2309",
       "label": "Tries the endpoints in order (last good first), refreshing the token on 401.\u2026",
       "_origin": "ast",
       "community": 45,
@@ -6637,7 +6704,7 @@
       "file_type": "rationale",
       "norm_label": "tries the endpoints in order (last good first), refreshing the token on 401....",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2347"
+      "source_location": "L2309"
     },
     {
       "id": "exception",
@@ -6662,18 +6729,7 @@
       "source_location": "L1043"
     },
     {
-      "id": "litellm_plugin_sitecustomize_rationale_1273",
-      "label": "Only remaps names that are deliberate aliases of a served model. Substituting\u2026",
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "Exception",
-      "file_type": "rationale",
-      "norm_label": "only remaps names that are deliberate aliases of a served model. substituting...",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1273"
-    },
-    {
-      "id": "litellm_plugin_sitecustomize_rationale_1299",
+      "id": "litellm_plugin_sitecustomize_rationale_1265",
       "label": "Lists reset credits. Redeeming spends a limited resource, so it only runs when\u2026",
       "_origin": "ast",
       "community": 46,
@@ -6681,7 +6737,18 @@
       "file_type": "rationale",
       "norm_label": "lists reset credits. redeeming spends a limited resource, so it only runs when...",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1299"
+      "source_location": "L1265"
+    },
+    {
+      "id": "litellm_plugin_sitecustomize_rationale_2027",
+      "label": "`inlineData` from a data URI or from an http(s) URL. Measured on the backend:\u2026",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "Exception",
+      "file_type": "rationale",
+      "norm_label": "`inlinedata` from a data uri or from an http(s) url. measured on the backend:...",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2027"
     },
     {
       "id": "litellm_plugin_test_parity_batch",
@@ -6805,42 +6872,6 @@
       "source_location": "L86"
     },
     {
-      "id": "docs_architecture",
-      "label": "architecture.md",
-      "_origin": "ast",
-      "community": 49,
-      "community_name": "3. LiteLLM Wire Bridge (`sitecustomize.py`)",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "architecture.md",
-      "source_file": "docs/architecture.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "docs_architecture_1_quota_dashboard_web_backend",
-      "label": "1. Quota Dashboard (Web & Backend)",
-      "_origin": "ast",
-      "community": 49,
-      "community_name": "3. LiteLLM Wire Bridge (`sitecustomize.py`)",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "1. quota dashboard (web & backend)",
-      "source_file": "docs/architecture.md",
-      "source_location": "L37"
-    },
-    {
-      "id": "docs_architecture_2_quota_desktop_tauri_v2_app_local_loopback_bridge",
-      "label": "2. Quota Desktop (Tauri v2 App / Local Loopback Bridge)",
-      "_origin": "ast",
-      "community": 49,
-      "community_name": "3. LiteLLM Wire Bridge (`sitecustomize.py`)",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "2. quota desktop (tauri v2 app / local loopback bridge)",
-      "source_file": "docs/architecture.md",
-      "source_location": "L45"
-    },
-    {
       "id": "docs_architecture_3_litellm_wire_bridge_sitecustomize_py",
       "label": "3. LiteLLM Wire Bridge (`sitecustomize.py`)",
       "_origin": "ast",
@@ -6851,18 +6882,6 @@
       "norm_label": "3. litellm wire bridge (`sitecustomize.py`)",
       "source_file": "docs/architecture.md",
       "source_location": "L52"
-    },
-    {
-      "id": "docs_architecture_core_components",
-      "label": "Core Components",
-      "_origin": "ast",
-      "community": 49,
-      "community_name": "3. LiteLLM Wire Bridge (`sitecustomize.py`)",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "core components",
-      "source_file": "docs/architecture.md",
-      "source_location": "L35"
     },
     {
       "id": "docs_architecture_deployment_identity",
@@ -6959,18 +6978,6 @@
       "norm_label": "thinking-loop guard",
       "source_file": "docs/architecture.md",
       "source_location": "L246"
-    },
-    {
-      "id": "docs_architecture_tokengateway_architecture_wire_protocols",
-      "label": "TokenGateway \u2014 Architecture & Wire Protocols",
-      "_origin": "ast",
-      "community": 49,
-      "community_name": "3. LiteLLM Wire Bridge (`sitecustomize.py`)",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "tokengateway \u2014 architecture & wire protocols",
-      "source_file": "docs/architecture.md",
-      "source_location": "L1"
     },
     {
       "id": "docs_architecture_upstream_caching_codex_antigravity",
@@ -7108,37 +7115,26 @@
       "source_location": "L7"
     },
     {
-      "id": "dashboard_src_providers_providers",
-      "label": "PROVIDERS",
+      "id": "dashboard_src_guards",
+      "label": "guards.ts",
       "_origin": "ast",
       "community": 50,
       "community_name": "isRecord",
       "file_type": "code",
-      "norm_label": "providers",
-      "source_file": "dashboard/src/providers.ts",
-      "source_location": "L60"
-    },
-    {
-      "id": "dashboard_tests_managed_anthropic_test",
-      "label": "managed-anthropic.test.ts",
-      "_origin": "ast",
-      "community": 50,
-      "community_name": "isRecord",
-      "file_type": "code",
-      "norm_label": "managed-anthropic.test.ts",
-      "source_file": "dashboard/tests/managed-anthropic.test.ts",
+      "norm_label": "guards.ts",
+      "source_file": "dashboard/src/guards.ts",
       "source_location": "L1"
     },
     {
-      "id": "dashboard_tests_managed_anthropic_test_initial",
-      "label": "initial",
+      "id": "dashboard_src_traffic",
+      "label": "traffic.ts",
       "_origin": "ast",
       "community": 50,
       "community_name": "isRecord",
       "file_type": "code",
-      "norm_label": "initial",
-      "source_file": "dashboard/tests/managed-anthropic.test.ts",
-      "source_location": "L14"
+      "norm_label": "traffic.ts",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L1"
     },
     {
       "id": "litellm_plugin_sitecustomize_rationale_414",
@@ -7348,50 +7344,6 @@
       "norm_label": "null",
       "source_file": "desktop/src-tauri/gen/schemas/windows-schema.json",
       "source_location": "L96"
-    },
-    {
-      "id": "litellm_plugin_sitecustomize_rationale_2065",
-      "label": "`inlineData` from a data URI or from an http(s) URL. Measured on the backend:\u2026",
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "_google_media_from_url",
-      "file_type": "rationale",
-      "norm_label": "`inlinedata` from a data uri or from an http(s) url. measured on the backend:...",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2065"
-    },
-    {
-      "id": "litellm_plugin_sitecustomize_rationale_2110",
-      "label": "Converts one multimodal part from the OpenAI shape. Before this, the Gemini\u2026",
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "_google_media_from_url",
-      "file_type": "rationale",
-      "norm_label": "converts one multimodal part from the openai shape. before this, the gemini...",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2110"
-    },
-    {
-      "id": "litellm_plugin_sitecustomize_rationale_2145",
-      "label": "Parts of one turn, with text and media preserved in arrival order.",
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "_google_media_from_url",
-      "file_type": "rationale",
-      "norm_label": "parts of one turn, with text and media preserved in arrival order.",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2145"
-    },
-    {
-      "id": "litellm_plugin_sitecustomize_rationale_2196",
-      "label": "The result text and the media that travels apart, in `functionResponse.parts`.\u2026",
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "_google_media_from_url",
-      "file_type": "rationale",
-      "norm_label": "the result text and the media that travels apart, in `functionresponse.parts`....",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2196"
     },
     {
       "id": "litellm_plugin_sitecustomize_rationale_1118",
@@ -8050,42 +8002,6 @@
       "source_location": "L20"
     },
     {
-      "id": "readme_1_real_time_subscription_cluster_quota_dashboard",
-      "label": "1. Real-Time Subscription & Cluster Quota Dashboard",
-      "_origin": "ast",
-      "community": 62,
-      "community_name": "\ud83d\udcf8 Screenshots",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "1. real-time subscription & cluster quota dashboard",
-      "source_file": "README.md",
-      "source_location": "L69"
-    },
-    {
-      "id": "readme_2_litellm_proxy_unified_model_catalog",
-      "label": "2. LiteLLM Proxy Unified Model Catalog",
-      "_origin": "ast",
-      "community": 62,
-      "community_name": "\ud83d\udcf8 Screenshots",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "2. litellm proxy unified model catalog",
-      "source_file": "README.md",
-      "source_location": "L78"
-    },
-    {
-      "id": "readme_screenshots",
-      "label": "\ud83d\udcf8 Screenshots",
-      "_origin": "ast",
-      "community": 62,
-      "community_name": "\ud83d\udcf8 Screenshots",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "\ud83d\udcf8 screenshots",
-      "source_file": "README.md",
-      "source_location": "L67"
-    },
-    {
       "id": "customlogger",
       "label": "CustomLogger",
       "_origin": "ast",
@@ -8139,42 +8055,6 @@
       "norm_label": "local",
       "source_file": "desktop/src-tauri/gen/schemas/windows-schema.json",
       "source_location": "L67"
-    },
-    {
-      "id": "readme_the_remote_cluster_dilemma",
-      "label": "The Remote Cluster Dilemma",
-      "_origin": "ast",
-      "community": 65,
-      "community_name": "\ud83d\udda5\ufe0f Why is Quota Desktop Needed? (The Localhost Port Binding Constraint)",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "the remote cluster dilemma",
-      "source_file": "README.md",
-      "source_location": "L97"
-    },
-    {
-      "id": "readme_the_solution_quota_desktop_as_a_loopback_bridge",
-      "label": "The Solution: Quota Desktop as a Loopback Bridge",
-      "_origin": "ast",
-      "community": 65,
-      "community_name": "\ud83d\udda5\ufe0f Why is Quota Desktop Needed? (The Localhost Port Binding Constraint)",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "the solution: quota desktop as a loopback bridge",
-      "source_file": "README.md",
-      "source_location": "L103"
-    },
-    {
-      "id": "readme_why_is_quota_desktop_needed_the_localhost_port_binding_constraint",
-      "label": "\ud83d\udda5\ufe0f Why is Quota Desktop Needed? (The Localhost Port Binding Constraint)",
-      "_origin": "ast",
-      "community": 65,
-      "community_name": "\ud83d\udda5\ufe0f Why is Quota Desktop Needed? (The Localhost Port Binding Constraint)",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "\ud83d\udda5\ufe0f why is quota desktop needed? (the localhost port binding constraint)",
-      "source_file": "README.md",
-      "source_location": "L87"
     },
     {
       "id": "desktop_src_tauri_gen_schemas_desktop_schema_definitions_identifier",
@@ -8444,6 +8324,30 @@
       "version": "0.1.0"
     },
     {
+      "id": "readme_1_real_time_subscription_cluster_quota_dashboard",
+      "label": "1. Real-Time Subscription & Cluster Quota Dashboard",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u26a1 TokenGateway",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. real-time subscription & cluster quota dashboard",
+      "source_file": "README.md",
+      "source_location": "L69"
+    },
+    {
+      "id": "readme_2_litellm_proxy_unified_model_catalog",
+      "label": "2. LiteLLM Proxy Unified Model Catalog",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u26a1 TokenGateway",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. litellm proxy unified model catalog",
+      "source_file": "README.md",
+      "source_location": "L78"
+    },
+    {
       "id": "readme_architecture",
       "label": "\ud83c\udfd7\ufe0f Architecture",
       "_origin": "ast",
@@ -8540,6 +8444,18 @@
       "source_location": "L153"
     },
     {
+      "id": "readme_screenshots",
+      "label": "\ud83d\udcf8 Screenshots",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u26a1 TokenGateway",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\ud83d\udcf8 screenshots",
+      "source_file": "README.md",
+      "source_location": "L67"
+    },
+    {
       "id": "readme_standing_on_the_shoulders_of_giants",
       "label": "\ud83d\ude4f Standing on the Shoulders of Giants",
       "_origin": "ast",
@@ -8576,6 +8492,30 @@
       "source_location": "L17"
     },
     {
+      "id": "readme_the_remote_cluster_dilemma",
+      "label": "The Remote Cluster Dilemma",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u26a1 TokenGateway",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "the remote cluster dilemma",
+      "source_file": "README.md",
+      "source_location": "L97"
+    },
+    {
+      "id": "readme_the_solution_quota_desktop_as_a_loopback_bridge",
+      "label": "The Solution: Quota Desktop as a Loopback Bridge",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u26a1 TokenGateway",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "the solution: quota desktop as a loopback bridge",
+      "source_file": "README.md",
+      "source_location": "L103"
+    },
+    {
       "id": "readme_tokengateway",
       "label": "\u26a1 TokenGateway",
       "_origin": "ast",
@@ -8586,6 +8526,18 @@
       "norm_label": "\u26a1 tokengateway",
       "source_file": "README.md",
       "source_location": "L3"
+    },
+    {
+      "id": "readme_why_is_quota_desktop_needed_the_localhost_port_binding_constraint",
+      "label": "\ud83d\udda5\ufe0f Why is Quota Desktop Needed? (The Localhost Port Binding Constraint)",
+      "_origin": "ast",
+      "community": 8,
+      "community_name": "\u26a1 TokenGateway",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\ud83d\udda5\ufe0f why is quota desktop needed? (the localhost port binding constraint)",
+      "source_file": "README.md",
+      "source_location": "L87"
     },
     {
       "id": "dashboard_tsconfig",
@@ -9257,162 +9209,6 @@
       "weight": 1.0
     },
     {
-      "source": "dashboard_src_fallbacks_fallbackmonitor_fetchchains",
-      "target": "dashboard_src_fallbacks_fallbackmonitor_getjson",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L122",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor_fetchchains",
-      "target": "dashboard_src_guards_isrecord",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L123",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor_fetchmodelgroups",
-      "target": "dashboard_src_fallbacks_fallbackmonitor_getjson",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L140",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor_fetchmodelgroups",
-      "target": "dashboard_src_guards_isrecord",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L141",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor_fetchmodelgroups",
-      "target": "dashboard_src_guards_readstring",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L145",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor_pollspendlogs",
-      "target": "dashboard_src_fallbacks_spendlogsdate",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L153",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor_pollspendlogs",
-      "target": "dashboard_src_fallbacks_fallbackmonitor_getjson",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L158",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor_pollspendlogs",
-      "target": "dashboard_src_guards_isrecord",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L161",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor_pollspendlogs",
-      "target": "dashboard_src_guards_readstring",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L165",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor_pollspendlogs",
-      "target": "dashboard_src_guards_readnumber",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L171",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor_refresh",
-      "target": "dashboard_src_fallbacks_fallbackmonitor_fetchchains",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L224",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor_refresh",
-      "target": "dashboard_src_fallbacks_fallbackmonitor_fetchmodelgroups",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L224",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor_refresh",
-      "target": "dashboard_src_fallbacks_fallbackmonitor_pollspendlogs",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L238",
-      "weight": 1.0
-    },
-    {
       "source": "dashboard_src_litellm_claims",
       "target": "dashboard_src_guards_isrecord",
       "relation": "calls",
@@ -9998,6 +9794,78 @@
       "context": "call",
       "source_file": "dashboard/src/store.ts",
       "source_location": "L223",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic_trafficmonitor_pollspendlogs",
+      "target": "dashboard_src_traffic_spendlogsdate",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic_trafficmonitor_pollspendlogs",
+      "target": "dashboard_src_traffic_trafficmonitor_getjson",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic_trafficmonitor_pollspendlogs",
+      "target": "dashboard_src_guards_isrecord",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L115",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic_trafficmonitor_pollspendlogs",
+      "target": "dashboard_src_guards_readstring",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L118",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic_trafficmonitor_pollspendlogs",
+      "target": "dashboard_src_guards_readnumber",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L124",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic_trafficmonitor_refresh",
+      "target": "dashboard_src_traffic_trafficmonitor_pollspendlogs",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L171",
       "weight": 1.0
     },
     {
@@ -10621,7 +10489,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L3020",
+      "source_location": "L2982",
       "weight": 1.0
     },
     {
@@ -10633,7 +10501,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L3021",
+      "source_location": "L2983",
       "weight": 1.0
     },
     {
@@ -10645,7 +10513,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L3022",
+      "source_location": "L2984",
       "weight": 1.0
     },
     {
@@ -10657,7 +10525,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2384",
+      "source_location": "L2346",
       "weight": 1.0
     },
     {
@@ -10669,7 +10537,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2396",
+      "source_location": "L2358",
       "weight": 1.0
     },
     {
@@ -10681,7 +10549,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2408",
+      "source_location": "L2370",
       "weight": 1.0
     },
     {
@@ -10693,7 +10561,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2415",
+      "source_location": "L2377",
       "weight": 1.0
     },
     {
@@ -10705,7 +10573,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2422",
+      "source_location": "L2384",
       "weight": 1.0
     },
     {
@@ -10717,7 +10585,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2358",
+      "source_location": "L2320",
       "weight": 1.0
     },
     {
@@ -10729,7 +10597,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2364",
+      "source_location": "L2326",
       "weight": 1.0
     },
     {
@@ -10741,7 +10609,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2368",
+      "source_location": "L2330",
       "weight": 1.0
     },
     {
@@ -10753,7 +10621,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2477",
+      "source_location": "L2439",
       "weight": 1.0
     },
     {
@@ -10765,7 +10633,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2483",
+      "source_location": "L2445",
       "weight": 1.0
     },
     {
@@ -10777,7 +10645,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2487",
+      "source_location": "L2449",
       "weight": 1.0
     },
     {
@@ -10825,7 +10693,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1717",
+      "source_location": "L1679",
       "weight": 1.0
     },
     {
@@ -10861,7 +10729,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2436",
+      "source_location": "L2398",
       "weight": 1.0
     },
     {
@@ -10873,7 +10741,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2437",
+      "source_location": "L2399",
       "weight": 1.0
     },
     {
@@ -10885,7 +10753,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2455",
+      "source_location": "L2417",
       "weight": 1.0
     },
     {
@@ -10897,7 +10765,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2457",
+      "source_location": "L2419",
       "weight": 1.0
     },
     {
@@ -10909,7 +10777,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2468",
+      "source_location": "L2430",
       "weight": 1.0
     },
     {
@@ -10921,7 +10789,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2471",
+      "source_location": "L2433",
       "weight": 1.0
     },
     {
@@ -10933,7 +10801,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2472",
+      "source_location": "L2434",
       "weight": 1.0
     },
     {
@@ -10945,7 +10813,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1401",
+      "source_location": "L1363",
       "weight": 1.0
     },
     {
@@ -10957,7 +10825,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1402",
+      "source_location": "L1364",
       "weight": 1.0
     },
     {
@@ -10969,7 +10837,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1413",
+      "source_location": "L1375",
       "weight": 1.0
     },
     {
@@ -10981,7 +10849,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1427",
+      "source_location": "L1389",
       "weight": 1.0
     },
     {
@@ -10993,7 +10861,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1463",
+      "source_location": "L1425",
       "weight": 1.0
     },
     {
@@ -11005,12 +10873,96 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1478",
+      "source_location": "L1440",
       "weight": 1.0
     },
     {
       "source": "litellm_plugin_sitecustomize_codex_open",
       "target": "litellm_plugin_sitecustomize_codex_capture_response_state",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L1312",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize_codex_open",
+      "target": "exception",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L1319",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize_codex_open",
+      "target": "litellm_plugin_sitecustomize_build_codex_headers",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L1320",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize_codex_open",
+      "target": "litellm_plugin_sitecustomize_codex_redeem_reset_credit",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L1325",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize_codex_open_async",
+      "target": "litellm_plugin_sitecustomize_codex_capture_response_state",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L1333",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize_codex_open_async",
+      "target": "exception",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L1340",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize_codex_open_async",
+      "target": "litellm_plugin_sitecustomize_build_codex_headers",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L1341",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize_codex_open_async",
+      "target": "litellm_plugin_sitecustomize_codex_redeem_reset_credit",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -11018,138 +10970,6 @@
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
       "source_location": "L1346",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_codex_open",
-      "target": "exception",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1353",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_codex_open",
-      "target": "litellm_plugin_sitecustomize_build_codex_headers",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1354",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_codex_open",
-      "target": "litellm_plugin_sitecustomize_codex_remember_unsupported",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1359",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_codex_open",
-      "target": "litellm_plugin_sitecustomize_codex_unsupported_model",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1359",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_codex_open",
-      "target": "litellm_plugin_sitecustomize_codex_redeem_reset_credit",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1361",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_codex_open_async",
-      "target": "litellm_plugin_sitecustomize_codex_capture_response_state",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1369",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_codex_open_async",
-      "target": "exception",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1376",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_codex_open_async",
-      "target": "litellm_plugin_sitecustomize_build_codex_headers",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1377",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_codex_open_async",
-      "target": "litellm_plugin_sitecustomize_codex_remember_unsupported",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1382",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_codex_open_async",
-      "target": "litellm_plugin_sitecustomize_codex_unsupported_model",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1382",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_codex_open_async",
-      "target": "litellm_plugin_sitecustomize_codex_redeem_reset_credit",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1384",
       "weight": 1.0
     },
     {
@@ -11173,7 +10993,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1318",
+      "source_location": "L1284",
       "weight": 1.0
     },
     {
@@ -11185,7 +11005,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1331",
+      "source_location": "L1297",
       "weight": 1.0
     },
     {
@@ -11197,7 +11017,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1202",
+      "source_location": "L1201",
       "weight": 1.0
     },
     {
@@ -11209,7 +11029,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1204",
+      "source_location": "L1203",
       "weight": 1.0
     },
     {
@@ -11221,7 +11041,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1207",
+      "source_location": "L1206",
       "weight": 1.0
     },
     {
@@ -11233,7 +11053,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1211",
+      "source_location": "L1210",
       "weight": 1.0
     },
     {
@@ -11245,7 +11065,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1218",
+      "source_location": "L1217",
       "weight": 1.0
     },
     {
@@ -11257,7 +11077,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1222",
+      "source_location": "L1221",
       "weight": 1.0
     },
     {
@@ -11269,7 +11089,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1306",
+      "source_location": "L1272",
       "weight": 1.0
     },
     {
@@ -11329,7 +11149,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2156",
+      "source_location": "L2118",
       "weight": 1.0
     },
     {
@@ -11341,7 +11161,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2053",
+      "source_location": "L2015",
       "weight": 1.0
     },
     {
@@ -11353,7 +11173,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1752",
+      "source_location": "L1714",
       "weight": 1.0
     },
     {
@@ -11365,7 +11185,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1890",
+      "source_location": "L1852",
       "weight": 1.0
     },
     {
@@ -11377,7 +11197,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2082",
+      "source_location": "L2044",
       "weight": 1.0
     },
     {
@@ -11389,7 +11209,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2094",
+      "source_location": "L2056",
       "weight": 1.0
     },
     {
@@ -11401,7 +11221,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2122",
+      "source_location": "L2084",
       "weight": 1.0
     },
     {
@@ -11413,7 +11233,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1678",
+      "source_location": "L1640",
       "weight": 1.0
     },
     {
@@ -11485,7 +11305,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1982",
+      "source_location": "L1944",
       "weight": 1.0
     },
     {
@@ -11497,7 +11317,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2028",
+      "source_location": "L1990",
       "weight": 1.0
     },
     {
@@ -11533,7 +11353,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2222",
+      "source_location": "L2184",
       "weight": 1.0
     },
     {
@@ -11545,7 +11365,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2223",
+      "source_location": "L2185",
       "weight": 1.0
     },
     {
@@ -11557,7 +11377,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2228",
+      "source_location": "L2190",
       "weight": 1.0
     },
     {
@@ -11569,7 +11389,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2252",
+      "source_location": "L2214",
       "weight": 1.0
     },
     {
@@ -11581,7 +11401,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2264",
+      "source_location": "L2226",
       "weight": 1.0
     },
     {
@@ -11593,7 +11413,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2333",
+      "source_location": "L2295",
       "weight": 1.0
     },
     {
@@ -11605,7 +11425,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2336",
+      "source_location": "L2298",
       "weight": 1.0
     },
     {
@@ -11617,7 +11437,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2339",
+      "source_location": "L2301",
       "weight": 1.0
     },
     {
@@ -11677,7 +11497,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2928",
+      "source_location": "L2890",
       "weight": 1.0
     },
     {
@@ -11689,7 +11509,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2929",
+      "source_location": "L2891",
       "weight": 1.0
     },
     {
@@ -11737,7 +11557,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2660",
+      "source_location": "L2622",
       "weight": 1.0
     },
     {
@@ -11749,7 +11569,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2661",
+      "source_location": "L2623",
       "weight": 1.0
     },
     {
@@ -11761,7 +11581,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2667",
+      "source_location": "L2629",
       "weight": 1.0
     },
     {
@@ -11773,7 +11593,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2672",
+      "source_location": "L2634",
       "weight": 1.0
     },
     {
@@ -11785,7 +11605,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2679",
+      "source_location": "L2641",
       "weight": 1.0
     },
     {
@@ -11797,7 +11617,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2688",
+      "source_location": "L2650",
       "weight": 1.0
     },
     {
@@ -11809,7 +11629,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2499",
+      "source_location": "L2461",
       "weight": 1.0
     },
     {
@@ -11821,7 +11641,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2515",
+      "source_location": "L2477",
       "weight": 1.0
     },
     {
@@ -11833,7 +11653,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2518",
+      "source_location": "L2480",
       "weight": 1.0
     },
     {
@@ -11845,7 +11665,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2532",
+      "source_location": "L2494",
       "weight": 1.0
     },
     {
@@ -11857,7 +11677,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2547",
+      "source_location": "L2509",
       "weight": 1.0
     },
     {
@@ -11869,7 +11689,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2553",
+      "source_location": "L2515",
       "weight": 1.0
     },
     {
@@ -11881,7 +11701,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2570",
+      "source_location": "L2532",
       "weight": 1.0
     },
     {
@@ -11893,7 +11713,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2621",
+      "source_location": "L2583",
       "weight": 1.0
     },
     {
@@ -11905,7 +11725,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2630",
+      "source_location": "L2592",
       "weight": 1.0
     },
     {
@@ -11917,7 +11737,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2630",
+      "source_location": "L2592",
       "weight": 1.0
     },
     {
@@ -11929,7 +11749,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1483",
+      "source_location": "L1445",
       "weight": 1.0
     },
     {
@@ -11941,7 +11761,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1484",
+      "source_location": "L1446",
       "weight": 1.0
     },
     {
@@ -11953,7 +11773,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1498",
+      "source_location": "L1460",
       "weight": 1.0
     },
     {
@@ -11965,7 +11785,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1514",
+      "source_location": "L1476",
       "weight": 1.0
     },
     {
@@ -11977,7 +11797,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1552",
+      "source_location": "L1514",
       "weight": 1.0
     },
     {
@@ -11989,7 +11809,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1616",
+      "source_location": "L1578",
       "weight": 1.0
     },
     {
@@ -12001,7 +11821,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1625",
+      "source_location": "L1587",
       "weight": 1.0
     },
     {
@@ -12013,7 +11833,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1625",
+      "source_location": "L1587",
       "weight": 1.0
     },
     {
@@ -12025,7 +11845,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1864",
+      "source_location": "L1826",
       "weight": 1.0
     },
     {
@@ -12037,7 +11857,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1833",
+      "source_location": "L1795",
       "weight": 1.0
     },
     {
@@ -12049,7 +11869,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1841",
+      "source_location": "L1803",
       "weight": 1.0
     },
     {
@@ -12121,7 +11941,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2214",
+      "source_location": "L2176",
       "weight": 1.0
     },
     {
@@ -12133,7 +11953,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2706",
+      "source_location": "L2668",
       "weight": 1.0
     },
     {
@@ -12145,7 +11965,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2709",
+      "source_location": "L2671",
       "weight": 1.0
     },
     {
@@ -12157,7 +11977,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2713",
+      "source_location": "L2675",
       "weight": 1.0
     },
     {
@@ -12169,12 +11989,84 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2713",
+      "source_location": "L2675",
       "weight": 1.0
     },
     {
       "source": "litellm_plugin_sitecustomize_wrapped_acompletion",
       "target": "litellm_plugin_sitecustomize_stream_antigravity_generator",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2676",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize_wrapped_acompletion",
+      "target": "litellm_plugin_sitecustomize_bridge_message",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2684",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize_wrapped_acompletion",
+      "target": "litellm_plugin_sitecustomize_emit_bridge_success",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2693",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize_wrapped_acompletion",
+      "target": "litellm_plugin_sitecustomize_is_codex_model",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2697",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize_wrapped_acompletion",
+      "target": "litellm_plugin_sitecustomize_strip_codex_output_limits",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2698",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize_wrapped_acompletion",
+      "target": "litellm_plugin_sitecustomize_stream_codex_generator",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2705",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize_wrapped_acompletion",
+      "target": "litellm_plugin_sitecustomize_codex_finish_reason",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -12186,78 +12078,6 @@
     },
     {
       "source": "litellm_plugin_sitecustomize_wrapped_acompletion",
-      "target": "litellm_plugin_sitecustomize_bridge_message",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2722",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_wrapped_acompletion",
-      "target": "litellm_plugin_sitecustomize_emit_bridge_success",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2731",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_wrapped_acompletion",
-      "target": "litellm_plugin_sitecustomize_is_codex_model",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2735",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_wrapped_acompletion",
-      "target": "litellm_plugin_sitecustomize_strip_codex_output_limits",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2736",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_wrapped_acompletion",
-      "target": "litellm_plugin_sitecustomize_stream_codex_generator",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2743",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_wrapped_acompletion",
-      "target": "litellm_plugin_sitecustomize_codex_finish_reason",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2752",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_wrapped_acompletion",
       "target": "litellm_plugin_sitecustomize_attach_codex_quota",
       "relation": "calls",
       "_origin": "ast",
@@ -12265,7 +12085,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2761",
+      "source_location": "L2723",
       "weight": 1.0
     },
     {
@@ -12277,7 +12097,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2765",
+      "source_location": "L2727",
       "weight": 1.0
     },
     {
@@ -12289,7 +12109,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2941",
+      "source_location": "L2903",
       "weight": 1.0
     },
     {
@@ -12301,7 +12121,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2941",
+      "source_location": "L2903",
       "weight": 1.0
     },
     {
@@ -12313,7 +12133,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2779",
+      "source_location": "L2741",
       "weight": 1.0
     },
     {
@@ -12325,7 +12145,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2784",
+      "source_location": "L2746",
       "weight": 1.0
     },
     {
@@ -12337,7 +12157,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2787",
+      "source_location": "L2749",
       "weight": 1.0
     },
     {
@@ -12349,7 +12169,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2798",
+      "source_location": "L2760",
       "weight": 1.0
     },
     {
@@ -12361,7 +12181,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2799",
+      "source_location": "L2761",
       "weight": 1.0
     },
     {
@@ -12373,7 +12193,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2802",
+      "source_location": "L2764",
       "weight": 1.0
     },
     {
@@ -12385,7 +12205,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2804",
+      "source_location": "L2766",
       "weight": 1.0
     },
     {
@@ -12397,7 +12217,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2810",
+      "source_location": "L2772",
       "weight": 1.0
     },
     {
@@ -12409,7 +12229,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2811",
+      "source_location": "L2773",
       "weight": 1.0
     },
     {
@@ -12421,7 +12241,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2819",
+      "source_location": "L2781",
       "weight": 1.0
     },
     {
@@ -12433,7 +12253,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2947",
+      "source_location": "L2909",
       "weight": 1.0
     },
     {
@@ -12445,7 +12265,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2947",
+      "source_location": "L2909",
       "weight": 1.0
     },
     {
@@ -12457,7 +12277,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2879",
+      "source_location": "L2841",
       "weight": 1.0
     },
     {
@@ -12469,7 +12289,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2880",
+      "source_location": "L2842",
       "weight": 1.0
     },
     {
@@ -12481,7 +12301,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2887",
+      "source_location": "L2849",
       "weight": 1.0
     },
     {
@@ -12493,7 +12313,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2827",
+      "source_location": "L2789",
       "weight": 1.0
     },
     {
@@ -12505,7 +12325,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2830",
+      "source_location": "L2792",
       "weight": 1.0
     },
     {
@@ -12517,7 +12337,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2833",
+      "source_location": "L2795",
       "weight": 1.0
     },
     {
@@ -12529,7 +12349,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2833",
+      "source_location": "L2795",
       "weight": 1.0
     },
     {
@@ -12541,7 +12361,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2834",
+      "source_location": "L2796",
       "weight": 1.0
     },
     {
@@ -12553,7 +12373,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2840",
+      "source_location": "L2802",
       "weight": 1.0
     },
     {
@@ -12565,7 +12385,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2842",
+      "source_location": "L2804",
       "weight": 1.0
     },
     {
@@ -12577,7 +12397,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2844",
+      "source_location": "L2806",
       "weight": 1.0
     },
     {
@@ -12589,7 +12409,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2845",
+      "source_location": "L2807",
       "weight": 1.0
     },
     {
@@ -12601,7 +12421,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2851",
+      "source_location": "L2813",
       "weight": 1.0
     },
     {
@@ -12613,7 +12433,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2858",
+      "source_location": "L2820",
       "weight": 1.0
     },
     {
@@ -12625,7 +12445,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2858",
+      "source_location": "L2820",
       "weight": 1.0
     },
     {
@@ -12637,7 +12457,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2865",
+      "source_location": "L2827",
       "weight": 1.0
     },
     {
@@ -12649,7 +12469,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2865",
+      "source_location": "L2827",
       "weight": 1.0
     },
     {
@@ -13037,18 +12857,6 @@
       "weight": 1.0
     },
     {
-      "source": "dashboard_src_fallbacks_fallbackmonitor",
-      "target": "dashboard_src_fallbacks_fallbackmonitor_refresh",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L209",
-      "weight": 1.0
-    },
-    {
       "source": "dashboard_src_litellm_litellmquotaapi",
       "target": "dashboard_src_litellm_litellmquotaapi_usage",
       "relation": "contains",
@@ -13070,6 +12878,18 @@
       "context": "call",
       "source_file": "dashboard/src/omniroute.ts",
       "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic_trafficmonitor",
+      "target": "dashboard_src_traffic_trafficmonitor_refresh",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -13998,7 +13818,7 @@
     },
     {
       "source": "dashboard_server",
-      "target": "dashboard_src_fallbacks_fallbackmonitor",
+      "target": "dashboard_src_traffic_trafficmonitor",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14138,42 +13958,6 @@
       "context": "import",
       "source_file": "dashboard/src/anthropic.ts",
       "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks",
-      "target": "dashboard_src_guards_isrecord",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L19",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks",
-      "target": "dashboard_src_guards_readnumber",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L19",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks",
-      "target": "dashboard_src_guards_readstring",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -14510,6 +14294,42 @@
       "context": "import",
       "source_file": "dashboard/src/store.ts",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic",
+      "target": "dashboard_src_guards_isrecord",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic",
+      "target": "dashboard_src_guards_readnumber",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic",
+      "target": "dashboard_src_guards_readstring",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -15006,7 +14826,7 @@
     },
     {
       "source": "dashboard_server",
-      "target": "dashboard_src_fallbacks",
+      "target": "dashboard_src_traffic",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15074,18 +14894,6 @@
       "context": "import",
       "source_file": "dashboard/src/anthropic.ts",
       "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks",
-      "target": "dashboard_src_guards",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -15242,6 +15050,18 @@
       "context": "import",
       "source_file": "dashboard/src/store.ts",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic",
+      "target": "dashboard_src_guards",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -16000,7 +15820,7 @@
     },
     {
       "source": "changes_changes",
-      "target": "changes_2026_09_17_separate_local_chatgpt_session",
+      "target": "changes_2026_09_17_claude_reasoning_bridge_verification",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16011,13 +15831,35 @@
     },
     {
       "source": "changes_changes",
+      "target": "changes_2026_09_17_managed_claude_alongside_native_chatgpt",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CHANGES.md",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "changes_changes",
+      "target": "changes_2026_09_17_separate_local_chatgpt_session",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CHANGES.md",
+      "source_location": "L120",
+      "weight": 1.0
+    },
+    {
+      "source": "changes_changes",
       "target": "changes_2026_09_17_native_refresh_integration_test",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CHANGES.md",
-      "source_location": "L109",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -16028,7 +15870,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CHANGES.md",
-      "source_location": "L118",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -16039,18 +15881,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CHANGES.md",
-      "source_location": "L133",
-      "weight": 1.0
-    },
-    {
-      "source": "changes_changes",
-      "target": "changes_2026_10_06_native_claude_code_protocol_preservation",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "CHANGES.md",
-      "source_location": "L19",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -16061,62 +15892,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CHANGES.md",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "changes_changes",
-      "target": "changes_2026_09_22_deepseek_balance_card",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "CHANGES.md",
-      "source_location": "L34",
-      "weight": 1.0
-    },
-    {
-      "source": "changes_changes",
-      "target": "changes_2026_09_17_native_anthropic_prompt_cache_breakpoints",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "CHANGES.md",
-      "source_location": "L55",
-      "weight": 1.0
-    },
-    {
-      "source": "changes_changes",
-      "target": "changes_2026_09_17_sync_upstream_tokengateway_fixes",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "CHANGES.md",
-      "source_location": "L68",
-      "weight": 1.0
-    },
-    {
-      "source": "changes_changes",
-      "target": "changes_2026_09_17_claude_reasoning_bridge_verification",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "CHANGES.md",
-      "source_location": "L82",
-      "weight": 1.0
-    },
-    {
-      "source": "changes_changes",
-      "target": "changes_2026_09_17_managed_claude_alongside_native_chatgpt",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "CHANGES.md",
-      "source_location": "L88",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -16127,7 +15903,62 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CHANGES.md",
-      "source_location": "L9",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "changes_changes",
+      "target": "changes_2026_11_10_remove_unexpected_fallbacks_keep_traffic_kpi",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CHANGES.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "changes_changes",
+      "target": "changes_2026_10_06_native_claude_code_protocol_preservation",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CHANGES.md",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "changes_changes",
+      "target": "changes_2026_09_22_deepseek_balance_card",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CHANGES.md",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "changes_changes",
+      "target": "changes_2026_09_17_native_anthropic_prompt_cache_breakpoints",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CHANGES.md",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "changes_changes",
+      "target": "changes_2026_09_17_sync_upstream_tokengateway_fixes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CHANGES.md",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -16502,105 +16333,6 @@
       "confidence_score": 1.0,
       "source_file": "dashboard/src/auth.ts",
       "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks",
-      "target": "dashboard_src_fallbacks_fallbacksnapshot",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L21",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks",
-      "target": "dashboard_src_fallbacks_options",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L42",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks",
-      "target": "dashboard_src_fallbacks_fallbackevent",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L47",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks",
-      "target": "dashboard_src_fallbacks_spendlogsdate",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L62",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks",
-      "target": "dashboard_src_fallbacks_fallbackmonitor",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L67",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor",
-      "target": "dashboard_src_fallbacks_fallbackmonitor_getjson",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L112",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor",
-      "target": "dashboard_src_fallbacks_fallbackmonitor_fetchchains",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L121",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor",
-      "target": "dashboard_src_fallbacks_fallbackmonitor_fetchmodelgroups",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L139",
-      "weight": 1.0
-    },
-    {
-      "source": "dashboard_src_fallbacks_fallbackmonitor",
-      "target": "dashboard_src_fallbacks_fallbackmonitor_pollspendlogs",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "dashboard/src/fallbacks.ts",
-      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -17272,6 +17004,72 @@
       "confidence_score": 1.0,
       "source_file": "dashboard/src/store.ts",
       "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic",
+      "target": "dashboard_src_traffic_trafficsnapshot",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic",
+      "target": "dashboard_src_traffic_options",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic",
+      "target": "dashboard_src_traffic_spendlogsdate",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic",
+      "target": "dashboard_src_traffic_trafficmonitor",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic_trafficmonitor",
+      "target": "dashboard_src_traffic_trafficmonitor_pollspendlogs",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L106",
+      "weight": 1.0
+    },
+    {
+      "source": "dashboard_src_traffic_trafficmonitor",
+      "target": "dashboard_src_traffic_trafficmonitor_getjson",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "dashboard/src/traffic.ts",
+      "source_location": "L96",
       "weight": 1.0
     },
     {
@@ -20637,7 +20435,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1250",
+      "source_location": "L1245",
       "weight": 1.0
     },
     {
@@ -20648,29 +20446,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1265",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize",
-      "target": "litellm_plugin_sitecustomize_codex_unsupported_model",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1269",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize",
-      "target": "litellm_plugin_sitecustomize_codex_remember_unsupported",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1272",
+      "source_location": "L1260",
       "weight": 1.0
     },
     {
@@ -20681,7 +20457,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1298",
+      "source_location": "L1264",
       "weight": 1.0
     },
     {
@@ -20692,7 +20468,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1315",
+      "source_location": "L1281",
       "weight": 1.0
     },
     {
@@ -20703,7 +20479,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1343",
+      "source_location": "L1309",
       "weight": 1.0
     },
     {
@@ -20714,7 +20490,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1366",
+      "source_location": "L1330",
       "weight": 1.0
     },
     {
@@ -20725,7 +20501,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1391",
+      "source_location": "L1353",
       "weight": 1.0
     },
     {
@@ -20736,7 +20512,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1399",
+      "source_location": "L1361",
       "weight": 1.0
     },
     {
@@ -20747,7 +20523,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1481",
+      "source_location": "L1443",
       "weight": 1.0
     },
     {
@@ -20758,7 +20534,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1627",
+      "source_location": "L1589",
       "weight": 1.0
     },
     {
@@ -20769,7 +20545,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1650",
+      "source_location": "L1612",
       "weight": 1.0
     },
     {
@@ -20780,7 +20556,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1658",
+      "source_location": "L1620",
       "weight": 1.0
     },
     {
@@ -20791,7 +20567,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1664",
+      "source_location": "L1626",
       "weight": 1.0
     },
     {
@@ -20802,7 +20578,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1673",
+      "source_location": "L1635",
       "weight": 1.0
     },
     {
@@ -20813,7 +20589,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1697",
+      "source_location": "L1659",
       "weight": 1.0
     },
     {
@@ -20824,7 +20600,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1714",
+      "source_location": "L1676",
       "weight": 1.0
     },
     {
@@ -20835,7 +20611,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1748",
+      "source_location": "L1710",
       "weight": 1.0
     },
     {
@@ -20846,7 +20622,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1751",
+      "source_location": "L1713",
       "weight": 1.0
     },
     {
@@ -20857,7 +20633,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1768",
+      "source_location": "L1730",
       "weight": 1.0
     },
     {
@@ -20868,7 +20644,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1801",
+      "source_location": "L1763",
       "weight": 1.0
     },
     {
@@ -20879,7 +20655,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1805",
+      "source_location": "L1767",
       "weight": 1.0
     },
     {
@@ -20901,7 +20677,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1888",
+      "source_location": "L1850",
       "weight": 1.0
     },
     {
@@ -20912,7 +20688,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1928",
+      "source_location": "L1890",
       "weight": 1.0
     },
     {
@@ -20923,7 +20699,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1964",
+      "source_location": "L1926",
       "weight": 1.0
     },
     {
@@ -20934,7 +20710,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1971",
+      "source_location": "L1933",
       "weight": 1.0
     },
     {
@@ -20945,7 +20721,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2033",
+      "source_location": "L1995",
       "weight": 1.0
     },
     {
@@ -20956,7 +20732,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2049",
+      "source_location": "L2011",
       "weight": 1.0
     },
     {
@@ -20967,7 +20743,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2064",
+      "source_location": "L2026",
       "weight": 1.0
     },
     {
@@ -20978,7 +20754,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2109",
+      "source_location": "L2071",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize",
+      "target": "litellm_plugin_sitecustomize_google_content_parts",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2106",
       "weight": 1.0
     },
     {
@@ -20994,24 +20781,13 @@
     },
     {
       "source": "litellm_plugin_sitecustomize",
-      "target": "litellm_plugin_sitecustomize_google_content_parts",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2144",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize",
       "target": "litellm_plugin_sitecustomize_google_tool_choice",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2161",
+      "source_location": "L2123",
       "weight": 1.0
     },
     {
@@ -21022,7 +20798,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2177",
+      "source_location": "L2139",
       "weight": 1.0
     },
     {
@@ -21033,7 +20809,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2195",
+      "source_location": "L2157",
       "weight": 1.0
     },
     {
@@ -21044,7 +20820,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2221",
+      "source_location": "L2183",
       "weight": 1.0
     },
     {
@@ -21055,7 +20831,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2346",
+      "source_location": "L2308",
       "weight": 1.0
     },
     {
@@ -21066,7 +20842,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2378",
+      "source_location": "L2340",
       "weight": 1.0
     },
     {
@@ -21082,6 +20858,17 @@
     },
     {
       "source": "litellm_plugin_sitecustomize",
+      "target": "litellm_plugin_sitecustomize_call_antigravity_sync",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2397",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize",
       "target": "litellm_plugin_sitecustomize_tokenmanager",
       "relation": "contains",
       "_origin": "ast",
@@ -21093,24 +20880,13 @@
     },
     {
       "source": "litellm_plugin_sitecustomize",
-      "target": "litellm_plugin_sitecustomize_call_antigravity_sync",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2435",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize",
       "target": "litellm_plugin_sitecustomize_antigravity_open_async",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2475",
+      "source_location": "L2437",
       "weight": 1.0
     },
     {
@@ -21121,7 +20897,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2498",
+      "source_location": "L2460",
       "weight": 1.0
     },
     {
@@ -21132,7 +20908,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2632",
+      "source_location": "L2594",
       "weight": 1.0
     },
     {
@@ -21143,7 +20919,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2643",
+      "source_location": "L2605",
       "weight": 1.0
     },
     {
@@ -21154,7 +20930,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2649",
+      "source_location": "L2611",
       "weight": 1.0
     },
     {
@@ -21165,7 +20941,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2919",
+      "source_location": "L2881",
       "weight": 1.0
     },
     {
@@ -21176,7 +20952,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2925",
+      "source_location": "L2887",
       "weight": 1.0
     },
     {
@@ -21187,7 +20963,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2983",
+      "source_location": "L2945",
       "weight": 1.0
     },
     {
@@ -21198,7 +20974,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L3013",
+      "source_location": "L2975",
       "weight": 1.0
     },
     {
@@ -22028,24 +21804,24 @@
     },
     {
       "source": "memory_project_memory",
+      "target": "memory_scope_and_decisions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "MEMORY.md",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "memory_project_memory",
       "target": "memory_local_deployment_verified_2026_09_17",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "MEMORY.md",
-      "source_location": "L105",
-      "weight": 1.0
-    },
-    {
-      "source": "memory_project_memory",
-      "target": "memory_cursor_oauth_and_dashboard_card_2026_10_06",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "MEMORY.md",
-      "source_location": "L12",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -22056,7 +21832,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "MEMORY.md",
-      "source_location": "L128",
+      "source_location": "L146",
       "weight": 1.0
     },
     {
@@ -22067,18 +21843,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "MEMORY.md",
-      "source_location": "L185",
-      "weight": 1.0
-    },
-    {
-      "source": "memory_project_memory",
-      "target": "memory_native_claude_code_protocol_preservation_2026_10_06",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "MEMORY.md",
-      "source_location": "L29",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -22089,7 +21854,40 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "MEMORY.md",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "memory_project_memory",
+      "target": "memory_fallback_removal_2026_11_10",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "MEMORY.md",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "memory_project_memory",
+      "target": "memory_cursor_oauth_and_dashboard_card_2026_10_06",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "MEMORY.md",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "memory_project_memory",
+      "target": "memory_native_claude_code_protocol_preservation_2026_10_06",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "MEMORY.md",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -22100,7 +21898,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "MEMORY.md",
-      "source_location": "L43",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -22111,18 +21909,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "MEMORY.md",
-      "source_location": "L65",
-      "weight": 1.0
-    },
-    {
-      "source": "memory_project_memory",
-      "target": "memory_scope_and_decisions",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "MEMORY.md",
-      "source_location": "L86",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -22426,7 +22213,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L3013",
+      "source_location": "L2975",
       "weight": 1.0
     },
     {
@@ -22437,7 +22224,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1768",
+      "source_location": "L1730",
       "weight": 1.0
     },
     {
@@ -22459,7 +22246,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L3014",
+      "source_location": "L2976",
       "weight": 1.0
     },
     {
@@ -22470,7 +22257,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L3016",
+      "source_location": "L2978",
       "weight": 1.0
     },
     {
@@ -22547,7 +22334,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1817",
+      "source_location": "L1779",
       "weight": 1.0
     },
     {
@@ -22558,7 +22345,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1827",
+      "source_location": "L1789",
       "weight": 1.0
     },
     {
@@ -22569,7 +22356,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1846",
+      "source_location": "L1808",
       "weight": 1.0
     },
     {
@@ -22580,7 +22367,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1854",
+      "source_location": "L1816",
       "weight": 1.0
     },
     {
@@ -22815,102 +22602,91 @@
       "weight": 1.0
     },
     {
-      "source": "litellm_plugin_sitecustomize_rationale_1266",
+      "source": "litellm_plugin_sitecustomize_rationale_1261",
       "target": "litellm_plugin_sitecustomize_codex_quota_headers",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1266",
+      "source_location": "L1261",
       "weight": 1.0
     },
     {
-      "source": "litellm_plugin_sitecustomize_rationale_1273",
-      "target": "litellm_plugin_sitecustomize_codex_remember_unsupported",
-      "relation": "rationale_for",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1273",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_rationale_1299",
+      "source": "litellm_plugin_sitecustomize_rationale_1265",
       "target": "litellm_plugin_sitecustomize_codex_reset_credits",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1299",
+      "source_location": "L1265",
       "weight": 1.0
     },
     {
-      "source": "litellm_plugin_sitecustomize_rationale_1674",
+      "source": "litellm_plugin_sitecustomize_rationale_1636",
       "target": "litellm_plugin_sitecustomize_google_raise_in_band",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1674",
+      "source_location": "L1636",
       "weight": 1.0
     },
     {
-      "source": "litellm_plugin_sitecustomize_rationale_1698",
+      "source": "litellm_plugin_sitecustomize_rationale_1660",
       "target": "litellm_plugin_sitecustomize_bridge_message",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1698",
+      "source_location": "L1660",
       "weight": 1.0
     },
     {
-      "source": "litellm_plugin_sitecustomize_rationale_1715",
+      "source": "litellm_plugin_sitecustomize_rationale_1677",
       "target": "litellm_plugin_sitecustomize_attach_codex_quota",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1715",
+      "source_location": "L1677",
       "weight": 1.0
     },
     {
-      "source": "litellm_plugin_sitecustomize_rationale_1769",
+      "source": "litellm_plugin_sitecustomize_rationale_1731",
       "target": "litellm_plugin_sitecustomize_thinkinglooperror",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1769",
+      "source_location": "L1731",
       "weight": 1.0
     },
     {
-      "source": "litellm_plugin_sitecustomize_rationale_1806",
+      "source": "litellm_plugin_sitecustomize_rationale_1768",
       "target": "litellm_plugin_sitecustomize_thinkingloopdetector",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1806",
+      "source_location": "L1768",
       "weight": 1.0
     },
     {
-      "source": "litellm_plugin_sitecustomize_rationale_1828",
+      "source": "litellm_plugin_sitecustomize_rationale_1790",
       "target": "litellm_plugin_sitecustomize_thinkingloopdetector_feed",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1828",
+      "source_location": "L1790",
       "weight": 1.0
     },
     {
@@ -22925,36 +22701,47 @@
       "weight": 1.0
     },
     {
-      "source": "litellm_plugin_sitecustomize_rationale_1889",
+      "source": "litellm_plugin_sitecustomize_rationale_1851",
       "target": "litellm_plugin_sitecustomize_google_loop_guard",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1889",
+      "source_location": "L1851",
       "weight": 1.0
     },
     {
-      "source": "litellm_plugin_sitecustomize_rationale_2065",
+      "source": "litellm_plugin_sitecustomize_rationale_2027",
       "target": "litellm_plugin_sitecustomize_google_media_from_url",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2065",
+      "source_location": "L2027",
       "weight": 1.0
     },
     {
-      "source": "litellm_plugin_sitecustomize_rationale_2110",
+      "source": "litellm_plugin_sitecustomize_rationale_2072",
       "target": "litellm_plugin_sitecustomize_google_media_part",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2110",
+      "source_location": "L2072",
+      "weight": 1.0
+    },
+    {
+      "source": "litellm_plugin_sitecustomize_rationale_2107",
+      "target": "litellm_plugin_sitecustomize_google_content_parts",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "litellm-plugin/sitecustomize.py",
+      "source_location": "L2107",
       "weight": 1.0
     },
     {
@@ -22969,36 +22756,25 @@
       "weight": 1.0
     },
     {
-      "source": "litellm_plugin_sitecustomize_rationale_2145",
-      "target": "litellm_plugin_sitecustomize_google_content_parts",
-      "relation": "rationale_for",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2145",
-      "weight": 1.0
-    },
-    {
-      "source": "litellm_plugin_sitecustomize_rationale_2196",
+      "source": "litellm_plugin_sitecustomize_rationale_2158",
       "target": "litellm_plugin_sitecustomize_tool_result_value",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2196",
+      "source_location": "L2158",
       "weight": 1.0
     },
     {
-      "source": "litellm_plugin_sitecustomize_rationale_2347",
+      "source": "litellm_plugin_sitecustomize_rationale_2309",
       "target": "litellm_plugin_sitecustomize_antigravity_open",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2347",
+      "source_location": "L2309",
       "weight": 1.0
     },
     {
@@ -23013,14 +22789,14 @@
       "weight": 1.0
     },
     {
-      "source": "litellm_plugin_sitecustomize_rationale_2650",
+      "source": "litellm_plugin_sitecustomize_rationale_2612",
       "target": "litellm_plugin_sitecustomize_stream_antigravity_generator",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2650",
+      "source_location": "L2612",
       "weight": 1.0
     },
     {
@@ -23408,7 +23184,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2720",
+      "source_location": "L2682",
       "weight": 1.0
     },
     {
@@ -23420,7 +23196,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2749",
+      "source_location": "L2711",
       "weight": 1.0
     },
     {
@@ -23432,7 +23208,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2838",
+      "source_location": "L2800",
       "weight": 1.0
     },
     {
@@ -23444,7 +23220,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2855",
+      "source_location": "L2817",
       "weight": 1.0
     },
     {
@@ -23456,7 +23232,7 @@
       "confidence_score": 0.85,
       "context": "assignment",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2869",
+      "source_location": "L2831",
       "weight": 1.0
     },
     {
@@ -23468,7 +23244,7 @@
       "confidence_score": 0.85,
       "context": "assignment",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2870",
+      "source_location": "L2832",
       "weight": 1.0
     },
     {
@@ -23480,7 +23256,7 @@
       "confidence_score": 0.85,
       "context": "assignment",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2892",
+      "source_location": "L2854",
       "weight": 1.0
     },
     {
@@ -23492,7 +23268,7 @@
       "confidence_score": 0.85,
       "context": "assignment",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2900",
+      "source_location": "L2862",
       "weight": 1.0
     },
     {
@@ -23504,7 +23280,7 @@
       "confidence_score": 0.85,
       "context": "assignment",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2902",
+      "source_location": "L2864",
       "weight": 1.0
     },
     {
@@ -23516,7 +23292,7 @@
       "confidence_score": 0.85,
       "context": "assignment",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2951",
+      "source_location": "L2913",
       "weight": 1.0
     },
     {
@@ -23528,7 +23304,7 @@
       "confidence_score": 0.85,
       "context": "assignment",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2952",
+      "source_location": "L2914",
       "weight": 1.0
     },
     {
@@ -23600,7 +23376,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2557",
+      "source_location": "L2519",
       "weight": 1.0
     },
     {
@@ -23612,7 +23388,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2558",
+      "source_location": "L2520",
       "weight": 1.0
     },
     {
@@ -23624,7 +23400,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L2562",
+      "source_location": "L2524",
       "weight": 1.0
     },
     {
@@ -23636,7 +23412,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1517",
+      "source_location": "L1479",
       "weight": 1.0
     },
     {
@@ -23648,7 +23424,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1521",
+      "source_location": "L1483",
       "weight": 1.0
     },
     {
@@ -23660,7 +23436,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "litellm-plugin/sitecustomize.py",
-      "source_location": "L1523",
+      "source_location": "L1485",
       "weight": 1.0
     },
     {
@@ -23737,5 +23513,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "2471cdf0154e17204a1df59769f5c10cbb3c2645"
+  "built_at_commit": "de4d8d1d3cc539e45f12ddc0386494c729de82f2"
 }

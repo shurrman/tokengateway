@@ -6,9 +6,9 @@
     "semantic_hash": ""
   },
   "dashboard/server.ts": {
-    "mtime": 1790888829.401608,
-    "seen": 1791304160.711676,
-    "ast_hash": "23f08121d6ec72f47e6ff2fd10004509",
+    "mtime": 1794297223.5557892,
+    "seen": 1794297305.106969,
+    "ast_hash": "46e1d8faf3cadc856d65dbc82e4042a1",
     "semantic_hash": ""
   },
   "dashboard/src/auth.ts": {
@@ -48,9 +48,9 @@
     "semantic_hash": ""
   },
   "dashboard/src/ui.ts": {
-    "mtime": 1793741852.8323205,
-    "seen": 1793808719.6264372,
-    "ast_hash": "ca2f08c64af19dbb5c3fc45711153e82",
+    "mtime": 1794297223.5562859,
+    "seen": 1794297305.10698,
+    "ast_hash": "9334333da4c4b81d5be9bcb5bf79a468",
     "semantic_hash": ""
   },
   "dashboard/src/usage.ts": {
@@ -144,9 +144,9 @@
     "semantic_hash": ""
   },
   "litellm-plugin/sitecustomize.py": {
-    "mtime": 1790137181.4939237,
-    "seen": 1790885723.469577,
-    "ast_hash": "afde7ad0a2431663e7a18c6ad3d85b1c",
+    "mtime": 1794297223.5572464,
+    "seen": 1794297305.106994,
+    "ast_hash": "e96c58ec36976ad7023d48a1c1723fc6",
     "semantic_hash": ""
   },
   "litellm-plugin/test_bridge_spend_logging.py": {
@@ -168,9 +168,9 @@
     "semantic_hash": ""
   },
   "litellm-plugin/test_wire_contract.py": {
-    "mtime": 1790137181.4964533,
-    "seen": 1790885723.469582,
-    "ast_hash": "29cd220612c0c1683dc9832a308a3f39",
+    "mtime": 1794297223.5577006,
+    "seen": 1794297305.107,
+    "ast_hash": "4c399f2bf44a38987cd177fb78e6bdff",
     "semantic_hash": ""
   },
   ".github/workflows/build-desktop.yml": {
@@ -186,9 +186,9 @@
     "semantic_hash": ""
   },
   "CHANGES.md": {
-    "mtime": 1791365508.9303026,
-    "seen": 1791365746.1992068,
-    "ast_hash": "06927cf14693b73684487979fb55ac59",
+    "mtime": 1794297276.464812,
+    "seen": 1794297305.107003,
+    "ast_hash": "82cf307090d2a22845ccce7027d41c52",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
@@ -198,9 +198,9 @@
     "semantic_hash": ""
   },
   "MEMORY.md": {
-    "mtime": 1791366074.4431567,
-    "seen": 1793808719.626466,
-    "ast_hash": "d5fab19b946131e3106972601bcf798e",
+    "mtime": 1794297303.7160935,
+    "seen": 1794297305.107008,
+    "ast_hash": "f234c365ba178c1bb46e7b066db0680f",
     "semantic_hash": ""
   },
   "README.md": {
@@ -401,10 +401,10 @@
     "ast_hash": "fa9f33e3040afe3831ef581613dff60e",
     "semantic_hash": ""
   },
-  "dashboard/src/fallbacks.ts": {
-    "mtime": 1790891386.4674354,
-    "seen": 1791304160.711682,
-    "ast_hash": "2ab661b73444fd8ee90ae1a59b3a8850",
+  "dashboard/src/traffic.ts": {
+    "mtime": 1794297223.5777745,
+    "seen": 1794297305.1069791,
+    "ast_hash": "ff134ef51e1876670670b259fda72cff",
     "semantic_hash": ""
   }
 }
