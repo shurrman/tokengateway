@@ -1194,7 +1194,6 @@ def _codex_wire_generation(req_model):
 def _codex_request_body(model, messages, tools, extra_kwargs):
     req_model = model.split("/")[-1]
     req_model = _CODEX_WIRE_ALIASES.get(req_model.lower(), req_model)
-    req_model = _CODEX_UNSUPPORTED.get(req_model.lower(), req_model)
     body = {
         "model": req_model,
         "store": False,
@@ -1242,10 +1241,6 @@ def _codex_request_body(model, messages, tools, extra_kwargs):
 # when the first 429 arrives.
 _CODEX_QUOTA = {}
 _CODEX_TURN_STATE = [None]
-# The backend rejects models the account does not serve; instead of blindly
-# propagating the 400, the rejection is learned and routed to the served one.
-_CODEX_UNSUPPORTED = {}
-_CODEX_FALLBACK_MODEL = "gpt-5.5"
 
 def _codex_capture_response_state(resp):
     headers = getattr(resp, "headers", None) or {}
@@ -1265,35 +1260,6 @@ def _codex_capture_response_state(resp):
 def _codex_quota_headers():
     """Reexpostos ao cliente como llm_provider-* pelo proxy."""
     return dict(_CODEX_QUOTA)
-
-def _codex_unsupported_model(err_text):
-    return "is not supported when using Codex" in str(err_text)
-
-def _codex_remember_unsupported(body):
-    """Only remaps names that are deliberate aliases of a served model.
-
-    Substituting an arbitrary name (gpt-4.1, o3-mini, gpt-3.5-turbo) with
-    gpt-5.5 returned 200 with the `model` field echoing the requested name: the
-    client believed it talked to a different model, and billing and
-    comparisons started lying. For those, the upstream 400 is the correct
-    answer.
-    """
-    wire = str(body.get("model") or "").lower()
-    if not wire or wire == _CODEX_FALLBACK_MODEL:
-        return False
-    if wire not in _CODEX_WIRE_ALIASES and wire not in _CODEX_UNSUPPORTED:
-        print(
-            f"[sitecustomize] codex: {wire} is not served by this account and is not a known alias; propagating the error",
-            file=sys.stderr,
-        )
-        return False
-    _CODEX_UNSUPPORTED[wire] = _CODEX_FALLBACK_MODEL
-    body["model"] = _CODEX_FALLBACK_MODEL
-    print(
-        f"[sitecustomize] codex: alias {wire} rejected by the account, routing to {_CODEX_FALLBACK_MODEL}",
-        file=sys.stderr,
-    )
-    return True
 
 def _codex_reset_credits(token):
     """Lists reset credits. Redeeming spends a limited resource, so it only runs
@@ -1356,8 +1322,6 @@ def _codex_open(client, url, body, headers_box, token):
         status = resp.status_code
         err_text = resp.read().decode("utf-8", "replace")
         resp.close()
-        if status == 400 and _codex_unsupported_model(err_text) and _codex_remember_unsupported(body):
-            continue
         if status == 429 and _codex_redeem_reset_credit(token):
             continue
         raise Exception(f"OpenAI Codex error {status}: {err_text}")
@@ -1379,8 +1343,6 @@ async def _codex_open_async(client, url, body, headers_box, token):
         status = resp.status_code
         err_text = (await resp.aread()).decode("utf-8", "replace")
         await resp.aclose()
-        if status == 400 and _codex_unsupported_model(err_text) and _codex_remember_unsupported(body):
-            continue
         if status == 429 and _codex_redeem_reset_credit(token):
             continue
         raise Exception(f"OpenAI Codex error {status}: {err_text}")

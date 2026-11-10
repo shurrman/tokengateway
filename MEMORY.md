@@ -1,5 +1,23 @@
 # Project memory
 
+## Fallback removal (2026-11-10)
+
+- User directive: traffic stays, but the unexpected fallback must go.
+- litellm-plugin/sitecustomize.py: removed the Codex learned reroute
+  (_CODEX_UNSUPPORTED, _codex_unsupported_model, _codex_remember_unsupported,
+  400-retry lines in _codex_open/_codex_open_async). Upstream 400 now propagates.
+  Static _CODEX_WIRE_ALIASES kept (honest family aliases). test_wire_contract.py
+  asserts no silent remap via _codex_request_body; suite passes.
+- dashboard: src/fallbacks.ts replaced by src/traffic.ts (trafficMonitor,
+  TrafficSnapshot). /api/fallbacks -> /api/traffic. KPI bar keeps only 24h
+  traffic KPI; "Fallbacks 24h" KPI and anthropic card fallback-chain lines
+  removed. Same fallbacks.sqlite window preserved; FALLBACKS_DB_PATH honored as
+  legacy env; TRAFFIC_DB_PATH is the new name.
+- Verified: tsc --noEmit clean; bun test tests identical to pre-change baseline
+  (32 pass, 4 pre-existing server.test.ts port-0 failures in full-suite run).
+- NOT deployed yet: sitecustomize change needs LiteLLM restart; dashboard change
+  needs tokengateway-quota restart on .35. Ask the user first.
+
 ## Cursor card hides Total (2026-10-07)
 
 - Live .35: deployed omniroute.ts (md5 72b1803c...), backup bak-hide-total-20261007123953; restarted only tokengateway-quota (PID 175280). Dashboard :3737 -> 401.

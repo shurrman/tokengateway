@@ -27,7 +27,6 @@ names = {
     "_tools_to_codex_tools",
     "_codex_tool_choice",
     "_codex_request_body",
-    "_codex_remember_unsupported",
     "_google_model_supports_function_ids",
     "_google_inline_part",
     "_google_media_from_url",
@@ -205,19 +204,19 @@ assert namespace["_codex_prompt_cache_key"](head) == namespace["_codex_prompt_ca
 )
 print("Codex prompt cache key stability OK")
 
-# Remapping an arbitrary name to the fallback model answered 200 while the
-# `model` field echoed the requested name: billing and comparisons lied. Only
-# deliberate aliases may be remapped.
-for alias in ("codex", "gpt-6"):
-    assert namespace["_codex_remember_unsupported"]({"model": alias}) is True, alias
-# A family alias ("codex", "gpt-5", "gpt-6") promises no concrete version, so
-# resolving it to the served one is honest. `gpt-5.4`/`gpt-5.4-mini` name a
-# version this account does not serve: remapping them to gpt-5.5 billed and
-# logged the client against a model that never ran, so they are no longer
-# aliases and the upstream refusal propagates.
+# There is no runtime fallback to a served model: a family alias
+# ("codex", "gpt-5", "gpt-6") promises no concrete version, so resolving it to
+# the served one is honest. `gpt-5.4`/`gpt-5.4-mini` and any arbitrary name
+# must reach the wire as requested: silently rerouting to gpt-5.5 billed and
+# logged the client against a model that never ran. The upstream refusal is
+# the correct answer for those.
+for alias, served in (("codex", "gpt-5.5"), ("gpt-6", "gpt-6-astra")):
+    body = namespace["_codex_request_body"](alias, [{"role": "user", "content": "x"}], None, {})
+    assert body["model"] == served, (alias, body["model"])
 for arbitrary in ("gpt-5.4", "gpt-5.4-mini", "gpt-4.1", "o3-mini", "gpt-3.5-turbo"):
-    assert namespace["_codex_remember_unsupported"]({"model": arbitrary}) is False, arbitrary
-print("Codex honest model fallback OK")
+    body = namespace["_codex_request_body"](arbitrary, [{"role": "user", "content": "x"}], None, {})
+    assert body["model"] == arbitrary, (arbitrary, body["model"])
+print("Codex no silent fallback OK")
 
 # --- Antigravity: thinking level, unknown families, planning leak ----------
 # gemini-3.8-* and gemini-3.1-pro answer 400 "Thinking level MINIMAL is not

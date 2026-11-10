@@ -1,5 +1,24 @@
 # Changes
 
+## 2026-11-10 - Remove unexpected fallbacks, keep traffic KPI
+
+- litellm-plugin: dropped the Codex learned-reroute fallback
+  (_CODEX_UNSUPPORTED / _codex_remember_unsupported). A 400 "model is not
+  supported" from the account now propagates to the client instead of silently
+  rerouting the request to gpt-5.5. Static honest family aliases
+  (codex/gpt-5/gpt-6) are unchanged, so is the wire contract test, now asserting
+  no silent remap through _codex_request_body.
+- dashboard: fallback observability removed. /api/fallbacks is replaced by
+  /api/traffic (src/traffic.ts, trafficMonitor): the KPI bar keeps only the 24h
+  traffic KPI (requests / fresh tokens / cached share); the "Fallbacks 24h" KPI
+  and the fallback-chain lines on Anthropic cards are gone. The rolling SQLite
+  window is preserved (same fallbacks.sqlite file, legacy fallback_group column
+  tolerated, FALLBACKS_DB_PATH still honored as a legacy env name).
+- Verified: python3 litellm-plugin/test_wire_contract.py passes;
+  cd dashboard && bun run tsc --noEmit is clean; bun test tests matches the
+  pre-change baseline exactly (32 pass, 4 pre-existing server.test.ts port-0
+  failures in the full-suite run, 0 in a single-file run).
+
 ## 2026-10-07 - Hide misleading Cursor Total quota window
 
 - Cursor cards now show Auto + Composer and API only, matching cursor.com.

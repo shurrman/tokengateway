@@ -644,10 +644,6 @@ export const HTML = `<!DOCTYPE html>
     <span class="kpi-label">Next Reset</span>
     <span class="kpi-val" id="kpiNextReset">--:--:--</span>
   </div>
-  <div class="kpi-item">
-    <span class="kpi-label">Fallbacks 24h</span>
-    <span class="kpi-val" id="kpiFallbacks">--</span>
-  </div>
 </div>
 
 <!-- 2-Column Responsive Cards Grid -->
@@ -661,7 +657,7 @@ export const HTML = `<!DOCTYPE html>
 </footer>
 
 <script>
-let state = { providers: [], reports: [], fallbacks: null };
+let state = { providers: [], reports: [], traffic: null };
 let liveTimerInterval = null;
 
 const LOGOS = {
@@ -757,11 +753,11 @@ async function refresh() {
     const [s, u, fb] = await Promise.all([
       apiJson('/api/status'),
       apiJson('/api/usage'),
-      apiJson('/api/fallbacks').catch(() => null)
+      apiJson('/api/traffic').catch(() => null)
     ]);
     state.providers = s.providers || [];
     state.reports = u.reports || [];
-    state.fallbacks = fb && !fb.error ? fb : fb;
+    state.traffic = fb && !fb.error ? fb : fb;
     
     document.getElementById('lastSync').textContent = 'Synced: ' + new Date().toLocaleTimeString();
     render();
@@ -841,8 +837,6 @@ function render() {
     if (isOmni && report && !report.cached) {
       html += '<div class="provider-email">Updated: ' + esc(new Date(report.fetchedAt).toLocaleString()) + '</div>';
     }
-    if (p.id === 'anthropic') html += fallbackCardLine('claude-');
-    if (isOmniClaude) html += fallbackCardLine('omni-claude-');
 
     if (p.login && p.login.status === 'pending') {
       html += \`<div class="pending-panel">
@@ -1068,7 +1062,7 @@ function render() {
 
   document.getElementById('cardsContainer').innerHTML = html;
   
-  renderFallbackKpis();
+  renderTrafficKpis();
 
   if (errorCount > 0) {
     document.getElementById('kpiHealth').textContent = 'Quota unavailable';
@@ -1090,19 +1084,17 @@ function fmtCompact(n) {
   return String(n);
 }
 
-function renderFallbackKpis() {
-  const fb = state.fallbacks;
+function renderTrafficKpis() {
+  const fb = state.traffic;
   const trafficEl = document.getElementById('kpiTraffic');
-  const fbEl = document.getElementById('kpiFallbacks');
   if (!fb || fb.error && !fb.fetchedAt) {
     trafficEl.textContent = 'n/a';
-    fbEl.textContent = 'n/a';
     return;
   }
   // Shown only while the initial 24h spend-log scan runs after a service
-  // restart (~4 min); both KPIs are partial until it completes.
+  // restart (~4 min); the KPI is partial until it completes.
   const scanBadge = fb.backfillPending
-    ? ' <span style="font-size:0.75em;color:var(--text-dim);cursor:help" title="Initial 24h spend-log scan is still running after a service restart (takes a few minutes). Counts are partial until it completes; after that both KPIs stay live via incremental 5-minute polls.">⏳ partial</span>'
+    ? ' <span style="font-size:0.75em;color:var(--text-dim);cursor:help" title="Initial 24h spend-log scan is still running after a service restart (takes a few minutes). Counts are partial until it completes; after that the KPI stays live via incremental 5-minute polls.">⏳ partial</span>'
     : '';
   // Cached share: high is healthy for agent workloads (sessions reuse
   // context); a drop below ~70% historically meant prompt-cache breakage.
@@ -1118,72 +1110,6 @@ function renderFallbackKpis() {
     ' <span style="font-size:0.75em;color:var(--text-dim)">fresh tok</span> · ' +
     '<span style="color:' + shareColor + '" title="Share of prompt tokens served from provider prompt caches (24h). Low values mean cache misses and higher cost/latency.">' +
     (sharePct === null ? '--' : sharePct + '% cached') + '</span>' + scanBadge;
-  const n = fb.activations24h || 0;
-  const uncovered = (fb.uncovered || []).length;
-  const color = n > 0 ? 'var(--warn, #f59e0b)' : 'var(--ok)';
-  // Per-group breakdown: which requested models actually fell back.
-  const byGroup = Object.entries(fb.activationsByGroup || {}).sort((a, b) => b[1] - a[1]);
-  const breakdown = byGroup.map(([g, c]) => g + ': ' + c).join('; ');
-  const title = n > 0
-    ? 'Requests whose selected model failed and were served by a fallback (24h). ' + breakdown
-    : 'No fallback activations in the last 24h: every request was served by its selected model.';
-  let html = '<span title="' + esc(title) + '"><span style="color:' + color + '">●</span> ' + n;
-  // Inline the affected groups while they fit; the tooltip always has all.
-  if (n > 0 && byGroup.length) {
-    const inline = byGroup.slice(0, 2)
-      .map(([g, c]) => esc(g.replace(/^omni-claude-/, 'omni-').replace(/^claude-/, '')) + '×' + c)
-      .join(', ');
-    html += ' <span style="font-size:0.72em;color:var(--text-dim)">· ' + inline +
-      (byGroup.length > 2 ? ' +' + (byGroup.length - 2) : '') + '</span>';
-  }
-  html += '</span>' + scanBadge;
-  if (uncovered > 0) {
-    html += ' <span style="font-size:0.72em;color:var(--bad)" title="Claude model groups with no fallback chain configured: ' +
-      esc(fb.uncovered.join(', ')) + '">· ' + uncovered + ' uncovered</span>';
-  }
-  fbEl.innerHTML = html;
-}
-
-/** Short fallback summary for a provider card, e.g. "Fallback → ChatGPT (sol/luna)". */
-function fallbackCardLine(groupPrefix) {
-  const fb = state.fallbacks;
-  if (!fb || !fb.chains) return '';
-  const groups = Object.keys(fb.chains).filter(g => g.startsWith(groupPrefix));
-  if (!groups.length) return '';
-  const NL = String.fromCharCode(10);
-  // Group models by their shared fallback tail so the tooltip reads as a
-  // couple of chains with model lists instead of one line per model.
-  const byTail = new Map();
-  const families = new Set();
-  let sameModelHop = false;
-  for (const g of groups) {
-    let chain = fb.chains[g];
-    // omni-* chains hop to the same model on TokenGateway first; summarize
-    // that hop once instead of repeating it in every chain.
-    if (chain.length && 'omni-' + chain[0] === g) {
-      sameModelHop = true;
-      chain = chain.slice(1);
-    }
-    for (const target of chain) {
-      families.add(target.includes('luna') ? 'luna' : target.includes('sol') ? 'sol' : target.split('-')[0]);
-    }
-    const tail = chain.join(' → ');
-    if (!byTail.has(tail)) byTail.set(tail, []);
-    byTail.get(tail).push(g.replace(groupPrefix, ''));
-  }
-  const byGroup = fb.activationsByGroup || {};
-  let fired = 0;
-  for (const g of groups) fired += byGroup[g] || 0;
-  const firedHtml = fired > 0
-    ? ' · <span style="color:var(--warn, #f59e0b)">' + fired + ' fired (24h)</span>'
-    : '';
-  const tooltip = (sameModelHop ? 'First hop: same model via TokenGateway, then:' + NL : '') +
-    [...byTail.entries()].map(([tail, models]) => '→ ' + tail + NL + '   ' + models.join(', ')).join(NL);
-  const label = sameModelHop
-    ? 'Fallback → same model → ChatGPT (' + esc([...families].sort().join('/')) + ')'
-    : 'Fallback → ChatGPT (' + esc([...families].sort().join('/')) + ')';
-  return '<div class="provider-email" style="cursor:help" title="' + esc(tooltip) + '">' +
-    label + firedHtml + '</div>';
 }
 
 async function login(id) {
