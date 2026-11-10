@@ -15,8 +15,15 @@
   legacy env; TRAFFIC_DB_PATH is the new name.
 - Verified: tsc --noEmit clean; bun test tests identical to pre-change baseline
   (32 pass, 4 pre-existing server.test.ts port-0 failures in full-suite run).
-- NOT deployed yet: sitecustomize change needs LiteLLM restart; dashboard change
-  needs tokengateway-quota restart on .35. Ask the user first.
+- Dashboard DEPLOYED on .35 2026-11-10: backup /root/tokengateway-before-traffic-20261110110234,
+  server.ts + src/ui.ts + src/traffic.ts copied, src/fallbacks.ts removed, only
+  tokengateway-quota restarted (PID 5657). LiteLLM MainPID 380 unchanged,
+  dashboard :3737 healthy (401 unauth). Rolling SQLite window preserved.
+- sitecustomize.py change needs NO deployment: verified on .35 the systemd
+  LiteLLM (venv, PID 380 era) has no PYTHONPATH and no importable sitecustomize;
+  config.yaml has no callbacks. The plugin is only a Kubernetes ConfigMap
+  mechanism (upstream architecture). We run our own LiteLLM fork wheel
+  (wsoft/1.108.0), so the plugin is not loaded anywhere; repo-only cleanup.
 
 ## Cursor card hides Total (2026-10-07)
 
